@@ -1,0 +1,29 @@
+.header {
+    margin: auto;
+    background-color: #ff6600;
+}
+.img {
+    /*border: 3px solid #73AD21;*/
+    /*width: 1290px;*/
+    /*object-fit: cover;*/
+    /*background-color: #ffcc00;*/
+}
+
+.header.title {
+    margin: auto;
+    border: 3px solid #73AD21;
+    /*padding: 10px;*/
+/*    text-align: center;*
+}
+
+.header.subtitle {
+    /*line-height: 1.5;*/
+}
+
+.header.body {
+    /*font-style: italic;*/
+    margin-bottom: 24px;
+    /*font-family: "Arial";*/
+    /*font-size: large;*/
+    /*line-height: 24px;*/
+}

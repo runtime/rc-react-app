@@ -1,0 +1,16 @@
+.About {
+    margin-top: 10px;
+    padding-bottom:40px;
+    text-align: left;
+    /*NOTE MARGINS ARE handled.. 1. in app-container disableGutters. 2. set in nav.js Box sx = paddingleft: * ;*/
+    /*padding-right: 40px;*/
+
+}
+
+.About-title {
+
+}
+
+.About-desc {
+    margin-bottom: 30px;
+}
