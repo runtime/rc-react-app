@@ -1,4 +1,3 @@
-import { blue, green, yellow } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 export const RapidCleanTheme = createTheme({
@@ -12,12 +11,12 @@ export const RapidCleanTheme = createTheme({
     },
     typography: {
         cardTitle: {
-            fontSize: '1.75rem',
+            fontSize: '1.25rem',
             fontWeight: 600,
             color: '#0885f2',
         },
         // Disable h3 variant
-        h3: undefined,
+
         components: {
             MuiTypography: {
                 defaultProps: {
@@ -28,6 +27,42 @@ export const RapidCleanTheme = createTheme({
                 },
             },
         },
+        h1: {
+            fontSize: '2.5rem',
+            fontFamily: "Helvetica",
+            fontWeight: 600,
+
+        },
+        h2: {
+            fontSize: '2rem',
+            fontFamily: "Helvetica",
+            fontWeight: 600,
+        },
+        h3: {
+            fontSize: '1.25rem',
+            fontFamily: "Helvetica",
+            fontWeight: 600,
+            color: '#3366cc'
+        },
+        h4: {
+            fontSize: '1rem',
+            fontFamily: "Helvetica",
+            fontWeight: 600,
+            color: '#3366cc'
+
+        },
+        h5: {
+            fontSize: '.75rem',
+            fontFamily: "Helvetica",
+            fontWeight: 600,
+        },
+        h6: {
+            fontSize: '.5rem',
+            fontFamily: "Helvetica",
+            fontWeight: 600,
+
+        }
+
     },
     button: {
         color: 'white',

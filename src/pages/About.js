@@ -54,6 +54,18 @@ const About = () => {
                                 At RapidClean, our mission is to create clean, healthy, and inviting spaces for our clients. We strive to exceed expectations through our meticulous attention to detail, eco-friendly practices, and commitment to customer satisfaction.
                             </Typography>
                             <Typography variant='h3'>
+                                Why Choose Us
+                            </Typography>
+                            <Typography variant='body1'>
+                                <ul>
+                                    <li>Experienced and Trained Staff 🎓</li>
+                                    <li>Eco-Friendly Practices 🐢 </li>
+                                    <li>Customizable Cleaning Plans 🧼</li>
+                                    <li>Reliable and Trustworthy 🦾</li>
+                                    <li>We use AI (and humanz) to create Custom Estimates Specifically For You based on your space and location!😲</li>
+                                </ul>
+                            </Typography>
+                            <Typography variant='h3'>
                                 Our Cleaning Services
                             </Typography>
                             <Typography variant='body1'>
@@ -62,8 +74,8 @@ const About = () => {
                         </Grid>
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <Typography variant='body2'>
-                                <h3> Kitchen </h3>
+                            <Typography  variant='body2'>
+                                <h3 className='About h3'>Kitchen</h3>
                                 <h4>We Clean and Disinfect:</h4>
                                 <ul>
                                     <li>the surfaces of furniture</li>
