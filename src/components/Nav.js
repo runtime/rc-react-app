@@ -16,8 +16,8 @@ const Nav = () => {
                 <CssBaseline enableColorScheme />
                 <Box
                     sx={{
-                        paddingLeft: { xs: 3, sm: 6, md: 12, lg: 30 },
-                        paddingRight: { xs: 3, sm: 6, md: 12, lg: 30 }
+                        paddingLeft: { xs: 3, sm: 6, md: 12, lg: 20 },
+                        paddingRight: { xs: 3, sm: 6, md: 12, lg: 20 }
                     }}>
                     <div style={{marginTop: '20px'}}>
                         <nav>

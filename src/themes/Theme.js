@@ -42,13 +42,15 @@ export const RapidCleanTheme = createTheme({
             fontSize: '1.25rem',
             fontFamily: "Helvetica",
             fontWeight: 600,
-            color: '#3366cc'
+            color: '#3366cc',
+            marginBottom: '1rem'
         },
         h4: {
             fontSize: '1rem',
             fontFamily: "Helvetica",
             fontWeight: 600,
-            color: '#3366cc'
+            color: '#86b95a',
+            marginBottom: '.5rem'
 
         },
         h5: {
