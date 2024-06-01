@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
+
 export const RapidCleanTheme = createTheme({
     palette: {
         primary: {
