@@ -54,7 +54,12 @@ const About = () => {
                             <Typography variant='body1'
                                 sx={{ marginBottom: 2 }}
                             >
-                                At RapidClean, our mission is to create clean, healthy, and inviting spaces for our clients. We strive to exceed expectations through our meticulous attention to detail, eco-friendly practices, and commitment to customer satisfaction.
+                                At RapidClean, our mission is to create clean, healthy, and inviting spaces for our clients.
+                                We strive to exceed expectations through our meticulous attention to detail, eco-friendly practices,
+                                and commitment to customer satisfaction.
+
+
+                                Cleaning, Decluttering and organizing the home reduces anxiety and has a positive effect on our mental health
                             </Typography>
                         </Grid>
 
@@ -101,7 +106,7 @@ const About = () => {
                         {/*why choose  us*/}
                         <Grid item xs={12} sm={12} md={12}>
                             <Typography variant='h3'>
-                                Our Cleaning Services
+                                Our Standard Cleaning Services
                             </Typography>
                             <Typography variant='body1'>
                                 Comprehensive home cleaning services tailored to meet your specific needs. We give discounts for smaller and or clutter free spaces. From regular maintenance to deep cleaning, we ensure your home is spotless and comfortable.
@@ -168,7 +173,7 @@ const About = () => {
                                 >
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Surfaces of the Furniture</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Floors</ListItem>
-                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Mirros and Glass </ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Mirrors and Glass </ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Vacuuming Rugs</ListItem>
                                 </List>
                                 <Typography variant='body2'>
