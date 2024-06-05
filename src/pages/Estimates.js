@@ -1,5 +1,5 @@
+import React, {useEffect, useState} from 'react'
 import '../styles/Estimates.css';
-import React from 'react';
 import {
     Typography, Grid, Box, Button,
     ThemeProvider, CssBaseline, Card,
@@ -10,10 +10,12 @@ import {
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { RapidCleanTheme } from "../themes/Theme.js";
+import { useEstimatesService } from "../services/useEstimatesService";
 import { TextField } from "formik-material-ui";
 
 
 const Estimates = () => {
+
     //Data
     const initialValues = {
         typeofservice: "",
@@ -38,8 +40,6 @@ const Estimates = () => {
             professional: 0,
         },
     }
-
-
 
     //drop downs
     // type of service options
@@ -157,7 +157,6 @@ const Estimates = () => {
         value: '1',
     },
     ]
-
     const numpetsoptions = [
         { label: "0", value: 0 },
         { label: "1", value: 1 },
@@ -166,7 +165,6 @@ const Estimates = () => {
         { label: "4", value: 4 },
         { label: "5", value: 5 },
     ]
-
     const numpeopleoptions = [
         { label: "1", value: 1 },
         { label: "2", value: 2 },
@@ -177,10 +175,6 @@ const Estimates = () => {
         { label: "7", value: 7 },
         { label: "8", value: 8 },
     ]
-
-
-
-
 
 //password validation
     const lowercaseRegEx = /(?=.*[a-z])/
@@ -207,15 +201,29 @@ const Estimates = () => {
         professionalrugshampoo: Yup.boolean(),
      })
 
-     //const [values, setValues] = React.useState(initialValues);
+    // const [values, setValues] = React.useState(initialValues);
     // const [extraservices, setExtraservices] = React.useState(initialExtraServices);
     // const [professionalservices, setProfessionalservices] = React.useState(initialProfessionalServices);
+
+    // select the estimate you want (or ok to the only estimate)
+    const [currEstimate, setCurrEstimate] = useState(null);
+    // use the estimate - params [ what we want back: estimate.total; , and the method we will call 'getEstimate'
+    const [estimate, getEstimate ] = useEstimatesService(initialValues.estimate.total);
+
+    useEffect(() => {
+        getEstimate(initialValues.estimate.total);
+    }, [initialValues.estimate.total])
 
 
     const onSubmit = (values) => {
         console.log(values);
+        console.log(values.estimate.total)
         //...state,
-        //setValues(values);
+
+        const currVal = values.estimate.total;
+        console.log('currVal: ', currVal);
+        const newVal = getEstimate(currVal);
+        console.log('newVal: ', newVal);
         //setExtraservices(extraservices);
         //setProfessionalservices(professionalservices);
     }
@@ -228,6 +236,9 @@ const Estimates = () => {
                     <CssBaseline enableColorScheme />
                     <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                         <CardContent>
+                            <Typography variant="h3" component="div" marginBottom='30px'>
+                               $ {estimate}
+                            </Typography>
                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Instant </Typography>
                             <Typography color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
                             <Typography variant="body1" marginBottom='30px'>
@@ -435,85 +446,85 @@ const Estimates = () => {
 
                                             </Grid>
 
-                                            <Grid item xs={12} sm={12} md={12}
-                                                  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
-                                                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Extra </Typography>
-                                                <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
-                                                <Typography variant="body1" marginBottom='30px'>
-                                                    Need a housekeeper but can't commit to the weekly expense? Get one-time, semi-regular or even consistent housekeeping services with RapidClean.
-                                                    Having a consistent housekeeper really helps take the pressure off you when you are busy.
-                                                    We are happy to help support you with Meal Preparation, Dishwashing, Laundry Wash and Fold or even Meal Prep.
-                                                    One time or regularly. We got you… Select Any Extra Services.
+                                            {/*<Grid item xs={12} sm={12} md={12}*/}
+                                            {/*      sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
+                                            {/*    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Extra </Typography>*/}
+                                            {/*    <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>*/}
+                                            {/*    <Typography variant="body1" marginBottom='30px'>*/}
+                                            {/*        Need a housekeeper but can't commit to the weekly expense? Get one-time, semi-regular or even consistent housekeeping services with RapidClean.*/}
+                                            {/*        Having a consistent housekeeper really helps take the pressure off you when you are busy.*/}
+                                            {/*        We are happy to help support you with Meal Preparation, Dishwashing, Laundry Wash and Fold or even Meal Prep.*/}
+                                            {/*        One time or regularly. We got you… Select Any Extra Services.*/}
 
-                                                </Typography>
-                                                {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Laundry Wash & Fold"
-                                                        checked={values.laundrywashandfold}
-                                                        onChange={handleChange}
-                                                        name="laundrywashandfold"
-                                                    />
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Wash and Dry Dishes"
-                                                        checked={values.dishwashing}
-                                                        onChange={handleChange}
-                                                        name="dishwashing"
-                                                    />
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Meal Preparation"
-                                                        checked={values.mealprep}
-                                                        onChange={handleChange}
-                                                        name="mealprep"
-                                                    />
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Oven Cleaning"
-                                                        checked={values.ovencleaning}
-                                                        onChange={handleChange}
-                                                        name="ovencleaning"
-                                                    />
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Fridge & Freezer Clean"
-                                                        checked={values.fridgecleaning}
-                                                        onChange={handleChange}
-                                                        name="fridgecleaning"
-                                                    />
-                                                {/*</FormGroup>*/}
-                                            </Grid>
-                                            <Grid item xs={12} sm={12} md={12}
-                                            sx={{}}>
-                                                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Professional </Typography>
-                                                <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
-                                                <Typography variant="body1" marginBottom='30px'>
-                                                    Don’t trust anyone to shampoo your Roche Bobois couch?
-                                                    Neither do we! So we hired a team of professionals who partner with our Cleaning Agents.
-                                                    They arrive while our housekeepers are on-site and we manage the entire process end to end.
-                                                    We offer discounted rates based on volume which  puts us in a position to pass that savings onto you.
-                                                    Select Any Professional Services you require.
+                                            {/*    </Typography>*/}
+                                            {/*    /!*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*!/*/}
+                                            {/*        <FormControlLabel*/}
+                                            {/*            control={<Checkbox color="secondary" />}*/}
+                                            {/*            label="Laundry Wash & Fold"*/}
+                                            {/*            checked={values.laundrywashandfold}*/}
+                                            {/*            onChange={handleChange}*/}
+                                            {/*            name="laundrywashandfold"*/}
+                                            {/*        />*/}
+                                            {/*        <FormControlLabel*/}
+                                            {/*            control={<Checkbox color="secondary" />}*/}
+                                            {/*            label="Wash and Dry Dishes"*/}
+                                            {/*            checked={values.dishwashing}*/}
+                                            {/*            onChange={handleChange}*/}
+                                            {/*            name="dishwashing"*/}
+                                            {/*        />*/}
+                                            {/*        <FormControlLabel*/}
+                                            {/*            control={<Checkbox color="secondary" />}*/}
+                                            {/*            label="Meal Preparation"*/}
+                                            {/*            checked={values.mealprep}*/}
+                                            {/*            onChange={handleChange}*/}
+                                            {/*            name="mealprep"*/}
+                                            {/*        />*/}
+                                            {/*        <FormControlLabel*/}
+                                            {/*            control={<Checkbox color="secondary" />}*/}
+                                            {/*            label="Oven Cleaning"*/}
+                                            {/*            checked={values.ovencleaning}*/}
+                                            {/*            onChange={handleChange}*/}
+                                            {/*            name="ovencleaning"*/}
+                                            {/*        />*/}
+                                            {/*        <FormControlLabel*/}
+                                            {/*            control={<Checkbox color="secondary" />}*/}
+                                            {/*            label="Fridge & Freezer Clean"*/}
+                                            {/*            checked={values.fridgecleaning}*/}
+                                            {/*            onChange={handleChange}*/}
+                                            {/*            name="fridgecleaning"*/}
+                                            {/*        />*/}
+                                            {/*    /!*</FormGroup>*!/*/}
+                                            {/*</Grid>*/}
+                                            {/*<Grid item xs={12} sm={12} md={12}*/}
+                                            {/*sx={{}}>*/}
+                                            {/*    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Professional </Typography>*/}
+                                            {/*    <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>*/}
+                                            {/*    <Typography variant="body1" marginBottom='30px'>*/}
+                                            {/*        Don’t trust anyone to shampoo your Roche Bobois couch?*/}
+                                            {/*        Neither do we! So we hired a team of professionals who partner with our Cleaning Agents.*/}
+                                            {/*        They arrive while our housekeepers are on-site and we manage the entire process end to end.*/}
+                                            {/*        We offer discounted rates based on volume which  puts us in a position to pass that savings onto you.*/}
+                                            {/*        Select Any Professional Services you require.*/}
 
 
-                                                </Typography>
-                                                {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Professional Rug Shampoo"
-                                                        checked={values.professionalrugshampoo}
-                                                        onChange={handleChange}
-                                                        name="professionalrugshampoo"
-                                                    />
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Professional Couch Shampoo"
-                                                        checked={values.professionalcouchshampoo}
-                                                        onChange={handleChange}
-                                                        name="professionalcouchshampoo"
-                                                    />
-                                                {/*</FormGroup>*/}
-                                            </Grid>
+                                            {/*    </Typography>*/}
+                                            {/*    /!*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*!/*/}
+                                            {/*        <FormControlLabel*/}
+                                            {/*            control={<Checkbox color="secondary" />}*/}
+                                            {/*            label="Professional Rug Shampoo"*/}
+                                            {/*            checked={values.professionalrugshampoo}*/}
+                                            {/*            onChange={handleChange}*/}
+                                            {/*            name="professionalrugshampoo"*/}
+                                            {/*        />*/}
+                                            {/*        <FormControlLabel*/}
+                                            {/*            control={<Checkbox color="secondary" />}*/}
+                                            {/*            label="Professional Couch Shampoo"*/}
+                                            {/*            checked={values.professionalcouchshampoo}*/}
+                                            {/*            onChange={handleChange}*/}
+                                            {/*            name="professionalcouchshampoo"*/}
+                                            {/*        />*/}
+                                            {/*    /!*</FormGroup>*!/*/}
+                                            {/*</Grid>*/}
 
                                             <CardActions>
                                                 <Button
