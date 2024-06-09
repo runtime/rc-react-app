@@ -138,23 +138,23 @@ const Estimates = () => {
     const cleanfactoroptions = [
     {
         label: "Im Monica F****g Gellar!",
-        value: '5',
+        value: 0,
     },
     {
-        label: "I have zero clutter",
-        value: '4',
+        label: "I have zero clutter, 90% ready to clean",
+        value: 5,
     },
     {
         label: "There is some laundry on the floor on stuff on most of the surfaces",
-        value: '3',
+        value: 10,
     },
     {
-        label: "pretty messy",
-        value: '2',
+        label: "pretty messy, there is mail, garbage, laundry and random items on the floor and surfaces",
+        value: 15,
     },
     {
-        label: "hoarder level, ngl",
-        value: '1',
+        label: "ngl, its a disaster rn :/",
+        value: 20,
     },
     ]
     const numpetsoptions = [
@@ -206,27 +206,30 @@ const Estimates = () => {
     // const [professionalservices, setProfessionalservices] = React.useState(initialProfessionalServices);
 
     // select the estimate you want (or ok to the only estimate)
-    const [currEstimate, setCurrEstimate] = useState(null);
+    const [currEstimate, setEstimate] = useState(null);
     // use the estimate - params [ what we want back: estimate.total; , and the method we will call 'getEstimate'
-    const [estimate, getEstimate ] = useEstimatesService(initialValues.estimate.total);
+    const [estimate, getEstimate ] = useEstimatesService(initialValues);
+
+    let newVal = estimate
 
     useEffect(() => {
-        getEstimate(initialValues.estimate.total);
-    }, [initialValues.estimate.total])
+        getEstimate(initialValues);
+    }, [initialValues])
 
-
+    let theestimatefromservice = 0;
     const onSubmit = (values) => {
-        console.log(values);
-        console.log(values.estimate.total)
-        //...state,
+        console.log('[Estimates] values: ', values);
+        //console.log(values.estimate.total)
+        const newValue = getEstimate(values);
+        console.log(newValue);
+        //theestimatefromservice = newValue
+        //setEstimate(newValue);
 
-        const currVal = values.estimate.total;
-        console.log('currVal: ', currVal);
-        const newVal = getEstimate(currVal);
-        console.log('newVal: ', newVal);
+        //console.log('newVal: ', newVal);
         //setExtraservices(extraservices);
         //setProfessionalservices(professionalservices);
     }
+
 
 
     return (
@@ -236,9 +239,7 @@ const Estimates = () => {
                     <CssBaseline enableColorScheme />
                     <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                         <CardContent>
-                            <Typography variant="h3" component="div" marginBottom='30px'>
-                               $ {estimate}
-                            </Typography>
+
                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Instant </Typography>
                             <Typography color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
                             <Typography variant="body1" marginBottom='30px'>
@@ -246,6 +247,9 @@ const Estimates = () => {
                             </Typography>
                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Standard </Typography>
                             <Typography color="primary" variant="cardTitle" component='h1' display="inline">Cleaning</Typography>
+                            <Typography variant="h3" component="div" marginBottom='30px'>
+                                $ {estimate}
+                            </Typography>
                             <Typography variant="body1" marginBottom='30px'>
                                 We don’t believe that a single person without pets living in a small apartment should pay the same amount as a couple with a dog or a  larger family with two dogs and a cat.
                                 We offer tailored services to fit your needs. Whatever the level of support you need to clean your space and free your mind, we are here for you with the lowest rates for our Sparkling Services.
@@ -255,7 +259,8 @@ const Estimates = () => {
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
-                                onSubmit={onSubmit}>
+                                >
+
                                 {({ dirty, isValid, values, handleChange, handleBlur, handleGrouping }) => {
                                     return (
                                         <Form>
@@ -532,6 +537,7 @@ const Estimates = () => {
                                                     variant="contained"
                                                     color="primary"
                                                     type="Submit"
+                                                    onSubmit={getEstimate(values)}
                                                     className='classes button'>
                                                     Submit
                                                 </Button>
