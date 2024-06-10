@@ -27,9 +27,18 @@ export const useEstimatesService = (defaultEstimateRequest) => {
 
         let res = 0;
 
-        if (estimateRequest.typeofservice != 'cleaning') {
-            return res;
+        if (estimateRequest.typeofservice === '')  {
+            setEstimate(0);
+            return;
         }
+        // else if ((estimateRequest.typeofservice === 'cleaning') && (estimateRequest.numpeople === '')) {
+        //     setEstimate(0);
+        //     return;
+        // } else if (estimateRequest.typeofservice === 'moveoutcleaning') {
+        //     setEstimate(0);
+        //     return;
+        // }
+
         let totalhours = 0;
         const typeofservice = estimateRequest.typeofservice;
         const construct = estimateRequest.construct;
@@ -83,7 +92,7 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         totalhours = totaltimerooms + totaltimebaths
 
         // total cost for basic cleaning
-        const estimate = (totalhours * rate) + minimum;
+        const estimate =  Math.round((totalhours * rate) + minimum);
 
         // request object received for estimate
         console.log('[useEstimateService] param: estimateRequest: ', estimateRequest)

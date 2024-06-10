@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import '../styles/Estimates.css';
 import {
-    Typography, Grid, Box, Button,
+    Typography, Grid, Box, Button, Chip,
     ThemeProvider, CssBaseline, Card,
     CardHeader, CardContent, CardActions,
     FormControl, Select, MenuItem, InputLabel,
@@ -205,30 +205,13 @@ const Estimates = () => {
     // const [extraservices, setExtraservices] = React.useState(initialExtraServices);
     // const [professionalservices, setProfessionalservices] = React.useState(initialProfessionalServices);
 
-    // select the estimate you want (or ok to the only estimate)
-    const [currEstimate, setEstimate] = useState(null);
     // use the estimate - params [ what we want back: estimate.total; , and the method we will call 'getEstimate'
     const [estimate, getEstimate ] = useEstimatesService(initialValues);
 
-    let newVal = estimate
 
     useEffect(() => {
         getEstimate(initialValues);
     }, [initialValues])
-
-    let theestimatefromservice = 0;
-    const onSubmit = (values) => {
-        console.log('[Estimates] values: ', values);
-        //console.log(values.estimate.total)
-        const newValue = getEstimate(values);
-        console.log(newValue);
-        //theestimatefromservice = newValue
-        //setEstimate(newValue);
-
-        //console.log('newVal: ', newVal);
-        //setExtraservices(extraservices);
-        //setProfessionalservices(professionalservices);
-    }
 
 
 
@@ -240,28 +223,51 @@ const Estimates = () => {
                     <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                         <CardContent>
 
-                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Instant </Typography>
-                            <Typography color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
-                            <Typography variant="body1" marginBottom='30px'>
-                                Get an immediate estimate for our Sparkling Services™ based on your specific space and needs.
+                            <Typography color="secondary" variant="cardTitle" component="h1"
+                                        display="inline">Instant </Typography>
+                            <Typography color="primary" variant="cardTitle" component='h1'
+                                        display="inline">Estimate</Typography>
+                            <Typography variant="body1" marginBottom='20px'>
+                                Get an immediate estimate for our Sparkling Services™ based on your specific space and
+                                needs.
                             </Typography>
-                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Standard </Typography>
-                            <Typography color="primary" variant="cardTitle" component='h1' display="inline">Cleaning</Typography>
-                            <Typography variant="h3" component="div" marginBottom='30px'>
-                                $ {estimate}
-                            </Typography>
-                            <Typography variant="body1" marginBottom='30px'>
-                                We don’t believe that a single person without pets living in a small apartment should pay the same amount as a couple with a dog or a  larger family with two dogs and a cat.
-                                We offer tailored services to fit your needs. Whatever the level of support you need to clean your space and free your mind, we are here for you with the lowest rates for our Sparkling Services.
+                            <Typography color="secondary" variant="cardTitle" component="h1"
+                                        display="inline">Standard </Typography>
+                            <Typography color="primary" variant="cardTitle" component='h1'
+                                        display="inline">Cleaning</Typography>
+                            <Chip
+                                size='small'
+                                position='relative'
+                                label={estimate}
+                                variant="outlined"
+                                color='primary'
+                                pointerEvents='none'
+                                sx={{
+                                    padding: '2px',
+                                    color: 'secondary',
+                                    fontFamily: 'Helvetica Bold" "Arial Bold',
+                                    fontWeight: '800',
+                                    fontSize: '.85em',
+                                    minWidth: '70px',
+                                    marginLeft: '12px',
+                                    transitionDuration: '0.3s',
+                                    transitionProperty: 'all',
+                                    transitionTimingFunction: 'linear',
+                                    opacity: {xs: 0.8, sm: 0.8, lg: 0.8}
+                                }}
+                            />
+
+                            <Typography variant="body1" marginBottom='20px'>
+                                Experience a pristine space with our standard cleaning service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish.
 
                             </Typography>
 
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
-                                >
+                            >
 
-                                {({ dirty, isValid, values, handleChange, handleBlur, handleGrouping }) => {
+                                {({dirty, isValid, values, handleChange, handleBlur, handleGrouping}) => {
                                     return (
                                         <Form>
                                             <Grid container spacing={2}>
@@ -530,6 +536,11 @@ const Estimates = () => {
                                             {/*        />*/}
                                             {/*    /!*</FormGroup>*!/*/}
                                             {/*</Grid>*/}
+                                            <Grid item xs={12} sm={12} md={12} sx={{marginBottom: 3}}>
+                                                <Typography variant='h5'>
+                                                    All Fields Are Required
+                                                </Typography>
+                                            </Grid>
 
                                             <CardActions>
                                                 <Button
