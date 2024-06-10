@@ -145,11 +145,11 @@ const Estimates = () => {
         value: 5,
     },
     {
-        label: "There is some laundry on the floor on stuff on most of the surfaces",
+        label: "There is some laundry on the floor and some stuff on most of the surfaces",
         value: 10,
     },
     {
-        label: "pretty messy, there is mail, garbage, laundry and random items on the floor and surfaces",
+        label: "There is unopened mail, loose coins and other things, laundry and random items on the floor and surfaces",
         value: 15,
     },
     {
@@ -214,6 +214,11 @@ const Estimates = () => {
     }, [initialValues])
 
 
+    let estimateDisplay = estimate.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    }); /* $2,500.00 */
+
 
     return (
         <div className='Estimates'>
@@ -238,17 +243,16 @@ const Estimates = () => {
                             <Chip
                                 size='small'
                                 position='relative'
-                                label={estimate}
+                                label={estimateDisplay}
                                 variant="outlined"
-                                color='primary'
+                                color='secondary'
                                 pointerEvents='none'
                                 sx={{
                                     padding: '2px',
-                                    color: 'secondary',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
                                     fontWeight: '800',
                                     fontSize: '.85em',
-                                    minWidth: '70px',
+                                    minWidth: '80px',
                                     marginLeft: '12px',
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
@@ -275,12 +279,12 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="service-select-outlined-label">
-                                                            Select Type of Service
+                                                            Select Type of Service*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="service-select-outlined-label"
                                                             id="service-select-outlined"
-                                                            label="Select Type of Service"
+                                                            label="Select Type of Service*"
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                             value={values.typeofservice}
@@ -298,7 +302,7 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="construct-select-outlined-label">
-                                                            Select What Needs Service
+                                                            Select What Needs Service*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="construct-select-outlined-label"
@@ -321,12 +325,12 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="occupants-select-outlined-label">
-                                                            Select Number of Occupants
+                                                            Select Number of Occupants*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="occupants-select-outlined-label"
                                                             id="occupants-select-outlined"
-                                                            label="Select Number of Occupants"
+                                                            label="Select Number of Occupants*"
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                             value={values.numpeople}
@@ -344,12 +348,12 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="sqft-select-outlined-label">
-                                                            Select Square Feet
+                                                            Select Square Feet*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="sqft-select-outlined-label"
                                                             id="sqft-select-outlined"
-                                                            label="Select Square Feet"
+                                                            label="Select Square Feet*"
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                             value={values.sqft}
@@ -367,12 +371,12 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="numrooms-select-outlined-label">
-                                                            Select Number of Bedrooms
+                                                            Select Number of Bedrooms*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="numrooms-select-outlined-label"
                                                             id="numrooms-select-outlined"
-                                                            label="Select Number of Bedrooms"
+                                                            label="Select Number of Bedrooms*"
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                             value={values.numrooms}
@@ -390,12 +394,12 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="numbaths-select-outlined-label">
-                                                            Select Number of Baths
+                                                            Select Number of Baths*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="numbaths-select-outlined-label"
                                                             id="numbaths-select-outlined"
-                                                            label="Select Number of Baths"
+                                                            label="Select Number of Baths*"
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                             value={values.numbaths}
@@ -413,12 +417,12 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="pets-select-outlined-label">
-                                                            Select Number of Pets
+                                                            Select Number of Pets*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="pets-select-outlined-label"
                                                             id="pets-select-outlined"
-                                                            label="Select Number of Pets"
+                                                            label="Select Number of Pets*"
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                             value={values.numpets}
@@ -436,12 +440,12 @@ const Estimates = () => {
                                                       sx={{marginBottom: 3}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="cleanfactor-select-outlined-label">
-                                                            Describe Your Space
+                                                            Describe Your Surfaces*
                                                         </InputLabel>
                                                         <Select
                                                             labelId="cleanfactor-select-outlined-label"
                                                             id="cleanfactor-select-outlined"
-                                                            label="Describe Your Space"
+                                                            label="Describe Your Surfaces*"
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                             value={values.cleanfactor}
@@ -453,6 +457,11 @@ const Estimates = () => {
                                                             ))}
                                                         </Select>
                                                     </FormControl>
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12} sx={{marginBottom: 3}}>
+                                                    <Typography variant='h5'>
+                                                        *All Fields Above Are Required
+                                                    </Typography>
                                                 </Grid>
 
                                             </Grid>
@@ -506,17 +515,13 @@ const Estimates = () => {
                                                 {/*</FormGroup>*/}
                                             </Grid>
                                             <Grid item xs={12} sm={12} md={12}
-                                                  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+                                                  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginTop:'20px'}}>
                                                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Professional </Typography>
                                                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
                                                 <Typography variant="body1" marginBottom='30px'>
-                                                    Don’t trust anyone to shampoo your Roche Bobois couch?
-                                                    Neither do we! So we hired a team of professionals who partner with our Cleaning Agents.
-                                                    They arrive while our housekeepers are on-site and we manage the entire process end to end.
-                                                    We offer discounted rates based on volume which  puts us in a position to pass that savings onto you.
+                                                    We hired a team of professionals who partner with our Cleaning Agents.
+                                                    They arrive while our agents are on-site so we manage the entire process for you from start to finish.
                                                     Select Any Professional Services you require.
-
-
                                                 </Typography>
                                                 {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
                                                     <FormControlLabel
@@ -534,11 +539,6 @@ const Estimates = () => {
                                                         name="professionalcouchshampoo"
                                                     />
                                                 {/*</FormGroup>*/}
-                                            </Grid>
-                                            <Grid item xs={12} sm={12} md={12} sx={{marginBottom: 3}}>
-                                                <Typography variant='h5'>
-                                                    All Fields Are Required
-                                                </Typography>
                                             </Grid>
 
                                             <CardActions>

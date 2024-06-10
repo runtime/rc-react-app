@@ -27,17 +27,6 @@ export const useEstimatesService = (defaultEstimateRequest) => {
 
         let res = 0;
 
-        if (estimateRequest.typeofservice === '')  {
-            setEstimate(0);
-            return;
-        }
-        // else if ((estimateRequest.typeofservice === 'cleaning') && (estimateRequest.numpeople === '')) {
-        //     setEstimate(0);
-        //     return;
-        // } else if (estimateRequest.typeofservice === 'moveoutcleaning') {
-        //     setEstimate(0);
-        //     return;
-        // }
 
         let totalhours = 0;
         const typeofservice = estimateRequest.typeofservice;
@@ -130,6 +119,10 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         // sub total estimate from service for just cleaning
         console.log('estimate: ', estimate);
 
+        if (!estimate) {
+            setEstimate(0);
+            return;
+        }
         // Set State for Estimate
          setEstimate(estimate);
         // setEstimate(response.data);
