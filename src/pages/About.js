@@ -206,7 +206,7 @@ const About = () => {
                                 </List>
                                 <Typography variant='body2'
                                     sx={{ marginBottom: 2 }}>
-                                        we also vacuum the sofa and armchairs
+                                        We also vacuum the sofa and armchairs
                                 </Typography>
                             </Typography>
                         </Grid>
