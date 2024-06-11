@@ -25,9 +25,40 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         console.log('estimateRequest: ', estimateRequest);
 
 
-        let res = 0;
-
-
+        // let estimateObj = {
+        //     totalhours: 0,
+        //     typeofservice: estimateRequest.typeofservice,
+        //     construct: estimateRequest.construct,
+        //     sqft: estimateRequest.sqft,
+        //     numpeople: estimateRequest,
+        //     numrooms: estimateRequest,
+        //     numbaths: estimateRequest,
+        //     numpets: estimateRequest,
+        //     cleanfactor: estimateRequest,
+        //     laundrywashandfold: estimateRequest,
+        //     dishwashing: estimateRequest,
+        //     mealprep: estimateRequest,
+        //     ovencleaning: estimateRequest,
+        //     fridgecleaning: estimateRequest,
+        //     deepcleaning: estimateRequest,
+        //     professionalcouchcleaning: estimateRequest,
+        //     professionalrugshampoo: estimateRequest,
+        //     professionalfloorwaxing: estimateRequest,
+        //     dogwalking: estimateRequest,
+        //     petsitting: estimateRequest,
+        //     dispensingmedication: estimateRequest,
+        //     waste: estimateRequest,
+        //     rate: rate,
+        //     minimum: minimum,
+        //     cost: {
+        //         total: 0,
+        //         cleaning: 0,
+        //         extra: 0,
+        //         professional: 0,
+        //         pet: 0,
+        //
+        //     }
+        // }
         let totalhours = 0;
         const typeofservice = estimateRequest.typeofservice;
         const construct = estimateRequest.construct;
@@ -44,6 +75,7 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         const mealprep = estimateRequest.mealprep;
         const ovencleaning = estimateRequest.ovencleaning;
         const fridgecleaning = estimateRequest.fridgecleaning;
+        const deepcleaning = estimateRequest.deepcleaning;
 
 
         // PRO
@@ -91,10 +123,7 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         }
 
         let totaltimerooms = Math.round(tpr * numrooms) / 60
-
-
         const totaltimebaths = Math.round(tpb * numbaths) / 60
-
 
 
         // total hours estimated
@@ -122,6 +151,7 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         console.log('base_tpr in minutes: ', base_tpr);
         console.log('base_tpb in minutes: ', base_tpb);
         console.log('sqfttpr in minutes:', sqfttpr);
+        console.log('petsfactor: in minutes ', petsfactor);
         console.log('cleanfactor: in minutes ', cleanfactor);
 
         console.log('tpr in mins: ', tpr);
@@ -131,13 +161,27 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         console.log('totaltimerooms: ', totaltimerooms);
         console.log('totaltimebaths: ', totaltimebaths);
 
-
-
        // console.log('tpr: ', tpr);
         console.log('totalhours: ', totalhours);
 
         // sub total estimate from service for just cleaning
         console.log('estimate: ', estimate);
+
+        console.log('laundrywashandfold: ', laundrywashandfold);
+        console.log('dishwashing: ', dishwashing);
+        console.log('mealprep: ', mealprep);
+        console.log('ovencleaning: ', ovencleaning);
+        console.log('fridgecleaning: ', fridgecleaning);
+        console.log('deepcleaning: ', deepcleaning);
+        console.log('professionalcouchcleaning: ', professionalcouchcleaning);
+        console.log('professionalrugshampoo: ', professionalrugshampoo);
+        console.log('professionalfloorwaxing: ', professionalfloorwaxing);
+        console.log('dogwalking: ', dogwalking);
+        console.log('petsitting: ', petsitting);
+        console.log('dispensingmedication: ', dispensingmedication);
+        console.log('waste: ', waste);
+
+
 
         if (!estimate) {
             setEstimate(0);
@@ -145,7 +189,6 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         }
         // Set State for Estimate
          setEstimate(estimate);
-        // setEstimate(response.data);
     };
 
     return [estimate, getEstimate];

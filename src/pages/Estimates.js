@@ -31,6 +31,7 @@ const Estimates = () => {
         mealprep: "",
         ovencleaning: false,
         fridgecleaning: false,
+        deepcleaning: false,
         professionalcouchcleaning: false,
         professionalrugshampoo: false,
         professionalfloorwaxing: false,
@@ -43,6 +44,7 @@ const Estimates = () => {
             cleaning: 0,
             extra: 0,
             professional: 0,
+            pet: 0,
         },
     }
 
@@ -64,6 +66,7 @@ const Estimates = () => {
     ]
 
     const numroomsoptions = [
+        // { label: "None", value: 0 },
         { label: "1", value: 1 },
         { label: "2", value: 2 },
         { label: "3", value: 3 },
@@ -171,7 +174,6 @@ const Estimates = () => {
     ]
 
     const laundryoptions = [
-        { label: "None", value: 0 },
         { label: "1 Load - Wash And Fold", value: 1 },
         { label: "2 Loads - Wash And Fold", value: 2 },
         { label: "3 Loads - Wash And Fold", value: 3 },
@@ -179,14 +181,12 @@ const Estimates = () => {
     ]
 
     const dishwashoptions = [
-        { label: "None", value: 0 },
         { label: "1 Load - Wash and Dry", value: 1 },
         { label: "2 Load - Wash and Dry", value: 2 },
         { label: "3 Load - Wash and Dry", value: 3 },
     ]
 
     const mealprepoptions = [
-        { label: "None", value: 0 },
         { label: "1 Meal (serves one)", value: 1 },
         { label: "1 Meal (serves two)", value: 1.25 },
         { label: "1 Meal (serves 3)", value: 1.5 },
@@ -211,21 +211,21 @@ const Estimates = () => {
         numpets: Yup.number().required("Required"),
         numpeople: Yup.number().required("Required"),
         // EXTRA
-        laundrywashandfold: Yup.number(),
-        dishwashing: Yup.number(),
-        mealprep: Yup.number(),
-        ovencleaning: Yup.boolean(),
-        fridgecleaning: Yup.boolean(),
-        deepcleaning: Yup.boolean(),
-        // PROFESSIONAL
-        professionalcouchcleaning: Yup.boolean(),
-        professionalrugshampoo: Yup.boolean(),
-        professionalfloorwaxing: Yup.boolean(),
-        // PET
-        dogwalking: Yup.boolean(),
-        petsitting: Yup.number(),
-        dispensingmedication: Yup.number(),
-        waste: Yup.boolean(),
+        // laundrywashandfold: Yup.number(),
+        // dishwashing: Yup.number(),
+        // mealprep: Yup.number(),
+        // ovencleaning: Yup.boolean(),
+        // fridgecleaning: Yup.boolean(),
+        // deepcleaning: Yup.boolean(),
+        // // PROFESSIONAL
+        // professionalcouchcleaning: Yup.boolean(),
+        // professionalrugshampoo: Yup.boolean(),
+        // professionalfloorwaxing: Yup.boolean(),
+        // // PET
+        // dogwalking: Yup.boolean(),
+        // petsitting: Yup.number(),
+        // dispensingmedication: Yup.number(),
+        // waste: Yup.boolean(),
     })
 
     // const [values, setValues] = React.useState(initialValues);
@@ -571,6 +571,7 @@ const Estimates = () => {
 
                                                 <Grid item xs={12} sm={12} md={12}
                                                       sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginBottom: 0}}>
+
                                                     <FormControlLabel
                                                         control={<Checkbox color="secondary" />}
                                                         label="Oven Cleaning"
@@ -622,10 +623,10 @@ const Estimates = () => {
                                                     />
                                                     <FormControlLabel
                                                         control={<Checkbox color="secondary" />}
-                                                        label="Professional Couch Shampoo"
-                                                        checked={values.professionalcouchshampoo}
+                                                        label="Professional Couch Cleaning"
+                                                        checked={values.professionalcouchcleaning}
                                                         onChange={handleChange}
-                                                        name="professionalcouchshampoo"
+                                                        name="professionalcouchcleaning"
                                                     />
                                                     <FormControlLabel
                                                         control={<Checkbox color="secondary" />}
@@ -687,20 +688,21 @@ const Estimates = () => {
                                                         Pet services may only be booked in addition to a Standard Cleaning. Items are itemized on your receipt.
                                                     </Typography>
                                                 </Grid>
+
+
+
+                                                <CardActions>
+                                                    <Button
+                                                        disabled={!dirty || !isValid}
+                                                        variant="contained"
+                                                        color="primary"
+                                                        type="Submit"
+                                                        onSubmit={getEstimate(values)}
+                                                        className='classes button'>
+                                                        Submit
+                                                    </Button>
+                                                </CardActions>
                                             </Grid>
-
-
-                                            <CardActions>
-                                                <Button
-                                                    disabled={!dirty || !isValid}
-                                                    variant="contained"
-                                                    color="primary"
-                                                    type="Submit"
-                                                    onSubmit={getEstimate(values)}
-                                                    className='classes button'>
-                                                    Submit
-                                                </Button>
-                                            </CardActions>
                                         </Form>
                                     )
                                 }}
