@@ -37,12 +37,32 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         const numbaths = estimateRequest.numbaths;
         const numpets = estimateRequest.numpets;
         const cleanfactor = estimateRequest.cleanfactor;
-        //const laundrywashandfold = estimateRequest.laundrywashandfold;
+
+        // EXTRA
+        const laundrywashandfold = estimateRequest.laundrywashandfold;
+        const dishwashing = estimateRequest.dishwashing;
+        const mealprep = estimateRequest.mealprep;
+        const ovencleaning = estimateRequest.ovencleaning;
+        const fridgecleaning = estimateRequest.fridgecleaning;
+
+
+        // PRO
+        const professionalcouchcleaning = estimateRequest.professionalcouchcleaning;
+        const professionalrugshampoo = estimateRequest.professionalrugshampoo;
+        const professionalfloorwaxing = estimateRequest.professionalfloorwaxing;
+
+
+        // PET
+        const dogwalking = estimateRequest.dogwalking;
+        const petsitting = estimateRequest.petsitting;
+        const dispensingmedication = estimateRequest.dispensingmedication;
+        const waste = estimateRequest.waste;
+
+
 
         // rate in dollars
         const rate = 30.00;
         const minimum = 50.00;
-        const totalrooms = numrooms + numbaths;
 
         // factors to estimate the time per room (tpr)
         const sqftfactor = (sqft /100) ; // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins

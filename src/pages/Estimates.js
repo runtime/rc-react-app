@@ -5,7 +5,7 @@ import {
     ThemeProvider, CssBaseline, Card,
     CardHeader, CardContent, CardActions,
     FormControl, Select, MenuItem, InputLabel,
-    Checkbox,FormControlLabel, FormGroup
+    Checkbox,FormControlLabel, FormGroup,
 } from '@mui/material';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -26,13 +26,18 @@ const Estimates = () => {
         numbaths: "",
         numpets:"",
         cleanfactor: "",
-        laundrywashandfold: false,
-        dishwashing: false,
-        mealprep: false,
+        laundrywashandfold: "",
+        dishwashing: "",
+        mealprep: "",
         ovencleaning: false,
         fridgecleaning: false,
         professionalcouchcleaning: false,
         professionalrugshampoo: false,
+        professionalfloorwaxing: false,
+        dogwalking: false,
+        petsitting: false,
+        dispensingmedication: false,
+        waste: false,
         estimate: {
             total: 0,
             cleaning: 0,
@@ -41,6 +46,7 @@ const Estimates = () => {
         },
     }
 
+
     //drop downs
     // type of service options
     const typeofserviceoptions = [
@@ -48,18 +54,6 @@ const Estimates = () => {
         { label: "Standard Cleaning - Move Out", value: "moveoutcleaning" },
     ]
 
-    const extraserviceoptions = [
-        { label: "Laundry Wash and Fold", value: "laundrywashandfold" },
-        { label: "Dishwashing", value: "dishwashing" },
-        { label: "Meal Prep", value: "mealprep" },
-        { label: "Oven Cleaning", value: "ovencleaning" },
-        { label: "Inside Fridge & Freezer", value: "fridgecleaning" },
-    ]
-
-    const professionalcleanoptions = [
-        { label: "Professional Couch Cleaning", value: "professionalcouchcleaning" },
-        { label: "Professional Rug Shampoo", value: "professionalrugshampoo" },
-    ]
     // construct options
     const constructoptions = [
         { label: "Apartment", value: "apartment" },
@@ -176,6 +170,30 @@ const Estimates = () => {
         { label: "8", value: 8 },
     ]
 
+    const laundryoptions = [
+        { label: "None", value: 0 },
+        { label: "1 Load - Wash And Fold", value: 1 },
+        { label: "2 Loads - Wash And Fold", value: 2 },
+        { label: "3 Loads - Wash And Fold", value: 3 },
+        { label: "4 Loads - Wash And Fold", value: 4 },
+    ]
+
+    const dishwashoptions = [
+        { label: "None", value: 0 },
+        { label: "1 Load - Wash and Dry", value: 1 },
+        { label: "2 Load - Wash and Dry", value: 2 },
+        { label: "3 Load - Wash and Dry", value: 3 },
+    ]
+
+    const mealprepoptions = [
+        { label: "None", value: 0 },
+        { label: "1 Meal (serves one)", value: 1 },
+        { label: "1 Meal (serves two)", value: 1.25 },
+        { label: "1 Meal (serves 3)", value: 1.5 },
+        { label: "1 Meal (serves 4-5)", value: 2 },
+        { label: "1 Meal (serves 5-6)", value: 2.25 },
+    ]
+
 //password validation
     const lowercaseRegEx = /(?=.*[a-z])/
     const uppercaseRegEx = /(?=.*[A-Z])/
@@ -192,14 +210,23 @@ const Estimates = () => {
         cleanfactor: Yup.number().required("Required"),
         numpets: Yup.number().required("Required"),
         numpeople: Yup.number().required("Required"),
-        laundrywashandfold: Yup.boolean(),
-        dishwashing: Yup.boolean(),
-        mealprep: Yup.boolean(),
+        // EXTRA
+        laundrywashandfold: Yup.number(),
+        dishwashing: Yup.number(),
+        mealprep: Yup.number(),
         ovencleaning: Yup.boolean(),
         fridgecleaning: Yup.boolean(),
+        deepcleaning: Yup.boolean(),
+        // PROFESSIONAL
         professionalcouchcleaning: Yup.boolean(),
         professionalrugshampoo: Yup.boolean(),
-     })
+        professionalfloorwaxing: Yup.boolean(),
+        // PET
+        dogwalking: Yup.boolean(),
+        petsitting: Yup.number(),
+        dispensingmedication: Yup.number(),
+        waste: Yup.boolean(),
+    })
 
     // const [values, setValues] = React.useState(initialValues);
     // const [extraservices, setExtraservices] = React.useState(initialExtraServices);
@@ -227,7 +254,6 @@ const Estimates = () => {
                     <CssBaseline enableColorScheme />
                     <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                         <CardContent>
-
                             <Typography color="secondary" variant="cardTitle" component="h1"
                                         display="inline">Instant </Typography>
                             <Typography color="primary" variant="cardTitle" component='h1'
@@ -276,7 +302,7 @@ const Estimates = () => {
                                         <Form>
                                             <Grid container spacing={2}>
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 1}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="service-select-outlined-label">
                                                             Select Type of Service*
@@ -299,7 +325,7 @@ const Estimates = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 1}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="construct-select-outlined-label">
                                                             Select What Needs Service*
@@ -322,7 +348,7 @@ const Estimates = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 1}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="occupants-select-outlined-label">
                                                             Select Number of Occupants*
@@ -345,7 +371,7 @@ const Estimates = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 1}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="sqft-select-outlined-label">
                                                             Select Square Feet*
@@ -368,7 +394,7 @@ const Estimates = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 1}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="numrooms-select-outlined-label">
                                                             Select Number of Bedrooms*
@@ -391,7 +417,7 @@ const Estimates = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 1}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="numbaths-select-outlined-label">
                                                             Select Number of Baths*
@@ -414,7 +440,7 @@ const Estimates = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 1}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="pets-select-outlined-label">
                                                             Select Number of Pets*
@@ -437,7 +463,7 @@ const Estimates = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12} sm={6} md={4}
-                                                      sx={{marginBottom: 3}}>
+                                                      sx={{marginBottom: 0}}>
                                                     <FormControl fullWidth variant="outlined">
                                                         <InputLabel id="cleanfactor-select-outlined-label">
                                                             Describe Your Surfaces*
@@ -460,44 +486,91 @@ const Estimates = () => {
                                                 </Grid>
                                                 <Grid item xs={12} sm={12} md={12} sx={{marginBottom: 3}}>
                                                     <Typography variant='h5'>
-                                                        *All Fields Above Are Required
+                                                        *All Standard Cleaning Fields Are Required
                                                     </Typography>
                                                 </Grid>
 
                                             </Grid>
+                                            <Grid container spacing={2}>
+                                                <Grid item xs={12} sm={12} md={12}
+                                                      sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+                                                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Extra </Typography>
+                                                    <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
+                                                    <Typography variant="body1" marginBottom='10px'>
+                                                        Need a housekeeper but can't commit to the weekly expense? Get one-time, semi-regular or even consistent housekeeping services with RapidClean.
+                                                    </Typography>
 
-                                            <Grid item xs={12} sm={12} md={12}
-                                                  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
-                                                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Extra </Typography>
-                                                <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
-                                                <Typography variant="body1" marginBottom='10px'>
-                                                    Need a housekeeper but can't commit to the weekly expense? Get one-time, semi-regular or even consistent housekeeping services with RapidClean.
-                                                </Typography>
-                                                <Typography variant="body1" marginBottom='10px'>
-                                                    Please note: Extra services can only be booked with a Standard Cleaning package.
-                                                </Typography>
-                                                {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Laundry Wash & Fold"
-                                                        checked={values.laundrywashandfold}
-                                                        onChange={handleChange}
-                                                        name="laundrywashandfold"
-                                                    />
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Wash and Dry Dishes"
-                                                        checked={values.dishwashing}
-                                                        onChange={handleChange}
-                                                        name="dishwashing"
-                                                    />
-                                                    <FormControlLabel
-                                                        control={<Checkbox color="secondary" />}
-                                                        label="Meal Preparation"
-                                                        checked={values.mealprep}
-                                                        onChange={handleChange}
-                                                        name="mealprep"
-                                                    />
+                                                    {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
+                                                </Grid>
+                                                <Grid item xs={12} sm={4} md={4} sx={{marginBottom: 1}}>
+                                                    <FormControl fullWidth variant="outlined">
+                                                        <InputLabel id="laundry-select-outlined-label">
+                                                            Laundry Wash and Fold
+                                                        </InputLabel>
+                                                        <Select
+                                                            labelId="laundry-select-outlined-label"
+                                                            id="laundry-select-outlined"
+                                                            label="Laundry Wash and Fold"
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                            value={values.laundrywashandfold}
+                                                            name="laundrywashandfold" >
+                                                            {laundryoptions.map((item) => (
+                                                                <MenuItem key={item.value} value={item.value}>
+                                                                    {item.label}
+                                                                </MenuItem>
+                                                            ))}
+                                                        </Select>
+                                                    </FormControl>
+                                                </Grid>
+
+                                                <Grid item xs={12} sm={4} md={4} sx={{marginBottom: 1}}>
+                                                    <FormControl fullWidth variant="outlined">
+                                                        <InputLabel id="dishes-select-outlined-label">
+                                                            Dishes, Wash & Dry
+                                                        </InputLabel>
+                                                        <Select
+                                                            labelId="dishes-select-outlined-label"
+                                                            id="dishes-select-outlined"
+                                                            label="Dishes, Wash & Dry"
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                            value={values.dishwashing}
+                                                            name="dishwashing" >
+                                                            {dishwashoptions.map((item) => (
+                                                                <MenuItem key={item.value} value={item.value}>
+                                                                    {item.label}
+                                                                </MenuItem>
+                                                            ))}
+                                                        </Select>
+                                                    </FormControl>
+                                                </Grid>
+
+                                                <Grid item xs={12} sm={4} md={4} sx={{marginBottom: 1}}>
+                                                    <FormControl fullWidth variant="outlined">
+                                                        <InputLabel id="meals-select-outlined-label">
+                                                            Meal Preparation
+                                                        </InputLabel>
+                                                        <Select
+                                                            labelId="meals-select-outlined-label"
+                                                            id="meals-select-outlined"
+                                                            label="Meal Preparation"
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                            value={values.mealprep}
+                                                            name="mealprep">
+                                                            {mealprepoptions.map((item) => (
+                                                                <MenuItem key={item.value} value={item.value}>
+                                                                    {item.label}
+                                                                </MenuItem>
+                                                            ))}
+                                                        </Select>
+                                                    </FormControl>
+
+                                                </Grid>
+
+                                                <Grid item xs={12} sm={12} md={12}
+                                                      sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginBottom: 0}}>
                                                     <FormControlLabel
                                                         control={<Checkbox color="secondary" />}
                                                         label="Oven Cleaning"
@@ -512,18 +585,34 @@ const Estimates = () => {
                                                         onChange={handleChange}
                                                         name="fridgecleaning"
                                                     />
+                                                    <FormControlLabel
+                                                        control={<Checkbox color="secondary" />}
+                                                        label="Deep Cleaning"
+                                                        checked={values.deepcleaning}
+                                                        onChange={handleChange}
+                                                        name="deepcleaning"
+                                                    />
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12}>
+                                                    <Typography variant="h5">
+                                                        Extra services may only be booked in addition to a Standard Cleaning. Items are itemized on your receipt.
+                                                    </Typography>
+                                                </Grid>
+
                                                 {/*</FormGroup>*/}
-                                            </Grid>
-                                            <Grid item xs={12} sm={12} md={12}
-                                                  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginTop:'20px'}}>
-                                                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Professional </Typography>
-                                                <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
-                                                <Typography variant="body1" marginBottom='30px'>
-                                                    We hired a team of professionals who partner with our Cleaning Agents.
-                                                    They arrive while our agents are on-site so we manage the entire process for you from start to finish.
-                                                    Select Any Professional Services you require.
-                                                </Typography>
-                                                {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
+
+                                                <Grid item xs={12} sm={12} md={12}
+                                                      sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginTop:'10px'}}>
+                                                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Professional </Typography>
+                                                    <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
+                                                    <Typography variant="body1" marginBottom='0px'>
+                                                        We hired a team of professionals who partner with our Cleaning Agents.
+                                                        They arrive while our agents are on-site so we manage the entire process for you from start to finish.
+                                                        Select Any Professional Services you require.
+                                                    </Typography>
+                                                    {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12} sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginTop:'0px'}}>
                                                     <FormControlLabel
                                                         control={<Checkbox color="secondary" />}
                                                         label="Professional Rug Shampoo"
@@ -538,8 +627,68 @@ const Estimates = () => {
                                                         onChange={handleChange}
                                                         name="professionalcouchshampoo"
                                                     />
+                                                    <FormControlLabel
+                                                        control={<Checkbox color="secondary" />}
+                                                        label="Professional Floor Waxing"
+                                                        checked={values.professionalfloorwaxing}
+                                                        onChange={handleChange}
+                                                        name="professionalfloorwaxing"
+                                                    />
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12}>
+                                                    <Typography variant="h5">
+                                                        Professional services may only be booked in addition to a Standard Cleaning. Items are itemized on your receipt.
+                                                    </Typography>
+                                                </Grid>
                                                 {/*</FormGroup>*/}
+
+                                                <Grid item xs={12} sm={12} md={12}
+                                                      sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginTop:'10px'}}>
+                                                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Pet </Typography>
+                                                    <Typography color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
+                                                    <Typography variant="body1" marginBottom='20px'>
+                                                        We have a team of professionals who partner with our Cleaning Agents to take care of your pet in your own home
+                                                        while we clean! We offer Walking, Playtime, Meals and Meds.
+                                                    </Typography>
+                                                    {/*<FormGroup  sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>*/}
+                                                    <FormControlLabel
+                                                        control={<Checkbox color="secondary" />}
+                                                        label="Dog Walking"
+                                                        checked={values.dogwalking}
+                                                        onChange={handleChange}
+                                                        name="dogwalking"
+                                                    />
+                                                    <FormControlLabel
+                                                        control={<Checkbox color="secondary" />}
+                                                        label="Pet Playtime"
+                                                        checked={values.petsitting}
+                                                        onChange={handleChange}
+                                                        name="petsitting"
+                                                    />
+                                                    <FormControlLabel
+                                                        control={<Checkbox color="secondary" />}
+                                                        label="Dispense Medicine (Dogs)"
+                                                        checked={values.dispensingmedication}
+                                                        onChange={handleChange}
+                                                        name="dispensingmedication"
+                                                    />
+                                                    <FormControlLabel
+                                                        control={<Checkbox color="secondary" />}
+                                                        label="Waste Management Services"
+                                                        checked={values.waste}
+                                                        onChange={handleChange}
+                                                        name="waste"
+                                                    />
+
+                                                    {/*</FormGroup>*/}
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12}>
+                                                    <Typography variant="h5" sx={{marginBottom:3}}>
+                                                        Pet services may only be booked in addition to a Standard Cleaning. Items are itemized on your receipt.
+                                                    </Typography>
+                                                </Grid>
                                             </Grid>
+
 
                                             <CardActions>
                                                 <Button

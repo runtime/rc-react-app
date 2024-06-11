@@ -213,7 +213,7 @@ const About = () => {
 
                         {/*EXTRA SERVICES*/}
 
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Typography variant='h3'>
                                 Extra Services
                             </Typography>
@@ -229,42 +229,26 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Dishwashing</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Meal Prep </ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Oven Cleaning</ListItem>
-                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Basement Cleaning</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Deep Cleaning:</ListItem>
 
                                     <List
                                         List sx={{ marginLeft: 3, listStyleType: 'square' }}
                                         >
 
-                                        <ListItem sx={{ lineHeight: 0.5, display: 'list-item' }}>Wipe Down Baseboards</ListItem>
-                                        <ListItem sx={{ lineHeight: 0.5, display: 'list-item' }}>Wipe down window sills</ListItem>
-                                        <ListItem sx={{ lineHeight: 0.5, display: 'list-item' }}>Disinfect light switches & Doors</ListItem>
-                                        <ListItem sx={{ lineHeight: 0.5, display: 'list-item' }}>Windows inside</ListItem>
-                                        <ListItem sx={{ lineHeight: 0.5, display: 'list-item' }}>Bathroom tile & Grout whitenting</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Wipe Down Baseboards</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Wipe down window sills</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Disinfect light switches & Doors</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Windows inside</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Bathroom Tile & Grout Whitenting</ListItem>
 
                                     </List>
                                 </List>
                             </Typography>
-                            <Button variant='contained' text='white' color='secondary' disableElevation
-                                    sx={{textTransform: 'Capitalize',
-                                        size: 'small',
-                                        color:"white",
-                                        padding: '10px',
-                                        paddingLeft: '30px',
-                                        paddingRight: '30px',
-                                        margin: 'auto',
-                                        borderRadius: '8px',
-                                        marginBottom: '10px',
-                                        fontWeight: 'bold'
-                                    }}
-                            >
-                                Get Estimate
-                            </Button>
                         </Grid>
 
                         {/*Pro SERVICES*/}
 
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Typography variant='h3'
                                         sx={{ marginBottom: 2 }}>
                                 Professional Services
@@ -281,26 +265,12 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Floor Waxing</ListItem>
                                 </List>
                             </Typography>
-                            <Button variant='contained' text='white' color='secondary' disableElevation
-                                    sx={{textTransform: 'Capitalize',
-                                        size: 'small',
-                                        color:"white",
-                                        padding: '10px',
-                                        paddingLeft: '30px',
-                                        paddingRight: '30px',
-                                        margin: 'auto',
-                                        borderRadius: '8px',
-                                        marginBottom: '10px',
-                                        fontWeight: 'bold'
-                                    }}
-                            >
-                                Book Now
-                            </Button>
+
                         </Grid>
 
                         {/*PET SERVICES*/}
 
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Typography variant='h3'>
                                 Pet Services
                             </Typography>
@@ -317,22 +287,21 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Waste Removal</ListItem>
                                 </List>
                             </Typography>
-                            <Button variant='contained' text='white' color='secondary' disableElevation
-                                    sx={{textTransform: 'Capitalize',
-                                        size: 'small',
-                                        color:"white",
-                                        padding: '10px',
-                                        paddingLeft: '30px',
-                                        paddingRight: '30px',
-                                        margin: 'auto',
-                                        borderRadius: '8px',
-                                        marginBottom: '10px',
-                                        fontWeight: 'bold',
-
-                                    }}
-                            >
-                                Book Us
-                            </Button>
+                            {/*<Button variant='contained' text='white' color='secondary' disableElevation*/}
+                            {/*        sx={{textTransform: 'Capitalize',*/}
+                            {/*            size: 'small',*/}
+                            {/*            color:"white",*/}
+                            {/*            padding: '10px',*/}
+                            {/*            paddingLeft: '30px',*/}
+                            {/*            paddingRight: '30px',*/}
+                            {/*            margin: 'auto',*/}
+                            {/*            borderRadius: '8px',*/}
+                            {/*            marginBottom: '10px',*/}
+                            {/*            fontWeight: 'bold',*/}
+                            {/*        }}*/}
+                            {/*>*/}
+                            {/*    Book Us*/}
+                            {/*</Button>*/}
                         </Grid>
 
 
