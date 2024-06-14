@@ -28,7 +28,7 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         //  For now we will do the EST service here and return back an estimate. obj will sit in mem for now
         // rate in dollars
         const rate = 30.00;
-        const minimum = 50.00;
+        const minimum = 60.00;
         let  totalhours = 0;
 
         let estimateObj = {
@@ -61,6 +61,11 @@ export const useEstimatesService = (defaultEstimateRequest) => {
                 extra: 0,
                 pro: 0,
                 pet: 0,
+            },
+            data: {
+                totaltimerooms: 0,
+                totaltimebaths: 0,
+                totalhours: 0,
             }
         }
 
@@ -69,6 +74,14 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         ///ESTIMATE SERVICE FORMULA (TO BE REFACTORED INTO AN API TBD)//////////////
         // RUNTIME ©2024 /////////////////
         // factors to estimate the time per room (tpr)
+
+        let servicerate = estimateObj.typeofservice;
+        let constructrate = estimateObj.construct;
+        //const servicerate = (estimateObj.typeofservice === 'cleaning')? cleaningfee : moveoutfee;
+
+        console.log('servicerate: ', servicerate);
+        console.log('constructrate: ', constructrate);
+
         const sqftfactor = (estimateObj.sqft /100) ; // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
         const roomsfactor = estimateObj.numpeople /estimateObj.numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
         const bathsfactor = estimateObj.numpeople / estimateObj.numbaths; // 1/3 = .333 (1/3 of an hour or 20 mins)
@@ -79,24 +92,31 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         const base_tpr = roomsfactor * 60// 20 mins or a time in mins.
         const base_tpb = bathsfactor * 60 // // time in mins
         const petstpr = petsfactor * 1.5
-        const sqfttpr = Math.round(sqftfactor* 1.5);
+        const sqfttpr = Math.round(sqftfactor* 1.25);
 
         // sub totals for total time per room
         let tpr = base_tpr + sqfttpr + petstpr + estimateObj.cleanfactor;
         // set a limit to 90 mins per room
-        if (tpr >= 90) {
-            tpr = 90
+        if (tpr >= 120) {
+            tpr = 120
         }
-        let tpb = (base_tpb / 1.7) + sqfttpr + petstpr + estimateObj.cleanfactor;
+        let tpb = (base_tpb / 1.8) + sqfttpr + petstpr + estimateObj.cleanfactor;
 
         if (tpb >= 90) {
             tpb = 90
         }
 
         let totaltimerooms = Math.round(tpr * estimateObj.numrooms) / 60;
-        const totaltimebaths = Math.round(tpb * estimateObj.numbaths) / 60;
+        let totaltimebaths = Math.round(tpb * estimateObj.numbaths) / 60;
 
-        // total hours estimateObjd
+       // in order to show the change in cost for clean vs moveout and apartment vs house before we have num rooms or time
+        // we need to set the total time to 0 if the estimate is for cleaning or moveout
+        if ((!totaltimerooms) && (!totaltimebaths)) {
+            totaltimerooms = 0
+            totaltimebaths = 0
+        }
+
+
         totalhours = totaltimerooms + totaltimebaths;
 
         // END STANDARD CLEANING
@@ -140,21 +160,27 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         const wastecost = (estimateObj.waste)? wasterate : 0;
 
 
-        ////////////////////
+        //////////////////////////////////////////
         // EST OBJ - total cost for basic cleaning
-        ////////////////////
-        estimateObj.cost.cleaning =  Math.round((totalhours * rate) + minimum);
+        //////////////////////////////////////////
+
+        //estimateObj.cost.cleaning = servicerate + constructrate;
+
+        estimateObj.cost.cleaning =  Math.round((totalhours * rate) + servicerate + constructrate);
 
         estimateObj.cost.extra = Math.round(
             dishwashingcost + laundrycost + mealprepcost +
             ovencleaningcost + fridgecleaningcost + deepcleaningcost
         );
+
         estimateObj.cost.pro = Math.round(
             professionalcouchcleaningcost + professionalrugshampoocost + professionalfloorwaxingcost
-        )
+        );
         estimateObj.cost.pet = Math.round(
             dogwalkingcost + petsittingcost + dispensingmedicationcost + wastecost
-        )
+        );
+
+        // calculate the final estimate
 
         estimateObj.cost.total = estimateObj.cost.cleaning + estimateObj.cost.extra + estimateObj.cost.pro + estimateObj.cost.pet;
 
@@ -192,11 +218,12 @@ export const useEstimatesService = (defaultEstimateRequest) => {
 
         console.log('totaltimerooms: ', totaltimerooms);
         console.log('totaltimebaths: ', totaltimebaths);
-
         console.log('totalhours: ', totalhours);
+        console.log('=====================');
 
-        // End Basic Services
-        // Extra, Professional and Pet Services estimateOjb
+        ////// End Log Basic Services
+
+        // Extra, Professional and Pet Services estimateObj
         console.log('laundrywashandfold: ', estimateObj.laundrywashandfold);
         console.log('dishwashing: ', estimateObj.dishwashing);
         console.log('mealprep: ', estimateObj.mealprep);
@@ -211,7 +238,7 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         console.log('dispensingmedication: ', estimateObj.dispensingmedication);
         console.log('waste: ', estimateObj.waste);
 
-        console.log('EXTRAS: ');
+        console.log('Extra Costs: ');
         console.log('dishwashingcost: ', dishwashingcost);
         console.log('laundrycost: ', laundrycost);
         console.log('mealprepcost: ', mealprepcost);
@@ -225,139 +252,23 @@ export const useEstimatesService = (defaultEstimateRequest) => {
         console.log('petsittingcost: ', petsittingcost);
         console.log('dispensingmedicationcost: ', dispensingmedicationcost);
         console.log('wastecost: ', wastecost);
-
+        console.log('=============== estimate ==============');
         console.log('estimateObj.cost.cleaning: ', estimateObj.cost.cleaning);
         console.log('estimateObj.cost.extra: ', estimateObj.cost.extra);
         console.log('estimateObj.cost.pro: ', estimateObj.cost.pro);
         console.log('estimateObj.cost.pet: ', estimateObj.cost.pet);
-
+        console.log('=======================================');
         console.log('estimateObj.cost.total: ', estimateObj.cost.total);
-
-        // OLD PRE  CODE
-       //  let totalhours = 0;
-       //  const typeofservice = estimateObjRequest.typeofservice;
-       //  const construct = estimateRequest.construct;
-       //  const sqft = estimateRequest.sqft;
-       //  const numpeople = estimateRequest.numpeople;
-       //  const numrooms = estimateRequest.numrooms;
-       //  const numbaths = estimateRequest.numbaths;
-       //  const numpets = estimateRequest.numpets;
-       //  const cleanfactor = estimateRequest.cleanfactor;
-       //
-       //  // EXTRA
-       //  const laundrywashandfold = estimateRequest.laundrywashandfold;
-       //  const dishwashing = estimateRequest.dishwashing;
-       //  const mealprep = estimateRequest.mealprep;
-       //  const ovencleaning = estimateRequest.ovencleaning;
-       //  const fridgecleaning = estimateRequest.fridgecleaning;
-       //  const deepcleaning = estimateRequest.deepcleaning;
-       //
-       //
-       //  // PRO
-       //  const professionalcouchcleaning = estimateRequest.professionalcouchcleaning;
-       //  const professionalrugshampoo = estimateRequest.professionalrugshampoo;
-       //  const professionalfloorwaxing = estimateRequest.professionalfloorwaxing;
-       //
-       //
-       //  // PET
-       //  const dogwalking = estimateRequest.dogwalking;
-       //  const petsitting = estimateRequest.petsitting;
-       //  const dispensingmedication = estimateRequest.dispensingmedication;
-       //  const waste = estimateRequest.waste;
-       //
-       //
-       //
-       //
-       //
-       //  // factors to estimate the time per room (tpr)
-       //  const sqftfactor = (sqft /100) ; // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
-       //  const roomsfactor = numpeople /numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
-       //  const bathsfactor = numpeople / numbaths; // 1/3 = .333 (1/3 of an hour or 20 mins)
-       //  const petsfactor = numpets * 5 // 5 minutes per pet
-       //
-       //
-       //
-       //  // time per room for each factor
-       //  const base_tpr = roomsfactor * 60// 20 mins or a time in mins.
-       //  const base_tpb = bathsfactor * 60 // // time in mins
-       //  const petstpr = petsfactor * 1.5
-       //  const sqfttpr = Math.round(sqftfactor* 1.5);
-       //
-       //  // sub totals for total time per room
-       //  let tpr = base_tpr + sqfttpr + petstpr + cleanfactor;
-       //  // set a limit to 90 mins per room
-       //  if (tpr >= 90) {
-       //      tpr = 90
-       //  }
-       //  let tpb = (base_tpb / 2) + sqfttpr + petstpr + cleanfactor;
-       //
-       //  if (tpb >= 90) {
-       //      tpb = 90
-       //  }
-       //
-       //  let totaltimerooms = Math.round(tpr * numrooms) / 60;
-       //  const totaltimebaths = Math.round(tpb * numbaths) / 60;
-       //
-       //  // total hours estimated
-       //  totalhours = totaltimerooms + totaltimebaths;
-       //
-       //  // total cost for basic cleaning
-       //  const estimate =  Math.round((totalhours * rate) + minimum);
-       //
-       //  // request object received for estimate
-       //  console.log('[useEstimateService] param: estimateRequest: ', estimateRequest)
-       //
-       //  // same numbers returned from estimate service
-       //  console.log('rate: ', rate, ' typeofservice: ', typeofservice, ' construct: ', construct,
-       //      ' numpeople: ', numpeople, 'numrooms: ', numrooms, 'numbaths: ', numbaths, ' numpets: ', numpets, ' sqft: ', sqft, ' cleanfactor: ', cleanfactor,);
-       //
-       //  // factors we have created for estimate service to measure effort
-       //  console.log('Factors:');
-       //  console.log('sqftfactor: 10% of square feet * 2', sqftfactor);
-       //  console.log('roomsfactor  (occupants / rooms) : ', roomsfactor);
-       //  console.log('bathsfactor: (occupants / baths)', bathsfactor);
-       //  console.log('petsfactor: (5 mins per pet) ', petsfactor);
-       //  console.log('cleanfactor: (already in mins) ', cleanfactor);
-       //
-       //  // estimated times from service
-       //  console.log('base_tpr in minutes: ', base_tpr);
-       //  console.log('base_tpb in minutes: ', base_tpb);
-       //  console.log('sqfttpr in minutes:', sqfttpr);
-       //  console.log('petsfactor: in minutes ', petsfactor);
-       //  console.log('cleanfactor: in minutes ', cleanfactor);
-       //
-       //  console.log('tpr in mins: ', tpr);
-       //  console.log('tpb in mins: ', tpb);
-       //
-       //  console.log('totaltimerooms: ', totaltimerooms);
-       //  console.log('totaltimebaths: ', totaltimebaths);
-       //
-       // // console.log('tpr: ', tpr);
-       //  console.log('totalhours: ', totalhours);
-       //
-       //  // sub total estimate from service for just cleaning
-       //  console.log('estimate: ', estimate);
-       //
-       //  console.log('laundrywashandfold: ', laundrywashandfold);
-       //  console.log('dishwashing: ', dishwashing);
-       //  console.log('mealprep: ', mealprep);
-       //  console.log('ovencleaning: ', ovencleaning);
-       //  console.log('fridgecleaning: ', fridgecleaning);
-       //  console.log('deepcleaning: ', deepcleaning);
-       //  console.log('professionalcouchcleaning: ', professionalcouchcleaning);
-       //  console.log('professionalrugshampoo: ', professionalrugshampoo);
-       //  console.log('professionalfloorwaxing: ', professionalfloorwaxing);
-       //  console.log('dogwalking: ', dogwalking);
-       //  console.log('petsitting: ', petsitting);
-       //  console.log('dispensingmedication: ', dispensingmedication);
-       //  console.log('waste: ', waste);
+        console.log('========================================');
 
 
-        // SetState for Estimate & return
+
+        //SetState for Estimate & return
         if (!estimate) {
             setEstimate(0);
             return;
         }
+
         // Set State for Estimate
          setEstimate(estimate);
     };

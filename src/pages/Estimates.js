@@ -18,8 +18,8 @@ const Estimates = () => {
 
     //Data
     const initialValues = {
-        typeofservice: "",
-        construct: "",
+        typeofservice: '',
+        construct: '',
         numpeople: "",
         sqft: "",
         numrooms: "",
@@ -52,17 +52,17 @@ const Estimates = () => {
     //drop downs
     // type of service options
     const typeofserviceoptions = [
-        { label: "Standard Cleaning", value: "cleaning" },
-        { label: "Standard Cleaning - Move Out", value: "moveoutcleaning" },
+        { label: "Standard Cleaning", value: 30 },
+        { label: "Standard Cleaning - Move Out", value: 25 },
     ]
 
     // construct options
     const constructoptions = [
-        { label: "Apartment", value: "apartment" },
-        { label: "House", value: "house" },
-        { label: "Room", value: "room" },
-        { label: "Dorm", value: "dorm" },
-        { label: "Other", value: "other" },
+        { label: "Apartment", value: 20 },
+        { label: "House", value: 25 },
+        { label: "Room", value: 10 },
+        { label: "Dorm", value: 10 },
+        { label: "Other", value: 50 },
     ]
 
     const numroomsoptions = [
@@ -174,6 +174,7 @@ const Estimates = () => {
     ]
 
     const laundryoptions = [
+        { label: "None", value: 0 },
         { label: "1 Load - Wash And Fold", value: 1 },
         { label: "2 Loads - Wash And Fold", value: 2 },
         { label: "3 Loads - Wash And Fold", value: 3 },
@@ -181,12 +182,14 @@ const Estimates = () => {
     ]
 
     const dishwashoptions = [
+        { label: "None", value: 0 },
         { label: "1 Load - Wash and Dry", value: 1 },
         { label: "2 Load - Wash and Dry", value: 2 },
         { label: "3 Load - Wash and Dry", value: 3 },
     ]
 
     const mealprepoptions = [
+        { label: "None", value: 0 },
         { label: "1 Meal (serves one)", value: 1 },
         { label: "1 Meal (serves two)", value: 1.25 },
         { label: "1 Meal (serves 3)", value: 1.5 },
@@ -202,8 +205,8 @@ const Estimates = () => {
 
 //validation schema
     let validationSchema = Yup.object().shape({
-        typeofservice: Yup.string().required("Required"),
-        construct: Yup.string().required("Required"),
+        typeofservice: Yup.number().required("Required"),
+        construct: Yup.number().required("Required"),
         sqft: Yup.string().required("Required"),
         numrooms: Yup.number().required("Required"),
         numbaths: Yup.number().required("Required"),
@@ -245,6 +248,10 @@ const Estimates = () => {
         style: 'currency',
         currency: 'USD',
     }); /* $2,500.00 */
+
+    const onSubmit = () => {
+        console.log('onSubmit')
+    }
 
 
     return (
@@ -295,6 +302,7 @@ const Estimates = () => {
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
+                                onSubmit={onSubmit}
                             >
 
                                 {({dirty, isValid, values, handleChange, handleBlur, handleGrouping}) => {
@@ -699,7 +707,7 @@ const Estimates = () => {
                                                         type="Submit"
                                                         onSubmit={getEstimate(values)}
                                                         className='classes button'>
-                                                        Submit
+                                                        Next
                                                     </Button>
                                                 </CardActions>
                                             </Grid>
