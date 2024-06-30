@@ -21,7 +21,7 @@ const About = () => {
                                 title='Same Day Service'
                                 span_left='Same Day'
                                 span_right='Service'
-                                desc='We Offfer Same Day Services to most locations in Northern NJ. We can give you an estimate and be there within the hour.'
+                                desc='We Offer Same Day Services to most locations in Northern NJ. We can give you an estimate and be there within the hour.'
                                 buttonText='Book Now'/>
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
@@ -29,7 +29,7 @@ const About = () => {
                                 title='Customized Estimates'
                                 span_left='Customized'
                                 span_right='Estimates'
-                                desc='We Offfer Same Day Services to most locations in Northern NJ. We can give you an estimate and be there within the hour.'
+                                desc='Customized estimates to fit your budget! Get an instant estimate without any personal information or sales call backs'
                                 buttonText='Get Estimate'/>
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
@@ -37,7 +37,7 @@ const About = () => {
                                 title='Chat With Us'
                                 span_left='Chat with'
                                 span_right='Us'
-                                desc='We Offfer Same Day Services to most locations in Northern NJ. We can give you an estimate and be there within the hour.'
+                                desc='Chat with us and get an immediate custom estimate or ask us about our environmentally friendly cleaning products.'
                                 buttonText='Say Hello'/>
                         </Grid>
                     </Grid>
@@ -128,9 +128,12 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Counter surfaces and Sink</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Floors and Kitchen Tiles</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Exterior of the Refrigerator</ListItem>
-                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Exterior of the Stove and Microwave</ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Stovetop -  Scrub and Wash Burners and Grill</ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Exterior of the Microwave</ListItem>
+
                                 </List>
-                                <Typography variant='body2'>
+                                <Typography variant='body2'
+                                            sx={{ marginBottom: 2 }}>
                                     We also take out the garbage and recycle bin
                                 </Typography>
                             </Typography>
@@ -153,8 +156,9 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>The Toilet </ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>The Mirror, and any Glass Surfaces</ListItem>
                                 </List>
-                                <Typography variant='body2'>
-                                    We also empty and disinfect the trash cans
+                                <Typography variant='body2'
+                                    sx={{ marginBottom: 2 }}>
+                                        We also empty and disinfect the trash cans
                                 </Typography>
                             </Typography>
                         </Grid>
@@ -164,7 +168,7 @@ const About = () => {
                                 Bedrooms
                             </Typography>
                             <Typography variant='h5'>
-                                We Clean and Dust:
+                                We Dust, Vacuum, Wipe, and Mop:
                             </Typography>
 
                             <Typography variant='body2'>
@@ -176,8 +180,9 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Mirrors and Glass </ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Vacuuming Rugs</ListItem>
                                 </List>
-                                <Typography variant='body2'>
-                                    We will even change the Linens
+                                <Typography variant='body2'
+                                    sx={{ marginBottom: 2 }}>
+                                        We will even change the Linens
                                 </Typography>
                             </Typography>
                         </Grid>
@@ -187,7 +192,7 @@ const About = () => {
                                 Living Room
                             </Typography>
                             <Typography variant='h5'>
-                                We Clean and Dust:
+                                We Dust, Vacuum, Wipe, and Mop:
                             </Typography>
 
                             <Typography variant='body2'>
@@ -199,22 +204,24 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Mirrors </ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Vacuuming Rugs</ListItem>
                                 </List>
-                                <Typography variant='body2'>
-                                    we also vacuum the sofa and armchairs
+                                <Typography variant='body2'
+                                    sx={{ marginBottom: 2 }}>
+                                        We also vacuum the sofa and armchairs
                                 </Typography>
                             </Typography>
                         </Grid>
 
                         {/*EXTRA SERVICES*/}
 
-                        <Grid item xs={12} sm={12} md={6}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Typography variant='h3'>
                                 Extra Services
                             </Typography>
                             <Typography variant='body1'>
                                 We offer a variety of extra services for your home, including:
                             </Typography>
-                            <Typography variant='body2'>
+                            <Typography variant='body2'
+                                        sx={{ marginBottom: 2 }}>
                                 <List
                                     List sx={{ marginLeft: 3, listStyleType: 'disc' }}
                                 >
@@ -222,27 +229,28 @@ const About = () => {
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Dishwashing</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Meal Prep </ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Oven Cleaning</ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Deep Cleaning:</ListItem>
+
+                                    <List
+                                        List sx={{ marginLeft: 3, listStyleType: 'square' }}
+                                        >
+
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Wipe Down Baseboards</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Wipe down window sills</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Disinfect light switches & Doors</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Windows inside</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Bathroom Tile & Grout Whitenting</ListItem>
+
+                                    </List>
                                 </List>
                             </Typography>
-                            <Button variant='contained' text='white' color='secondary' disableElevation
-                                    sx={{textTransform: 'Capitalize',
-                                        size: 'small',
-                                        color:"white",
-                                        padding: '10px',
-                                        paddingLeft: '30px',
-                                        paddingRight: '30px',
-                                        margin: 'auto',
-                                        borderRadius: '8px',
-                                        marginBottom: '10px',
-                                        fontWeight: 'bold'
-                                    }}
-                            >
-                                Get Estimate
-                            </Button>
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6}>
-                            <Typography variant='h3'>
+                        {/*Pro SERVICES*/}
+
+                        <Grid item xs={12} sm={12} md={4}>
+                            <Typography variant='h3'
+                                        sx={{ marginBottom: 2 }}>
                                 Professional Services
                             </Typography>
                             <Typography variant='body1'>
@@ -250,29 +258,53 @@ const About = () => {
                             </Typography>
                             <Typography variant='body2'>
                                 <List
-                                    List sx={{ marginLeft: 3, listStyleType: 'disc' }}
+                                    List sx={{ marginLeft: 3, marginBottom: 2, listStyleType: 'disc' }}
                                 >
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Couch Cleaning</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Rug Shampoo</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Floor Waxing</ListItem>
                                 </List>
                             </Typography>
-                            <Button variant='contained' text='white' color='secondary' disableElevation
-                                    sx={{textTransform: 'Capitalize',
-                                        size: 'small',
-                                        color:"white",
-                                        padding: '10px',
-                                        paddingLeft: '30px',
-                                        paddingRight: '30px',
-                                        margin: 'auto',
-                                        borderRadius: '8px',
-                                        marginBottom: '10px',
-                                        fontWeight: 'bold'
-                                    }}
-                            >
-                                Book Us
-                            </Button>
+
                         </Grid>
+
+                        {/*PET SERVICES*/}
+
+                        <Grid item xs={12} sm={12} md={4}>
+                            <Typography variant='h3'>
+                                Pet Services
+                            </Typography>
+                            <Typography variant='body1'>
+                                We provide a variety of in-home pet services including:
+                            </Typography>
+                            <Typography variant='body2'>
+                                <List
+                                    List sx={{ marginLeft: 3, marginBottom: 2, listStyleType: 'disc' }}
+                                >
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Dog Walking</ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Pet Sitting (includes walks & playtime) </ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Dispensing Medication</ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>Waste Removal</ListItem>
+                                </List>
+                            </Typography>
+                            {/*<Button variant='contained' text='white' color='secondary' disableElevation*/}
+                            {/*        sx={{textTransform: 'Capitalize',*/}
+                            {/*            size: 'small',*/}
+                            {/*            color:"white",*/}
+                            {/*            padding: '10px',*/}
+                            {/*            paddingLeft: '30px',*/}
+                            {/*            paddingRight: '30px',*/}
+                            {/*            margin: 'auto',*/}
+                            {/*            borderRadius: '8px',*/}
+                            {/*            marginBottom: '10px',*/}
+                            {/*            fontWeight: 'bold',*/}
+                            {/*        }}*/}
+                            {/*>*/}
+                            {/*    Book Us*/}
+                            {/*</Button>*/}
+                        </Grid>
+
+
                     </Grid>
                 </Box>
             </div>

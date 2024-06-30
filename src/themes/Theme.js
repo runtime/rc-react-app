@@ -55,9 +55,10 @@ export const RapidCleanTheme = createTheme({
 
         },
         h5: {
-            fontSize: '.75rem',
+            fontSize: '.65rem',
             fontFamily: "Helvetica",
             fontWeight: 600,
+            color: '#999999',
         },
         h6: {
             fontSize: '.5rem',
