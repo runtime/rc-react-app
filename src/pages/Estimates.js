@@ -706,6 +706,7 @@ const Estimates = () => {
                                                         color="primary"
                                                         type="Submit"
                                                         onSubmit={getEstimate(values)}
+                                                        onClick={() => window.location.href = '/Appointments'}
                                                         className='classes button'>
                                                         Next
                                                     </Button>
