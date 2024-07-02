@@ -23,8 +23,6 @@ import Footer from "./components/Footer";
 import EstimateContext from "./context/estimate";
 
 
-
-
 function App() {
 
 // fetch if there is data to load

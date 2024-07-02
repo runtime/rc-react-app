@@ -1,20 +1,31 @@
 import {createContext, useState} from 'react';
-import axios from 'axios';
+import { useEstimatesService } from "../services/useEstimatesService";
 
 const EstimateContext = createContext();
 
+
+
 function Provider( {children} ) {
-    const [estimates, setEstimates] = useState([]);
+    const [estimate, setEstimate] = useState({ });
     //const [trigger, setTrigger] = useState(0);
 
-    const getEstimates = async () => {
-        const response = await axios.get('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-        setEstimates(response.data);
+    const getEstimatesFromAPI =  () => {
+      //Fetch Data
     }
 
-    useEffect(() => {
-        getEstimates();
-    }, [trigger]);
+    const createEstimate = () => {
+        const response = {total: 10};
+        setEstimate(response);
+    }
+
+    // const getEstimate = async () => {
+    //     const response = await axios.get('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+    //     setEstimates(response.data);
+    // }
+    //
+    // useEffect(() => {
+    //     getEstimates();
+    // }, [trigger]);
 
     // const value = {
     //     estimates,
