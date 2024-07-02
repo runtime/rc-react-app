@@ -20,19 +20,15 @@ import Appointments from './pages/Appointments';
 import Contact from "./pages/Contact";
 import ErrorPage from "./pages/ErrorPage";
 import Footer from "./components/Footer";
+import EstimateContext from "./context/estimate";
 
-// import { useEstimatesService } from "../services/useEstimatesService";
-//
-// const [estimate, getEstimate ] = useEstimatesService(initialValues);
+
 
 
 function App() {
 
-//const [currMenuItem, setCurrMenuItem] = useState(null);
-
-// useEffect(() => {
-//     setCurrMenuItem(menuItems[0]);
-// }, [menuItems])
+// fetch if there is data to load
+// const { fetchSomeData } = useContext(EstimateContext);
 
   return (
 
