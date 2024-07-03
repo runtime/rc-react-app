@@ -1,6 +1,9 @@
 import {createContext, useState} from 'react';
 import { useEstimatesService } from "../services/useEstimatesService";
 
+//CONTEXT PROVIDER
+// children are the
+
 const EstimateContext = createContext();
 
 
@@ -9,13 +12,16 @@ function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
     //const [trigger, setTrigger] = useState(0);
 
+
+
     const getEstimatesFromAPI =  () => {
       //Fetch Data
     }
 
-    const createEstimate = () => {
-        const response = {total: 10};
-        setEstimate(response);
+    const createEstimate = (obj) => {
+        console.log('[Provider] createEstimate: ', obj );
+        setEstimate(obj);
+        console.log(estimate.total);
     }
 
     // const getEstimate = async () => {
@@ -32,11 +38,7 @@ function Provider( {children} ) {
     //     setTrigger
     // };
 
-    const tempValue = {
-
-        cost: 10
-
-    }
+    const tempValue = {estimate, createEstimate}
 
     return (
         <EstimateContext.Provider value={tempValue}>

@@ -5,6 +5,12 @@ import App from './App';
 import { Provider } from './context/estimate'
 //import reportWebVitals from './reportWebVitals';
 
+
+//CONTEXT PROVIDER WRAPS APP (./context/estimate.js) and acts as a public interfaace to components by injecting functions and states into the app.
+// pages and components will use the methods in the context to create and edit and the context will
+// handle the axios calls and state and pass down to children. children import specific functions and data as needed
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider>

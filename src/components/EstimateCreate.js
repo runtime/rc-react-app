@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import '../styles/Estimates.css';
+import EstimateContext from '../context/estimate';
 import {
     Typography, Grid, Box, Button, Chip,
     ThemeProvider, CssBaseline, Card,
@@ -250,9 +251,30 @@ const EstimateCreate = () => {
 //     const onSubmit = () => {
 //         console.log('onSubmit')
 //     }
+    const initialValue = {total:0}
+    const [value, setValue] = useState(initialValue.total)
+
+    const { createEstimate } = useContext(EstimateContext);
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log('[EstimateCreate] onFormSubmit')
+        const newEstimate = {"total":value}
+        createEstimate(newEstimate);
+        //setValue(0);
+    }
 
     return (
-        <div> Estimate Create</div>
+        <div>
+            <h1>Estimate Create </h1>
+            <p>Your Estimate is: <b>{value}</b>. Please hit the  'next' button to continue</p>
+            <form onSubmit={handleFormSubmit}>
+                <input type="text" placeholder="Title" value={value}
+                       onChange={(e) => setValue(e.target.value)}/>
+                <button type="submit">Next</button>
+            </form>
+
+        </div>
         // <div className='Estimates'>
         //     <Box>
         //         <ThemeProvider theme={RapidCleanTheme}>
@@ -719,7 +741,6 @@ const EstimateCreate = () => {
         //         </ThemeProvider>
         //     </Box>
         // </div>
-
     )
 }
 

@@ -25,8 +25,11 @@ import EstimateContext from "./context/estimate";
 
 function App() {
 
-// fetch if there is data to load
+// fetch if there is data to load into the components below we would do this now
 // const { fetchSomeData } = useContext(EstimateContext);
+
+// Since there isn't currently we let the estimate handle importing context at the estimate component level.
+    // note pages are static wrappers and for now do not use context.
 
   return (
 
