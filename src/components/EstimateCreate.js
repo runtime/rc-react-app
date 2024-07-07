@@ -267,9 +267,10 @@ const EstimateCreate = () => {
     return (
         <div>
             <h1>Estimate Create </h1>
-            <p>Your Estimate is: <b>{value}</b>. Please hit the  'next' button to continue</p>
+            <p><b>Your Estimate is: ${value}.00</b>.</p>
+            <p>Please hit the  'next' button to submit the estimate</p>
             <form onSubmit={handleFormSubmit}>
-                <input type="text" placeholder="Title" value={value}
+                <input type="text" placeholder="enter estimate" value={value}
                        onChange={(e) => setValue(e.target.value)}/>
                 <button type="submit">Next</button>
             </form>
