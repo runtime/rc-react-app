@@ -20,19 +20,16 @@ import Appointments from './pages/Appointments';
 import Contact from "./pages/Contact";
 import ErrorPage from "./pages/ErrorPage";
 import Footer from "./components/Footer";
-
-// import { useEstimatesService } from "../services/useEstimatesService";
-//
-// const [estimate, getEstimate ] = useEstimatesService(initialValues);
+import EstimateContext from "./context/estimate";
 
 
 function App() {
 
-//const [currMenuItem, setCurrMenuItem] = useState(null);
+// fetch if there is data to load into the components below we would do this now
+// const { fetchSomeData } = useContext(EstimateContext);
 
-// useEffect(() => {
-//     setCurrMenuItem(menuItems[0]);
-// }, [menuItems])
+// Since there isn't currently we let the estimate handle importing context at the estimate component level.
+    // note pages are static wrappers and for now do not use context.
 
   return (
 
