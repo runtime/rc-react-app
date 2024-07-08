@@ -1,76 +1,22 @@
 {
   "estimates": [
     {
-      "estimate": {
-        "total": "510"
+      "cost": {
+        "total": 400
       },
-      "id": "ZwTsJ5z"
-    },
-    {
-      "estimate": {
-        "total": "510"
-      },
-      "id": "4GCHXP4"
-    },
-    {
-      "estimate": {
-        "total": "510"
-      },
-      "id": "SZx3Yky"
-    },
-    {
-      "estimate": {
-        "total": "1010"
-      },
-      "id": "JRUwvw2"
-    },
-    {
-      "estimate": {
-        "total": "1010"
-      },
-      "id": "1bAihPv"
-    },
-    {
-      "processedEstimate": {
-        "total": "1010"
-      },
-      "id": "4BO-I5M"
-    },
-    {
-      "processedEstimate": {
-        "total": "1010"
-      },
-      "id": "Y-PTd_5"
+      "id": 1
     },
     {
       "cost": {
-        "total": "2010"
+        "total": 1000
       },
-      "id": "_0f4KhV"
+      "id": 2
     },
     {
       "cost": {
-        "total": "1010"
+        "total": 1500
       },
-      "id": "FbSoRjB"
-    },
-    {
-      "cost": {
-        "total": "1010"
-      },
-      "id": "xjqHLu0"
-    },
-    {
-      "cost": {
-        "total": "5010"
-      },
-      "id": "lPTthb3"
-    },
-    {
-      "cost": {
-        "total": "60010"
-      },
-      "id": "0wgHLnZ"
+      "id": 3
     }
   ]
 }

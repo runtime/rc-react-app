@@ -22,22 +22,15 @@ function Provider( {children} ) {
       //Fetch Data
     }
 
-    // const createEstimate = (obj) => {
-    //     /// MVP Working
-    //     console.log('[Provider] createEstimate: ', obj );
-    //     setEstimate(obj);
-    //     console.log(estimate.total);
-    //     //// json server
-    //
-    // }
-
+    // helper functions for estimate algo
     const calculateEstimate = (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
         const {total} = obj; // returns a number deconstructed obj
-        const processedObj = {"total": total + 10}
+        const processedObj = {"total": total / .1}
         return processedObj;
     }
 
+    // context functions
     const createEstimate = async (obj) => {
         //todo call estimateService and have algo give back the estimate
         // for now we will use helper functions
@@ -52,25 +45,7 @@ function Provider( {children} ) {
         setEstimate(processedEstimate);
     }
 
-
-
-
-
-
-
-    // const getEstimate = async () => {
-    //     const response = await axios.get('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-    //     setEstimates(response.data);
-    // }
-    //
-    // useEffect(() => {
-    //     getEstimates();
-    // }, [trigger]);
-
-    // const value = {
-    //     estimates,
-    //     setTrigger
-    // };
+    // set new value to send back to context subscribers
 
     const tempValue = {estimate, createEstimate}
 
