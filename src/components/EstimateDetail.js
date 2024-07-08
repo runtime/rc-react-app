@@ -16,7 +16,7 @@ const EstimateDetail = () => {
         <div>
             <h1>Estimate Details</h1>
 
-            {/*<p>Your current Estimate is {estimate.obj.total} Click Book to Book Now</p>*/}
+            <p>Your current Estimate is {estimate.obj.total} Click Book to Book Now</p>
             <button onClick={() => setShowEdit(!showEdit)}>Book It!</button>
             <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
         </div>

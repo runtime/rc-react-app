@@ -7,14 +7,12 @@ const useEstimatesService = async (defaultEstimateRequest) => {
     // input a request
     // output an estimate
    // const [est, setEst] = useState([]);
-    console.log('[useEstimatesService]');
-   //
-   // const theEst = calculateEstimate(defaultEstimateRequest);
-   // setEst(theEst);
+    console.log('[useEstimatesService]', defaultEstimateRequest );
 
-    // useEffect(() => {
-    //     calculateEstimate();
-    // }, []);
+
+    useEffect(() => {
+        calculateEstimate();
+    }, );
 
     const calculateEstimate = (estimateRequest) => {
 

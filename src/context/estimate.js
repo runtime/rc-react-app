@@ -1,5 +1,4 @@
 import {createContext, useState} from 'react';
-import calculateEstimate  from "../services/useEstimatesService";
 import axios from "axios";
 
 //CONTEXT PROVIDER
@@ -11,6 +10,8 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
+    //const [est, setEst] = calculateEstimate( { } );
+
     //const [trigger, setTrigger] = useState(0);
 
 
@@ -28,25 +29,17 @@ function Provider( {children} ) {
     //
     // }
 
-    // const createEstimate = async (obj) => {
-    //     //todo call estimateService and have algo give back the estimate
-    //     console.log('[Provider] createEstimate: ', obj );
-    //     const response = await axios.post('http://localhost:3001/estimates', {
-    //         obj
-    //     });
-    //     console.log('Provider] createEstimate response.data ', response.data);
-    //     const updatedEstimate = response.data;
-    //     setEstimate(updatedEstimate);
-    // }
-
     const createEstimate = async (obj) => {
-        //call estimateService and have algo give back the estimate
+        //todo call estimateService and have algo give back the estimate
         console.log('[Provider] createEstimate: ', obj );
-        const response = await calculateEstimate(obj)
-        console.log('[Provider] createEstimate response: ', response);
-        //const updatedEstimate = response.data;
-        //setEstimate(updatedEstimate);
+        const response = await axios.post('http://localhost:3001/estimates', {
+            obj
+        });
+        console.log('Provider] createEstimate response.data ', response.data);
+        const updatedEstimate = response.data;
+        setEstimate(updatedEstimate);
     }
+
 
 
 
