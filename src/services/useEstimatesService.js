@@ -10,75 +10,75 @@ const useEstimatesService = async (defaultEstimateRequest) => {
     console.log('[useEstimatesService]', defaultEstimateRequest );
 
 
-    useEffect(() => {
-        calculateEstimate();
-    }, );
+    // useEffect(() => {
+    //     calculateEstimate();
+    // }, );
+    //
+    // const calculateEstimate = (estimateRequest) => {
+    //
+    //     // TODO make call to estimate service
+    //     // const response = await ourService.post('/estimate', {
+    //     //             params: {
+    //     //                 request: estimateRequest
+    //     //             }
+    //     //         });
+    //     console.log('[calculateEstimate]: ', estimateRequest);
+    //
+    //     // Hydrate estimateObj to send to estimate service (TBD)
+    //     //  For now we will do the EST service here and return back an estimate. obj will sit in mem for now
+    //     // rate in dollars
+    //     const rate = 30.00;
+    //     const minimum = 60.00;
+    //     let  totalhours = 0;
+    //
+    //     const estimateObj = {
+    //         "serviceID": "1234",
+    //         "userID": "1234",
+    //         "typeofservice": "Cleaning",
+    //         "construct": "Apartment",
+    //         "sqft": 1250,
+    //         "numrooms": 4,
+    //         "numbaths": 4,
+    //         "cleanfactor": 20,
+    //         "numpets":1,
+    //         "numpeople": 2,
+    //         "laundrywashandfold": 1,
+    //         "dishwashing": 1,
+    //         "mealprep": 1,
+    //         "ovencleaning": true,
+    //         "deepcleaning": true,
+    //         "professionalcouchcleaning": true,
+    //         "professionalrugshampoo": true,
+    //         "professionalfloorwaxing": true,
+    //         "dogwalking": true,
+    //         "petsitting": true,
+    //         "dispensingmedication": true,
+    //         "waste": true,
+    //         "cost" : {
+    //             "total": 0,
+    //             "cleaning": 0,
+    //             "extra": 0,
+    //             "professional": 0,
+    //             "pet": 0
+    //         },
+    //         "data" : {
+    //             "totaltimerooms":  0,
+    //             "totaltimebaths":  0,
+    //             "totalhours":  0
+    //         }
+    //     }
+    //
+    //      //setEst(estimateObj)
+    //
+    //
+    //     return {"total": 1};
+    // };
 
-    const calculateEstimate = (estimateRequest) => {
-
-        // TODO make call to estimate service
-        // const response = await ourService.post('/estimate', {
-        //             params: {
-        //                 request: estimateRequest
-        //             }
-        //         });
-        console.log('[calculateEstimate]: ', estimateRequest);
-
-        // Hydrate estimateObj to send to estimate service (TBD)
-        //  For now we will do the EST service here and return back an estimate. obj will sit in mem for now
-        // rate in dollars
-        const rate = 30.00;
-        const minimum = 60.00;
-        let  totalhours = 0;
-
-        const estimateObj = {
-            "serviceID": "1234",
-            "userID": "1234",
-            "typeofservice": "Cleaning",
-            "construct": "Apartment",
-            "sqft": 1250,
-            "numrooms": 4,
-            "numbaths": 4,
-            "cleanfactor": 20,
-            "numpets":1,
-            "numpeople": 2,
-            "laundrywashandfold": 1,
-            "dishwashing": 1,
-            "mealprep": 1,
-            "ovencleaning": true,
-            "deepcleaning": true,
-            "professionalcouchcleaning": true,
-            "professionalrugshampoo": true,
-            "professionalfloorwaxing": true,
-            "dogwalking": true,
-            "petsitting": true,
-            "dispensingmedication": true,
-            "waste": true,
-            "cost" : {
-                "total": 0,
-                "cleaning": 0,
-                "extra": 0,
-                "professional": 0,
-                "pet": 0
-            },
-            "data" : {
-                "totaltimerooms":  0,
-                "totaltimebaths":  0,
-                "totalhours":  0
-            }
-        }
-
-         //setEst(estimateObj)
-
-
-        return {"total": 1};
-    };
-
-   // return {"total": 1};
+   return {"total": 1};
 
 };
 
-export default useEstimatesService
+export default useEstimatesService;
 
 
 

@@ -1,5 +1,7 @@
 import {createContext, useState} from 'react';
 import axios from "axios";
+import React from "react";
+
 
 //CONTEXT PROVIDER
 // children are the
@@ -10,7 +12,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
-    //const [est, setEst] = calculateEstimate( { } );
+
 
     //const [trigger, setTrigger] = useState(0);
 
@@ -29,16 +31,29 @@ function Provider( {children} ) {
     //
     // }
 
+    const calculateEstimate = (obj) => {
+        console.log('[Provider] calculateEstimate obj: ', obj)
+        const {total} = obj; // returns a number deconstructed obj
+        const processedObj = {"total": total + 10}
+        return processedObj;
+    }
+
     const createEstimate = async (obj) => {
         //todo call estimateService and have algo give back the estimate
+        // for now we will use helper functions
         console.log('[Provider] createEstimate: ', obj );
+        const cost = calculateEstimate(obj);
+        console.log('[Provider] ', cost);
         const response = await axios.post('http://localhost:3001/estimates', {
-            obj
+            cost
         });
         console.log('Provider] createEstimate response.data ', response.data);
-        const updatedEstimate = response.data;
-        setEstimate(updatedEstimate);
+        const processedEstimate = response.data;
+        setEstimate(processedEstimate);
     }
+
+
+
 
 
 
