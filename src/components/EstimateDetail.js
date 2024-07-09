@@ -7,9 +7,7 @@ const EstimateDetail = () => {
    const [showEdit, setShowEdit] = useState(false);
    const { estimate } = useContext(EstimateContext);
 
-
    console.log('[EstimateDetail] estimate: ' + estimate);
-
    console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
 
    let content = <div><p>Loading...</p></div>;
@@ -21,6 +19,7 @@ const EstimateDetail = () => {
     } else {
         content = <div>
             <p>Your current Estimate is <b>${estimate.servicedetails.cost.total} </b> Click Book to Book Now</p>
+            <p>click edit to update your details</p>
             <button onClick={() => setShowEdit(!showEdit)}>BOOK NOW</button>
             <button onClick={() => setShowEdit(!showEdit)}>EDIT</button>
         </div>
