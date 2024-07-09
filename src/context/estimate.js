@@ -13,32 +13,40 @@ const EstimateContext = createContext();
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
 
-
-    //const [trigger, setTrigger] = useState(0);
-
-
-
     const getEstimatesFromAPI =  () => {
       //Fetch Data
     }
-
-    // helper functions for estimate algo
+    // HELPER FUNCTIONS
+    //todo move helper functions to api estimate algo
     const calculateEstimate = (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
-        const {total} = obj; // returns a number deconstructed obj
-        const processedObj = {"total": total / .1}
-        return processedObj;
-    }
+        const newObj = obj;
+        console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(newObj));
+        // emulate the algo applying changes to the new object
+        // for now we are only updating the cost
+        newObj["cost"] = {
+                "total": 5,
+                "cleaning": 4,
+                "extra": 3,
+                "professional": 2,
+                "pet": 1
+            }
+
+            console.log('[Provider] calculateEstimate newObj: ', newObj)
+            return newObj;
+        }
 
     // context functions
     const createEstimate = async (obj) => {
-        //todo call estimateService and have algo give back the estimate
-        // for now we will use helper functions
+
         console.log('[Provider] createEstimate: ', obj );
-        const cost = calculateEstimate(obj);
-        console.log('[Provider] ', cost);
+        // send the estimate object to the estimate service to be calculated
+        //todo call estimateService and have algo give back the estimate - for now we will use helper functions
+        const servicedetails = calculateEstimate(obj);
+        console.log('[Provider] cost', servicedetails);
+        // store the updated estimate in the database
         const response = await axios.post('http://localhost:3001/estimates', {
-            cost
+            servicedetails
         });
         console.log('Provider] createEstimate response.data ', response.data);
         const processedEstimate = response.data;

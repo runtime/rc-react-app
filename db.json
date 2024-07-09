@@ -1,22 +1,355 @@
 {
   "estimates": [
     {
-      "cost": {
-        "total": 400
+      "serviceDetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
       },
-      "id": 1
+      "id": "ilkIdvm"
     },
     {
-      "cost": {
-        "total": 1000
+      "serviceDetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
       },
-      "id": 2
+      "id": "a8bgbo6"
     },
     {
-      "cost": {
-        "total": 1500
+      "serviceDetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
       },
-      "id": 3
+      "id": "M_VopcM"
+    },
+    {
+      "serviceDetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
+      },
+      "id": "ynthoJZ"
+    },
+    {
+      "serviceDetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
+      },
+      "id": "FUB-MwX"
+    },
+    {
+      "serviceDetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
+      },
+      "id": "kPdWxQ1"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
+      },
+      "id": "4voTmwA"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
+      },
+      "id": "zkKnw5j"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets": 1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost": {
+          "total": 5,
+          "cleaning": 4,
+          "extra": 3,
+          "professional": 2,
+          "pet": 1
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
+      },
+      "id": "_5Vq4Pi"
     }
   ]
 }
