@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### `npm run server`
+
+Run in separate terminal from the react app.\
+Runs the json server for local db for use in development mode.\
+GET or POST [http://localhost:3001/Estimates](http://localhost:3000) to test the API
+
+local db for testing is named db.json
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
