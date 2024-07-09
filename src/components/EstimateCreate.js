@@ -251,16 +251,51 @@ const EstimateCreate = () => {
 //     const onSubmit = () => {
 //         console.log('onSubmit')
 //     }
-    const initialValue = {total:0}
-    const [value, setValue] = useState(initialValue.total)
+    const initialValue = {
+        "serviceID": "DEF456",
+        "userID": "greengirafe35",
+        "typeofservice": "Cleaning",
+        "construct": "Apartment",
+        "sqft": 1250,
+        "numrooms": 4,
+        "numbaths": 4,
+        "cleanfactor": 20,
+        "numpets":1,
+        "numpeople": 2,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": true,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": true,
+        "waste": true,
+        "cost" : {
+            "total": 0,
+            "cleaning": 0,
+            "extra": 0,
+            "professional": 0,
+            "pet": 0
+        },
+        "data" : {
+            "totaltimerooms":  0,
+            "totaltimebaths":  0,
+            "totalhours":  0
+        }
+    }
+    const [value, setValue] = useState(initialValue.cost.total) // no state will allow placeholder text. entering a value will cause the form input to have a value such as intialValue.estimate.cost
 
     const { createEstimate } = useContext(EstimateContext);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log('[EstimateCreate] onFormSubmit')
-        const newEstimate = {"total":value}
-        createEstimate(newEstimate);
+        console.log('[EstimateCreate] onFormSubmit initialValue:', initialValue)
+        //use Context function to create the estimate with the initial value
+        createEstimate(initialValue);
         //setValue(0);
     }
 

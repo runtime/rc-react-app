@@ -10,26 +10,26 @@ const EstimateDetail = () => {
 
    console.log('[EstimateDetail] estimate: ' + estimate);
 
-   console.log('[EstimateDetail] estimate.hasOwnProperty estimate: ' + estimate.hasOwnProperty("cost"));
+   console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
 
    let content = <div><p>Loading...</p></div>;
-    if (!estimate.hasOwnProperty("cost")) {
+    if (!estimate.hasOwnProperty("servicedetails")) {
        content = <div>
-           <p>no estimate yet</p>
+           <p>no details about your service yet</p>
            <p>waiting...</p>
        </div>;
     } else {
         content = <div>
-            <p>Your current Estimate is <b>${estimate.cost.total} </b> Click Book to Book Now</p>
-            <button onClick={() => setShowEdit(!showEdit)}>Book It!</button>
-            <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
+            <p>Your current Estimate is <b>${estimate.servicedetails.cost.total} </b> Click Book to Book Now</p>
+            <button onClick={() => setShowEdit(!showEdit)}>BOOK NOW</button>
+            <button onClick={() => setShowEdit(!showEdit)}>EDIT</button>
         </div>
 
     }
 
     return (
         <div>
-            <h1>Estimate Details</h1>
+            <h1>Service Details</h1>
             {content}
         </div>
     )
