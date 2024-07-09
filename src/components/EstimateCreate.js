@@ -53,8 +53,10 @@ const EstimateCreate = () => {
             "totalhours":  0
         }
     }
-    const [value, setValue] = useState(initialValue.cost.total) // no state will allow placeholder text. entering a value will cause the form input to have a value such as intialValue.estimate.cost
 
+    // working mvp (refactoring to service so we can use value for the individual combo boxes)
+    //const [value, setValue] = useState(initialValue.cost.total) // no state will allow placeholder text. entering a value will cause the form input to have a value such as intialValue.estimate.cost
+    const [service, setService] = useState()
     const { createEstimate } = useContext(EstimateContext);
 
 
@@ -63,35 +65,41 @@ const EstimateCreate = () => {
     /////////////////////////////// REVIEW BELOW /////////////////////////////////////
 
     const initialValues = {
-        typeofservice: '',
-        construct: '',
-        numpeople: "",
-        sqft: "",
-        numrooms: "",
-        numbaths: "",
-        numpets:"",
-        cleanfactor: "",
-        laundrywashandfold: "",
-        dishwashing: "",
-        mealprep: "",
-        ovencleaning: false,
-        fridgecleaning: false,
-        deepcleaning: false,
-        professionalcouchcleaning: false,
-        professionalrugshampoo: false,
-        professionalfloorwaxing: false,
-        dogwalking: false,
-        petsitting: false,
-        dispensingmedication: false,
-        waste: false,
-        estimate: {
-            total: 0,
-            cleaning: 0,
-            extra: 0,
-            professional: 0,
-            pet: 0,
-        },
-    }
+            "serviceID": "",
+            "userID": "",
+            "typeofservice": "",
+            "construct": "",
+            "sqft": "",
+            "numrooms": "",
+            "numbaths": "",
+            "cleanfactor": "",
+            "numpets": "",
+            "numpeople": "",
+            "laundrywashandfold": "",
+            "dishwashing": "",
+            "mealprep": "",
+            "ovencleaning": "",
+            "deepcleaning": "",
+            "professionalcouchcleaning": "",
+            "professionalrugshampoo": "",
+            "professionalfloorwaxing": "",
+            "dogwalking": "",
+            "petsitting": "",
+            "dispensingmedication": "",
+            "waste": "",
+            "cost": {
+                "total": 0,
+                "cleaning": 0,
+                "extra": 0,
+                "professional": 0,
+                "pet": 0
+            },
+            "data": {
+                "totaltimerooms": 0,
+                "totaltimebaths": 0,
+                "totalhours": 0
+            },
+        }
 
 
     //drop downs
@@ -371,8 +379,10 @@ const EstimateCreate = () => {
                                                             labelId="service-select-outlined-label"
                                                             id="service-select-outlined"
                                                             label="Select Type of Service*"
+                                                            //todo create handleChange function that updates the service object
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
+                                                            // todo handle values as setter
                                                             value={values.typeofservice}
                                                             name="typeofservice">
                                                             {typeofserviceoptions.map((item) => (

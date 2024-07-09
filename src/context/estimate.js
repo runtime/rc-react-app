@@ -20,20 +20,68 @@ function Provider( {children} ) {
     //todo move helper functions to api estimate algo
     const calculateEstimate = (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
-        const newObj = obj;
-        console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(newObj));
+
+        console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
         // emulate the algo applying changes to the new object
         // for now we are only updating the cost
-        newObj["cost"] = {
-                "total": 5,
-                "cleaning": 4,
-                "extra": 3,
-                "professional": 2,
-                "pet": 1
-            }
+        // newObj["cost"] = {
+        //         "total": 5,
+        //         "cleaning": 4,
+        //         "extra": 3,
+        //         "professional": 2,
+        //         "pet": 1
+        //     }
 
-            console.log('[Provider] calculateEstimate newObj: ', newObj)
-            return newObj;
+
+
+            ///// PORTED FROM EST OBJ
+        const rate = 30.00;
+        const minimum = 60.00;
+        let  totalhours = 0;
+
+        let newObj = {
+            typeofservice: obj.typeofservice,
+            construct: obj.construct,
+            sqft: obj.sqft,
+            numpeople: obj.numpeople,
+            numrooms: obj.numrooms,
+            numbaths: obj.numbaths,
+            numpets: obj.numpets,
+            cleanfactor: obj.cleanfactor,
+            laundrywashandfold: obj.laundrywashandfold,
+            dishwashing: obj.dishwashing,
+            mealprep: obj.mealprep,
+            ovencleaning: obj.ovencleaning,
+            fridgecleaning: obj.fridgecleaning,
+            deepcleaning: obj.deepcleaning,
+            professionalcouchcleaning: obj.professionalcouchcleaning,
+            professionalrugshampoo: obj.professionalrugshampoo,
+            professionalfloorwaxing: obj.professionalfloorwaxing,
+            dogwalking: obj.dogwalking,
+            petsitting: obj.petsitting,
+            dispensingmedication: obj.dispensingmedication,
+            waste: obj.waste,
+            rate: rate,
+            minimum: minimum,
+            cost: {
+                total: 0,
+                cleaning: 0,
+                extra: 0,
+                pro: 0,
+                pet: 0,
+            },
+            data: {
+                totaltimerooms: 0,
+                totaltimebaths: 0,
+                totalhours: 0,
+            }
+        }
+
+        console.log('[Provider] calculateEstimate newObj: ', newObj)
+        return newObj;
+
+
+
         }
 
     // context functions
