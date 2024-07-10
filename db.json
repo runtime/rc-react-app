@@ -38,7 +38,45 @@
         }
       },
       "id": "_5Vq4Pi"
+    },
+    {
+      "servicedetails": {
+        "typeofservice": 30,
+        "construct": 20,
+        "sqft": 950,
+        "numpeople": 2,
+        "numrooms": 2,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 5,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 0,
+          "cleaning": 0,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 0,
+          "totaltimebaths": 0,
+          "totalhours": 0
+        }
+      },
+      "id": "z45x7-Z"
     }
-
   ]
 }

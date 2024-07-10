@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react'
 import '../styles/Estimates.css';
 import EstimateContext from '../context/estimate';
+
 import {
     Typography, Grid, Box, Button, Chip,
     ThemeProvider, CssBaseline, Card,
@@ -15,6 +16,7 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 import { TextField } from "formik-material-ui";
 
 const EstimateCreate = () => {
+
 
 
     const initialValue = {
@@ -55,9 +57,10 @@ const EstimateCreate = () => {
     }
 
     // working mvp (refactoring to service so we can use value for the individual combo boxes)
-    //const [value, setValue] = useState(initialValue.cost.total) // no state will allow placeholder text. entering a value will cause the form input to have a value such as intialValue.estimate.cost
-    const [service, setService] = useState()
+    const [value, setValue] = useState({}) // no state will allow placeholder text. entering a value will cause the form input to have a value such as intialValue.estimate.cost
+    //const [service, setService] = useState()
     const { createEstimate } = useContext(EstimateContext);
+
 
 
 
@@ -293,11 +296,12 @@ const EstimateCreate = () => {
 
     /////////////////////////////// KEEP BELOW AS IS /////////////////////////////////
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        console.log('[EstimateCreate] onFormSubmit initialValue:', initialValue)
+    const handleFormSubmit = (values) => {
+        //e.preventDefault();
+        console.log('[EstimateCreate] onFormSubmit values:', values)
+        //setValue(values)
         //use Context function to create the estimate with the initial value
-        createEstimate(initialValue);
+       createEstimate(values);
         //setValue(0);
     }
 
@@ -379,10 +383,8 @@ const EstimateCreate = () => {
                                                             labelId="service-select-outlined-label"
                                                             id="service-select-outlined"
                                                             label="Select Type of Service*"
-                                                            //todo create handleChange function that updates the service object
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
-                                                            // todo handle values as setter
                                                             value={values.typeofservice}
                                                             name="typeofservice">
                                                             {typeofserviceoptions.map((item) => (
@@ -767,7 +769,7 @@ const EstimateCreate = () => {
                                                         variant="contained"
                                                         color="primary"
                                                         type="Submit"
-                                                        //onSubmit={getEstimate(value)}
+                                                        //onSubmit={handleFormSubmit(values)}
                                                         //onClick={() => window.location.href = '/Appointments'}
                                                         className='classes button'>
                                                         Next
