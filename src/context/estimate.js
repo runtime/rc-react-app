@@ -159,11 +159,15 @@ function Provider( {children} ) {
 
 
         //////////////////////////////////////////
-        // EST OBJ - total cost for basic cleaning
+        // Service OBJ - total cost for basic cleaning
         //////////////////////////////////////////
 
-        //serviceObj.cost.cleaning = servicerate + constructrate;
+        // Data for employees total hours etc..
+        serviceObj.data.totalhours = Math.round(totalhours);
+        serviceObj.data.totaltimerooms = Math.round(totaltimerooms);
+        serviceObj.data.totaltimebaths = Math.round(totaltimebaths);
 
+        // Cost for Customers
         serviceObj.cost.cleaning =  Math.round((totalhours * rate) + servicerate + constructrate);
 
         serviceObj.cost.extra = Math.round(
@@ -182,15 +186,11 @@ function Provider( {children} ) {
 
         serviceObj.cost.total = serviceObj.cost.cleaning + serviceObj.cost.extra + serviceObj.cost.pro + serviceObj.cost.pet;
 
-        // Final Estimate to be returned
-        //console.log('[Provider] serviceObj : ', serviceObj)
-
 
 
         ///////////////////
         // LOGS
         //////////////////
-
 
 
         // Hydrated serviceObj as received
@@ -258,13 +258,15 @@ function Provider( {children} ) {
         console.log('serviceObj.cost.pet: ', serviceObj.cost.pet);
         console.log('=======================================');
         console.log('serviceObj.cost.total: ', serviceObj.cost.total);
-        console.log('========================================');
+        console.log('================= Data ===================');
+        console.log('serviceObj.data.totalhours: ', serviceObj.data.totalhours);
+        console.log('serviceObj.data.totaltimerooms: ', serviceObj.data.totaltimerooms);
+        console.log('serviceObj.data.totaltimebaths: ', serviceObj.data.totaltimebaths);
+        console.log('=======================================');
 
-        /////////////////////
 
-
+        // Final Estimate to be returned
         return serviceObj;
-
 
 
         }

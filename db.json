@@ -116,6 +116,84 @@
         }
       },
       "id": "Kpad0Rz"
+    },
+    {
+      "servicedetails": {
+        "typeofservice": 30,
+        "construct": 25,
+        "sqft": 1250,
+        "numpeople": 3,
+        "numrooms": 3,
+        "numbaths": 2,
+        "numpets": 0,
+        "cleanfactor": 5,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 247,
+          "cleaning": 247,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 4.05,
+          "totaltimebaths": 2.3666666666666667,
+          "totalhours": 6.416666666666666
+        }
+      },
+      "id": "8SZ-AYa"
+    },
+    {
+      "servicedetails": {
+        "typeofservice": 30,
+        "construct": 25,
+        "sqft": 1250,
+        "numpeople": 3,
+        "numrooms": 4,
+        "numbaths": 4,
+        "numpets": 1,
+        "cleanfactor": 15,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 349,
+          "cleaning": 349,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 6,
+          "totaltimebaths": 4,
+          "totalhours": 10
+        }
+      },
+      "id": "a0q34XW"
     }
   ]
 }
