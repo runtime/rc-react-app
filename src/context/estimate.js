@@ -22,24 +22,13 @@ function Provider( {children} ) {
         console.log('[Provider] calculateEstimate obj: ', obj)
 
         console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
-        // emulate the algo applying changes to the new object
-        // for now we are only updating the cost
-        // newObj["cost"] = {
-        //         "total": 5,
-        //         "cleaning": 4,
-        //         "extra": 3,
-        //         "professional": 2,
-        //         "pet": 1
-        //     }
 
-
-
-            ///// PORTED FROM EST OBJ
+        // TODO Refactor the below algo into a Microservice
         const rate = 30.00;
         const minimum = 60.00;
         let  totalhours = 0;
 
-        let newObj = {
+        let serviceObj = {
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -77,8 +66,204 @@ function Provider( {children} ) {
             }
         }
 
-        console.log('[Provider] calculateEstimate newObj: ', newObj)
-        return newObj;
+        console.log('[Provider] calculateEstimate serviceObj: ', serviceObj)
+
+
+        ///ESTIMATE SERVICE FORMULA (TO BE REFACTORED INTO AN API TBD)//////////////
+        // RUNTIME ©2024 /////////////////
+        // factors to estimate the time per room (tpr)
+
+        let servicerate = serviceObj.typeofservice;
+        let constructrate = serviceObj.construct;
+        //const servicerate = (serviceObj.typeofservice === 'cleaning')? cleaningfee : moveoutfee;
+
+        console.log('servicerate: ', servicerate);
+        console.log('constructrate: ', constructrate);
+
+        const sqftfactor = (serviceObj.sqft /100) ; // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
+        const roomsfactor = serviceObj.numpeople /serviceObj.numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
+        const bathsfactor = serviceObj.numpeople / serviceObj.numbaths; // 1/3 = .333 (1/3 of an hour or 20 mins)
+        const petsfactor = serviceObj.numpets * 5; // 5 minutes per pet
+
+
+        // time per room for each factor
+        const base_tpr = roomsfactor * 60// 20 mins or a time in mins.
+        const base_tpb = bathsfactor * 60 // // time in mins
+        const petstpr = petsfactor * 1.5
+        const sqfttpr = Math.round(sqftfactor* 1.25);
+
+        // sub totals for total time per room
+        let tpr = base_tpr + sqfttpr + petstpr + serviceObj.cleanfactor;
+        // set a limit to 90 mins per room
+        if (tpr >= 120) {
+            tpr = 120
+        }
+        let tpb = (base_tpb / 1.8) + sqfttpr + petstpr + serviceObj.cleanfactor;
+
+        if (tpb >= 90) {
+            tpb = 90
+        }
+
+        let totaltimerooms = Math.round(tpr * serviceObj.numrooms) / 60;
+        let totaltimebaths = Math.round(tpb * serviceObj.numbaths) / 60;
+
+       // in order to show the change in cost for clean vs moveout and apartment vs house before we have num rooms or time
+        // we need to set the total time to 0 if the estimate is for cleaning or moveout
+        if ((!totaltimerooms) && (!totaltimebaths)) {
+            totaltimerooms = 0
+            totaltimebaths = 0
+        }
+
+
+        totalhours = totaltimerooms + totaltimebaths;
+
+        // END STANDARD CLEANING
+        // BEGIN EXTRA, PRO AND PET
+
+        //EXTRA RATES
+        const diswashingrate = 35;
+        const laundryrate = 60;
+        const ovenrate = 35;
+        const mealpreprate = 60;
+        const fridgerate = 55;
+        const deepcleanrate = 100;
+
+        //PRO RATES
+        const couchrate = 160;
+        const rugrate = 90;
+        const floorwaxreate = 80;
+
+        //PET RATES
+        const dogwalkingrate = 30;
+        const petsittingrate = 30;
+        const dispensingrate = 15;
+        const wasterate = 15;
+
+        //COSTS - EXTRAS
+        const dishwashingcost = serviceObj.dishwashing * diswashingrate;
+        const laundrycost = serviceObj.laundrywashandfold * laundryrate;
+        const mealprepcost = serviceObj.mealprep * mealpreprate;
+
+        const ovencleaningcost = (serviceObj.ovencleaning)? ovenrate : 0;
+        const fridgecleaningcost = (serviceObj.fridgecleaning)? fridgerate : 0;
+        const deepcleaningcost = (serviceObj.deepcleaning)? deepcleanrate : 0;
+
+        const professionalcouchcleaningcost = (serviceObj.professionalcouchcleaning)? couchrate : 0;
+        const professionalrugshampoocost = (serviceObj.professionalrugshampoo)? rugrate : 0;
+        const professionalfloorwaxingcost = (serviceObj.professionalfloorwaxing)? floorwaxreate :  0;
+
+        const dogwalkingcost = (serviceObj.dogwalking)? dogwalkingrate : 0;
+        const petsittingcost = (serviceObj.petsitting)? petsittingrate: 0;
+        const dispensingmedicationcost = (serviceObj.dispensingmedication)? dispensingrate : 0;
+        const wastecost = (serviceObj.waste)? wasterate : 0;
+
+
+        //////////////////////////////////////////
+        // EST OBJ - total cost for basic cleaning
+        //////////////////////////////////////////
+
+        //serviceObj.cost.cleaning = servicerate + constructrate;
+
+        serviceObj.cost.cleaning =  Math.round((totalhours * rate) + servicerate + constructrate);
+
+        serviceObj.cost.extra = Math.round(
+            dishwashingcost + laundrycost + mealprepcost +
+            ovencleaningcost + fridgecleaningcost + deepcleaningcost
+        );
+
+        serviceObj.cost.pro = Math.round(
+            professionalcouchcleaningcost + professionalrugshampoocost + professionalfloorwaxingcost
+        );
+        serviceObj.cost.pet = Math.round(
+            dogwalkingcost + petsittingcost + dispensingmedicationcost + wastecost
+        );
+
+        // calculate the final estimate
+
+        serviceObj.cost.total = serviceObj.cost.cleaning + serviceObj.cost.extra + serviceObj.cost.pro + serviceObj.cost.pet;
+
+        // Final Estimate to be returned
+        //console.log('[Provider] serviceObj : ', serviceObj)
+
+
+
+        ///////////////////
+        // LOGS
+        //////////////////
+
+
+
+        // Hydrated serviceObj as received
+        console.log('[Provider] serviceObj.rate: ', serviceObj.rate, ' typeofservice: ', serviceObj.typeofservice, ' construct: ', serviceObj.construct,
+            ' numpeople: ', serviceObj.numpeople, 'numrooms: ', serviceObj.numrooms, 'numbaths: ', serviceObj.numbaths, ' numpets: ', serviceObj.numpets, ' sqft: ', serviceObj.sqft, ' cleanfactor: ', serviceObj.cleanfactor,);
+
+        // Algo Factors for basic services
+        console.log('Factors:');
+        console.log('sqftfactor: 10% of square feet * 2', sqftfactor);
+        console.log('roomsfactor  (occupants / rooms) : ', roomsfactor);
+        console.log('bathsfactor: (occupants / baths)', bathsfactor);
+        console.log('petsfactor: (5 mins per pet) ', petsfactor);
+        console.log('cleanfactor: (already in mins) ', serviceObj.cleanfactor);
+
+        // estimated times for basic services from factors
+        console.log('base_tpr in minutes: ', base_tpr);
+        console.log('base_tpb in minutes: ', base_tpb);
+        console.log('sqfttpr in minutes:', sqfttpr);
+        console.log('petsfactor: in minutes ', petsfactor);
+        console.log('cleanfactor: in minutes ', serviceObj.cleanfactor);
+
+        console.log('tpr in mins: ', tpr);
+        console.log('tpb in mins: ', tpb);
+
+        console.log('totaltimerooms: ', totaltimerooms);
+        console.log('totaltimebaths: ', totaltimebaths);
+        console.log('totalhours: ', totalhours);
+        console.log('=====================');
+
+        ////// End Log Basic Services
+
+        // Extra, Professional and Pet Services serviceObj
+        console.log('laundrywashandfold: ', serviceObj.laundrywashandfold);
+        console.log('dishwashing: ', serviceObj.dishwashing);
+        console.log('mealprep: ', serviceObj.mealprep);
+        console.log('ovencleaning: ', serviceObj.ovencleaning);
+        console.log('fridgecleaning: ', serviceObj.fridgecleaning);
+        console.log('deepcleaning: ', serviceObj.deepcleaning);
+        console.log('professionalcouchcleaning: ', serviceObj.professionalcouchcleaning);
+        console.log('professionalrugshampoo: ', serviceObj.professionalrugshampoo);
+        console.log('professionalfloorwaxing: ', serviceObj.professionalfloorwaxing);
+        console.log('dogwalking: ', serviceObj.dogwalking);
+        console.log('petsitting: ', serviceObj.petsitting);
+        console.log('dispensingmedication: ', serviceObj.dispensingmedication);
+        console.log('waste: ', serviceObj.waste);
+
+        console.log('Extra Costs: ');
+        console.log('dishwashingcost: ', dishwashingcost);
+        console.log('laundrycost: ', laundrycost);
+        console.log('mealprepcost: ', mealprepcost);
+        console.log('ovencleaningcost: ', ovencleaningcost);
+        console.log('fridgecleaningcost: ', fridgecleaningcost);
+        console.log('deepcleaningcost: ', deepcleaningcost);
+        console.log('professionalcouchcleaningcost: ', professionalcouchcleaningcost);
+        console.log('professionalrugshampoocost: ', professionalrugshampoocost);
+        console.log('professionalfloorwaxingcost: ', professionalfloorwaxingcost);
+        console.log('dogwalkingcost: ', dogwalkingcost);
+        console.log('petsittingcost: ', petsittingcost);
+        console.log('dispensingmedicationcost: ', dispensingmedicationcost);
+        console.log('wastecost: ', wastecost);
+        console.log('=============== estimate ==============');
+        console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
+        console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
+        console.log('serviceObj.cost.pro: ', serviceObj.cost.pro);
+        console.log('serviceObj.cost.pet: ', serviceObj.cost.pet);
+        console.log('=======================================');
+        console.log('serviceObj.cost.total: ', serviceObj.cost.total);
+        console.log('========================================');
+
+        /////////////////////
+
+
+        return serviceObj;
 
 
 
@@ -91,7 +276,7 @@ function Provider( {children} ) {
         // send the estimate object to the estimate service to be calculated
         //todo call estimateService and have algo give back the estimate - for now we will use helper functions
         const servicedetails = calculateEstimate(obj);
-        console.log('[Provider] cost', servicedetails);
+        console.log('[Provider] servicedetails', servicedetails);
         // store the updated estimate in the database
         const response = await axios.post('http://localhost:3001/estimates', {
             servicedetails
