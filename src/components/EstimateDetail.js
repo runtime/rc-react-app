@@ -59,11 +59,17 @@ const EstimateDetail = () => {
                     opacity: {xs: 0.8, sm: 0.8, lg: 0.8}
                 }}
             />
-            <Typography variant="body1" marginBottom='20px'>For a {estimate.servicedetails.typeofservice} at your {estimate.servicedetails.construct}</Typography>
-            <Typography variant="body1" marginBottom='20px' > Listed as {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA </Typography>
-            <Typography>click edit to update your details</Typography>
-            <Button variant="contained"  color="primary" onClick={() => setShowEdit(!showEdit)}>BOOK NOW</Button>
-            <Button  variant="contained"  color="primary" onClick={() => setShowEdit(!showEdit)}>EDIT</Button>
+            <Typography variant="body1" marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
+                your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}</Typography>
+            <Typography variant="body1" marginBottom='20px'> Please expect us to take about {estimate.servicedetails.data.totalhours} hours to complete the {estimate.servicedetails.typeofservice} </Typography>
+            <Typography>click edit to update your estimate or book now to choose a date of service </Typography>
+            <Button variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>BOOK NOW</Button>
+            <Button variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>EDIT</Button>
+
+            <h1>Data for cleaners</h1>
+            <p>total hours: {estimate.servicedetails.data.totalhours}</p>
+            <p>total time all rooms: {estimate.servicedetails.data.totaltimerooms}</p>
+            <p>total time all baths: {estimate.servicedetails.data.totaltimebaths}</p>
 
 
         </>
@@ -73,7 +79,7 @@ const EstimateDetail = () => {
     return (
         <div className='Estimates'>
 
-            <Box>
+        <Box>
                 <ThemeProvider theme={RapidCleanTheme}>
                     <CssBaseline enableColorScheme/>
                     <Card elevation={0} sx={{marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}}>
