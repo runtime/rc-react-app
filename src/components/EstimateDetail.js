@@ -61,18 +61,23 @@ const EstimateDetail = () => {
                     opacity: {xs: 0.8, sm: 0.8, lg: 0.8}
                 }}
             />
-            <Typography variant="body1" marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
-                your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}</Typography>
+            <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
+                your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
+            </Typography>
+            <Typography variant="body1" marginBottom='20px'>Awesome, you are almost about to experience a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
             <Typography variant="body1" marginBottom='20px'> Please expect us to take about {estimate.servicedetails.data.totalhours} hours to complete the {estimate.servicedetails.typeofservice} </Typography>
-            <Typography>click edit to update your estimate or book now to choose a date of service </Typography>
-            <Button variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>BOOK NOW</Button>
-            <Button variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>EDIT</Button>
+            <Typography marginBottom='20px'>Click book now to choose a date for the service.</Typography>
+            <Typography variant="h5" marginBottom='20px'>
+                If you need to make any changes to your estimate, please click edit to update any details of your estimate.
+                Do not hit the back arrow or refresh the browser.
+            </Typography>
+            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>BOOK NOW</Button>
+            <Button marginBottom='20px' variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>EDIT</Button>
 
-            <h1>Data for cleaners</h1>
-            <p>total hours: {estimate.servicedetails.data.totalhours}</p>
-            <p>total time all rooms: {estimate.servicedetails.data.totaltimerooms}</p>
-            <p>total time all baths: {estimate.servicedetails.data.totaltimebaths}</p>
-
+            {/*<h1>Data for cleaners</h1>*/}
+            {/*<p>total hours: {estimate.servicedetails.data.totalhours}</p>*/}
+            {/*<p>total time all rooms: {estimate.servicedetails.data.totaltimerooms}</p>*/}
+            {/*<p>total time all baths: {estimate.servicedetails.data.totaltimebaths}</p>*/}
 
         </>
 
@@ -87,8 +92,8 @@ const EstimateDetail = () => {
                     <Card elevation={0} sx={{marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}}>
                         <CardContent>
                             <Typography color="secondary" variant="cardTitle" component="h1"
-                                        display="inline">Your </Typography>
-                            <Typography color="primary" variant="cardTitle" component='h1'
+                                        display="inline">Our </Typography>
+                            <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1'
                                         display="inline">Estimate</Typography>
 
                             {content}

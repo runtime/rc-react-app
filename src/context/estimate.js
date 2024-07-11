@@ -32,10 +32,13 @@ function Provider( {children} ) {
         // for temp user names
         const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog"]
 
+        const randomID = Math.random
+
+
 
         let serviceObj = {
             serviceID: obj.serviceID,
-            userID: prenoms[Math.round(Math.random(1))] + "_" + Math.round(Math.random(100)),
+            userID: prenoms[Math.round(Math.random(2))] + "_" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
