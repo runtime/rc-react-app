@@ -12,6 +12,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
+    const [showEdit, setShowEdit] = useState(true);
 
     const getEstimatesFromAPI =  () => {
       //Fetch Data
@@ -301,11 +302,19 @@ function Provider( {children} ) {
         console.log('Provider] createEstimate response.data ', response.data);
         const processedEstimate = response.data;
         setEstimate(processedEstimate);
+        setShowEdit(false);
     }
+
+    const editEstimate =  () => {
+        // Todo populate the form with the current estimate
+        setShowEdit(true)
+    }
+
+
 
     // set new value to send back to context subscribers
 
-    const tempValue = {estimate, createEstimate}
+    const tempValue = {estimate, showEdit, editEstimate, createEstimate}
 
     return (
         <EstimateContext.Provider value={tempValue}>

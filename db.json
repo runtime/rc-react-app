@@ -3,12 +3,53 @@
     {
       "servicedetails": {
         "serviceID": "",
-        "userID": "greengiraffe_455",
+        "userID": "greengiraffe_83",
         "typeofservice": "Standard Cleaning",
         "construct": "Apartment",
-        "sqft": 950,
+        "sqft": 250,
         "numpeople": 1,
-        "numrooms": 2,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "NxhLwOU"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_523",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 750,
+        "numpeople": 1,
+        "numrooms": 1,
         "numbaths": 1,
         "numpets": 0,
         "cleanfactor": 5,
@@ -27,19 +68,60 @@
         "rate": 30,
         "minimum": 60,
         "cost": {
-          "total": 127,
-          "cleaning": 127,
+          "total": 116,
+          "cleaning": 116,
           "extra": 0,
           "pro": 0,
           "pet": 0
         },
         "data": {
-          "totaltimerooms": 2,
+          "totaltimerooms": 1,
           "totaltimebaths": 1,
           "totalhours": 2
         }
       },
-      "id": "iJccd4K"
+      "id": "MPkuT8l"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "greengiraffe_326",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 950,
+        "numpeople": 2,
+        "numrooms": 2,
+        "numbaths": 1.5,
+        "numpets": 1,
+        "cleanfactor": 5,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 191,
+          "cleaning": 191,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 3,
+          "totaltimebaths": 2,
+          "totalhours": 5
+        }
+      },
+      "id": "vckjzZt"
     }
   ]
 }

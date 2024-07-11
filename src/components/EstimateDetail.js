@@ -13,11 +13,17 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EstimateDetail = () => {
 
-   const [showEdit, setShowEdit] = useState(false);
-   const { estimate } = useContext(EstimateContext);
+   const { estimate, editEstimate } = useContext(EstimateContext);
 
    console.log('[EstimateDetail] estimate: ' + estimate);
    console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
+
+   const handleEstimateEditButtonClick = (e) => {
+        e.preventDefault();
+       editEstimate()
+   }
+
+
 
    let content = <div><p>Loading...</p></div>;
 
@@ -64,15 +70,19 @@ const EstimateDetail = () => {
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
                 your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>
-            <Typography variant="body1" marginBottom='20px'>Awesome, you are almost about to experience a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
-            <Typography variant="body1" marginBottom='20px'> Please expect us to take about {estimate.servicedetails.data.totalhours} hours to complete the {estimate.servicedetails.typeofservice} </Typography>
+            <Typography variant="body1" marginBottom='20px'>Awesome, you are one step closer to experiencing a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
+            <Typography variant="body1" marginBottom='20px'> Please note we expect to take about {estimate.servicedetails.data.totalhours} hours to complete the {estimate.servicedetails.typeofservice} </Typography>
+            <Typography variant="body1" marginBottom='20px'>
+                Your anonymous user name is <b>{estimate.servicedetails.userID}</b> and your estimate number is: <b>{estimate.id}</b>.
+            </Typography>
             <Typography marginBottom='20px'>Click book now to choose a date for the service.</Typography>
+
             <Typography variant="h5" marginBottom='20px'>
                 If you need to make any changes to your estimate, please click edit to update any details of your estimate.
                 Do not hit the back arrow or refresh the browser.
             </Typography>
-            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>BOOK NOW</Button>
-            <Button marginBottom='20px' variant="contained" color="primary" onClick={() => setShowEdit(!showEdit)}>EDIT</Button>
+            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => {console.log('booked')}}>BOOK NOW</Button>
+            {/*<Button marginBottom='20px' variant="contained" color="primary" onClick={handleEstimateEditButtonClick}>EDIT</Button>*/}
 
             {/*<h1>Data for cleaners</h1>*/}
             {/*<p>total hours: {estimate.servicedetails.data.totalhours}</p>*/}
