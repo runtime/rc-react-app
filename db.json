@@ -2,49 +2,12 @@
   "estimates": [
     {
       "servicedetails": {
-        "serviceID": "DEF456",
-        "userID": "greengirafe35",
-        "typeofservice": "Cleaning",
+        "serviceID": "",
+        "userID": "greengiraffe_455",
+        "typeofservice": "Standard Cleaning",
         "construct": "Apartment",
-        "sqft": 1250,
-        "numrooms": 4,
-        "numbaths": 4,
-        "cleanfactor": 20,
-        "numpets": 1,
-        "numpeople": 2,
-        "laundrywashandfold": 1,
-        "dishwashing": 1,
-        "mealprep": 1,
-        "ovencleaning": true,
-        "deepcleaning": true,
-        "professionalcouchcleaning": true,
-        "professionalrugshampoo": true,
-        "professionalfloorwaxing": true,
-        "dogwalking": true,
-        "petsitting": true,
-        "dispensingmedication": true,
-        "waste": true,
-        "cost": {
-          "total": 5,
-          "cleaning": 4,
-          "extra": 3,
-          "professional": 2,
-          "pet": 1
-        },
-        "data": {
-          "totaltimerooms": 0,
-          "totaltimebaths": 0,
-          "totalhours": 0
-        }
-      },
-      "id": "_5Vq4Pi"
-    },
-    {
-      "servicedetails": {
-        "typeofservice": 30,
-        "construct": 20,
         "sqft": 950,
-        "numpeople": 2,
+        "numpeople": 1,
         "numrooms": 2,
         "numbaths": 1,
         "numpets": 0,
@@ -64,136 +27,19 @@
         "rate": 30,
         "minimum": 60,
         "cost": {
-          "total": 0,
-          "cleaning": 0,
+          "total": 127,
+          "cleaning": 127,
           "extra": 0,
           "pro": 0,
           "pet": 0
         },
         "data": {
-          "totaltimerooms": 0,
-          "totaltimebaths": 0,
-          "totalhours": 0
+          "totaltimerooms": 2,
+          "totaltimebaths": 1,
+          "totalhours": 2
         }
       },
-      "id": "z45x7-Z"
-    },
-    {
-      "servicedetails": {
-        "typeofservice": 25,
-        "construct": 20,
-        "sqft": 950,
-        "numpeople": 1,
-        "numrooms": 1,
-        "numbaths": 1,
-        "numpets": 0,
-        "cleanfactor": 0,
-        "laundrywashandfold": "",
-        "dishwashing": "",
-        "mealprep": "",
-        "ovencleaning": "",
-        "deepcleaning": "",
-        "professionalcouchcleaning": "",
-        "professionalrugshampoo": "",
-        "professionalfloorwaxing": "",
-        "dogwalking": "",
-        "petsitting": "",
-        "dispensingmedication": "",
-        "waste": "",
-        "rate": 30,
-        "minimum": 60,
-        "cost": {
-          "total": 104,
-          "cleaning": 104,
-          "extra": 0,
-          "pro": 0,
-          "pet": 0
-        },
-        "data": {
-          "totaltimerooms": 0,
-          "totaltimebaths": 0,
-          "totalhours": 0
-        }
-      },
-      "id": "Kpad0Rz"
-    },
-    {
-      "servicedetails": {
-        "typeofservice": 30,
-        "construct": 25,
-        "sqft": 1250,
-        "numpeople": 3,
-        "numrooms": 3,
-        "numbaths": 2,
-        "numpets": 0,
-        "cleanfactor": 5,
-        "laundrywashandfold": "",
-        "dishwashing": "",
-        "mealprep": "",
-        "ovencleaning": "",
-        "deepcleaning": "",
-        "professionalcouchcleaning": "",
-        "professionalrugshampoo": "",
-        "professionalfloorwaxing": "",
-        "dogwalking": "",
-        "petsitting": "",
-        "dispensingmedication": "",
-        "waste": "",
-        "rate": 30,
-        "minimum": 60,
-        "cost": {
-          "total": 247,
-          "cleaning": 247,
-          "extra": 0,
-          "pro": 0,
-          "pet": 0
-        },
-        "data": {
-          "totaltimerooms": 4.05,
-          "totaltimebaths": 2.3666666666666667,
-          "totalhours": 6.416666666666666
-        }
-      },
-      "id": "8SZ-AYa"
-    },
-    {
-      "servicedetails": {
-        "typeofservice": 30,
-        "construct": 25,
-        "sqft": 1250,
-        "numpeople": 3,
-        "numrooms": 4,
-        "numbaths": 4,
-        "numpets": 1,
-        "cleanfactor": 15,
-        "laundrywashandfold": "",
-        "dishwashing": "",
-        "mealprep": "",
-        "ovencleaning": "",
-        "deepcleaning": "",
-        "professionalcouchcleaning": "",
-        "professionalrugshampoo": "",
-        "professionalfloorwaxing": "",
-        "dogwalking": "",
-        "petsitting": "",
-        "dispensingmedication": "",
-        "waste": "",
-        "rate": 30,
-        "minimum": 60,
-        "cost": {
-          "total": 349,
-          "cleaning": 349,
-          "extra": 0,
-          "pro": 0,
-          "pet": 0
-        },
-        "data": {
-          "totaltimerooms": 6,
-          "totaltimebaths": 4,
-          "totalhours": 10
-        }
-      },
-      "id": "a0q34XW"
+      "id": "iJccd4K"
     }
   ]
 }

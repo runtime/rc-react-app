@@ -108,17 +108,17 @@ const EstimateCreate = () => {
     //drop downs
     // type of service options
     const typeofserviceoptions = [
-        { label: "Standard Cleaning", value: 30 },
-        { label: "Standard Cleaning - Move Out", value: 25 },
+        { label: "Standard Cleaning", value: "Standard Cleaning" },
+        { label: "Standard Cleaning - Move Out", value: "Move-out Clean" },
     ]
 
     // construct options
     const constructoptions = [
-        { label: "Apartment", value: 20 },
-        { label: "House", value: 25 },
-        { label: "Room", value: 10 },
-        { label: "Dorm", value: 10 },
-        { label: "Other", value: 50 },
+        { label: "Apartment", value: "Apartment" },
+        { label: "House", value: "House" },
+        { label: "Room", value: "Room" },
+        { label: "Room", value: "Room" },
+        { label: "Other", value: "Other" },
     ]
 
     const numroomsoptions = [
@@ -261,8 +261,8 @@ const EstimateCreate = () => {
 
 //validation schema
     let validationSchema = Yup.object().shape({
-        typeofservice: Yup.number().required("Required"),
-        construct: Yup.number().required("Required"),
+        typeofservice: Yup.string().required("Required"),
+        construct: Yup.string().required("Required"),
         sqft: Yup.string().required("Required"),
         numrooms: Yup.number().required("Required"),
         numbaths: Yup.number().required("Required"),
@@ -306,18 +306,6 @@ const EstimateCreate = () => {
     }
 
     return (
-        // <div>
-        //     <h1>Get an Instant Custom Estimate </h1>
-        //     <p><b>Your Estimate as of now is: ${value}.00</b>.</p>
-        //     <p>Please hit the SUBMIT button to submit your estimate</p>
-        //     <form onSubmit={handleFormSubmit}>
-        //         <input type="text" placeholder="enter estimate" value={value}
-        //                onChange={(e) => setValue(e.target.value)}/>
-        //         <button type="submit">SUBMIT</button>
-        //     </form>
-        //
-        // </div>
-
 
         <div className='Estimates'>
             <Box>
@@ -337,26 +325,7 @@ const EstimateCreate = () => {
                                         display="inline">Standard </Typography>
                             <Typography color="primary" variant="cardTitle" component='h1'
                                         display="inline">Cleaning</Typography>
-                            {/*<Chip*/}
-                            {/*    size='small'*/}
-                            {/*    position='relative'*/}
-                            {/*    label={estimateDisplay}*/}
-                            {/*    variant="outlined"*/}
-                            {/*    color='secondary'*/}
-                            {/*    pointerEvents='none'*/}
-                            {/*    sx={{*/}
-                            {/*        padding: '2px',*/}
-                            {/*        fontFamily: 'Helvetica Bold" "Arial Bold',*/}
-                            {/*        fontWeight: '800',*/}
-                            {/*        fontSize: '.85em',*/}
-                            {/*        minWidth: '80px',*/}
-                            {/*        marginLeft: '12px',*/}
-                            {/*        transitionDuration: '0.3s',*/}
-                            {/*        transitionProperty: 'all',*/}
-                            {/*        transitionTimingFunction: 'linear',*/}
-                            {/*        opacity: {xs: 0.8, sm: 0.8, lg: 0.8}*/}
-                            {/*    }}*/}
-                            {/*/>*/}
+
 
                             <Typography variant="body1" marginBottom='20px'>
                                 Experience a pristine space with our standard cleaning service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish.

@@ -26,9 +26,19 @@ function Provider( {children} ) {
         // TODO Refactor the below algo into a Microservice
         const rate = 30.00;
         const minimum = 60.00;
+        const cleaningfee = 35.00;
+        const moveoutfee = 25.00;
         let  totalhours = 0;
+        // for temp user names
+        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog"]
+
+        const randomID = Math.random
+
+
 
         let serviceObj = {
+            serviceID: obj.serviceID,
+            userID: prenoms[Math.round(Math.random(2))] + "_" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -73,9 +83,14 @@ function Provider( {children} ) {
         // RUNTIME ©2024 /////////////////
         // factors to estimate the time per room (tpr)
 
-        let servicerate = serviceObj.typeofservice;
-        let constructrate = serviceObj.construct;
-        //const servicerate = (serviceObj.typeofservice === 'cleaning')? cleaningfee : moveoutfee;
+        // because the form submits type of cleaning and construct as strings we need
+        // to convert these strings to values. this is something i went back and forth on
+        // but this is the best way
+
+
+        const servicerate = (serviceObj.typeofservice === 'Standard Cleaning')? cleaningfee : moveoutfee;
+        const constructrate = (serviceObj.construct === 'House')? 25 : 20;
+
 
         console.log('servicerate: ', servicerate);
         console.log('constructrate: ', constructrate);
