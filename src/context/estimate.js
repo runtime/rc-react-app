@@ -29,9 +29,13 @@ function Provider( {children} ) {
         const cleaningfee = 35.00;
         const moveoutfee = 25.00;
         let  totalhours = 0;
+        // for temp user names
+        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog"]
 
 
         let serviceObj = {
+            serviceID: obj.serviceID,
+            userID: prenoms[Math.round(Math.random(1))] + "_" + Math.round(Math.random(100)),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,

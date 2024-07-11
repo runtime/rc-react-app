@@ -306,18 +306,6 @@ const EstimateCreate = () => {
     }
 
     return (
-        // <div>
-        //     <h1>Get an Instant Custom Estimate </h1>
-        //     <p><b>Your Estimate as of now is: ${value}.00</b>.</p>
-        //     <p>Please hit the SUBMIT button to submit your estimate</p>
-        //     <form onSubmit={handleFormSubmit}>
-        //         <input type="text" placeholder="enter estimate" value={value}
-        //                onChange={(e) => setValue(e.target.value)}/>
-        //         <button type="submit">SUBMIT</button>
-        //     </form>
-        //
-        // </div>
-
 
         <div className='Estimates'>
             <Box>

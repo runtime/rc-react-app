@@ -19,12 +19,8 @@ const EstimateDetail = () => {
    console.log('[EstimateDetail] estimate: ' + estimate);
    console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
 
-    let estimateDisplay = estimate.servicedetails.cost.total.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    }); /* $2,500.00 */
-
    let content = <div><p>Loading...</p></div>;
+
     if (!estimate.hasOwnProperty("servicedetails")) {
        content =
            <>
@@ -37,6 +33,12 @@ const EstimateDetail = () => {
            </>
 
     } else {
+        //helper function to convert totals to a US dollar amounts
+        const estimateDisplay = estimate.servicedetails.cost.total.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        }); /* $2,500.00 */
+
         content = <>
 
             <Chip
