@@ -674,42 +674,19 @@
       "servicedetails": {
         "typeofservice": "Standard Job",
         "cost": {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           "total": 1000
         }
       },
       "id": "-VS1NmK"
+    },
+    {
+      "servicedetails": {
+        "typeofservice": "Terrible Clean",
+        "cost": {
+          "total": 1000
+        }
+      },
+      "id": "XrxDf2v"
     }
   ]
 }

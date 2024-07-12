@@ -38,7 +38,7 @@ const EditEstimate =({estimate, onSubmit}) => {
             <form onSubmit={handleSubmit}>
                 <label>type of service</label>
                 <input className='input' type="text" value={typeOfService} onChange={handleChange}/>
-                <button className='button is-primary' type="submit">Save</button>
+                <button className='button is-primary' type="submit">SAVE</button>
             </form>
         </div>
 
