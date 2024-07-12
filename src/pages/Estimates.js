@@ -1,6 +1,4 @@
-import React, {useContext, useState} from 'react'
 import '../styles/Estimates.css';
-import EstimateContext from '../context/estimate';
 import {
     Typography, Grid, Box, Button, Chip,
     ThemeProvider, CssBaseline, Card,
@@ -14,22 +12,23 @@ import EstimateCreate from '../components/EstimateCreate';
 import EstimateDetail from '../components/EstimateDetail';
 
 const Estimates = () => {
-    const { showEdit } = useContext(EstimateContext);
-    console.log('[Estimates] showEdit: ' + showEdit);
-
-    let content = <div> loading ...</div>
-    if (showEdit) {
-        content = <EstimateCreate />;
-    } else {
-        content= <EstimateDetail />;
-    }
 
     return (
-        <div>
-            <div>{content}</div>
-        </div>
+        <ThemeProvider theme={RapidCleanTheme}>
+            <CssBaseline />
+            <div className='Estimates'>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} sm={12} md={6}>
+                        <EstimateCreate />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                        <EstimateDetail />
+                    </Grid>
+                </Grid>
+            </div>
+        </ThemeProvider>
+    );
 
-    )
 }
 
 export default Estimates;

@@ -60,7 +60,9 @@ const EstimateCreate = () => {
     /////////////////////////////// ^^^^ KEEP ^^^^^ //////////////////////////////////
     /////////////////////////////// REVIEW BELOW /////////////////////////////////////
 
-    const initialValues = {
+
+
+    let initialValues = {
             "serviceID": "",
             "userID": "",
             "typeofservice": "",
@@ -96,6 +98,7 @@ const EstimateCreate = () => {
                 "totalhours": 0
             },
         }
+
 
 
     //drop downs
