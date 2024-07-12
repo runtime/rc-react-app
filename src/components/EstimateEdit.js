@@ -32,9 +32,12 @@ const EditEstimate =({estimate, onSubmit}) => {
 
     return (
         <div>
+            <h2>Edit Estimate</h2>
+            <p>user: {estimate.servicedetails.userID}</p>
+            <p>id: {estimate.id}</p>
             <form onSubmit={handleSubmit}>
-                <label>Title</label>
-                <input className='input' type="text" value={estimate.servicedetails.typeofservice} onChange={handleChange}/>
+                <label>type of service</label>
+                <input className='input' type="text" value={typeOfService} onChange={handleChange}/>
                 <button className='button is-primary' type="submit">Save</button>
             </form>
         </div>

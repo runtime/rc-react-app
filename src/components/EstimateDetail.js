@@ -12,13 +12,13 @@ import {
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 
-const EstimateDetail = ({ estimate} ) => {
+const EstimateDetail = () => {
 
-   //const { estimate, editEstimate } = useContext(EstimateContext);
+   const { estimate } = useContext(EstimateContext);
    const [showEdit, setShowEdit] = useState(false);
 
    console.log('[EstimateDetail] estimate: ' + estimate);
-   //console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
+   console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
 
    const handleEditClick = () => {
         setShowEdit(!showEdit);
@@ -29,15 +29,23 @@ const EstimateDetail = ({ estimate} ) => {
        setShowEdit(false);
    }
 
-   let content = <h3>estimate.id</h3>
-    if (showEdit) {
-        content = <EstimateEdit estimate={estimate} onSubmit={handleSubmit} />;
+   let content = <h3>loading</h3>
+    if ((estimate) && (!showEdit)){
+
+        content = <>
+
+            <EstimateEdit estimate={estimate} onSubmit={handleSubmit} />
+
+        </>
     } else {
         content=
         <>
-            <div>{content}</div>
-            <div className="actions">
-                <button className="edit" onClick={handleEditClick}>Edit</button>
+
+            <div>
+                <>
+                    <p>there are no details of your service yet</p>
+                    <p>waiting...</p>
+                </>
             </div>
         </>
 
