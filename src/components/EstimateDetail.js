@@ -30,14 +30,14 @@ const EstimateDetail = () => {
    }
 
    let content = <h3>loading</h3>
-    if ((estimate) && (showEdit)){
+    if ((estimate.hasOwnProperty("servicedetails")) && (showEdit)){
 
         content = <>
 
             <EstimateEdit estimate={estimate} onSubmit={handleSubmit} />
 
         </>
-    } else  if (!estimate) {
+    } else  if (!estimate.hasOwnProperty("servicedetails")) {
         content=
         <>
 
@@ -50,8 +50,9 @@ const EstimateDetail = () => {
         </>
 
     } else {
+        console.log('[EstimateDetail] estimate.servicedetails.servicedetails.servicedetails', estimate.servicedetails);
         content = <>
-            <p>here is your estimate {estimate.servicedetails.cost.total}</p>
+            <p>here is your estimate $ {estimate.servicedetails.cost.total}</p>
             <button onClick={handleEditClick}>Edit</button>
             </>
     }

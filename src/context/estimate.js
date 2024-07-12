@@ -303,7 +303,8 @@ function Provider( {children} ) {
 
     const editEstimateById = async (id, newTypeofService) => {
         // Todo save the updated estimate to the db
-        const response = await axios.put(`http://localhost:3001/estimates/${id}`, {typeofservice: newTypeofService});
+        const response = await axios.put(`http://localhost:3001/estimates/${id}`, {servicedetails: {typeofservice: newTypeofService,
+            cost:{total:1000}}});
         console.log('[EstimateContext] editEstimateById response', response);
         setEstimate(response.data)
     }

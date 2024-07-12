@@ -14,7 +14,7 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EditEstimate =({estimate, onSubmit}) => {
     const [typeOfService, setTypeOfService] = useState(estimate.servicedetails.typeofservice);
-    const { editEstimate } = useContext(EstimateContext);
+    const { editEstimateById } = useContext(EstimateContext);
 
     const handleChange = (e) => {
         setTypeOfService(e.target.value);
@@ -25,7 +25,7 @@ const EditEstimate =({estimate, onSubmit}) => {
         //todo editEstimateById
         console.log('[EditEstimate] handleSubmit:');
         onSubmit()
-        editEstimate(estimate.id, typeOfService);
+        editEstimateById(estimate.id, typeOfService);
     }
 
 
