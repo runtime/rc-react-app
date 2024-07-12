@@ -30,14 +30,14 @@ const EstimateDetail = () => {
    }
 
    let content = <h3>loading</h3>
-    if ((estimate) && (!showEdit)){
+    if ((estimate) && (showEdit)){
 
         content = <>
 
             <EstimateEdit estimate={estimate} onSubmit={handleSubmit} />
 
         </>
-    } else {
+    } else  if (!estimate) {
         content=
         <>
 
@@ -49,6 +49,11 @@ const EstimateDetail = () => {
             </div>
         </>
 
+    } else {
+        content = <>
+            <p>here is your estimate {estimate.servicedetails.cost.total}</p>
+            <button onClick={handleEditClick}>Edit</button>
+            </>
     }
 
     return (
