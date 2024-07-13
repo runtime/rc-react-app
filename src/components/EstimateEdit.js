@@ -22,13 +22,10 @@ const EditEstimate =({estimate, onSubmit}) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        //todo editEstimateById
         console.log('[EditEstimate] handleSubmit:');
         onSubmit()
         editEstimateById(estimate.id, typeOfService);
     }
-
-
 
     return (
         <div>
