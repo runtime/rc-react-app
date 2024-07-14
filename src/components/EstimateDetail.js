@@ -34,32 +34,91 @@ const EstimateDetail = () => {
        setShowEdit(false);
    }
 
-   let content = <h3>loading</h3>
+    let content = <h3>loading</h3>
     if ((estimate.hasOwnProperty("servicedetails")) && (showEdit)){
 
         content = <>
             <EstimateEdit estimate={estimate} onSubmit={handleSubmit} onEditCloseClick={handleOnEditCloseClick}/>
-            <button className='button is-primary' onClick={handleOnEditCloseClick}>Close</button>
+            <Button onClick={handleOnEditCloseClick}>Close</Button>
         </>
     } else if (!estimate.hasOwnProperty("servicedetails")) {
-        content =
-            <div>
-                <p>there are no details of your service yet</p>
-                <p>waiting...</p>
-            </div>
+            content =
+            <>
+                <Typography variant="body1" marginBottom='20px'>
+                    There are no details about your service yet
+                </Typography>
+                <Typography variant="body1" marginBottom='20px'>
+                    waiting..
+                </Typography>
+            </>
     } else {
+
         console.log('[EstimateDetail] estimate.servicedetails', estimate.servicedetails);
+        const estimateDisplay = estimate.servicedetails.cost.total.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        }); /* $2,500.00 */
+
         content = <>
-            <p>here is your estimate ${estimate.servicedetails.cost.total}</p>
-            <button onClick={handleEditClick}>Edit</button>
+
+
+            <Chip
+                size='small'
+                position='relative'
+                label={estimateDisplay}
+                variant="contained"
+                color='secondary'
+                pointerEvents='none'
+                sx={{
+                    padding: '2px',
+                    fontFamily: 'Helvetica Bold" "Arial Bold',
+                    fontWeight: '800',
+                    fontSize: '.85em',
+                    minWidth: '80px',
+                    marginLeft: '12px',
+                    transitionDuration: '0.3s',
+                    transitionProperty: 'all',
+                    transitionTimingFunction: 'linear',
+                    opacity: {xs: 0.8, sm: 0.8, lg: 0.8}
+                }}
+            />
+
+            <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
+                your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
+            </Typography>
+            <Typography>Your Free Customized Estimate is one part of our stellar service</Typography>
+            <Typography variant="body1" marginBottom='20px'>Awesome, you are one step closer to experiencing a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
+
+            <Typography marginBottom='20px'>Click book now to choose a date for the service.</Typography>
+
+            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => {console.log('booked')}}>BOOK NOW</Button>
+            <Button onClick={handleEditClick}>EDIT</Button>
+
+            <Typography variant="h5" marginTop='20px' marginBottom='20px'>
+                If you need to make any changes to your estimate, please use the edit button. Do not hit the back arrow or refresh the browser.
+            </Typography>
+
+            {/* for the user in future cards */}
+            {/*<Typography variant="body1" marginBottom='20px'> Please note we expect to take about {estimate.servicedetails.data.totalhours} hours to complete the {estimate.servicedetails.typeofservice} </Typography>*/}
+            {/*<Typography variant="body1" marginBottom='20px'>*/}
+            {/*    Your anonymous user name is <b>{estimate.servicedetails.userID}</b> and your estimate number is: <b>{estimate.id}</b>.*/}
+            {/*</Typography>*/}
+
+            {/*<h1>Data for cleaners</h1>*/}
+            {/*<p>total hours: {estimate.servicedetails.data.totalhours}</p>*/}
+            {/*<p>total time all rooms: {estimate.servicedetails.data.totaltimerooms}</p>*/}
+            {/*<p>total time all baths: {estimate.servicedetails.data.totaltimebaths}</p>*/}
+
         </>
     }
 
     return (
         <ThemeProvider theme={RapidCleanTheme}>
             <CssBaseline />
-            <Card>
+            <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                 <CardContent>
+                    <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Our </Typography>
+                    <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
                     {content}
                 </CardContent>
             </Card>
@@ -91,7 +150,6 @@ const EstimateDetail = () => {
    //
    //
    //      content = <>
-   //
    //
    //          <Chip
    //              size='small'
