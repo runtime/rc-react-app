@@ -16,9 +16,15 @@ const EditEstimate =({estimate, onSubmit}) => {
     const [typeOfService, setTypeOfService] = useState(estimate.servicedetails.typeofservice);
     const { editEstimateById } = useContext(EstimateContext);
 
+
     const handleChange = (e) => {
         setTypeOfService(e.target.value);
         console.log('[EditEstimate] handleChange typeOfService:', typeOfService);
+    }
+
+    const handleCloseBtnClick = (e) => {
+        e.preventDefault();
+        console.log('[EditEstimate] handleCloseBtnClick');
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,12 +36,12 @@ const EditEstimate =({estimate, onSubmit}) => {
     return (
         <div>
             <h2>Edit Estimate</h2>
-            <p>user: {estimate.servicedetails.userID}</p>
             <p>id: {estimate.id}</p>
             <form onSubmit={handleSubmit}>
                 <label>type of service</label>
                 <input className='input' type="text" value={typeOfService} onChange={handleChange}/>
                 <button className='button is-primary' type="submit">SAVE</button>
+                {/*<button className='button is-primary' onClick={handleCloseBtnClick}>SAVE</button>*/}
             </form>
         </div>
 

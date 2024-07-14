@@ -681,12 +681,62 @@
     },
     {
       "servicedetails": {
-        "typeofservice": "today's Clean",
+        "typeofservice": "I love you troo",
         "cost": {
           "total": 1000
         }
       },
       "id": "XrxDf2v"
+    },
+    {
+      "servicedetails": {
+        "typeofservice": "Standard Cleanering",
+        "cost": {
+          "total": 1000
+        }
+      },
+      "id": "PKAu9Ay"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_280",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 8,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 160,
+          "cleaning": 160,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 2,
+          "totaltimebaths": 2,
+          "totalhours": 4
+        }
+      },
+      "id": "Di7FosX"
     }
   ]
 }

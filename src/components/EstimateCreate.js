@@ -298,6 +298,10 @@ const EstimateCreate = () => {
         createEstimate(values);
     }
 
+    const handleNextButtonClicked = () => {
+        console.log('[EstimateCreate] handleNextButtonClicked ', )
+    }
+
 
     return (
         <div className='Estimates'>
@@ -732,7 +736,7 @@ const EstimateCreate = () => {
                                                         color="primary"
                                                         type="Submit"
                                                         //onSubmit={handleFormSubmit(values)}
-                                                        //onClick={handleNextButtonClicked}
+                                                        onClick={handleNextButtonClicked}
                                                         className='classes button'>
                                                         Next
                                                     </Button>

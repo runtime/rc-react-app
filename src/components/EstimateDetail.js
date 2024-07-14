@@ -24,6 +24,11 @@ const EstimateDetail = () => {
         setShowEdit(!showEdit);
    }
 
+   const handleOnEditCloseClick = () => {
+        console.log('[EstimateDetail] handleOnEditCloseClick');
+        setShowEdit(!showEdit);
+   }
+
    const handleSubmit = () => {
        console.log('[EstimateDetail] handleSubmit');
        setShowEdit(false);
@@ -33,28 +38,21 @@ const EstimateDetail = () => {
     if ((estimate.hasOwnProperty("servicedetails")) && (showEdit)){
 
         content = <>
-
-            <EstimateEdit estimate={estimate} onSubmit={handleSubmit} />
-
+            <EstimateEdit estimate={estimate} onSubmit={handleSubmit} onEditCloseClick={handleOnEditCloseClick}/>
+            <button className='button is-primary' onClick={handleOnEditCloseClick}>Close</button>
         </>
-    } else  if (!estimate.hasOwnProperty("servicedetails")) {
-        content=
-        <>
-
+    } else if (!estimate.hasOwnProperty("servicedetails")) {
+        content =
             <div>
-                <>
-                    <p>there are no details of your service yet</p>
-                    <p>waiting...</p>
-                </>
+                <p>there are no details of your service yet</p>
+                <p>waiting...</p>
             </div>
-        </>
-
     } else {
-        console.log('[EstimateDetail] estimate.servicedetails.servicedetails.servicedetails', estimate.servicedetails);
+        console.log('[EstimateDetail] estimate.servicedetails', estimate.servicedetails);
         content = <>
-            <p>here is your estimate $ {estimate.servicedetails.cost.total}</p>
+            <p>here is your estimate ${estimate.servicedetails.cost.total}</p>
             <button onClick={handleEditClick}>Edit</button>
-            </>
+        </>
     }
 
     return (
