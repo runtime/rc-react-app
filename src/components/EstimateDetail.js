@@ -43,14 +43,11 @@ const EstimateDetail = () => {
         </>
     } else if (!estimate.hasOwnProperty("servicedetails")) {
             content =
-            <>
-                <Typography variant="body1" marginBottom='20px'>
-                    There are no details about your service yet
-                </Typography>
-                <Typography variant="body1" marginBottom='20px'>
-                    waiting..
-                </Typography>
-            </>
+                <>
+                    <Typography variant="body1" marginBottom='20px'> There are no details about your service yet </Typography>
+                    <Typography variant="body1" marginBottom='20px'>waiting.. </Typography>
+                </>
+
     } else {
 
         console.log('[EstimateDetail] estimate.servicedetails', estimate.servicedetails);
@@ -86,13 +83,13 @@ const EstimateDetail = () => {
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
                 your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>
-            <Typography>Your Free Customized Estimate is one part of our stellar service</Typography>
-            <Typography variant="body1" marginBottom='20px'>Awesome, you are one step closer to experiencing a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
+            <Typography variant="body1" marginBottom='20px'>Your instant and highly tailored estimate is only one part of our stellar service.  </Typography>
+            <Typography variant="body1" marginBottom='20px'>You are one step closer to experiencing a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
 
-            <Typography marginBottom='20px'>Click book now to choose a date for the service.</Typography>
+            <Typography marginBottom='20px'>Click Next to Choose a Date.</Typography>
 
-            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => {console.log('booked')}}>BOOK NOW</Button>
-            <Button onClick={handleEditClick}>EDIT</Button>
+            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => {console.log('booked')}}>NEXT</Button>
+            <Button onClick={handleEditClick}>EDIT DETAILS</Button>
 
             <Typography variant="h5" marginTop='20px' marginBottom='20px'>
                 If you need to make any changes to your estimate, please use the edit button. Do not hit the back arrow or refresh the browser.
