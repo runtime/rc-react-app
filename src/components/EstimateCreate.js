@@ -296,11 +296,12 @@ const EstimateCreate = () => {
         console.log('[EstimateCreate] onFormSubmit values:', values)
         //use Context function to create the estimate with the initial value
         createEstimate(values);
+        //todo clear form
     }
 
-    const handleNextButtonClicked = () => {
-        console.log('[EstimateCreate] handleNextButtonClicked ', )
-    }
+    // const handleNextButtonClicked = () => {
+    //     console.log('[EstimateCreate] handleNextButtonClicked ', )
+    // }
 
 
     return (
@@ -736,7 +737,7 @@ const EstimateCreate = () => {
                                                         color="primary"
                                                         type="Submit"
                                                         //onSubmit={handleFormSubmit(values)}
-                                                        onClick={handleNextButtonClicked}
+                                                        //onClick={handleNextButtonClicked}
                                                         className='classes button'>
                                                         Next
                                                     </Button>

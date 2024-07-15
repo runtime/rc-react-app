@@ -301,12 +301,16 @@ function Provider( {children} ) {
         setEstimate(processedEstimate);
     }
 
-    const editEstimateById = async (id, newTypeofService) => {
-        // Todo save the updated estimate to the db
-        const response = await axios.put(`http://localhost:3001/estimates/${id}`, {servicedetails: {typeofservice: newTypeofService,
-            cost:{total:1000}}});
-        console.log('[EstimateContext] editEstimateById response', response);
-        setEstimate(response.data)
+    const editEstimateById = async (id, editReqObj) => {
+        console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
+        // Todo call estimate service with new information
+        //const newServiceDetails = calculateEstimate(editReqObj);
+        //console.log('[Provider] newServiceDetails', newServiceDetails);
+        // store the updated response
+        const response = await axios.put(`http://localhost:3001/estimates/${id}`, editReqObj);
+        console.log('[EstimateContext] axios put response', response.data);
+        const updatedEstimate = response.data;
+        setEstimate(updatedEstimate)
     }
 
     // const editEstimate =  (id, typeofservice) => {

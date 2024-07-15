@@ -1209,8 +1209,125 @@
     },
     {
       "servicedetails": {
+        "typeofservice": {
+          "servicedetails": {
+            "typeofservice": "Standard Cleaning",
+            "cost": {
+              "total": 1000
+            }
+          },
+          "id": "kJjhyMe",
+          "typeofservice": "Move-out Clean"
+        },
+        "cost": {
+          "total": 1000
+        }
+      },
+      "id": "kJjhyMe"
+    },
+    {
+      "servicedetails": {
         "serviceID": "",
-        "userID": "purplebutterfly_208",
+        "userID": "purplebutterfly_191",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 2,
+        "numbaths": 1.5,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 107,
+          "cleaning": 107,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "733JNk_",
+      "typeofservice": "Move-out Clean"
+    },
+    {
+      "userID": "purplebutterfly_587",
+      "typeofservice": "Move-out Clean",
+      "rate": 30,
+      "minimum": 60,
+      "cost": {
+        "total": null,
+        "cleaning": 45,
+        "extra": null,
+        "pro": 0,
+        "pet": 0
+      },
+      "data": {
+        "totaltimerooms": 0,
+        "totaltimebaths": 0,
+        "totalhours": 0
+      },
+      "id": "L9Dgn6t"
+    },
+    {
+      "userID": "greengiraffe_184",
+      "typeofservice": "Move-out Clean",
+      "rate": 30,
+      "minimum": 60,
+      "cost": {
+        "total": null,
+        "cleaning": 45,
+        "extra": null,
+        "pro": 0,
+        "pet": 0
+      },
+      "data": {
+        "totaltimerooms": 0,
+        "totaltimebaths": 0,
+        "totalhours": 0
+      },
+      "id": "yaxxRVY"
+    },
+    {
+      "userID": "greengiraffe_421",
+      "typeofservice": "Move-out Clean",
+      "rate": 30,
+      "minimum": 60,
+      "cost": {
+        "total": null,
+        "cleaning": 45,
+        "extra": null,
+        "pro": 0,
+        "pet": 0
+      },
+      "data": {
+        "totaltimerooms": 0,
+        "totaltimebaths": 0,
+        "totalhours": 0
+      },
+      "id": "4X85WJ4"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_62",
         "typeofservice": "Standard Cleaning",
         "construct": "Apartment",
         "sqft": 250,
@@ -1246,7 +1363,49 @@
           "totalhours": 2
         }
       },
-      "id": "kJjhyMe"
+      "id": "uQTbh4N"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_427",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "MkzRVBB",
+      "typeofservice": "Move-out Clean"
     }
   ]
 }
