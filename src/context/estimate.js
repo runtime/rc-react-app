@@ -8,8 +8,6 @@ import React from "react";
 
 const EstimateContext = createContext();
 
-
-
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
 
@@ -303,12 +301,38 @@ function Provider( {children} ) {
         setEstimate(processedEstimate);
     }
 
+    const editEstimateById = async (id, editReqObj) => {
+        console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
+        // Todo call estimate service with new information
+        //const newServiceDetails = calculateEstimate(editReqObj);
+        //console.log('[Provider] newServiceDetails', newServiceDetails);
+        // store the updated response
+        const response = await axios.put(`http://localhost:3001/estimates/${id}`, editReqObj);
+        console.log('[EstimateContext] axios put response', response.data);
+        const updatedEstimate = response.data;
+        setEstimate(updatedEstimate)
+    }
+
+    // const editEstimate =  (id, typeofservice) => {
+    //     console.log('[Provider] editEstimate: ', id , ' typeofservice: ', typeofservice);
+    //     // todo setEstimate
+    //     setEstimate(estimate)
+    // }
+
+
+
+
+
     // set new value to send back to context subscribers
 
-    const tempValue = {estimate, createEstimate}
+    const providerValues = { estimate,
+                             editEstimateById,
+                             createEstimate,
+                             setEstimate
+                            }
 
     return (
-        <EstimateContext.Provider value={tempValue}>
+        <EstimateContext.Provider value={providerValues}>
             {children}
         </EstimateContext.Provider>
     )
