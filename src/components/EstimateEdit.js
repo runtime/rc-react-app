@@ -1,36 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import '../styles/Estimates.css';
 import * as Constants from '../constants/EstimateConstants';
 import EstimateContext from '../context/estimate';
 
 import {
-    Typography, Grid, Box, Button, Chip,
+    Typography, Grid, Box, Button,
     ThemeProvider, CssBaseline, Card,
-    CardHeader, CardContent, CardActions,
+    CardContent, CardActions,
     FormControl, Select, MenuItem, InputLabel,
-    Checkbox,FormControlLabel, FormGroup,
 } from '@mui/material';
 
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 
 import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EditEstimate =({estimate, onSubmit}) => {
+    // get edit func from provider as well as onSubmit to pass event with data up
     const { editEstimateById } = useContext(EstimateContext);
 
     const handleSubmit = (values) => {
-        //e.preventDefault();
         console.log('[EditEstimate] handleSubmit:', values);
         onSubmit()
         editEstimateById(estimate.id, values);
     }
-
-    // const typeofserviceoptions = [
-    //     { label: "Standard Cleaning", value: "Standard Cleaning" },
-    //     { label: "Standard Cleaning - Move Out", value: "Move-out Clean" },
-    // ]
-
-
 
     return (
         <div className='Estimates'>
@@ -42,7 +34,7 @@ const EditEstimate =({estimate, onSubmit}) => {
                             <Box sx={{ minWidth: 120 }}>
                                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Edit </Typography>
                                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Details</Typography>
-                                <Typography variant="body1" marginBottom='20px'> Update Details of estimate: {estimate.id} below. </Typography>
+                                <Typography variant="body1" marginBottom='20px'> Update the details of estimate: {estimate.id} below and resubmit by hitting save. Cancel by hitting cancel. </Typography>
                                 <Formik
                                     initialValues={estimate}
                                     //validationSchema={validationSchema}
@@ -81,8 +73,6 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                             variant="contained"
                                                             color="primary"
                                                             type="Submit"
-                                                            //onSubmit={handleFormSubmit(values)}
-                                                            //onClick={handleNextButtonClicked}
                                                             className='classes button'>
                                                             SAVE
                                                         </Button>
@@ -99,48 +89,6 @@ const EditEstimate =({estimate, onSubmit}) => {
             </Box>
         </div>
 
-
-//
-   // <ThemeProvider theme={RapidCleanTheme}>
-        // <CssBaseline/>
-        // <div className="estimate">
-        // <Card sx={{minWidth: 275, maxWidth: 600, maxHeight: 600, minHeight: 275}}>
-        // <CardHeader title="Edit Estimate Details and click save" />
-        //             <CardContent>
-        //                 <Box sx={{ minWidth: 120 }}>
-        //                     <Typography color="secondary" variant="cardTitle" component="h1"
-        //                                 display="inline">Edit </Typography>
-        //                     <Typography color="primary" variant="cardTitle" component='h1'
-        //                                 display="inline">Details</Typography>
-        //                     <Typography variant="body1" marginBottom='20px'>
-        //                         Update Details of your Estimate below.
-        //                     </Typography>
-        //                     <FormControl fullWidth>
-        //                         <InputLabel id="demo-simple-select-label">Status</InputLabel>
-        //                         <Select
-        //                             labelId="demo-simple-select-label"
-        //                             id="demo-simple-select"
-        //                             value={estimate.typeofservice}
-        //                             label='Status'
-        //                         >
-        //                             <MenuItem value={"Cleaning"}>New</MenuItem>
-        //                             <MenuItem value={"Move Out"}>In Progress</MenuItem>
-        //                         </Select>
-        //                     </FormControl>
-        //                     <FormGroup>
-        //                         {/*{estimate.servicedetails.map((service, index) => (*/}
-        //                         {/*    <FormControlLabel key={index} control={<Checkbox checked={service.checked} />} label={service.name} />*/}
-        //                         {/*))}*/}
-        //                         <FormControlLabel control={<Checkbox checked={false} />} label="I agree that the above information is accurate and that I could be charged extra on site if not." />
-        //                     </FormGroup>
-        //                 </Box>
-        //             </CardContent>
-        //             <CardActions>
-        //                 <Button size="small" onClick={handleOnSaveClick}>Save</Button>
-        //             </CardActions>
-        //         </Card>
-        //     </div>
-        // </ThemeProvider>
     );
 }
 

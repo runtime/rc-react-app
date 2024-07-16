@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react'
 import '../styles/Estimates.css';
 import EstimateContext from '../context/estimate';
 import EstimateEdit from './EstimateEdit';
+import EstimateChip from './EstimateChip'
 
 import {
     Typography, Grid, Box, Button, Chip,
@@ -19,6 +20,14 @@ const EstimateDetail = () => {
 
    console.log('[EstimateDetail] estimate: ' + estimate);
    console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
+
+    // create a string in US Currency for Chip
+    const convertEstimateForDisplay = (total) => {
+        return total.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+    } /* $2,500.00 */
 
    const handleEditClick = () => {
         setShowEdit(!showEdit);
@@ -39,7 +48,7 @@ const EstimateDetail = () => {
 
         content = <>
             <EstimateEdit estimate={estimate} onSubmit={handleSubmit} onEditCloseClick={handleOnEditCloseClick}/>
-            <Button onClick={handleOnEditCloseClick}>Close</Button>
+            <Button onClick={handleOnEditCloseClick}>Cancel Edit</Button>
         </>
     } else if (!estimate.hasOwnProperty("servicedetails")) {
             content =
@@ -52,24 +61,21 @@ const EstimateDetail = () => {
 
         console.log('[EstimateDetail] estimate.servicedetails', estimate.servicedetails);
 
-        // create a string in US Currency for Chip
-        const estimateDisplay = estimate.servicedetails.cost.total.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        }); /* $2,500.00 */
+
 
         content = <>
 
             <Chip
                 size='small'
                 position='relative'
-                label={estimateDisplay}
+                label={convertEstimateForDisplay(estimate.servicedetails.cost.total)}
                 variant="contained"
                 color='secondary'
                 pointerEvents='none'
                 sx={{
                     padding: '2px',
                     fontFamily: 'Helvetica Bold" "Arial Bold',
+                    color: 'white',
                     fontWeight: '800',
                     fontSize: '.85em',
                     minWidth: '80px',
@@ -80,6 +86,8 @@ const EstimateDetail = () => {
                     opacity: {xs: 0.8, sm: 0.8, lg: 0.8}
                 }}
             />
+
+            {/*<EstimateChip label={estimateDisplay}/>*/}
 
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
                 your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
