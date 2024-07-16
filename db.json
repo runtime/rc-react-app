@@ -1529,7 +1529,8 @@
           "totalhours": 2
         }
       },
-      "id": "sAobr4v"
+      "id": "sAobr4v",
+      "typeofservice": "Move-out Clean"
     }
   ]
 }

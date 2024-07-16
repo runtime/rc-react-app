@@ -43,11 +43,6 @@ const EditEstimate =({estimate, onSubmit}) => {
                                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Edit </Typography>
                                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Details</Typography>
                                 <Typography variant="body1" marginBottom='20px'> Update Details of estimate: {estimate.id} below. </Typography>
-                                <form onSubmit={handleSubmit}>
-                                    {/*<label>type of service</label>*/}
-                                    {/*<input type="text" value={typeOfService} onChange={handleChange}/>*/}
-                                    {/*<Button type="submit">SAVE</Button>*/}
-                                </form>
                                 <Formik
                                     initialValues={estimate}
                                     //validationSchema={validationSchema}
