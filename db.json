@@ -1613,6 +1613,130 @@
         }
       },
       "id": "ZN09MD_"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_323",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "61Cpe_H"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "greengiraffe_28",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "Y3bZ9Bx",
+      "typeofservice": "Move-out Clean"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "greengiraffe_555",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "ZPFTQZy"
     }
   ]
 }

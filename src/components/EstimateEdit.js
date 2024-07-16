@@ -34,7 +34,7 @@ const EditEstimate =({estimate, onSubmit}) => {
                             <Box sx={{ minWidth: 120 }}>
                                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Edit </Typography>
                                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Details</Typography>
-                                <Typography variant="body1" marginBottom='20px'> Update the details of estimate: {estimate.id} below and resubmit by hitting save. Cancel by hitting cancel. </Typography>
+                                <Typography variant="body1" marginBottom='20px'> Edit the details of estimate: {estimate.id} below and click UPDATE to see the updated estimate. </Typography>
                                 <Formik
                                     initialValues={estimate}
                                     //validationSchema={validationSchema}
@@ -74,7 +74,7 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                             color="primary"
                                                             type="Submit"
                                                             className='classes button'>
-                                                            SAVE
+                                                            UPDATE
                                                         </Button>
                                                     </CardActions>
                                                 </Grid>
