@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import '../styles/Estimates.css';
+import * as Constants from '../constants/EstimateConstants';
 import EstimateContext from '../context/estimate';
 
 import {
@@ -15,19 +16,8 @@ import { Formik, Form, Field } from "formik";
 import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EditEstimate =({estimate, onSubmit}) => {
-    const [typeOfService, setTypeOfService] = useState(estimate.servicedetails.typeofservice);
     const { editEstimateById } = useContext(EstimateContext);
 
-
-    // const handleChange = (e) => {
-    //     setTypeOfService(e.target.value);
-    //     console.log('[EditEstimate] handleChange typeOfService:', typeOfService);
-    // }
-
-    // const handleCloseBtnClick = (e) => {
-    //     e.preventDefault();
-    //     console.log('[EditEstimate] handleCloseBtnClick');
-    // }
     const handleSubmit = (values) => {
         //e.preventDefault();
         console.log('[EditEstimate] handleSubmit:', values);
@@ -35,10 +25,12 @@ const EditEstimate =({estimate, onSubmit}) => {
         editEstimateById(estimate.id, values);
     }
 
-    const typeofserviceoptions = [
-        { label: "Standard Cleaning", value: "Standard Cleaning" },
-        { label: "Standard Cleaning - Move Out", value: "Move-out Clean" },
-    ]
+    // const typeofserviceoptions = [
+    //     { label: "Standard Cleaning", value: "Standard Cleaning" },
+    //     { label: "Standard Cleaning - Move Out", value: "Move-out Clean" },
+    // ]
+
+
 
     return (
         <div className='Estimates'>
@@ -80,7 +72,7 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                                 onBlur={handleBlur}
                                                                 value={values.typeofservice}
                                                                 name="typeofservice">
-                                                                {typeofserviceoptions.map((item) => (
+                                                                {Constants.typeofserviceoptions.map((item) => (
                                                                     <MenuItem key={item.value} value={item.value}>
                                                                         {item.label}
                                                                     </MenuItem>
