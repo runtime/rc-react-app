@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useState, useContext, useEffect } from 'react';
 import '../styles/Estimates.css';
 import * as Constants from '../constants/EstimateConstants';
 import EstimateContext from '../context/estimate';
@@ -13,15 +13,105 @@ import {
 import { Formik, Form } from "formik";
 
 import { RapidCleanTheme } from "../themes/Theme.js";
+import * as Yup from "yup";
 
 const EditEstimate =({estimate, onSubmit}) => {
     // get edit func from provider as well as onSubmit to pass event with data up
     const { editEstimateById } = useContext(EstimateContext);
 
+   //this is correct
+    console.log('[EditEstimate] estimate: , ', estimate)
+
+    //const [editedEstimate, setEditedEstimate] = useState(estimate)
+
+    const initEdit = () => {
+        console.log('[EstimateEdit] initEdit')
+    }
+
+
+
+    const initialValues = {
+
+        "servicedetails": {
+        "serviceID": "",
+            "userID": estimate.servicedetails.userID,
+            "typeofservice": estimate.servicedetails.typeofservice,
+            "construct": "Apartment",
+            "sqft": 250,
+            "numpeople": 1,
+            "numrooms": 1,
+            "numbaths": 1,
+            "numpets": 0,
+            "cleanfactor": 0,
+            "laundrywashandfold": "",
+            "dishwashing": "",
+            "mealprep": "",
+            "ovencleaning": "",
+            "deepcleaning": "",
+            "professionalcouchcleaning": "",
+            "professionalrugshampoo": "",
+            "professionalfloorwaxing": "",
+            "dogwalking": "",
+            "petsitting": "",
+            "dispensingmedication": "",
+            "waste": "",
+            "rate": 30,
+            "minimum": 60,
+            "cost": {
+            "total": 105,
+                "cleaning": 105,
+                "extra": 0,
+                "pro": 0,
+                "pet": 0
+        },
+        "data": {
+            "totaltimerooms": 1,
+                "totaltimebaths": 1,
+                "totalhours": 2
+        }
+    },
+        "id": estimate.id
+    }
+
+    //this is also correct
+    console.log('[EditEstimate] initialValues: ' , initialValues)
+
+    // useEffect(()=> {
+    //     initEdit();
+    // }, {initialValues})
+
+    // let validationSchema = Yup.object().shape({
+    //     typeofservice: Yup.string().required("Required"),
+    //     construct: Yup.string().required("Required"),
+    //     sqft: Yup.string().required("Required"),
+    //     numrooms: Yup.number().required("Required"),
+    //     numbaths: Yup.number().required("Required"),
+    //     cleanfactor: Yup.number().required("Required"),
+    //     numpets: Yup.number().required("Required"),
+    //     numpeople: Yup.number().required("Required"),
+    //     // EXTRA
+    //     // laundrywashandfold: Yup.number(),
+    //     // dishwashing: Yup.number(),
+    //     // mealprep: Yup.number(),
+    //     // ovencleaning: Yup.boolean(),
+    //     // fridgecleaning: Yup.boolean(),
+    //     // deepcleaning: Yup.boolean(),
+    //     // // PROFESSIONAL
+    //     // professionalcouchcleaning: Yup.boolean(),
+    //     // professionalrugshampoo: Yup.boolean(),
+    //     // professionalfloorwaxing: Yup.boolean(),
+    //     // // PET
+    //     // dogwalking: Yup.boolean(),
+    //     // petsitting: Yup.number(),
+    //     // dispensingmedication: Yup.number(),
+    //     // waste: Yup.boolean(),
+    // })
+
     const handleSubmit = (values) => {
         console.log('[EditEstimate] handleSubmit:', values);
         onSubmit()
-        editEstimateById(estimate.id, values);
+        //setNewEstimate(values)
+        editEstimateById(initialValues.id, values);
     }
 
     return (
@@ -36,7 +126,8 @@ const EditEstimate =({estimate, onSubmit}) => {
                                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Details</Typography>
                                 <Typography variant="body1" marginBottom='20px'> Edit the details of estimate: {estimate.id} below and click UPDATE to see the updated estimate. </Typography>
                                 <Formik
-                                    initialValues={estimate}
+                                    initialValues={initialValues}
+                                    enableReinitialize
                                     //validationSchema={validationSchema}
                                     onSubmit={handleSubmit}
                                 >
@@ -57,7 +148,8 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                                 label="Select Type of Service*"
                                                                 onChange={handleChange}
                                                                 onBlur={handleBlur}
-                                                                value={values.typeofservice}
+                                                                value={initialValues.servicedetails.typeofservice}
+                                                                //placeholder={initialValues.servicedetails. typeofservice}
                                                                 name="typeofservice">
                                                                 {Constants.typeofserviceoptions.map((item) => (
                                                                     <MenuItem key={item.value} value={item.value}>
