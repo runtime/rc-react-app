@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react'
 import '../styles/Estimates.css';
 import EstimateContext from '../context/estimate';
 
+
 import {
     Typography, Grid, Box, Button, Chip,
     ThemeProvider, CssBaseline, Card,
@@ -13,10 +14,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { RapidCleanTheme } from "../themes/Theme.js";
 
-import { TextField } from "formik-material-ui";
-
 const EstimateCreate = () => {
-
 
 
     const initialValue = {
@@ -56,18 +54,15 @@ const EstimateCreate = () => {
         }
     }
 
-    // working mvp (refactoring to service so we can use value for the individual combo boxes)
-    const [value, setValue] = useState({}) // no state will allow placeholder text. entering a value will cause the form input to have a value such as intialValue.estimate.cost
-    //const [service, setService] = useState()
     const { createEstimate } = useContext(EstimateContext);
-
-
 
 
     /////////////////////////////// ^^^^ KEEP ^^^^^ //////////////////////////////////
     /////////////////////////////// REVIEW BELOW /////////////////////////////////////
 
-    const initialValues = {
+
+
+    let initialValues = {
             "serviceID": "",
             "userID": "",
             "typeofservice": "",
@@ -103,6 +98,7 @@ const EstimateCreate = () => {
                 "totalhours": 0
             },
         }
+
 
 
     //drop downs
@@ -246,11 +242,10 @@ const EstimateCreate = () => {
 
     const mealprepoptions = [
         { label: "None", value: 0 },
-        { label: "1 Meal (serves one)", value: 1 },
-        { label: "1 Meal (serves two)", value: 1.25 },
-        { label: "1 Meal (serves 3)", value: 1.5 },
-        { label: "1 Meal (serves 4-5)", value: 2 },
-        { label: "1 Meal (serves 5-6)", value: 2.25 },
+        { label: "1 Meal (serves two)", value: 1 },
+        { label: "1 Meal (serves 3)", value: 1.25 },
+        { label: "1 Meal (serves 4-6)", value: 1.5 },
+        { label: "1 Meal (serves 7-9)", value: 3 },
     ]
 
 //password validation
@@ -299,14 +294,17 @@ const EstimateCreate = () => {
     const handleFormSubmit = (values) => {
         //e.preventDefault();
         console.log('[EstimateCreate] onFormSubmit values:', values)
-        //setValue(values)
         //use Context function to create the estimate with the initial value
-       createEstimate(values);
-        //setValue(0);
+        createEstimate(values);
+        //todo clear form
     }
 
-    return (
+    // const handleNextButtonClicked = () => {
+    //     console.log('[EstimateCreate] handleNextButtonClicked ', )
+    // }
 
+
+    return (
         <div className='Estimates'>
             <Box>
                 <ThemeProvider theme={RapidCleanTheme}>
@@ -739,7 +737,7 @@ const EstimateCreate = () => {
                                                         color="primary"
                                                         type="Submit"
                                                         //onSubmit={handleFormSubmit(values)}
-                                                        //onClick={() => window.location.href = '/Appointments'}
+                                                        //onClick={handleNextButtonClicked}
                                                         className='classes button'>
                                                         Next
                                                     </Button>
