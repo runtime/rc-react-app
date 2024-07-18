@@ -304,10 +304,13 @@ function Provider( {children} ) {
     const editEstimateById = async (id, editReqObj) => {
         console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
         // Todo call estimate service with new information
+        const servicedetails = calculateEstimate(editReqObj);
         //const newServiceDetails = calculateEstimate(editReqObj);
         //console.log('[Provider] newServiceDetails', newServiceDetails);
         // store the updated response
-        const response = await axios.put(`http://localhost:3001/estimates/${id}`, editReqObj);
+        const response = await axios.put(`http://localhost:3001/estimates/${id}`, {
+            servicedetails
+        });
         console.log('[EstimateContext] axios put response', response.data);
         const updatedEstimate = response.data;
         setEstimate(updatedEstimate)

@@ -16,100 +16,59 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EstimateCreate = () => {
 
-
-    const initialValue = {
-        "serviceID": "DEF456",
-        "userID": "greengirafe35",
-        "typeofservice": "Cleaning",
-        "construct": "Apartment",
-        "sqft": 1250,
-        "numrooms": 4,
-        "numbaths": 4,
-        "cleanfactor": 20,
-        "numpets":1,
-        "numpeople": 2,
-        "laundrywashandfold": 1,
-        "dishwashing": 1,
-        "mealprep": 1,
-        "ovencleaning": true,
-        "deepcleaning": true,
-        "professionalcouchcleaning": true,
-        "professionalrugshampoo": true,
-        "professionalfloorwaxing": true,
-        "dogwalking": true,
-        "petsitting": true,
-        "dispensingmedication": true,
-        "waste": true,
-        "cost" : {
+    // Form's initial values are blank
+    let initialValues = {
+        "serviceID": "",
+        "userID": "",
+        "typeofservice": "",
+        "construct": "",
+        "sqft": "",
+        "numrooms": "",
+        "numbaths": "",
+        "cleanfactor": "",
+        "numpets": "",
+        "numpeople": "",
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "cost": {
             "total": 0,
             "cleaning": 0,
             "extra": 0,
             "professional": 0,
             "pet": 0
         },
-        "data" : {
-            "totaltimerooms":  0,
-            "totaltimebaths":  0,
-            "totalhours":  0
-        }
+        "data": {
+            "totaltimerooms": 0,
+            "totaltimebaths": 0,
+            "totalhours": 0
+        },
     }
 
+    // working mvp (refactoring to service so we can use value for the individual combo boxes)
+    const [value, setValue] = useState({}) // no state will allow placeholder text. entering a value will cause the form input to have a value such as intialValue.estimate.cost
+    //const [service, setService] = useState()
     const { createEstimate } = useContext(EstimateContext);
 
 
-    /////////////////////////////// ^^^^ KEEP ^^^^^ //////////////////////////////////
-    /////////////////////////////// REVIEW BELOW /////////////////////////////////////
-
-
-
-    let initialValues = {
-            "serviceID": "",
-            "userID": "",
-            "typeofservice": "",
-            "construct": "",
-            "sqft": "",
-            "numrooms": "",
-            "numbaths": "",
-            "cleanfactor": "",
-            "numpets": "",
-            "numpeople": "",
-            "laundrywashandfold": "",
-            "dishwashing": "",
-            "mealprep": "",
-            "ovencleaning": "",
-            "deepcleaning": "",
-            "professionalcouchcleaning": "",
-            "professionalrugshampoo": "",
-            "professionalfloorwaxing": "",
-            "dogwalking": "",
-            "petsitting": "",
-            "dispensingmedication": "",
-            "waste": "",
-            "cost": {
-                "total": 0,
-                "cleaning": 0,
-                "extra": 0,
-                "professional": 0,
-                "pet": 0
-            },
-            "data": {
-                "totaltimerooms": 0,
-                "totaltimebaths": 0,
-                "totalhours": 0
-            },
-        }
-
-
-
-    //drop downs
-    // type of service options
-    const typeofserviceoptions = [
+//drop downs
+// type of service options
+     const typeofserviceoptions = [
         { label: "Standard Cleaning", value: "Standard Cleaning" },
         { label: "Standard Cleaning - Move Out", value: "Move-out Clean" },
     ]
 
-    // construct options
-    const constructoptions = [
+// export construct options
+     const constructoptions = [
         { label: "Apartment", value: "Apartment" },
         { label: "House", value: "House" },
         { label: "Room", value: "Room" },
@@ -117,7 +76,7 @@ const EstimateCreate = () => {
         { label: "Other", value: "Other" },
     ]
 
-    const numroomsoptions = [
+     const numroomsoptions = [
         // { label: "None", value: 0 },
         { label: "1", value: 1 },
         { label: "2", value: 2 },
@@ -130,7 +89,7 @@ const EstimateCreate = () => {
         { label: "9", value: 9 },
     ]
 
-    const numbathsoptions = [
+     const numbathsoptions = [
         { label: "1", value: 1 },
         { label: "1.5", value: 1.5 },
         { label: "2", value: 2 },
@@ -149,7 +108,7 @@ const EstimateCreate = () => {
         { label: "8.5", value: 8.5 },
     ]
 
-    const sqftoptions = [{
+     const sqftoptions = [{
         label: "less than 250",
         value: 250
     },
@@ -184,7 +143,7 @@ const EstimateCreate = () => {
 
     ]
 
-    const cleanfactoroptions = [
+     const cleanfactoroptions = [
         {
             label: "Im Monica F****g Gellar!",
             value: 0,
@@ -206,7 +165,7 @@ const EstimateCreate = () => {
             value: 20,
         },
     ]
-    const numpetsoptions = [
+     const numpetsoptions = [
         { label: "0", value: 0 },
         { label: "1", value: 1 },
         { label: "2", value: 2 },
@@ -214,7 +173,7 @@ const EstimateCreate = () => {
         { label: "4", value: 4 },
         { label: "5", value: 5 },
     ]
-    const numpeopleoptions = [
+     const numpeopleoptions = [
         { label: "1", value: 1 },
         { label: "2", value: 2 },
         { label: "3", value: 3 },
@@ -225,7 +184,7 @@ const EstimateCreate = () => {
         { label: "8", value: 8 },
     ]
 
-    const laundryoptions = [
+     const laundryoptions = [
         { label: "None", value: 0 },
         { label: "1 Load - Wash And Fold", value: 1 },
         { label: "2 Loads - Wash And Fold", value: 2 },
@@ -233,20 +192,23 @@ const EstimateCreate = () => {
         { label: "4 Loads - Wash And Fold", value: 4 },
     ]
 
-    const dishwashoptions = [
+     const dishwashoptions = [
         { label: "None", value: 0 },
         { label: "1 Load - Wash and Dry", value: 1 },
         { label: "2 Load - Wash and Dry", value: 2 },
         { label: "3 Load - Wash and Dry", value: 3 },
     ]
 
-    const mealprepoptions = [
+     const mealprepoptions = [
         { label: "None", value: 0 },
         { label: "1 Meal (serves two)", value: 1 },
         { label: "1 Meal (serves 3)", value: 1.25 },
         { label: "1 Meal (serves 4-6)", value: 1.5 },
         { label: "1 Meal (serves 7-9)", value: 3 },
     ]
+
+
+// constants for form have been moved to ./constants/EstimateConstants.js
 
 //password validation
     const lowercaseRegEx = /(?=.*[a-z])/
