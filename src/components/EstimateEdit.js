@@ -1,44 +1,67 @@
-import React, { useContext, useState } from 'react';
+import React, {useState, useContext, useEffect } from 'react';
 import '../styles/Estimates.css';
+import * as Constants from '../constants/EstimateConstants';
 import EstimateContext from '../context/estimate';
 
 import {
-    Typography, Grid, Box, Button, Chip,
+    Typography, Grid, Box, Button,
     ThemeProvider, CssBaseline, Card,
-    CardHeader, CardContent, CardActions,
+    CardContent, CardActions,
     FormControl, Select, MenuItem, InputLabel,
-    Checkbox,FormControlLabel, FormGroup,
 } from '@mui/material';
 
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 
 import { RapidCleanTheme } from "../themes/Theme.js";
+import * as Yup from "yup";
 
 const EditEstimate =({estimate, onSubmit}) => {
-    const [typeOfService, setTypeOfService] = useState(estimate.servicedetails.typeofservice);
+    // get edit func from provider as well as onSubmit to pass event with data up
     const { editEstimateById } = useContext(EstimateContext);
 
+   //this is correct
+    console.log('[EditEstimate] estimate: , ', estimate)
 
-    // const handleChange = (e) => {
-    //     setTypeOfService(e.target.value);
-    //     console.log('[EditEstimate] handleChange typeOfService:', typeOfService);
-    // }
+    // removing the servicedetails wrapper (to use calculateEstimate) but storing the id which sits outside of it
+    const   initialValues   = estimate.servicedetails;
+    const id = estimate.id;
 
-    // const handleCloseBtnClick = (e) => {
-    //     e.preventDefault();
-    //     console.log('[EditEstimate] handleCloseBtnClick');
-    // }
+    console.log('[EditEstimate] initialValues: ' , initialValues)
+
+
+    // let validationSchema = Yup.object().shape({
+    //     typeofservice: Yup.string().required("Required"),
+    //     construct: Yup.string().required("Required"),
+    //     sqft: Yup.string().required("Required"),
+    //     numrooms: Yup.number().required("Required"),
+    //     numbaths: Yup.number().required("Required"),
+    //     cleanfactor: Yup.number().required("Required"),
+    //     numpets: Yup.number().required("Required"),
+    //     numpeople: Yup.number().required("Required"),
+    //     // EXTRA
+    //     // laundrywashandfold: Yup.number(),
+    //     // dishwashing: Yup.number(),
+    //     // mealprep: Yup.number(),
+    //     // ovencleaning: Yup.boolean(),
+    //     // fridgecleaning: Yup.boolean(),
+    //     // deepcleaning: Yup.boolean(),
+    //     // // PROFESSIONAL
+    //     // professionalcouchcleaning: Yup.boolean(),
+    //     // professionalrugshampoo: Yup.boolean(),
+    //     // professionalfloorwaxing: Yup.boolean(),
+    //     // // PET
+    //     // dogwalking: Yup.boolean(),
+    //     // petsitting: Yup.number(),
+    //     // dispensingmedication: Yup.number(),
+    //     // waste: Yup.boolean(),
+    // })
+
     const handleSubmit = (values) => {
-        //e.preventDefault();
         console.log('[EditEstimate] handleSubmit:', values);
         onSubmit()
-        editEstimateById(estimate.id, values);
+        //setNewEstimate(values)
+        editEstimateById(id, values);
     }
-
-    const typeofserviceoptions = [
-        { label: "Standard Cleaning", value: "Standard Cleaning" },
-        { label: "Standard Cleaning - Move Out", value: "Move-out Clean" },
-    ]
 
     return (
         <div className='Estimates'>
@@ -50,14 +73,10 @@ const EditEstimate =({estimate, onSubmit}) => {
                             <Box sx={{ minWidth: 120 }}>
                                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Edit </Typography>
                                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Details</Typography>
-                                <Typography variant="body1" marginBottom='20px'> Update Details of estimate: {estimate.id} below. </Typography>
-                                <form onSubmit={handleSubmit}>
-                                    {/*<label>type of service</label>*/}
-                                    {/*<input type="text" value={typeOfService} onChange={handleChange}/>*/}
-                                    {/*<Button type="submit">SAVE</Button>*/}
-                                </form>
+                                <Typography variant="body1" marginBottom='20px'> Edit the details of estimate: {estimate.id} below and click UPDATE to see the updated estimate. </Typography>
                                 <Formik
-                                    initialValues={estimate}
+                                    initialValues={initialValues}
+                                    enableReinitialize
                                     //validationSchema={validationSchema}
                                     onSubmit={handleSubmit}
                                 >
@@ -80,7 +99,7 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                                 onBlur={handleBlur}
                                                                 value={values.typeofservice}
                                                                 name="typeofservice">
-                                                                {typeofserviceoptions.map((item) => (
+                                                                {Constants.typeofserviceoptions.map((item) => (
                                                                     <MenuItem key={item.value} value={item.value}>
                                                                         {item.label}
                                                                     </MenuItem>
@@ -94,10 +113,8 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                             variant="contained"
                                                             color="primary"
                                                             type="Submit"
-                                                            //onSubmit={handleFormSubmit(values)}
-                                                            //onClick={handleNextButtonClicked}
                                                             className='classes button'>
-                                                            SAVE
+                                                            UPDATE
                                                         </Button>
                                                     </CardActions>
                                                 </Grid>
@@ -112,48 +129,6 @@ const EditEstimate =({estimate, onSubmit}) => {
             </Box>
         </div>
 
-
-//
-   // <ThemeProvider theme={RapidCleanTheme}>
-        // <CssBaseline/>
-        // <div className="estimate">
-        // <Card sx={{minWidth: 275, maxWidth: 600, maxHeight: 600, minHeight: 275}}>
-        // <CardHeader title="Edit Estimate Details and click save" />
-        //             <CardContent>
-        //                 <Box sx={{ minWidth: 120 }}>
-        //                     <Typography color="secondary" variant="cardTitle" component="h1"
-        //                                 display="inline">Edit </Typography>
-        //                     <Typography color="primary" variant="cardTitle" component='h1'
-        //                                 display="inline">Details</Typography>
-        //                     <Typography variant="body1" marginBottom='20px'>
-        //                         Update Details of your Estimate below.
-        //                     </Typography>
-        //                     <FormControl fullWidth>
-        //                         <InputLabel id="demo-simple-select-label">Status</InputLabel>
-        //                         <Select
-        //                             labelId="demo-simple-select-label"
-        //                             id="demo-simple-select"
-        //                             value={estimate.typeofservice}
-        //                             label='Status'
-        //                         >
-        //                             <MenuItem value={"Cleaning"}>New</MenuItem>
-        //                             <MenuItem value={"Move Out"}>In Progress</MenuItem>
-        //                         </Select>
-        //                     </FormControl>
-        //                     <FormGroup>
-        //                         {/*{estimate.servicedetails.map((service, index) => (*/}
-        //                         {/*    <FormControlLabel key={index} control={<Checkbox checked={service.checked} />} label={service.name} />*/}
-        //                         {/*))}*/}
-        //                         <FormControlLabel control={<Checkbox checked={false} />} label="I agree that the above information is accurate and that I could be charged extra on site if not." />
-        //                     </FormGroup>
-        //                 </Box>
-        //             </CardContent>
-        //             <CardActions>
-        //                 <Button size="small" onClick={handleOnSaveClick}>Save</Button>
-        //             </CardActions>
-        //         </Card>
-        //     </div>
-        // </ThemeProvider>
     );
 }
 
