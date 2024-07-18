@@ -22,56 +22,53 @@ const EditEstimate =({estimate, onSubmit}) => {
    //this is correct
     console.log('[EditEstimate] estimate: , ', estimate)
 
-    //const [editedEstimate, setEditedEstimate] = useState(estimate)
-
-    const initEdit = () => {
-        console.log('[EstimateEdit] initEdit')
-    }
+    const   initialValues   = estimate.servicedetails;
+    const id = estimate.id;
 
 
 
-    const initialValues = {
-
-        "servicedetails": {
-        "serviceID": "",
-            "userID": estimate.servicedetails.userID,
-            "typeofservice": estimate.servicedetails.typeofservice,
-            "construct": "Apartment",
-            "sqft": 250,
-            "numpeople": 1,
-            "numrooms": 1,
-            "numbaths": 1,
-            "numpets": 0,
-            "cleanfactor": 0,
-            "laundrywashandfold": "",
-            "dishwashing": "",
-            "mealprep": "",
-            "ovencleaning": "",
-            "deepcleaning": "",
-            "professionalcouchcleaning": "",
-            "professionalrugshampoo": "",
-            "professionalfloorwaxing": "",
-            "dogwalking": "",
-            "petsitting": "",
-            "dispensingmedication": "",
-            "waste": "",
-            "rate": 30,
-            "minimum": 60,
-            "cost": {
-            "total": 105,
-                "cleaning": 105,
-                "extra": 0,
-                "pro": 0,
-                "pet": 0
-        },
-        "data": {
-            "totaltimerooms": 1,
-                "totaltimebaths": 1,
-                "totalhours": 2
-        }
-    },
-        "id": estimate.id
-    }
+    // const initialValues = {
+    //
+    //     "servicedetails": {
+    //     "serviceID": "",
+    //         "userID": estimate.servicedetails.userID,
+    //         "typeofservice": estimate.servicedetails.typeofservice,
+    //         "construct": "Apartment",
+    //         "sqft": 250,
+    //         "numpeople": 1,
+    //         "numrooms": 1,
+    //         "numbaths": 1,
+    //         "numpets": 0,
+    //         "cleanfactor": 0,
+    //         "laundrywashandfold": "",
+    //         "dishwashing": "",
+    //         "mealprep": "",
+    //         "ovencleaning": "",
+    //         "deepcleaning": "",
+    //         "professionalcouchcleaning": "",
+    //         "professionalrugshampoo": "",
+    //         "professionalfloorwaxing": "",
+    //         "dogwalking": "",
+    //         "petsitting": "",
+    //         "dispensingmedication": "",
+    //         "waste": "",
+    //         "rate": 30,
+    //         "minimum": 60,
+    //         "cost": {
+    //         "total": 105,
+    //             "cleaning": 105,
+    //             "extra": 0,
+    //             "pro": 0,
+    //             "pet": 0
+    //     },
+    //     "data": {
+    //         "totaltimerooms": 1,
+    //             "totaltimebaths": 1,
+    //             "totalhours": 2
+    //     }
+    // },
+    //     "id": estimate.id
+    // }
 
     //this is also correct
     console.log('[EditEstimate] initialValues: ' , initialValues)
@@ -111,7 +108,7 @@ const EditEstimate =({estimate, onSubmit}) => {
         console.log('[EditEstimate] handleSubmit:', values);
         onSubmit()
         //setNewEstimate(values)
-        editEstimateById(initialValues.id, values);
+        editEstimateById(id, values);
     }
 
     return (
@@ -148,8 +145,8 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                                 label="Select Type of Service*"
                                                                 onChange={handleChange}
                                                                 onBlur={handleBlur}
-                                                                value={initialValues.servicedetails.typeofservice}
-                                                                //placeholder={initialValues.servicedetails. typeofservice}
+                                                                value={values.typeofservice}
+                                                                //placeholder={initialValues.typeofservice}
                                                                 name="typeofservice">
                                                                 {Constants.typeofserviceoptions.map((item) => (
                                                                     <MenuItem key={item.value} value={item.value}>
