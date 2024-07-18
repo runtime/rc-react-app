@@ -86,7 +86,7 @@ const EstimateDetail = () => {
             </Typography>
             {/*<Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>*/}
             <Typography variant="body1" marginBottom='20px'>
-                This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to choose a date for this service.
+                This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to Book a date.
             </Typography>
             <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => {console.log('booked')}}>NEXT</Button>
             <Button onClick={handleEditClick}>EDIT DETAILS</Button>

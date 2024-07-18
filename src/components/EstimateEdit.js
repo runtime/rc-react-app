@@ -22,60 +22,12 @@ const EditEstimate =({estimate, onSubmit}) => {
    //this is correct
     console.log('[EditEstimate] estimate: , ', estimate)
 
+    // removing the servicedetails wrapper (to use calculateEstimate) but storing the id which sits outside of it
     const   initialValues   = estimate.servicedetails;
     const id = estimate.id;
 
-
-
-    // const initialValues = {
-    //
-    //     "servicedetails": {
-    //     "serviceID": "",
-    //         "userID": estimate.servicedetails.userID,
-    //         "typeofservice": estimate.servicedetails.typeofservice,
-    //         "construct": "Apartment",
-    //         "sqft": 250,
-    //         "numpeople": 1,
-    //         "numrooms": 1,
-    //         "numbaths": 1,
-    //         "numpets": 0,
-    //         "cleanfactor": 0,
-    //         "laundrywashandfold": "",
-    //         "dishwashing": "",
-    //         "mealprep": "",
-    //         "ovencleaning": "",
-    //         "deepcleaning": "",
-    //         "professionalcouchcleaning": "",
-    //         "professionalrugshampoo": "",
-    //         "professionalfloorwaxing": "",
-    //         "dogwalking": "",
-    //         "petsitting": "",
-    //         "dispensingmedication": "",
-    //         "waste": "",
-    //         "rate": 30,
-    //         "minimum": 60,
-    //         "cost": {
-    //         "total": 105,
-    //             "cleaning": 105,
-    //             "extra": 0,
-    //             "pro": 0,
-    //             "pet": 0
-    //     },
-    //     "data": {
-    //         "totaltimerooms": 1,
-    //             "totaltimebaths": 1,
-    //             "totalhours": 2
-    //     }
-    // },
-    //     "id": estimate.id
-    // }
-
-    //this is also correct
     console.log('[EditEstimate] initialValues: ' , initialValues)
 
-    // useEffect(()=> {
-    //     initEdit();
-    // }, {initialValues})
 
     // let validationSchema = Yup.object().shape({
     //     typeofservice: Yup.string().required("Required"),
@@ -146,7 +98,6 @@ const EditEstimate =({estimate, onSubmit}) => {
                                                                 onChange={handleChange}
                                                                 onBlur={handleBlur}
                                                                 value={values.typeofservice}
-                                                                //placeholder={initialValues.typeofservice}
                                                                 name="typeofservice">
                                                                 {Constants.typeofserviceoptions.map((item) => (
                                                                     <MenuItem key={item.value} value={item.value}>
