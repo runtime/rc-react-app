@@ -33,15 +33,16 @@ const EstimateCreate = () => {
         "laundrywashandfold": "",
         "dishwashing": "",
         "mealprep": "",
-        "ovencleaning": "",
-        "deepcleaning": "",
-        "professionalcouchcleaning": "",
-        "professionalrugshampoo": "",
-        "professionalfloorwaxing": "",
-        "dogwalking": "",
-        "petsitting": "",
-        "dispensingmedication": "",
-        "waste": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
         "cost": {
             "total": 0,
             "cleaning": 0,
@@ -414,7 +415,6 @@ const EstimateCreate = () => {
 
                                                 <Grid item xs={12} sm={12} md={12}
                                                       sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginBottom: 0}}>
-
                                                     <FormControlLabel
                                                         control={<Checkbox color="secondary" />}
                                                         label="Oven Cleaning"

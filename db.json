@@ -3347,7 +3347,7 @@
     {
       "servicedetails": {
         "serviceID": "",
-        "userID": "purplebutterfly_965",
+        "userID": "purplebutterfly_825",
         "typeofservice": "Standard Cleaning",
         "construct": "Apartment",
         "sqft": 250,
@@ -3367,17 +3367,17 @@
         "professionalrugshampoo": [],
         "professionalfloorwaxing": "",
         "dogwalking": [],
-        "petsitting": "",
+        "petsitting": [],
         "dispensingmedication": "",
         "waste": "",
         "rate": 30,
         "minimum": 60,
         "cost": {
-          "total": 309,
+          "total": 339,
           "cleaning": 154,
           "extra": 35,
           "pro": 90,
-          "pet": 30
+          "pet": 60
         },
         "data": {
           "totaltimerooms": 2,
@@ -3386,6 +3386,130 @@
         }
       },
       "id": "yMNjIos"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_8",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "1OBm2zN"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_715",
+        "typeofservice": "Move-out Clean",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": "",
+        "deepcleaning": "",
+        "professionalcouchcleaning": "",
+        "professionalrugshampoo": "",
+        "professionalfloorwaxing": "",
+        "dogwalking": "",
+        "petsitting": "",
+        "dispensingmedication": "",
+        "waste": "",
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 95,
+          "cleaning": 95,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "v-WzTbQ"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "greengiraffe_216",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": true,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 120,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 15
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        }
+      },
+      "id": "U0xWnPw"
     }
   ]
 }
