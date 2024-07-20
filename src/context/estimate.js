@@ -18,7 +18,6 @@ function Provider( {children} ) {
     //todo move helper functions to api estimate algo
     const calculateEstimate = (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
-
         console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
         // TODO Refactor the below algo into a Microservice
@@ -28,14 +27,11 @@ function Provider( {children} ) {
         const moveoutfee = 25.00;
         let  totalhours = 0;
         // for temp user names
-        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog"]
-
-        const randomID = Math.random
-
+        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog", "bluefish"];
 
         let serviceObj = {
             serviceID: obj.serviceID,
-            userID: prenoms[Math.round(Math.random(2))] + "_" + Math.floor(Math.random() * 1000),
+            userID: prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -92,14 +88,14 @@ function Provider( {children} ) {
         console.log('servicerate: ', servicerate);
         console.log('constructrate: ', constructrate);
 
-        const sqftfactor = (serviceObj.sqft /100) ; // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
+        const sqftfactor = (serviceObj.sqft /100); // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
         const roomsfactor = serviceObj.numpeople /serviceObj.numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
         const bathsfactor = serviceObj.numpeople / serviceObj.numbaths; // 1/3 = .333 (1/3 of an hour or 20 mins)
         const petsfactor = serviceObj.numpets * 5; // 5 minutes per pet
 
 
         // time per room for each factor
-        const base_tpr = roomsfactor * 60// 20 mins or a time in mins.
+        const base_tpr = roomsfactor * 60 //20 mins or a time in mins
         const base_tpb = bathsfactor * 60 // // time in mins
         const petstpr = petsfactor * 1.5
         const sqfttpr = Math.round(sqftfactor* 1.25);
@@ -170,9 +166,9 @@ function Provider( {children} ) {
         const wastecost = (serviceObj.waste)? wasterate : 0;
 
 
-        //////////////////////////////////////////
+        ///////////////////////////////////////////////
         // Service OBJ - total cost for basic cleaning
-        //////////////////////////////////////////
+        ///////////////////////////////////////////////
 
         // Data for employees total hours etc..
         serviceObj.data.totalhours = Math.round(totalhours);
@@ -198,6 +194,39 @@ function Provider( {children} ) {
 
         serviceObj.cost.total = serviceObj.cost.cleaning + serviceObj.cost.extra + serviceObj.cost.pro + serviceObj.cost.pet;
 
+        //For the Service Details Page & Receipt We need a list of Extras the customer requested as well as the cost
+        // we already have the cost
+
+        console.log('[estimate] laundrywashandfold ', obj.laundrywashandfold);
+
+        const extrasList = [
+            {name: 'laundrywashandfold', display: serviceObj.laundrywashandfold, cost: laundrycost},
+            {name: 'dishwashing', display: serviceObj.dishwashing, cost: dishwashingcost},
+            {name: 'mealprep', display: serviceObj.mealprep, cost: mealprepcost},
+            {name: 'ovencleaning', display: serviceObj.ovencleaning, cost: ovencleaningcost},
+            {name: 'fridgecleaning', display: serviceObj.fridgecleaning, cost: fridgecleaningcost},
+            {name: 'deepcleaning', display: serviceObj.deepcleaning, cost: deepcleaningcost},
+            {name: 'professionalcouchcleaning', display: serviceObj.professionalcouchcleaning, cost: professionalcouchcleaningcost},
+            {name: 'professionalrugshampoo', display: serviceObj.professionalrugshampoo, cost: professionalrugshampoocost},
+            {name: 'professionalfloorwaxing', display: serviceObj.professionalfloorwaxing, cost: professionalfloorwaxingcost},
+        ];
+
+
+        console.log('[Provider] full extrasList: ', extrasList);
+
+        const extraservices = () => {
+            let extras = [];
+            extrasList.forEach((item) => {
+                if (item.display === true) {
+                    extras.push(item.name);
+                }
+            });
+
+            return extras;
+        }
+
+        console.log('[Provider] extrasList: ', extrasList);
+        console.log('[Provider] extraservices() : ', extraservices());
 
 
         ///////////////////
