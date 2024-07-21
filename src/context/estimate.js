@@ -15,6 +15,21 @@ function Provider( {children} ) {
       //Fetch Data
     }
     // HELPER FUNCTIONS
+    const createExtraServicesList = (arr) => {
+        console.log('[Provider] createEstimateServicesList arr: ', arr);
+        let extras = [];
+        arr.forEach((item) => {
+            console.log(item)
+            if (item.display === true) {
+                extras.push({
+                    "label": item.label,
+                    "cost": item.cost
+                })
+            }
+        });
+        console.log('[Provider] return extras: ', extras);
+        return extras;
+    }
     //todo move helper functions to api estimate algo
     const calculateEstimate = (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
@@ -199,40 +214,51 @@ function Provider( {children} ) {
 
         console.log('[estimate] laundrywashandfold ', obj.laundrywashandfold);
 
+        // for display in service details and receipts. We could refactor and do this while we create the costs but we can always refactor this later.
         const extrasList = [
-            {name: 'laundrywashandfold', display: serviceObj.laundrywashandfold, cost: laundrycost},
-            {name: 'dishwashing', display: serviceObj.dishwashing, cost: dishwashingcost},
-            {name: 'mealprep', display: serviceObj.mealprep, cost: mealprepcost},
-            {name: 'ovencleaning', display: serviceObj.ovencleaning, cost: ovencleaningcost},
-            {name: 'fridgecleaning', display: serviceObj.fridgecleaning, cost: fridgecleaningcost},
-            {name: 'deepcleaning', display: serviceObj.deepcleaning, cost: deepcleaningcost},
-            {name: 'professionalcouchcleaning', display: serviceObj.professionalcouchcleaning, cost: professionalcouchcleaningcost},
-            {name: 'professionalrugshampoo', display: serviceObj.professionalrugshampoo, cost: professionalrugshampoocost},
-            {name: 'professionalfloorwaxing', display: serviceObj.professionalfloorwaxing, cost: professionalfloorwaxingcost},
+
+            {label: 'Oven Cleaning', display: serviceObj.ovencleaning, cost: ovencleaningcost},
+            {label: 'Fridge Clean', display: serviceObj.fridgecleaning, cost: fridgecleaningcost},
+            {label: 'Deep Cleaning', display: serviceObj.deepcleaning, cost: deepcleaningcost},
         ];
 
+        const prolist = [
+            {label: 'Professional Couch Cleaning', display: serviceObj.professionalcouchcleaning, cost: professionalcouchcleaningcost},
+            {label: 'Professional Rug Shampoo', display: serviceObj.professionalrugshampoo, cost: professionalrugshampoocost},
+            {label: 'Professional Floor Waxing', display: serviceObj.professionalfloorwaxing, cost: professionalfloorwaxingcost},
+        ];
+
+        const petlist = [
+            {label: 'Dog Walking', display: serviceObj.dogwalking, cost: dogwalkingcost},
+            {label: 'Pet Sitting', display: serviceObj.petsitting, cost: petsittingcost},
+            {label: 'Dispensing Medication', display: serviceObj.dispensingmedication, cost: dispensingmedicationcost},
+            {label: 'Waste', display: serviceObj.waste, cost: wastecost},
+        ];
 
         console.log('[Provider] full extrasList: ', extrasList);
+        console.log('[Provider] full prolist: ', prolist);
+        console.log('[Provider] full petlist: ', petlist);
 
-        const extraservices = () => {
-            let extras = [];
-            extrasList.forEach((item) => {
-                if (item.display === true) {
-                    extras.push(item.name);
-                }
-            });
 
-            return extras;
-        }
+        const extraserviceslistfordisplay = createExtraServicesList(extrasList);
+        console.log('[Provider]  extraserviceslistfordisplay', extraserviceslistfordisplay);
 
-        console.log('[Provider] extrasList: ', extrasList);
-        console.log('[Provider] extraservices() : ', extraservices());
+
+        serviceObj.extraservices = extraserviceslistfordisplay
+        // serviceObj.proservices = createExtraServicesList(prolist);
+        // serviceObj.petservices = createExtraServicesList(petlist);
+
+
+        // TODO why is this undefined!~
+
+        console.log('[Provider] NEW ADDITION serviceObj.extraservices : ', serviceObj.extraservices);
+
+
 
 
         ///////////////////
         // LOGS
         //////////////////
-
 
         // Hydrated serviceObj as received
         console.log('[Provider] serviceObj.rate: ', serviceObj.rate, ' typeofservice: ', serviceObj.typeofservice, ' construct: ', serviceObj.construct,
@@ -292,6 +318,10 @@ function Provider( {children} ) {
         console.log('petsittingcost: ', petsittingcost);
         console.log('dispensingmedicationcost: ', dispensingmedicationcost);
         console.log('wastecost: ', wastecost);
+        console.log('==============EXTRAS and PRO Objects=======');
+        // console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
+        // console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
+        // console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
         console.log('=============== estimate ==============');
         console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
         console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
@@ -308,6 +338,7 @@ function Provider( {children} ) {
 
         // Final Estimate to be returned
         return serviceObj;
+
 
         }
 
@@ -349,6 +380,7 @@ function Provider( {children} ) {
                              createEstimate,
                              setEstimate
                             }
+
 
     return (
         <EstimateContext.Provider value={providerValues}>
