@@ -1477,7 +1477,7 @@
     {
       "servicedetails": {
         "serviceID": "",
-        "userID": "greengiraffe_121",
+        "userID": "greengiraffe_357",
         "typeofservice": "Standard Cleaning",
         "construct": "Apartment",
         "sqft": 250,
@@ -1490,8 +1490,8 @@
         "dishwashing": "",
         "mealprep": "",
         "ovencleaning": true,
-        "fridgecleaning": false,
-        "deepcleaning": false,
+        "fridgecleaning": true,
+        "deepcleaning": true,
         "professionalcouchcleaning": false,
         "professionalrugshampoo": false,
         "professionalfloorwaxing": false,
@@ -1502,9 +1502,9 @@
         "rate": 30,
         "minimum": 60,
         "cost": {
-          "total": 140,
+          "total": 295,
           "cleaning": 105,
-          "extra": 35,
+          "extra": 190,
           "pro": 0,
           "pet": 0
         },
@@ -1517,6 +1517,14 @@
           {
             "label": "Oven Cleaning",
             "cost": 35
+          },
+          {
+            "label": "Fridge Clean",
+            "cost": 55
+          },
+          {
+            "label": "Deep Cleaning",
+            "cost": 100
           }
         ]
       },

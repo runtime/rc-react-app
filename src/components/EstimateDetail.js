@@ -43,6 +43,10 @@ const EstimateDetail = () => {
        setShowEdit(false);
    }
 
+
+
+
+
     let content = <h3>loading</h3>
     // IF we have an estimate with the right data structure but the user as asked to edit it
     if ((estimate.hasOwnProperty("servicedetails")) && (showEdit)){
@@ -65,16 +69,27 @@ const EstimateDetail = () => {
     } else {
         // Otherwise we assume we have the estimate with the service details so we display it
         console.log('[EstimateDetail] estimate.servicedetails', estimate.servicedetails);
+        const renderedExtras = estimate.servicedetails.extraservices.map((extra) => {
+            return <p>{extra.label}</p>
+        });
+
+
+
         content = <>
             <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
                 your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>
-                <div>
-                    <ul>
-                        <li>Your Temporary user ID: <b>{estimate.servicedetails.userID}</b></li>
-                        <li>Your Personalized Estimate ID: <b>{estimate.id} </b></li>
-                        <li>Type of Service: <b>{estimate.servicedetails.typeofservice} </b></li>
+            <Typography variant="body2" marginBottom='0px'>
+                Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
+            </Typography>
+            <Typography variant="body2" marginBottom='20px'>
+                Your Personalized Estimate ID: <b>{estimate.id} </b>
+            </Typography>
+            <div>
+                <ul>
+
+                    <li>Type of Service: <b>{estimate.servicedetails.typeofservice} </b></li>
                         <li>Zoned: <b>{estimate.servicedetails.construct}</b></li>
                         <li>Occupants: <b>{estimate.servicedetails.numpeople} </b></li>
                         <li>Number of Bedrooms: <b>{estimate.servicedetails.numrooms} </b></li>
@@ -84,6 +99,7 @@ const EstimateDetail = () => {
                         <li>Current Clutter Level: <b>{estimate.servicedetails.cleanfactor}</b></li>
                     </ul>
                 </div>
+            <div>{renderedExtras}</div>
 
             {/*<Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>*/}
             <Typography variant="body1" marginBottom='20px'>
