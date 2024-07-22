@@ -68,12 +68,20 @@ const EstimateDetail = () => {
 
     } else {
         // Otherwise we assume we have the estimate with the service details so we display it
-        console.log('[EstimateDetail] estimate.servicedetails', estimate.servicedetails);
+        // check to make sure we have extras
+        let renderedExtrasHeader = <></>
+        if (estimate.servicedetails.extraservices.length > 0) {
+             renderedExtrasHeader =
+                 <>
+                     <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Extra </Typography>
+                     <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
+                 </>
+
+        }
+        console.log('[EstimateDetail] (else... showDetails) estimate.servicedetails', estimate.servicedetails);
         const renderedExtras = estimate.servicedetails.extraservices.map((extra) => {
-            return <p>{extra.label}</p>
+            return <li>{extra.label}</li>
         });
-
-
 
         content = <>
             <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>
@@ -88,7 +96,6 @@ const EstimateDetail = () => {
             </Typography>
             <div>
                 <ul>
-
                     <li>Type of Service: <b>{estimate.servicedetails.typeofservice} </b></li>
                         <li>Zoned: <b>{estimate.servicedetails.construct}</b></li>
                         <li>Occupants: <b>{estimate.servicedetails.numpeople} </b></li>
@@ -99,7 +106,9 @@ const EstimateDetail = () => {
                         <li>Current Clutter Level: <b>{estimate.servicedetails.cleanfactor}</b></li>
                     </ul>
                 </div>
-            <div>{renderedExtras}</div>
+            <div>
+                {renderedExtrasHeader}
+                <ul>{renderedExtras}</ul></div>
 
             {/*<Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>*/}
             <Typography variant="body1" marginBottom='20px'>
