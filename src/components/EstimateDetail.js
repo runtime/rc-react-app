@@ -87,12 +87,6 @@ const EstimateDetail = () => {
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
                 your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>
-            <Typography variant="body2" marginBottom='0px'>
-                Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
-            </Typography>
-            <Typography variant="body2" marginBottom='20px'>
-                Your Personalized Estimate ID: <b>{estimate.id} </b>
-            </Typography>
             <div>
                 <ul>
                     <li>Type of Service: <b>{estimate.servicedetails.typeofservice} </b></li>
@@ -111,15 +105,16 @@ const EstimateDetail = () => {
             </div>
 
 
-            <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Total </Typography>
-            <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
-            <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>
 
 
 
-
-            {/*<Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>*/}
-            <Typography variant="body1" marginBottom='20px' marginTop='20px'>
+            <Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
+            <Typography variant="body2" marginBottom='0px'>
+                Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
+            </Typography>
+            <Typography variant="body2" marginBottom='20px'>
+                Your Personalized Estimate ID: <b>{estimate.id} </b>
+            </Typography><Typography variant="body1" marginBottom='20px' marginTop='20px'>
                 This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to Book a
                 date.
             </Typography>
@@ -129,7 +124,7 @@ const EstimateDetail = () => {
             <Button onClick={handleEditClick}>EDIT DETAILS</Button>
 
             <Typography variant="h5" marginTop='20px' marginBottom='5px'>
-                If you need to make any changes to your estimate, please use the edit button. Do not hit the back arrow or refresh the browser.
+                If you need to make any changes to your estimate, please use the edit estimate button. Do not hit the back arrow or refresh the browser.
             </Typography>
 
             {/* for the user in future cards */}
@@ -153,6 +148,7 @@ const EstimateDetail = () => {
                 <CardContent>
                     <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Our </Typography>
                     <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
+                    <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>
                     {content}
                 </CardContent>
             </Card>
