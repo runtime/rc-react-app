@@ -12,13 +12,34 @@ function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
 
     const getEstimatesFromAPI =  () => {
-      //Fetch Data
+        //Fetch Data
     }
     // HELPER FUNCTIONS
+    const determineIfDropDownExtraShouldBeDisplayed = (value) => {
+        if (value !== 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+    const createExtraServicesList = (arr) => {
+        console.log('[Provider] createEstimateServicesList arr: ', arr);
+        let extras = [];
+        arr.forEach((item) => {
+            console.log(item)
+            if (item.display === true) {
+                extras.push({
+                    "label": item.label,
+                    "cost": item.cost
+                })
+            }
+        });
+        console.log('[Provider] return extras: ', extras);
+        return extras;
+    }
     //todo move helper functions to api estimate algo
     const calculateEstimate = (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
-
         console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
         // TODO Refactor the below algo into a Microservice
@@ -28,14 +49,11 @@ function Provider( {children} ) {
         const moveoutfee = 25.00;
         let  totalhours = 0;
         // for temp user names
-        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog"]
-
-        const randomID = Math.random
-
+        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog", "bluefish"];
 
         let serviceObj = {
             serviceID: obj.serviceID,
-            userID: prenoms[Math.round(Math.random(2))] + "_" + Math.floor(Math.random() * 1000),
+            userID: prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -92,14 +110,14 @@ function Provider( {children} ) {
         console.log('servicerate: ', servicerate);
         console.log('constructrate: ', constructrate);
 
-        const sqftfactor = (serviceObj.sqft /100) ; // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
+        const sqftfactor = (serviceObj.sqft /100); // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
         const roomsfactor = serviceObj.numpeople /serviceObj.numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
         const bathsfactor = serviceObj.numpeople / serviceObj.numbaths; // 1/3 = .333 (1/3 of an hour or 20 mins)
         const petsfactor = serviceObj.numpets * 5; // 5 minutes per pet
 
 
         // time per room for each factor
-        const base_tpr = roomsfactor * 60// 20 mins or a time in mins.
+        const base_tpr = roomsfactor * 60 //20 mins or a time in mins
         const base_tpb = bathsfactor * 60 // // time in mins
         const petstpr = petsfactor * 1.5
         const sqfttpr = Math.round(sqftfactor* 1.25);
@@ -119,7 +137,7 @@ function Provider( {children} ) {
         let totaltimerooms = Math.round(tpr * serviceObj.numrooms) / 60;
         let totaltimebaths = Math.round(tpb * serviceObj.numbaths) / 60;
 
-       // in order to show the change in cost for clean vs moveout and apartment vs house before we have num rooms or time
+        // in order to show the change in cost for clean vs moveout and apartment vs house before we have num rooms or time
         // we need to set the total time to 0 if the estimate is for cleaning or moveout
         if ((!totaltimerooms) && (!totaltimebaths)) {
             totaltimerooms = 0
@@ -133,10 +151,11 @@ function Provider( {children} ) {
         // BEGIN EXTRA, PRO AND PET
 
         //EXTRA RATES
-        const diswashingrate = 35;
         const laundryrate = 60;
-        const ovenrate = 35;
+        const diswashingrate = 35;
         const mealpreprate = 60;
+
+        const ovenrate = 35;
         const fridgerate = 55;
         const deepcleanrate = 100;
 
@@ -152,9 +171,15 @@ function Provider( {children} ) {
         const wasterate = 15;
 
         //COSTS - EXTRAS
-        const dishwashingcost = serviceObj.dishwashing * diswashingrate;
+
         const laundrycost = serviceObj.laundrywashandfold * laundryrate;
+        const dishwashingcost = serviceObj.dishwashing * diswashingrate;
         const mealprepcost = serviceObj.mealprep * mealpreprate;
+
+        const displaylaundry = determineIfDropDownExtraShouldBeDisplayed(serviceObj.laundrywashandfold);
+        const displaydishwashing = determineIfDropDownExtraShouldBeDisplayed(serviceObj.dishwashing);
+        const displaymealprep = determineIfDropDownExtraShouldBeDisplayed(serviceObj.mealprep);
+
 
         const ovencleaningcost = (serviceObj.ovencleaning)? ovenrate : 0;
         const fridgecleaningcost = (serviceObj.fridgecleaning)? fridgerate : 0;
@@ -170,9 +195,9 @@ function Provider( {children} ) {
         const wastecost = (serviceObj.waste)? wasterate : 0;
 
 
-        //////////////////////////////////////////
+        ///////////////////////////////////////////////
         // Service OBJ - total cost for basic cleaning
-        //////////////////////////////////////////
+        ///////////////////////////////////////////////
 
         // Data for employees total hours etc..
         serviceObj.data.totalhours = Math.round(totalhours);
@@ -198,12 +223,50 @@ function Provider( {children} ) {
 
         serviceObj.cost.total = serviceObj.cost.cleaning + serviceObj.cost.extra + serviceObj.cost.pro + serviceObj.cost.pet;
 
+        //For the Service Details Page & Receipt We need a list of Extras the customer requested as well as the cost
+        // we already have the cost
 
+        // for display in service details and receipts. We could refactor and do this while we create the costs but we can always refactor this later.
+        const extrasList = [
+            {label: 'Laundry', display: displaylaundry, cost: laundrycost},
+            {label: 'Dishes', display: displaydishwashing, cost: dishwashingcost},
+            {label: 'Meals', display: displaymealprep, cost: mealprepcost},
+
+            {label: 'Oven Cleaning', display: serviceObj.ovencleaning, cost: ovencleaningcost},
+            {label: 'Fridge Clean', display: serviceObj.fridgecleaning, cost: fridgecleaningcost},
+            {label: 'Deep Cleaning', display: serviceObj.deepcleaning, cost: deepcleaningcost},
+        ];
+
+        const prolist = [
+            {label: 'Professional Couch Cleaning', display: serviceObj.professionalcouchcleaning, cost: professionalcouchcleaningcost},
+            {label: 'Professional Rug Shampoo', display: serviceObj.professionalrugshampoo, cost: professionalrugshampoocost},
+            {label: 'Professional Floor Waxing', display: serviceObj.professionalfloorwaxing, cost: professionalfloorwaxingcost},
+        ];
+
+        const petlist = [
+            {label: 'Dog Walking', display: serviceObj.dogwalking, cost: dogwalkingcost},
+            {label: 'Pet Sitting', display: serviceObj.petsitting, cost: petsittingcost},
+            {label: 'Dispensing Medication', display: serviceObj.dispensingmedication, cost: dispensingmedicationcost},
+            {label: 'Waste', display: serviceObj.waste, cost: wastecost},
+        ];
+
+        console.log('[Provider] full extrasList: ', extrasList);
+        console.log('[Provider] full prolist: ', prolist);
+        console.log('[Provider] full petlist: ', petlist);
+
+
+        const extraserviceslistfordisplay = createExtraServicesList(extrasList);
+        const proserviceslistfordisplay = createExtraServicesList(prolist);
+        const petserviceslistfordisplay = createExtraServicesList(petlist);
+
+
+        serviceObj.extraservices = extraserviceslistfordisplay;
+        serviceObj.proservices = proserviceslistfordisplay;
+        serviceObj.petservices = petserviceslistfordisplay;
 
         ///////////////////
         // LOGS
         //////////////////
-
 
         // Hydrated serviceObj as received
         console.log('[Provider] serviceObj.rate: ', serviceObj.rate, ' typeofservice: ', serviceObj.typeofservice, ' construct: ', serviceObj.construct,
@@ -263,6 +326,10 @@ function Provider( {children} ) {
         console.log('petsittingcost: ', petsittingcost);
         console.log('dispensingmedicationcost: ', dispensingmedicationcost);
         console.log('wastecost: ', wastecost);
+        console.log('==============EXTRAS and PRO Objects=======');
+        console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
+        console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
+        console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
         console.log('=============== estimate ==============');
         console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
         console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
@@ -280,7 +347,8 @@ function Provider( {children} ) {
         // Final Estimate to be returned
         return serviceObj;
 
-        }
+
+    }
 
     // context functions
     const createEstimate = async (obj) => {
@@ -315,11 +383,13 @@ function Provider( {children} ) {
 
     // set new value to send back to context subscribers
 
-    const providerValues = { estimate,
-                             editEstimateById,
-                             createEstimate,
-                             setEstimate
-                            }
+    const providerValues = {
+        estimate,
+        editEstimateById,
+        createEstimate,
+        setEstimate
+    }
+
 
     return (
         <EstimateContext.Provider value={providerValues}>
