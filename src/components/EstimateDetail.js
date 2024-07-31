@@ -51,7 +51,7 @@ const EstimateDetail = () => {
     // IF we have an estimate with the right data structure but the user as asked to edit it
     if ((estimate.hasOwnProperty("servicedetails")) && (showEdit)){
         content = <>
-            <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>
+            {/*<EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>*/}
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
                 your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>
@@ -148,7 +148,7 @@ const EstimateDetail = () => {
                 <CardContent>
                     <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Our </Typography>
                     <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
-                    <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>
+                    <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)} />
                     {content}
                 </CardContent>
             </Card>

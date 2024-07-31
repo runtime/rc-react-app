@@ -12,7 +12,7 @@ function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
 
     const getEstimatesFromAPI =  () => {
-      //Fetch Data
+        //Fetch Data
     }
     // HELPER FUNCTIONS
     const createExtraServicesList = (arr) => {
@@ -130,7 +130,7 @@ function Provider( {children} ) {
         let totaltimerooms = Math.round(tpr * serviceObj.numrooms) / 60;
         let totaltimebaths = Math.round(tpb * serviceObj.numbaths) / 60;
 
-       // in order to show the change in cost for clean vs moveout and apartment vs house before we have num rooms or time
+        // in order to show the change in cost for clean vs moveout and apartment vs house before we have num rooms or time
         // we need to set the total time to 0 if the estimate is for cleaning or moveout
         if ((!totaltimerooms) && (!totaltimebaths)) {
             totaltimerooms = 0
@@ -166,6 +166,18 @@ function Provider( {children} ) {
         const dishwashingcost = serviceObj.dishwashing * diswashingrate;
         const laundrycost = serviceObj.laundrywashandfold * laundryrate;
         const mealprepcost = serviceObj.mealprep * mealpreprate;
+
+        // const displaydishes = () => {
+        //     if (serviceObj.dishwashing !== 0) return true;
+        // }
+        //
+        // const displaylaundry = () => {
+        //     if (serviceObj.laundrywashandfold !== 0) return true;
+        // }
+        //
+        // const displaymealprep = () => {
+        //     if (serviceObj.mealprep !== 0) return true;
+        // }
 
         const ovencleaningcost = (serviceObj.ovencleaning)? ovenrate : 0;
         const fridgecleaningcost = (serviceObj.fridgecleaning)? fridgerate : 0;
@@ -217,6 +229,10 @@ function Provider( {children} ) {
         // for display in service details and receipts. We could refactor and do this while we create the costs but we can always refactor this later.
         const extrasList = [
 
+            // {label: 'Dishes', display: {displaydishes}, cost: dishwashingcost},
+            // {label: 'Laundry', display: {displaylaundry}, cost: laundrycost},
+            // {label: 'Meals', display: {displaymealprep}, cost: mealprepcost},
+
             {label: 'Oven Cleaning', display: serviceObj.ovencleaning, cost: ovencleaningcost},
             {label: 'Fridge Clean', display: serviceObj.fridgecleaning, cost: fridgecleaningcost},
             {label: 'Deep Cleaning', display: serviceObj.deepcleaning, cost: deepcleaningcost},
@@ -249,7 +265,6 @@ function Provider( {children} ) {
         // serviceObj.petservices = createExtraServicesList(petlist);
 
 
-        // TODO why is this undefined!~
 
         console.log('[Provider] NEW ADDITION serviceObj.extraservices : ', serviceObj.extraservices);
 
@@ -319,7 +334,7 @@ function Provider( {children} ) {
         console.log('dispensingmedicationcost: ', dispensingmedicationcost);
         console.log('wastecost: ', wastecost);
         console.log('==============EXTRAS and PRO Objects=======');
-        // console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
+        console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
         // console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
         // console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
         console.log('=============== estimate ==============');
@@ -340,7 +355,7 @@ function Provider( {children} ) {
         return serviceObj;
 
 
-        }
+    }
 
     // context functions
     const createEstimate = async (obj) => {
@@ -375,11 +390,12 @@ function Provider( {children} ) {
 
     // set new value to send back to context subscribers
 
-    const providerValues = { estimate,
-                             editEstimateById,
-                             createEstimate,
-                             setEstimate
-                            }
+    const providerValues = {
+        estimate,
+        editEstimateById,
+        createEstimate,
+        setEstimate
+    }
 
 
     return (
