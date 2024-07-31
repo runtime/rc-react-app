@@ -60,6 +60,7 @@ const EstimateDetail = () => {
         </>
         // IF we dont have an estimate with the correct data structure we act as if we have nothing at all
     } else if (!estimate.hasOwnProperty("servicedetails")) {
+            //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
             content =
                 <>
                     <Typography variant="body1" marginBottom='20px'> There are no details about your service yet </Typography>
@@ -78,12 +79,13 @@ const EstimateDetail = () => {
                  </>
 
         }
-        console.log('[EstimateDetail] (else... showDetails) estimate.servicedetails', estimate.servicedetails);
+        //console.log('[EstimateDetail] (else... showDetails) estimate.servicedetails', estimate.servicedetails);
         const renderedExtras = estimate.servicedetails.extraservices.map((extra) => {
             return <li>{extra.label}</li>
         });
 
         content = <>
+            <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)} />
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
                 your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>
@@ -105,10 +107,7 @@ const EstimateDetail = () => {
             </div>
 
 
-
-
-
-            <Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
+            {/*<Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>*/}
             <Typography variant="body2" marginBottom='0px'>
                 Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
             </Typography>
@@ -124,7 +123,7 @@ const EstimateDetail = () => {
             <Button onClick={handleEditClick}>EDIT DETAILS</Button>
 
             <Typography variant="h5" marginTop='20px' marginBottom='5px'>
-                If you need to make any changes to your estimate, please use the edit estimate button. Do not hit the back arrow or refresh the browser.
+                If you need to make any changes to your estimate, please use the edit details button. Do not hit the back arrow or refresh the browser.
             </Typography>
 
             {/* for the user in future cards */}
@@ -148,7 +147,6 @@ const EstimateDetail = () => {
                 <CardContent>
                     <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Our </Typography>
                     <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
-                    <EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)} />
                     {content}
                 </CardContent>
             </Card>

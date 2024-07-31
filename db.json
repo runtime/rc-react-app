@@ -2096,6 +2096,54 @@
         ]
       },
       "id": "n_F9BRR"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_319",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 2500,
+        "numpeople": 4,
+        "numrooms": 4,
+        "numbaths": 4,
+        "numpets": 2,
+        "cleanfactor": 10,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": true,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 501,
+          "cleaning": 466,
+          "extra": 35,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 8,
+          "totaltimebaths": 6,
+          "totalhours": 14
+        },
+        "extraservices": [
+          {
+            "label": "Oven Cleaning",
+            "cost": 35
+          }
+        ]
+      },
+      "id": "GqKeMwD"
     }
   ]
 }
