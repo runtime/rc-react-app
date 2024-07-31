@@ -46,8 +46,9 @@ const EstimateDetail = () => {
 
 
 
-
+    // content is the markup that is displayed in the browser depending on the state of the estimate
     let content = <h3>loading</h3>
+
     // IF we have an estimate with the right data structure but the user as asked to edit it
     if ((estimate.hasOwnProperty("servicedetails")) && (showEdit)){
         content = <>
@@ -69,19 +70,44 @@ const EstimateDetail = () => {
 
     } else {
         // Otherwise we assume we have the estimate with the service details so we display it
-        // check to make sure we have extras
+        // check to make sure we have extras, pro and pet services. for each we need a headline so this gets a bit clunky
         let renderedExtrasHeader = <></>
+        let renderedProHeader = <></>
+        let renderedPetHeader = <></>
         if (estimate.servicedetails.extraservices.length > 0) {
              renderedExtrasHeader =
                  <>
                      <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Extra </Typography>
                      <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
                  </>
+        }
 
+        if (estimate.servicedetails.proservices.length > 0) {
+            renderedProHeader =
+                <>
+                    <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Pro </Typography>
+                    <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
+                </>
+        }
+
+        if (estimate.servicedetails.petservices.length > 0) {
+            renderedPetHeader =
+                <>
+                    <Typography color="secondary" variant="cardTitle" component="h1"display="inline">Pet </Typography>
+                    <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Services</Typography>
+                </>
         }
         //console.log('[EstimateDetail] (else... showDetails) estimate.servicedetails', estimate.servicedetails);
         const renderedExtras = estimate.servicedetails.extraservices.map((extra) => {
             return <li>{extra.label}</li>
+        });
+
+        const renderedPro = estimate.servicedetails.proservices.map((pro) => {
+            return <li>{pro.label}</li>
+        });
+
+        const renderedPet = estimate.servicedetails.petservices.map((pet) => {
+            return <li>{pet.label}</li>
         });
 
         content = <>
@@ -104,6 +130,10 @@ const EstimateDetail = () => {
             <div>
                 {renderedExtrasHeader}
                 <ul>{renderedExtras}</ul>
+                {renderedProHeader}
+                <ul>{renderedPro}</ul>
+                {renderedPetHeader}
+                <ul>{renderedPet}</ul>
             </div>
 
 

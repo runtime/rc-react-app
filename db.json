@@ -2644,6 +2644,70 @@
         ]
       },
       "id": "_CnfrtC"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_755",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 1750,
+        "numpeople": 2,
+        "numrooms": 4,
+        "numbaths": 4,
+        "numpets": 1,
+        "cleanfactor": 10,
+        "laundrywashandfold": 0,
+        "dishwashing": 1,
+        "mealprep": 0,
+        "ovencleaning": false,
+        "fridgecleaning": true,
+        "deepcleaning": false,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": true,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 572,
+          "cleaning": 307,
+          "extra": 90,
+          "pro": 160,
+          "pet": 15
+        },
+        "data": {
+          "totaltimerooms": 5,
+          "totaltimebaths": 4,
+          "totalhours": 8
+        },
+        "extraservices": [
+          {
+            "label": "Dishes",
+            "cost": 35
+          },
+          {
+            "label": "Fridge Clean",
+            "cost": 55
+          }
+        ],
+        "proservices": [
+          {
+            "label": "Professional Couch Cleaning",
+            "cost": 160
+          }
+        ],
+        "petservices": [
+          {
+            "label": "Waste",
+            "cost": 15
+          }
+        ]
+      },
+      "id": "U55ZbDu"
     }
   ]
 }
