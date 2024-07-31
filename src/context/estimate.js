@@ -15,6 +15,13 @@ function Provider( {children} ) {
         //Fetch Data
     }
     // HELPER FUNCTIONS
+    const determineIfDropDownExtraShouldBeDisplayed = (value) => {
+        if (value !== 0) {
+            return true
+        } else {
+            return false
+        }
+    }
     const createExtraServicesList = (arr) => {
         console.log('[Provider] createEstimateServicesList arr: ', arr);
         let extras = [];
@@ -144,10 +151,11 @@ function Provider( {children} ) {
         // BEGIN EXTRA, PRO AND PET
 
         //EXTRA RATES
-        const diswashingrate = 35;
         const laundryrate = 60;
-        const ovenrate = 35;
+        const diswashingrate = 35;
         const mealpreprate = 60;
+
+        const ovenrate = 35;
         const fridgerate = 55;
         const deepcleanrate = 100;
 
@@ -163,21 +171,15 @@ function Provider( {children} ) {
         const wasterate = 15;
 
         //COSTS - EXTRAS
-        const dishwashingcost = serviceObj.dishwashing * diswashingrate;
+
         const laundrycost = serviceObj.laundrywashandfold * laundryrate;
+        const dishwashingcost = serviceObj.dishwashing * diswashingrate;
         const mealprepcost = serviceObj.mealprep * mealpreprate;
 
-        // const displaydishes = () => {
-        //     if (serviceObj.dishwashing !== 0) return true;
-        // }
-        //
-        // const displaylaundry = () => {
-        //     if (serviceObj.laundrywashandfold !== 0) return true;
-        // }
-        //
-        // const displaymealprep = () => {
-        //     if (serviceObj.mealprep !== 0) return true;
-        // }
+        const displaylaundry = determineIfDropDownExtraShouldBeDisplayed(serviceObj.laundrywashandfold);
+        const displaydishwashing = determineIfDropDownExtraShouldBeDisplayed(serviceObj.dishwashing);
+        const displaymealprep = determineIfDropDownExtraShouldBeDisplayed(serviceObj.mealprep);
+
 
         const ovencleaningcost = (serviceObj.ovencleaning)? ovenrate : 0;
         const fridgecleaningcost = (serviceObj.fridgecleaning)? fridgerate : 0;
@@ -224,14 +226,11 @@ function Provider( {children} ) {
         //For the Service Details Page & Receipt We need a list of Extras the customer requested as well as the cost
         // we already have the cost
 
-        console.log('[estimate] laundrywashandfold ', obj.laundrywashandfold);
-
         // for display in service details and receipts. We could refactor and do this while we create the costs but we can always refactor this later.
         const extrasList = [
-
-            // {label: 'Dishes', display: {displaydishes}, cost: dishwashingcost},
-            // {label: 'Laundry', display: {displaylaundry}, cost: laundrycost},
-            // {label: 'Meals', display: {displaymealprep}, cost: mealprepcost},
+            {label: 'Laundry', display: displaylaundry, cost: laundrycost},
+            {label: 'Dishes', display: displaydishwashing, cost: dishwashingcost},
+            {label: 'Meals', display: displaymealprep, cost: mealprepcost},
 
             {label: 'Oven Cleaning', display: serviceObj.ovencleaning, cost: ovencleaningcost},
             {label: 'Fridge Clean', display: serviceObj.fridgecleaning, cost: fridgecleaningcost},
@@ -257,19 +256,13 @@ function Provider( {children} ) {
 
 
         const extraserviceslistfordisplay = createExtraServicesList(extrasList);
-        console.log('[Provider]  extraserviceslistfordisplay', extraserviceslistfordisplay);
+        const proserviceslistfordisplay = createExtraServicesList(prolist);
+        const petserviceslistfordisplay = createExtraServicesList(petlist);
 
 
-        serviceObj.extraservices = extraserviceslistfordisplay
-        // serviceObj.proservices = createExtraServicesList(prolist);
-        // serviceObj.petservices = createExtraServicesList(petlist);
-
-
-
-        console.log('[Provider] NEW ADDITION serviceObj.extraservices : ', serviceObj.extraservices);
-
-
-
+        serviceObj.extraservices = extraserviceslistfordisplay;
+        serviceObj.proservices = proserviceslistfordisplay;
+        serviceObj.petservices = petserviceslistfordisplay;
 
         ///////////////////
         // LOGS
@@ -335,8 +328,8 @@ function Provider( {children} ) {
         console.log('wastecost: ', wastecost);
         console.log('==============EXTRAS and PRO Objects=======');
         console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
-        // console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
-        // console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
+        console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
+        console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
         console.log('=============== estimate ==============');
         console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
         console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
