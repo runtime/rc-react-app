@@ -2708,6 +2708,211 @@
         ]
       },
       "id": "U55ZbDu"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_267",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 950,
+        "numpeople": 1,
+        "numrooms": 2,
+        "numbaths": 1.5,
+        "numpets": 1,
+        "cleanfactor": 5,
+        "laundrywashandfold": 0,
+        "dishwashing": 1,
+        "mealprep": 1,
+        "ovencleaning": false,
+        "fridgecleaning": true,
+        "deepcleaning": true,
+        "professionalcouchcleaning": true,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": true,
+        "dogwalking": true,
+        "petsitting": true,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 695,
+          "cleaning": 145,
+          "extra": 250,
+          "pro": 240,
+          "pet": 60
+        },
+        "data": {
+          "totaltimerooms": 2,
+          "totaltimebaths": 1,
+          "totalhours": 3
+        },
+        "extraservices": [
+          {
+            "label": "Dishes",
+            "cost": 35
+          },
+          {
+            "label": "Meals",
+            "cost": 60
+          },
+          {
+            "label": "Fridge Clean",
+            "cost": 55
+          },
+          {
+            "label": "Deep Cleaning",
+            "cost": 100
+          }
+        ],
+        "proservices": [
+          {
+            "label": "Professional Couch Cleaning",
+            "cost": 160
+          },
+          {
+            "label": "Professional Floor Waxing",
+            "cost": 80
+          }
+        ],
+        "petservices": [
+          {
+            "label": "Dog Walking",
+            "cost": 30
+          },
+          {
+            "label": "Pet Sitting",
+            "cost": 30
+          }
+        ]
+      },
+      "id": "cuVjNYT"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_776",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 950,
+        "numpeople": 1,
+        "numrooms": 2,
+        "numbaths": 1.5,
+        "numpets": 1,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 136,
+          "cleaning": 136,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 2,
+          "totaltimebaths": 1,
+          "totalhours": 3
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "WqJfHbr"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_985",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 750,
+        "numpeople": 2,
+        "numrooms": 2,
+        "numbaths": 1.5,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": 1,
+        "dishwashing": 1,
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": true,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": true,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 344,
+          "cleaning": 164,
+          "extra": 150,
+          "pro": 0,
+          "pet": 30
+        },
+        "data": {
+          "totaltimerooms": 2,
+          "totaltimebaths": 1,
+          "totalhours": 4
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 60
+          },
+          {
+            "label": "Dishes",
+            "cost": 35
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          },
+          {
+            "label": "Fridge Clean",
+            "cost": 55
+          }
+        ],
+        "proservices": [],
+        "petservices": [
+          {
+            "label": "Pet Sitting",
+            "cost": 30
+          }
+        ]
+      },
+      "id": "iI9o9lO"
     }
   ]
 }
