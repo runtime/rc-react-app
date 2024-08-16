@@ -44,51 +44,51 @@ const Nav = () => {
                                 }}
                             />
 
-                            <Chip
-                                size='large'
-                                position='relative'
-                                label='Get Estimate'
-                                variant="filled"
-                                color='secondary'
-                                pointerEvents='none'
-                                onClick={() => window.location.href = '/Estimates'}
-                                sx={{
-                                    padding: '16px',
-                                    color: 'white',
-                                    fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
-                                    transitionDuration: '0.3s',
-                                    transitionProperty: 'all',
-                                    transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
-                                }}
-                            />
+                            {/*<Chip*/}
+                            {/*    size='large'*/}
+                            {/*    position='relative'*/}
+                            {/*    label='Get Estimate'*/}
+                            {/*    variant="filled"*/}
+                            {/*    color='secondary'*/}
+                            {/*    pointerEvents='none'*/}
+                            {/*    onClick={() => window.location.href = '/Estimates'}*/}
+                            {/*    sx={{*/}
+                            {/*        padding: '16px',*/}
+                            {/*        color: 'white',*/}
+                            {/*        fontFamily: 'Helvetica Bold" "Arial Bold',*/}
+                            {/*        fontWeight: '800',*/}
+                            {/*        fontSize: '1.15em',*/}
+                            {/*        marginTop: '3px',*/}
+                            {/*        marginRight: '24px',*/}
+                            {/*        transitionDuration: '0.3s',*/}
+                            {/*        transitionProperty: 'all',*/}
+                            {/*        transitionTimingFunction: 'linear',*/}
+                            {/*        opacity: {xs: 0, sm: 0.8, lg: 0.8}*/}
+                            {/*    }}*/}
+                            {/*/>*/}
 
-                            <Chip
-                                size='large'
-                                position='relative'
-                                label='Appointments'
-                                variant="filled"
-                                color='secondary'
-                                pointerEvents='none'
-                                onClick={() => window.location.href = '/Appointments'}
-                                sx={{
-                                    padding: '16px',
-                                    color: 'white',
-                                    fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
-                                    transitionDuration: '0.3s',
-                                    transitionProperty: 'all',
-                                    transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
-                                }}
-                            />
+                            {/*<Chip*/}
+                            {/*    size='large'*/}
+                            {/*    position='relative'*/}
+                            {/*    label='Appointments'*/}
+                            {/*    variant="filled"*/}
+                            {/*    color='secondary'*/}
+                            {/*    pointerEvents='none'*/}
+                            {/*    onClick={() => window.location.href = '/Appointments'}*/}
+                            {/*    sx={{*/}
+                            {/*        padding: '16px',*/}
+                            {/*        color: 'white',*/}
+                            {/*        fontFamily: 'Helvetica Bold" "Arial Bold',*/}
+                            {/*        fontWeight: '800',*/}
+                            {/*        fontSize: '1.15em',*/}
+                            {/*        marginTop: '3px',*/}
+                            {/*        marginRight: '24px',*/}
+                            {/*        transitionDuration: '0.3s',*/}
+                            {/*        transitionProperty: 'all',*/}
+                            {/*        transitionTimingFunction: 'linear',*/}
+                            {/*        opacity: {xs: 0, sm: 0.8, lg: 0.8}*/}
+                            {/*    }}*/}
+                            {/*/>*/}
 
                             <Chip
                                 size='large'
