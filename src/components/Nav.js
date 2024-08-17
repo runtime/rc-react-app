@@ -6,10 +6,16 @@ import {
     Typography, ThemeProvider, CssBaseline
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
-import {Outlet, Link} from "react-router-dom";
+import {Outlet, useNavigate, Link} from "react-router-dom";
 import React from "react";
 
 const Nav = () => {
+
+    const navigate = useNavigate();
+    const handleOnServicesClick = () => navigate('/');
+    const handleOnEstimateClick = () => navigate('/estimates');
+    const handleOnAppointmentsClick = () => navigate('/appointments');
+    const handleOnChatClick = () => navigate('/contact');
     return (
         <div className='Nav'>
             <ThemeProvider theme={RapidCleanTheme}>
@@ -28,7 +34,7 @@ const Nav = () => {
                                 variant="filled"
                                 color='secondary'
                                 pointerEvents='none'
-                                onClick={() => window.location.href = '/'}
+                                onClick={handleOnServicesClick}
                                 sx={{
                                     padding: '16px',
                                     color: 'white',
@@ -51,7 +57,7 @@ const Nav = () => {
                                 variant="filled"
                                 color='secondary'
                                 pointerEvents='none'
-                                onClick={() => window.location.href = '/Estimates'}
+                                onClick={handleOnEstimateClick}
                                 sx={{
                                     padding: '16px',
                                     color: 'white',
@@ -74,7 +80,7 @@ const Nav = () => {
                                 variant="filled"
                                 color='secondary'
                                 pointerEvents='none'
-                                onClick={() => window.location.href = '/Appointments'}
+                                onClick={handleOnAppointmentsClick}
                                 sx={{
                                     padding: '16px',
                                     color: 'white',
@@ -97,7 +103,7 @@ const Nav = () => {
                                 variant="filled"
                                 color='secondary'
                                 pointerEvents='none'
-                                onClick={() => window.location.href = '/Contact'}
+                                onClick={handleOnChatClick}
                                 sx={{
                                     padding: '16px',
                                     color: 'white',

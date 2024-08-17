@@ -1,8 +1,9 @@
 import React, {useContext, useState} from 'react'
 import '../styles/Estimates.css';
 import EstimateContext from '../context/estimate';
+import { useNavigate } from 'react-router-dom';
 import EstimateEdit from './EstimateEdit';
-import EstimateChip from './EstimateChip'
+import EstimateChip from './EstimateChip';
 
 import {
     Typography, Grid, Box, Button, Chip,
@@ -18,6 +19,8 @@ const EstimateDetail = () => {
    const { estimate } = useContext(EstimateContext);
    const [showEdit, setShowEdit] = useState(false);
 
+   const navigate = useNavigate();
+
    console.log('[EstimateDetail] estimate: ' + estimate);
    console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
 
@@ -28,6 +31,11 @@ const EstimateDetail = () => {
             currency: 'USD',
         });
     } /* $2,500.00 */
+
+    const handleNextClick = () => {
+        console.log('[EstimateDetail] handleNextClick ---> Appointments');
+        navigate('/appointments');
+    }
 
    const handleEditClick = () => {
         setShowEdit(!showEdit);
@@ -143,13 +151,12 @@ const EstimateDetail = () => {
             </Typography>
             <Typography variant="body2" marginBottom='20px'>
                 Your Personalized Estimate ID: <b>{estimate.id} </b>
-            </Typography><Typography variant="body1" marginBottom='20px' marginTop='20px'>
+            </Typography>
+            <Typography variant="body1" marginBottom='20px' marginTop='20px'>
                 This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to Book a
                 date.
             </Typography>
-            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={() => {
-                console.log('booked')
-            }}>NEXT</Button>
+            <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={handleNextClick}>NEXT</Button>
             <Button onClick={handleEditClick}>EDIT DETAILS</Button>
 
             <Typography variant="h5" marginTop='20px' marginBottom='5px'>
