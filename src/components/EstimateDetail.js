@@ -33,7 +33,7 @@ const EstimateDetail = () => {
     } /* $2,500.00 */
 
     const handleNextClick = () => {
-        console.log('[EstimateDetail] handleDeleteClick');
+        console.log('[EstimateDetail] handleNextClick ---> Appointments');
         navigate('/appointments');
     }
 
@@ -151,7 +151,8 @@ const EstimateDetail = () => {
             </Typography>
             <Typography variant="body2" marginBottom='20px'>
                 Your Personalized Estimate ID: <b>{estimate.id} </b>
-            </Typography><Typography variant="body1" marginBottom='20px' marginTop='20px'>
+            </Typography>
+            <Typography variant="body1" marginBottom='20px' marginTop='20px'>
                 This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to Book a
                 date.
             </Typography>
