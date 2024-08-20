@@ -3029,6 +3029,68 @@
         "petservices": []
       },
       "id": "VvSM7DS"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "greengiraffe_482",
+        "typeofservice": "Move-out Clean",
+        "construct": "House",
+        "sqft": 950,
+        "numpeople": 1,
+        "numrooms": 3,
+        "numbaths": 3,
+        "numpets": 0,
+        "cleanfactor": 5,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": true,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 248,
+          "cleaning": 148,
+          "extra": 100,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 2,
+          "totaltimebaths": 1,
+          "totalhours": 3
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          },
+          {
+            "label": "Deep Cleaning",
+            "cost": 100
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "tWpxK0A"
     }
   ]
 }
