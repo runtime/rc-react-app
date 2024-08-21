@@ -16,7 +16,7 @@ function Provider( {children} ) {
     }
     // HELPER FUNCTIONS
     const determineIfDropDownExtraShouldBeDisplayed = (value) => {
-        if (value !== 0) {
+        if ((value !== 0) || (value !== '')) {
             return true
         } else {
             return false
