@@ -10,6 +10,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
+    const [user, setUser ] = useState ({})
 
     const getEstimatesFromAPI =  () => {
         //Fetch Data
@@ -350,6 +351,12 @@ function Provider( {children} ) {
 
     }
 
+    const createUser = async (obj) => {
+        console.log('[provider] createUser ', obj)
+        //todo call createUser service and have it return the user obj
+
+    }
+
     // context functions
     const createEstimate = async (obj) => {
 
@@ -387,7 +394,8 @@ function Provider( {children} ) {
         estimate,
         editEstimateById,
         createEstimate,
-        setEstimate
+        setEstimate,
+        createUser,
     }
 
 
