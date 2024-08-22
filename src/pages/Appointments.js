@@ -18,6 +18,10 @@ const Appointments = () => {
     const { estimate } = useContext(EstimateContext);
     console.log('[Appointments] estimate: ' + estimate);
 
+    const navigate = useNavigate();
+
+    const handleEstimateClick = () => navigate('/estimates');
+
     let content = <h3>loading</h3>
 
     // IF we have an estimate with the right data structure but the user as asked to edit it
@@ -41,26 +45,47 @@ const Appointments = () => {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =
             <>
+                <Grid>
+                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
+                    <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
+                    <Typography variant="body1" marginBottom='20px'>
+                        Get a Free Estimate before Booking. No personal information needed. No harassing phone calls or emails.  Book anytime.
+                    </Typography>
+                    {/*<Button onClick={handleEstimateClick}>*/}
+                    {/*    Get Instant Free Estimate*/}
+                    {/*</Button>*/}
+                    <CardActions>
+                        <Button
 
-                <Typography variant="h3" marginBottom='0px'> New Service? </Typography>
-                <Typography variant="body1" marginBottom='20px'>Get a Free Estimate before Booking. No personal information needed. Book anytime.</Typography>
-                <Typography variant="h3" marginBottom='0px'> Repeat Service? </Typography>
-                <Typography variant="body1" marginBottom='20px'>Used us before? Enter in your estimateID from a previous visit and book again with one click.</Typography>
+                            variant="contained"
+                            color="primary"
+                            type="Submit"
+                            onClick = {handleEstimateClick}
+                            className='classes button'>
+                            New Estimate
+                        </Button>
+                    </CardActions>
+                </Grid>
+
+
                 {/*<UserCreate />*/}
-                <RepeatService />
+                <Grid marginTop = '40px'>
+                    <RepeatService />
+                </Grid>
+
 
             </>
 
     }
     return (
-        <div className='Appointments'>
+        <div className='Estimates'>
             <Box>
                 <ThemeProvider theme={RapidCleanTheme}>
                     <CssBaseline enableColorScheme/>
                     <Card elevation={1} sx={{marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}}>
                         <CardContent>
                             <Box sx={{ minWidth: 120 }}>
-                                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">
+                                <Typography color="black" display="inline">
                                     {content}
                                 </Typography>
                             </Box>

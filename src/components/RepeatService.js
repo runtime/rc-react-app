@@ -18,14 +18,15 @@ import * as Yup from "yup";
 import UserCreate from "./UserCreate";
 
 const RepeatService = () => {
-    console.log('[RepeatService] ')
+    console.log('[RepeatService] ');
+    //const {findEstimateById} = EstimateContext(findEstimateById)
 
     const initialValues = {
         estimateID: '',
     };
 
     const validationSchema = Yup.object().shape({
-        estimateID: Yup.string().required("Required"),
+        estimateID: Yup.string().required("Please enter a previous Estimate ID"),
 
     });
 
@@ -44,7 +45,9 @@ const RepeatService = () => {
     return (
 
             <div className='Estimates'>
-                <h1>Enter Your Information</h1>
+                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Repeat </Typography>
+                <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
+                <Typography variant="body1" marginBottom='20px'>Used us before? Enter in your estimateID from a previous visit and book again with one click.</Typography>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
@@ -53,19 +56,38 @@ const RepeatService = () => {
                     {({values, errors, touched, handleBlur, isValid, handleInputChange}) => (
                         <Form>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6} md={4}>
+                                <Grid item xs={12} sm={6} md={4} marginBottom={1} >
                                     <FormControl fullWidth variant="outlined">
                                         <Field
                                             as={TextField}
                                             name="estimateID"
                                             variant="outlined"
-                                            label="Estimate ID"
+                                            label="Enter Estimate ID"
                                         />
                                         {errors.estimateID && touched.estimateID ?
-                                            <div><p>{errors.estimateID}</p></div> : null}
+                                            <div><Typography color='red'>{errors.estimateID}</Typography></div> : null}
                                     </FormControl>
                                 </Grid>
                             </Grid>
+                            {/*<Button*/}
+                            {/*    disabled={!isValid}*/}
+                            {/*    // variant="contained"*/}
+                            {/*     color="primary"*/}
+                            {/*    type="submit"*/}
+                            {/*    //className='classes button'*/}
+                            {/*>*/}
+                            {/*    SEARCH*/}
+                            {/*</Button>*/}
+                            <CardActions>
+                                <Button
+                                    disabled={!isValid}
+                                    variant="contained"
+                                    color="primary"
+                                    type="Submit"
+                                    className='classes button'>
+                                    Search Estimates
+                                </Button>
+                            </CardActions>
                         </Form>
                         )}
                 </Formik>
