@@ -12,65 +12,67 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 
 const UserCreate = () => {
     const { estimate } = useContext(EstimateContext);
-    const { userCreate } = useContext(EstimateContext);
+    const { createUser } = useContext(EstimateContext);
 
     const initialValues = {
-        userID: estimate.userID,
-        EstimateID: estimate.ID,
+        userID: estimate.userID ? estimate.userID : '',
         firstname: "",
         lastname: "",
         phone: "",
         email: "",
-        streetAddress: "",
-        floor: "",
-        city: "",
-        state: "",
-        zip: "",
+        estimates: [estimate.ID ? estimate.ID : ''],
+
+        // streetAddress: "",
+        // floor: "",
+        // city: "",
+        // state: "",
+        // zip: "",
     };
 
     const validationSchema = Yup.object().shape({
         firstname: Yup.string().required("Required"),
         lastname: Yup.string().required("Required"),
-        phone: Yup.string().required("Required"),
-        email: Yup.string().email("Invalid email format").required("Required"),
-        streetAddress: Yup.string().required("Required"),
-        floor: Yup.string().required("Required"),
-        city: Yup.string().required("Required"),
-        state: Yup.string().required("Required"),
-        zip: Yup.string().required("Required"),
+        // phone: Yup.string().required("Required"),
+        // email: Yup.string().email("Invalid email format").required("Required"),
+        // streetAddress: Yup.string().required("Required"),
+        // floor: Yup.string().required("Required"),
+        // city: Yup.string().required("Required"),
+        // state: Yup.string().required("Required"),
+        // zip: Yup.string().required("Required"),
     });
 
     const SignupSchema = Yup.object().shape({
-        firstName: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
-            .required('Required'),
-        lastName: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
+        firstname: Yup.string()
+            .min(1, 'Your First Name is Too Short!')
+            .max(17, 'Your First Name is Too Long!')
+            .required('Your first name is required'),
+        lastname: Yup.string()
+            .min(2, 'Your First Name is Too Short!')
+            .max(50, 'Your First Name is Too Long!')
+            .required('Your first name is required'),
+        phone: Yup.string()
+            .min(9, 'Too Short!')
+            .max(12, 'Too Long!')
             .required('Required'),
         email: Yup.string()
             .email('Invalid email')
             .required('Required'),
-        mobile: Yup.string()
-            .min(11, 'Too Short!')
-            .max(12, 'Too Long!')
-            .required('Required'),
-        streetAddress: Yup.string()
-            .required("Required"),
-        floor: Yup.string()
-            .required("Required"),
-        city: Yup.string()
-            .required("Required"),
-        state: Yup.string()
-            .required("Required"),
-        zip: Yup.string()
-            .required("Required"),
+        // streetaddress: Yup.string()
+        //     .required("Required"),
+        // floor: Yup.string()
+        //     .required("Required"),
+        // city: Yup.string()
+        //     .required("Required"),
+        // state: Yup.string()
+        //     .required("Required"),
+        // zip: Yup.string()
+        //     .required("Required"),
     });
 
     const handleFormSubmit = (values) => {
         console.log('[UserCreate] onFormSubmit values:', values);
         // Add your form submission logic here
+        createUser(values)
     };
 
     return (
@@ -79,46 +81,42 @@ const UserCreate = () => {
             <Formik
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
-                onSubmit={values => {
-                    // same shape as initial values
-                    console.log(values);
-                }}
+                onSubmit={handleFormSubmit}
             >
-                {({values, errors, touched, handleInputChange}) => (
+                {({values, errors, touched, handleBlur, isValid, handleInputChange}) => (
                     <Form>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6} md={4}>
                                 <FormControl fullWidth variant="outlined">
                                     <Field
-                                        // values={estimate.userID}
                                         as={TextField}
                                         name="firstname"
                                         variant="outlined"
-                                        fullWidth
                                         label="First Name"
-                                        margin="dense"
-                                        onChange={handleInputChange}
-                                    />
-                                        {errors.firstName && touched.firstName ? (
-                                            <div>{errors.firstName}</div>
-                                        ) : null}
+                                        />
+                                        {errors.firstname && touched.firstname ? <div><p>{errors.firstname}</p></div> : null}
                                 </FormControl>
                             </Grid>
                             <Grid item xs={12} sm={6} md={4}>
                                 <FormControl fullWidth variant="outlined">
-                                <Field
-                                    values={estimate.userID}
-                                    as={TextField}
-                                    name="lastName"
-                                    variant="outlined"
-                                    fullWidth
-                                    label="Last Name"
-                                    margin="dense"
-                                    onChange={handleInputChange}
-                                />
-                                    {errors.lastName && touched.lastName ? (
-                                        <div>{errors.lastName}</div>
-                                    ) : null}
+                                    <Field
+                                        as={TextField}
+                                        name="lastname"
+                                        variant="outlined"
+                                        label="Last Name"
+                                    />
+                                    {errors.lastname && touched.lastname ? <div><p>{errors.lastname}</p></div> : null}
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4}>
+                                <FormControl fullWidth variant="outlined">
+                                    <Field
+                                        as={TextField}
+                                        name="phone"
+                                        variant="outlined"
+                                        label="Phone Number"
+                                    />
+                                    {errors.phone && touched.phone ? <div><p>{errors.phone}</p></div> : null}
                                 </FormControl>
                             </Grid>
                             <Grid item xs={12} sm={6} md={4}>
@@ -127,68 +125,37 @@ const UserCreate = () => {
                                         as={TextField}
                                         name="email"
                                         variant="outlined"
-                                        fullWidth
-                                        label= "Email Address"
-                                        margin="dense"
-                                        onChange={handleInputChange}
+                                        label="Email Address"
                                     />
-                                    {errors.email && touched.email ? (
-                                        <div>{errors.email}</div>
-                                    ) : null}
+                                    {errors.email && touched.email ? <div><p>{errors.email}</p></div> : null}
                                 </FormControl>
                             </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <FormControl fullWidth variant="outlined">
-                                    <Field
-                                        as={TextField}
-                                        name="mobile"
-                                        variant="outlined"
-                                        fullWidth
-                                        label="Phone Number"
-                                        margin="dense"
-                                        onChange={handleInputChange}
-                                    />
-                                    {errors.mobile && touched.mobile ? (
-                                        <div>{errors.mobile}</div>
-                                    ) : null}
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <FormControl fullWidth variant="outlined">
-                                    <Field
-                                        as={TextField}
-                                        name="streetaddress"
-                                        variant="outlined"
-                                        fullWidth
-                                        label="Street Address"
-                                        margin="dense"
-                                        onChange={handleInputChange}
-                                    />
-                                    {errors.streetaddress && touched.streetaddress ? (
-                                        <div>{errors.streetaddress}</div>
-                                    ) : null}
-                                </FormControl>
-                            </Grid>
-
-
 
 
                                 {/*<Field name="email" type="email"/>*/}
                                 {/*{errors.email && touched.email ? <div>{errors.email}</div> : null}*/}
                                 {/*<Field name='streetaddress' />*/}
                                 {/*{errors.streetaddress && touched.streetaddress ? <div>{errors.streetaddress}</div> : null}*/}
-                                <Field name='floor' />
-                                {errors.floor && touched.floor ? <div>{errors.floor}</div> : null}
-                                <Field name='city' />
-                                {errors.city && touched.city ? <div>{errors.city}</div> : null}
-                                <Field name='state' />
-                                {errors.state && touched.state ? <div>{errors.state}</div> : null}
-                                <Field name='zip' />
-                                {errors.zip && touched.zip ? <div>{errors.zip}</div> : null}
+                                {/*<Field name='floor' />*/}
+                                {/*{errors.floor && touched.floor ? <div>{errors.floor}</div> : null}*/}
+                                {/*<Field name='city' />*/}
+                                {/*{errors.city && touched.city ? <div>{errors.city}</div> : null}*/}
+                                {/*<Field name='state' />*/}
+                                {/*{errors.state && touched.state ? <div>{errors.state}</div> : null}*/}
+                                {/*<Field name='zip' />*/}
+                                {/*{errors.zip && touched.zip ? <div>{errors.zip}</div> : null}*/}
 
 
 
-                                <Button type="submit">Submit</Button>
+                                {/*<Button size="large" type="submit">Submit</Button>*/}
+                            <Button
+                                disabled={!isValid}
+                                variant="contained"
+                                color="primary"
+                                type="submit"
+                                className='classes button'>
+                                Submit
+                            </Button>
                             </Grid>
                     </Form>
                 )}

@@ -10,7 +10,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
-    const [user, setUser ] = useState ({})
+    const [user, setUser ] = useState ({ })
 
     const getEstimatesFromAPI =  () => {
         //Fetch Data
@@ -354,6 +354,13 @@ function Provider( {children} ) {
     const createUser = async (obj) => {
         console.log('[provider] createUser ', obj)
         //todo call createUser service and have it return the user obj
+        const userdetails = obj;
+        const response = await axios.post('http://localhost:3001/users', {
+            userdetails
+        });
+        console.log('Provider] createUser response.data ', response.data);
+        const processedUser = response.data;
+        setUser(processedUser);
 
     }
 
@@ -396,6 +403,8 @@ function Provider( {children} ) {
         createEstimate,
         setEstimate,
         createUser,
+        setUser,
+        user,
     }
 
 

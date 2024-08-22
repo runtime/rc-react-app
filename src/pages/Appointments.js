@@ -42,6 +42,7 @@ const Appointments = () => {
             <>
                 <Typography variant="body1" marginBottom='20px'> Have you used us before? </Typography>
                 <Typography variant="body1" marginBottom='20px'>Enter Your Phone Number to Book an Appointment</Typography>
+                <UserCreate />
             </>
 
     }
