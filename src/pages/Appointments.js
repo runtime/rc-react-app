@@ -11,6 +11,7 @@ import {
 import { RapidCleanTheme } from "../themes/Theme.js";
 
 import UserCreate from '../components/UserCreate';
+import RepeatService from '../components/RepeatService';
 
 
 const Appointments = () => {
@@ -40,10 +41,13 @@ const Appointments = () => {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =
             <>
-                <Typography variant="body1" marginBottom='20px'> Have you used us before? </Typography>
-                <Typography variant="body1" marginBottom='20px'>Enter Your Phone Number to Book an Appointment</Typography>
+
+                <Typography variant="h3" marginBottom='0px'> New Service? </Typography>
+                <Typography variant="body1" marginBottom='20px'>Get a Free Estimate before Booking. No personal information needed. Book anytime.</Typography>
+                <Typography variant="h3" marginBottom='0px'> Repeat Service? </Typography>
+                <Typography variant="body1" marginBottom='20px'>Used us before? Enter in your estimateID from a previous visit and book again with one click.</Typography>
                 {/*<UserCreate />*/}
-                {/*<RepeatService />*/}
+                <RepeatService />
 
             </>
 
