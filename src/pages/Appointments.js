@@ -33,16 +33,18 @@ const Appointments = () => {
                 Your Personalized Estimate ID: <b>{estimate.id} </b>
             </Typography>
             <Typography variant="body1" marginBottom='20px'>Enter Your Phone Number to Book an Appointment</Typography>
-            <UserCreate />
+            {/*<UserCreate />*/}
         </>
-        // IF we dont have an estimate with the correct data structure we act as if we have nothing at all
+        // IF we dont have an estimate with the correct data structure we will ask the user to enter an estimateID
     } else {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =
             <>
                 <Typography variant="body1" marginBottom='20px'> Have you used us before? </Typography>
                 <Typography variant="body1" marginBottom='20px'>Enter Your Phone Number to Book an Appointment</Typography>
-                <UserCreate />
+                {/*<UserCreate />*/}
+                {/*<RepeatService />*/}
+
             </>
 
     }
