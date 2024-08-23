@@ -1,8 +1,6 @@
 import './App.css';
-
 import {
-    Typography,
-    Box, Container, Grid, Button, CssBaseline, ThemeProvider
+    Box, Container,
 } from '@mui/material';
 import { RapidCleanTheme } from "./themes/Theme.js";
 // import '@fontsource/roboto/300.css';
@@ -10,8 +8,8 @@ import { RapidCleanTheme } from "./themes/Theme.js";
 // import '@fontsource/roboto/500.css';
 // import '@fontsource/roboto/700.css';
 
-import React, {useState, useEffect} from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+//import React, {useState, useEffect} from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from './components/Nav';
 import Header from './components/Header';
 import About from './pages/About';
@@ -34,31 +32,29 @@ function App() {
   return (
 
     <Container className='App' disableGutters maxWidth="xlg">
-
         <Box>
             <Header />
         </Box>
 
         <Box>
-              <BrowserRouter>
-                  <Routes>
-                      <Route path="/" element={<Nav />}>
-                          <Route index element={<About />} />
-                          <Route path="estimates" element={<Estimates />} />
-                          <Route path="appointments" element={<Appointments />} />
-                          <Route path="contact" element={<Contact />} />
-                          <Route path="*" element={<ErrorPage />} />
-                      </Route>
-                  </Routes>
-              </BrowserRouter>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Nav />}>
+                            <Route index element={<About />} />
+                            <Route path="estimates" element={<Estimates />} />
+                            <Route path="appointments" element={<Appointments />} />
+                            <Route path="contact" element={<Contact />} />
+                            <Route path="*" element={<ErrorPage />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
         </Box>
-
         <Box>
             <Footer />
         </Box>
-
     </Container>
   );
 }
 
 export default App;
+

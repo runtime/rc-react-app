@@ -1,6 +1,8 @@
 import React, {useContext, useState} from 'react'
 import '../styles/Estimates.css';
 import EstimateContext from '../context/estimate';
+import * as Constants from '../constants/EstimateConstants';
+
 
 
 import {
@@ -16,237 +18,52 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EstimateCreate = () => {
 
-
-    const initialValue = {
-        "serviceID": "DEF456",
-        "userID": "greengirafe35",
-        "typeofservice": "Cleaning",
-        "construct": "Apartment",
-        "sqft": 1250,
-        "numrooms": 4,
-        "numbaths": 4,
-        "cleanfactor": 20,
-        "numpets":1,
-        "numpeople": 2,
-        "laundrywashandfold": 1,
-        "dishwashing": 1,
-        "mealprep": 1,
-        "ovencleaning": true,
-        "deepcleaning": true,
-        "professionalcouchcleaning": true,
-        "professionalrugshampoo": true,
-        "professionalfloorwaxing": true,
-        "dogwalking": true,
-        "petsitting": true,
-        "dispensingmedication": true,
-        "waste": true,
-        "cost" : {
+    // Form's initial values are blank
+    let initialValues = {
+        "serviceID": "",
+        "userID": "",
+        "typeofservice": "",
+        "construct": "",
+        "sqft": "",
+        "numrooms": "",
+        "numbaths": "",
+        "cleanfactor": "",
+        "numpets": "",
+        "numpeople": "",
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "cost": {
             "total": 0,
             "cleaning": 0,
             "extra": 0,
             "professional": 0,
             "pet": 0
         },
-        "data" : {
-            "totaltimerooms":  0,
-            "totaltimebaths":  0,
-            "totalhours":  0
-        }
+        "data": {
+            "totaltimerooms": 0,
+            "totaltimebaths": 0,
+            "totalhours": 0
+        },
     }
 
     const { createEstimate } = useContext(EstimateContext);
 
 
-    /////////////////////////////// ^^^^ KEEP ^^^^^ //////////////////////////////////
-    /////////////////////////////// REVIEW BELOW /////////////////////////////////////
 
 
 
-    let initialValues = {
-            "serviceID": "",
-            "userID": "",
-            "typeofservice": "",
-            "construct": "",
-            "sqft": "",
-            "numrooms": "",
-            "numbaths": "",
-            "cleanfactor": "",
-            "numpets": "",
-            "numpeople": "",
-            "laundrywashandfold": "",
-            "dishwashing": "",
-            "mealprep": "",
-            "ovencleaning": "",
-            "deepcleaning": "",
-            "professionalcouchcleaning": "",
-            "professionalrugshampoo": "",
-            "professionalfloorwaxing": "",
-            "dogwalking": "",
-            "petsitting": "",
-            "dispensingmedication": "",
-            "waste": "",
-            "cost": {
-                "total": 0,
-                "cleaning": 0,
-                "extra": 0,
-                "professional": 0,
-                "pet": 0
-            },
-            "data": {
-                "totaltimerooms": 0,
-                "totaltimebaths": 0,
-                "totalhours": 0
-            },
-        }
-
-
-
-    //drop downs
-    // type of service options
-    const typeofserviceoptions = [
-        { label: "Standard Cleaning", value: "Standard Cleaning" },
-        { label: "Standard Cleaning - Move Out", value: "Move-out Clean" },
-    ]
-
-    // construct options
-    const constructoptions = [
-        { label: "Apartment", value: "Apartment" },
-        { label: "House", value: "House" },
-        { label: "Room", value: "Room" },
-        { label: "Room", value: "Room" },
-        { label: "Other", value: "Other" },
-    ]
-
-    const numroomsoptions = [
-        // { label: "None", value: 0 },
-        { label: "1", value: 1 },
-        { label: "2", value: 2 },
-        { label: "3", value: 3 },
-        { label: "4", value: 4 },
-        { label: "5", value: 5 },
-        { label: "6", value: 6 },
-        { label: "7", value: 7 },
-        { label: "8", value: 8 },
-        { label: "9", value: 9 },
-    ]
-
-    const numbathsoptions = [
-        { label: "1", value: 1 },
-        { label: "1.5", value: 1.5 },
-        { label: "2", value: 2 },
-        { label: "2.5", value: 2.5 },
-        { label: "3", value: 3 },
-        { label: "3.5", value: 3.5 },
-        { label: "4", value: 4 },
-        { label: "4.5", value: 4.5 },
-        { label: "5", value: 5 },
-        { label: "5.5", value: 5.5 },
-        { label: "6", value: 6 },
-        { label: "6", value: 6.5 },
-        { label: "7", value: 7},
-        { label: "7.5", value: 7.5 },
-        { label: "8", value: 8 },
-        { label: "8.5", value: 8.5 },
-    ]
-
-    const sqftoptions = [{
-        label: "less than 250",
-        value: 250
-    },
-        {
-            label: "Between 250-750",
-            value: 750
-        },
-        {
-            label: "Between 750-950",
-            value: 950
-        },
-        {
-            label: "Between 950-1250",
-            value: 1250
-        },
-        {
-            label: "Between 1250-1750",
-            value: 1750
-        },
-        {
-            label: "Between 1750-2500",
-            value: 2500
-        },
-        {
-            label: "Between 2500-3500",
-            value: 3500
-        },
-        {
-            label: "above 3500",
-            value: 3500
-        },
-
-    ]
-
-    const cleanfactoroptions = [
-        {
-            label: "Im Monica F****g Gellar!",
-            value: 0,
-        },
-        {
-            label: "I have zero clutter, 90% ready to clean",
-            value: 5,
-        },
-        {
-            label: "There is some laundry on the floor and some stuff on most of the surfaces",
-            value: 10,
-        },
-        {
-            label: "There is unopened mail, loose coins and other things, laundry and random items on the floor and surfaces",
-            value: 15,
-        },
-        {
-            label: "ngl, its a disaster rn :/",
-            value: 20,
-        },
-    ]
-    const numpetsoptions = [
-        { label: "0", value: 0 },
-        { label: "1", value: 1 },
-        { label: "2", value: 2 },
-        { label: "3", value: 3 },
-        { label: "4", value: 4 },
-        { label: "5", value: 5 },
-    ]
-    const numpeopleoptions = [
-        { label: "1", value: 1 },
-        { label: "2", value: 2 },
-        { label: "3", value: 3 },
-        { label: "4", value: 4 },
-        { label: "5", value: 5 },
-        { label: "6", value: 6 },
-        { label: "7", value: 7 },
-        { label: "8", value: 8 },
-    ]
-
-    const laundryoptions = [
-        { label: "None", value: 0 },
-        { label: "1 Load - Wash And Fold", value: 1 },
-        { label: "2 Loads - Wash And Fold", value: 2 },
-        { label: "3 Loads - Wash And Fold", value: 3 },
-        { label: "4 Loads - Wash And Fold", value: 4 },
-    ]
-
-    const dishwashoptions = [
-        { label: "None", value: 0 },
-        { label: "1 Load - Wash and Dry", value: 1 },
-        { label: "2 Load - Wash and Dry", value: 2 },
-        { label: "3 Load - Wash and Dry", value: 3 },
-    ]
-
-    const mealprepoptions = [
-        { label: "None", value: 0 },
-        { label: "1 Meal (serves two)", value: 1 },
-        { label: "1 Meal (serves 3)", value: 1.25 },
-        { label: "1 Meal (serves 4-6)", value: 1.5 },
-        { label: "1 Meal (serves 7-9)", value: 3 },
-    ]
+// constants for form have been moved to ./constants/EstimateConstants.js
 
 //password validation
     const lowercaseRegEx = /(?=.*[a-z])/
@@ -282,15 +99,6 @@ const EstimateCreate = () => {
         // waste: Yup.boolean(),
     })
 
-//
-//     const onSubmit = () => {
-//         console.log('onSubmit')
-//     }
-
-    ///// END OLD CODE FOR REVIEW //////////////
-
-    /////////////////////////////// KEEP BELOW AS IS /////////////////////////////////
-
     const handleFormSubmit = (values) => {
         //e.preventDefault();
         console.log('[EstimateCreate] onFormSubmit values:', values)
@@ -298,10 +106,6 @@ const EstimateCreate = () => {
         createEstimate(values);
         //todo clear form
     }
-
-    // const handleNextButtonClicked = () => {
-    //     console.log('[EstimateCreate] handleNextButtonClicked ', )
-    // }
 
 
     return (
@@ -354,7 +158,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.typeofservice}
                                                             name="typeofservice">
-                                                            {typeofserviceoptions.map((item) => (
+                                                            {Constants.typeofserviceoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -377,7 +181,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.construct}
                                                             name="construct">
-                                                            {constructoptions.map((item) => (
+                                                            {Constants.constructoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -400,7 +204,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.numpeople}
                                                             name="numpeople">
-                                                            {numpeopleoptions.map((item) => (
+                                                            {Constants.numpeopleoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -423,7 +227,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.sqft}
                                                             name="sqft">
-                                                            {sqftoptions.map((item) => (
+                                                            {Constants.sqftoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -446,7 +250,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.numrooms}
                                                             name="numrooms">
-                                                            {numroomsoptions.map((item) => (
+                                                            {Constants.numroomsoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -469,7 +273,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.numbaths}
                                                             name="numbaths">
-                                                            {numbathsoptions.map((item) => (
+                                                            {Constants.numbathsoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -492,7 +296,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.numpets}
                                                             name="numpets">
-                                                            {numpetsoptions.map((item) => (
+                                                            {Constants.numpetsoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -515,7 +319,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.cleanfactor}
                                                             name="cleanfactor">
-                                                            {cleanfactoroptions.map((item) => (
+                                                            {Constants.cleanfactoroptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -554,7 +358,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.laundrywashandfold}
                                                             name="laundrywashandfold" >
-                                                            {laundryoptions.map((item) => (
+                                                            {Constants.laundryoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -576,7 +380,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.dishwashing}
                                                             name="dishwashing" >
-                                                            {dishwashoptions.map((item) => (
+                                                            {Constants.dishwashoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -598,7 +402,7 @@ const EstimateCreate = () => {
                                                             onBlur={handleBlur}
                                                             value={values.mealprep}
                                                             name="mealprep">
-                                                            {mealprepoptions.map((item) => (
+                                                            {Constants.mealprepoptions.map((item) => (
                                                                 <MenuItem key={item.value} value={item.value}>
                                                                     {item.label}
                                                                 </MenuItem>
@@ -610,7 +414,6 @@ const EstimateCreate = () => {
 
                                                 <Grid item xs={12} sm={12} md={12}
                                                       sx={{position: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', marginBottom: 0}}>
-
                                                     <FormControlLabel
                                                         control={<Checkbox color="secondary" />}
                                                         label="Oven Cleaning"
@@ -728,16 +531,12 @@ const EstimateCreate = () => {
                                                     </Typography>
                                                 </Grid>
 
-
-
                                                 <CardActions>
                                                     <Button
                                                         disabled={!dirty || !isValid}
                                                         variant="contained"
                                                         color="primary"
                                                         type="Submit"
-                                                        //onSubmit={handleFormSubmit(values)}
-                                                        //onClick={handleNextButtonClicked}
                                                         className='classes button'>
                                                         Next
                                                     </Button>
