@@ -145,7 +145,6 @@ const EstimateDetail = () => {
             </div>
 
 
-            {/*<Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>*/}
             <Typography variant="body2" marginBottom='0px'>
                 Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
             </Typography>

@@ -27,18 +27,24 @@ const Appointments = () => {
     // IF we have an estimate with the right data structure but the user as asked to edit it
     if (estimate.hasOwnProperty("servicedetails")) {
         content = <>
-            <Typography variant="h3" marginBottom='20px'>Select a Date:</Typography>
-            <Typography variant="body1" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
-                your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
-            </Typography>
-            <Typography variant="body2" marginBottom='0px'>
-                Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
-            </Typography>
-            <Typography variant="body2" marginBottom='20px'>
-                Your Personalized Estimate ID: <b>{estimate.id} </b>
-            </Typography>
-            <Typography variant="body1" marginBottom='20px'>Enter Your Phone Number to Book an Appointment</Typography>
-            {/*<UserCreate />*/}
+            <Grid>
+                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Enter </Typography>
+                <Typography color="primary" variant="cardTitle" component='h1' display="inline">Information</Typography>
+                <Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>
+
+                <Typography variant="h4" color="primary" marginTop='20px' marginBottom='20px'>In order for us to hold a {estimate.servicedetails.typeofservice} of
+                    your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct} for ${estimate.servicedetails.cost.total} will need some information.
+                </Typography>
+               {/* <Typography variant="body2" marginBottom='0px'>
+                    Your Anonymous user ID: <b>{estimate.servicedetails.userID}</b>
+                </Typography>*/}
+                {/*<Typography variant="body2" marginBottom='20px'>*/}
+                {/*    Your Personalized Estimate ID: <b>{estimate.id} </b>*/}
+                {/*</Typography>*/}
+            </Grid>
+            {/*<Typography variant="h3" marginBottom='20px'>Select a Date:</Typography>*/}
+
+            <UserCreate />
         </>
         // IF we dont have an estimate with the correct data structure we will ask the user to enter an estimateID
     } else {
@@ -67,8 +73,6 @@ const Appointments = () => {
                     </CardActions>
                 </Grid>
 
-
-                {/*<UserCreate />*/}
                 <Grid marginTop = '40px'>
                     <RepeatService />
                 </Grid>

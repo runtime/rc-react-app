@@ -14,13 +14,16 @@ const UserCreate = () => {
     const { estimate } = useContext(EstimateContext);
     const { createUser } = useContext(EstimateContext);
 
+    console.log('[UserCreate] estimate id: ' + estimate.id);
+
+
     const initialValues = {
-        userID: estimate.userID ? estimate.userID : '',
+        userID: estimate.servicedetails.userID ? estimate.servicedetails.userID : '',
         firstname: "",
         lastname: "",
         phone: "",
         email: "",
-        estimates: [estimate.ID ? estimate.ID : ''],
+        estimates: [estimate.id ? estimate.id : ''],
 
         // streetAddress: "",
         // floor: "",
@@ -77,7 +80,10 @@ const UserCreate = () => {
 
     return (
         <div className='Estimates'>
-            <h1>Enter Your Information</h1>
+
+            <Typography color="black" variant="body1" component="h3" marginBottom="20px">
+                Please Enter Your Information to preserve this Estimate. You can book anytime after this step.
+            </Typography>
             <Formik
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
@@ -148,14 +154,17 @@ const UserCreate = () => {
 
 
                                 {/*<Button size="large" type="submit">Submit</Button>*/}
-                            <Button
-                                disabled={!isValid}
-                                variant="contained"
-                                color="primary"
-                                type="submit"
-                                className='classes button'>
-                                Submit
-                            </Button>
+                            <CardActions>
+                                <Button
+                                    disabled={!isValid}
+                                    variant="contained"
+                                    color="primary"
+                                    type="submit"
+                                    className='classes button'>
+                                    Submit
+                                </Button>
+                            </CardActions>
+
                             </Grid>
                     </Form>
                 )}

@@ -352,7 +352,7 @@ function Provider( {children} ) {
     }
 
     const createUser = async (obj) => {
-        console.log('[provider] createUser ', obj)
+        console.log('[Provider] createUser ', obj)
         //todo call createUser service and have it return the user obj
         const userdetails = obj;
         const response = await axios.post('http://localhost:3001/users', {
