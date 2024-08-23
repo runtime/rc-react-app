@@ -31,10 +31,10 @@ const RepeatService = () => {
 
     });
 
-    const handleFormSubmit = (values) => {
+    const handleFindByEstimateIdSubmit = (values) => {
         console.log('[RepeatService] handleFormSubmit: ', values)
         //TODO create context that gets the estimate by this id
-        findEstimateById(values);
+       // findEstimateById(values);
     }
 
 
@@ -52,7 +52,7 @@ const RepeatService = () => {
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={handleFormSubmit}
+                    onSubmit={handleFindByEstimateIdSubmit}
                 >
                     {({values, errors, touched, handleBlur, isValid, handleInputChange}) => (
                         <Form>
