@@ -11,11 +11,14 @@ import {
 import { RapidCleanTheme } from "../themes/Theme.js";
 
 import UserCreate from '../components/UserCreate';
+import UserEdit from '../components/UserEdit';
+import UserDetail from '../components/UserDetail';
 import RepeatService from '../components/RepeatService';
 
 
 const Appointments = () => {
     const { estimate } = useContext(EstimateContext);
+    const { user } = useContext(EstimateContext);
     console.log('[Appointments] estimate: ' + estimate);
 
     const navigate = useNavigate();
@@ -25,7 +28,7 @@ const Appointments = () => {
     let content = <h3>loading</h3>
 
     // IF we have an estimate with the right data structure but the user as asked to edit it
-    if (estimate.hasOwnProperty("servicedetails")) {
+    if ((estimate.hasOwnProperty("servicedetails") && (!user))) {
         content = <>
             <Grid>
                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Enter </Typography>
@@ -47,6 +50,8 @@ const Appointments = () => {
             <UserCreate />
         </>
         // IF we dont have an estimate with the correct data structure we will ask the user to enter an estimateID
+    } else if ((estimate.hasOwnProperty("servicedetails") && (user))) {
+       content =  <UserEdit />
     } else {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =

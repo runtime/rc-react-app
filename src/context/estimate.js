@@ -348,12 +348,10 @@ function Provider( {children} ) {
         // Final Estimate to be returned
         return serviceObj;
 
-
     }
 
     const createUser = async (obj) => {
         console.log('[Provider] createUser ', obj)
-        //todo call createUser service and have it return the user obj
         const userdetails = obj;
         const response = await axios.post('http://localhost:3001/users', {
             userdetails
@@ -401,6 +399,17 @@ function Provider( {children} ) {
         setEstimate(updatedEstimate)
     }
 
+    const editUserById = async (id, editReqObj) => {
+        console.log('[Provider] editUserById: ', id, ' editReqObj: ', editReqObj,);
+        const userdetails = editReqObj;
+        const response = await axios.put(`http://localhost:3001/users/${id}`, {
+            userdetails
+        });
+        console.log('[Provider] editUserById Axios Put response.data: ', response.data);
+        const updatedUser = response.data;
+        setUser(updatedUser)
+    }
+
 
     // set new value to send back to context subscribers
 
@@ -411,6 +420,7 @@ function Provider( {children} ) {
         createEstimate,
         setEstimate,
         createUser,
+        editUserById,
         setUser,
         user,
     }
