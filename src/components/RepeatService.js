@@ -34,7 +34,7 @@ const RepeatService = () => {
     const handleFindByEstimateIdSubmit = (values) => {
         console.log('[RepeatService] handleFormSubmit: ', values)
         //TODO create context that gets the estimate by this id
-       // findEstimateById(values);
+        findEstimateById(values);
     }
 
 
