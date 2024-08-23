@@ -19,7 +19,8 @@ import UserCreate from "./UserCreate";
 
 const RepeatService = () => {
     console.log('[RepeatService] ');
-    //const {findEstimateById} = EstimateContext(findEstimateById)
+    const { findEstimateById } = useContext(EstimateContext);
+
 
     const initialValues = {
         estimateID: '',
@@ -33,7 +34,7 @@ const RepeatService = () => {
     const handleFormSubmit = (values) => {
         console.log('[RepeatService] handleFormSubmit: ', values)
         //TODO create context that gets the estimate by this id
-        //findEstimateById(id);
+        findEstimateById(values);
     }
 
 

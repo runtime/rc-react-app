@@ -364,6 +364,13 @@ function Provider( {children} ) {
 
     }
 
+    const findEstimateById = async(obj) => {
+        console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
+        const response = await axios.get(`http://localhost:3001/estimates/${obj.estimateID}`);
+        console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
+
+
+    }
     // context functions
     const createEstimate = async (obj) => {
 
@@ -373,7 +380,7 @@ function Provider( {children} ) {
         const servicedetails = calculateEstimate(obj);
         console.log('[Provider] servicedetails', servicedetails);
         // store the updated estimate in the database
-        const response = await axios.post('http://localhost:3001/estimates', {
+        const response = await axios.get('http://localhost:3001/estimates', {
             servicedetails
         });
         console.log('Provider] createEstimate response.data ', response.data);
@@ -400,6 +407,7 @@ function Provider( {children} ) {
     const providerValues = {
         estimate,
         editEstimateById,
+        findEstimateById,
         createEstimate,
         setEstimate,
         createUser,
