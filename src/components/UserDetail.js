@@ -54,13 +54,27 @@ const UserDetail = () => {
 
     // content is the markup that is displayed in the browser depending on the state of the estimate
     let content = <h3>loading</h3>
+    if (user) {
+        content = <div>hi {user.userdetails.firstname}, can you please provide the address for the estimate</div>
+        // <LocationCreate />
+
+    } else {
+        content = <div>sorry i didn't get that</div>
+    }
 
     // IF we have an estimate with the right data structure but the user as asked to edit it
 
     return (
-       <>
-           <div>UserDetail</div>
-       </>
+        <ThemeProvider theme={RapidCleanTheme}>
+            <CssBaseline />
+            <Card elevation={0} sx={{ marginTop: 0, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
+                <CardContent>
+                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Your </Typography>
+                    <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Details</Typography>
+                    {content}
+                </CardContent>
+            </Card>
+        </ThemeProvider>
     )
 
 }

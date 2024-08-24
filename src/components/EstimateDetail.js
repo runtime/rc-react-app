@@ -181,7 +181,7 @@ const EstimateDetail = () => {
             <CssBaseline />
             <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                 <CardContent>
-                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Our </Typography>
+                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Your </Typography>
                     <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
                     {content}
                 </CardContent>
