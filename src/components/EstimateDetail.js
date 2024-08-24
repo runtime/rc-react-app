@@ -145,7 +145,6 @@ const EstimateDetail = () => {
             </div>
 
 
-            {/*<Typography variant="body1" marginBottom='20px'>You are one step closer to enjoying a pristine space with our {estimate.servicedetails.typeofservice} service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish..</Typography>*/}
             <Typography variant="body2" marginBottom='0px'>
                 Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
             </Typography>
@@ -182,7 +181,7 @@ const EstimateDetail = () => {
             <CssBaseline />
             <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                 <CardContent>
-                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Our </Typography>
+                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Your </Typography>
                     <Typography  marginBottom="20px" color="primary" variant="cardTitle" component='h1' display="inline">Estimate</Typography>
                     {content}
                 </CardContent>
