@@ -11,11 +11,16 @@ import {
 import { RapidCleanTheme } from "../themes/Theme.js";
 
 import UserCreate from '../components/UserCreate';
+import RepeatService from '../components/RepeatService';
 
 
 const Appointments = () => {
     const { estimate } = useContext(EstimateContext);
     console.log('[Appointments] estimate: ' + estimate);
+
+    const navigate = useNavigate();
+
+    const handleEstimateClick = () => navigate('/estimates');
 
     let content = <h3>loading</h3>
 
@@ -40,23 +45,47 @@ const Appointments = () => {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =
             <>
-                <Typography variant="body1" marginBottom='20px'> Have you used us before? </Typography>
-                <Typography variant="body1" marginBottom='20px'>Enter Your Phone Number to Book an Appointment</Typography>
+                <Grid>
+                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
+                    <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
+                    <Typography variant="body1" marginBottom='20px'>
+                        Get a Free Estimate before Booking. No personal information needed. No harassing phone calls or emails.  Book anytime.
+                    </Typography>
+                    {/*<Button onClick={handleEstimateClick}>*/}
+                    {/*    Get Instant Free Estimate*/}
+                    {/*</Button>*/}
+                    <CardActions>
+                        <Button
+
+                            variant="contained"
+                            color="primary"
+                            type="Submit"
+                            onClick = {handleEstimateClick}
+                            className='classes button'>
+                            New Estimate
+                        </Button>
+                    </CardActions>
+                </Grid>
+
+
                 {/*<UserCreate />*/}
-                {/*<RepeatService />*/}
+                <Grid marginTop = '40px'>
+                    <RepeatService />
+                </Grid>
+
 
             </>
 
     }
     return (
-        <div className='Appointments'>
+        <div className='Estimates'>
             <Box>
                 <ThemeProvider theme={RapidCleanTheme}>
                     <CssBaseline enableColorScheme/>
                     <Card elevation={1} sx={{marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}}>
                         <CardContent>
                             <Box sx={{ minWidth: 120 }}>
-                                <Typography color="secondary" variant="cardTitle" component="h1" display="inline">
+                                <Typography color="black" display="inline">
                                     {content}
                                 </Typography>
                             </Box>
