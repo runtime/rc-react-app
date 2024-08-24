@@ -30,7 +30,7 @@ const LocationCreate = () => {
         // estimates: [estimate.id ? estimate.id : ''],
         userId: user.id ? user.id : '',
         estimateId: estimate.id ? estimate.id : '',
-        streetAddress: "",
+        streetaddress: "",
         floor: "",
         city: "",
         state: "",
