@@ -49,17 +49,15 @@ const UserDetail = () => {
       //  setShowEdit(false);
     }
 
-
-
-
     // content is the markup that is displayed in the browser depending on the state of the estimate
+    //todo follow the same paradigmn as the EstimateDetail component
     let content = <h3>loading</h3>
-    if (user) {
+    if (user.hasOwnProperty("userdetails")) {
         content = <div>hi {user.userdetails.firstname}, can you please provide the address for the estimate</div>
         // <LocationCreate />
 
     } else {
-        content = <div>sorry i didn't get that</div>
+        content = <div>sorry i didn't seem to see you in our system</div>
     }
 
     // IF we have an estimate with the right data structure but the user as asked to edit it

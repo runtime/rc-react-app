@@ -26,10 +26,12 @@ const Appointments = () => {
 
     const handleEstimateClick = () => navigate('/estimates');
 
+    console.log(user.hasOwnProperty("userdetails"));
+
     let content = <h3>loading</h3>
 
     // IF we have an estimate with the right data structure but the user as asked to edit it
-    if ((estimate.hasOwnProperty("servicedetails") && (!user))) {
+    if ((estimate.hasOwnProperty("servicedetails") && (!user.hasOwnProperty("userdetails")))) {
         content = <>
             <Grid>
                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Enter </Typography>
@@ -52,7 +54,7 @@ const Appointments = () => {
         </>
         // IF we dont have an estimate with the correct data structure we will ask the user to enter an estimateID
         // TODO get the views right when you have a user we should see this screen
-    } else if ((estimate.hasOwnProperty("servicedetails") && (user))) {
+    } else if ((estimate.hasOwnProperty("servicedetails") && (user.hasOwnProperty("userdetails")))) {
        content =  <UserDetail />
     } else {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
