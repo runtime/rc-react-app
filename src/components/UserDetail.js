@@ -20,7 +20,11 @@ const UserDetail = () => {
 
     const navigate = useNavigate();
 
-    console.log('[UserDetail] user: ' + user);
+    console.log('[UserDetail] user: ' + user.hasOwnProperty("user"));
+    console.log('[UserDetail] user: ',  user);
+    console.log('[UserDetail] ', JSON.stringify(user));
+    console.log('[UserDetail] ', JSON.stringify(user, null, 2));
+    console.dir(user)
     //console.log('[UserDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
 
     // create a string in US Currency for Chip

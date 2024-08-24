@@ -20,6 +20,7 @@ const Appointments = () => {
     const { estimate } = useContext(EstimateContext);
     const { user } = useContext(EstimateContext);
     console.log('[Appointments] estimate: ' + estimate);
+    console.log('[Appointments] user: ' + user);
 
     const navigate = useNavigate();
 
@@ -50,8 +51,9 @@ const Appointments = () => {
             <UserCreate />
         </>
         // IF we dont have an estimate with the correct data structure we will ask the user to enter an estimateID
+        // TODO get the views right when you have a user we should see this screen
     } else if ((estimate.hasOwnProperty("servicedetails") && (user))) {
-       content =  <UserEdit />
+       content =  <UserDetail />
     } else {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =

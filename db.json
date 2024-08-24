@@ -927,6 +927,180 @@
         "petservices": []
       },
       "id": "EK05Hh2"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_68",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "yrUY95A"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_659",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "GzvT6ir"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_582",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 5,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 110,
+          "cleaning": 110,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "1I2xtAW"
     }
   ],
   "users": [
@@ -1019,6 +1193,32 @@
         ]
       },
       "id": "5uz4wLY"
+    },
+    {
+      "userdetails": {
+        "userID": "purplebutterfly_582",
+        "firstname": "John",
+        "lastname": "Doe",
+        "phone": "14055551212",
+        "email": "john.doe@gmail.com",
+        "estimates": [
+          "1I2xtAW"
+        ]
+      },
+      "id": "7JZSXQG"
+    },
+    {
+      "userdetails": {
+        "userID": "purplebutterfly_582",
+        "firstname": "John",
+        "lastname": "Doe",
+        "phone": "14055551212",
+        "email": "john.doe@gmail.com",
+        "estimates": [
+          "1I2xtAW"
+        ]
+      },
+      "id": "FMzAhoN"
     }
   ]
 }
