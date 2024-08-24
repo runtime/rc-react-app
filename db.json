@@ -1333,6 +1333,64 @@
         "petservices": []
       },
       "id": "VxHHwfL"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "greengiraffe_955",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "rEVVXmd"
     }
   ],
   "users": [
@@ -1464,6 +1522,19 @@
         ]
       },
       "id": "ze5_N1p"
+    },
+    {
+      "userdetails": {
+        "userID": "greengiraffe_955",
+        "firstname": "mike",
+        "lastname": "smith",
+        "phone": "14052223333",
+        "email": "mike.smith@gmail.com",
+        "estimates": [
+          "rEVVXmd"
+        ]
+      },
+      "id": "5nx2j4Y"
     }
   ]
 }
