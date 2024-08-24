@@ -10,6 +10,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({ });
+    const [user, setUser ] = useState ({ })
 
     const getEstimatesFromAPI =  () => {
         //Fetch Data
@@ -350,6 +351,26 @@ function Provider( {children} ) {
 
     }
 
+    const createUser = async (obj) => {
+        console.log('[provider] createUser ', obj)
+        //todo call createUser service and have it return the user obj
+        const userdetails = obj;
+        const response = await axios.post('http://localhost:3001/users', {
+            userdetails
+        });
+        console.log('Provider] createUser response.data ', response.data);
+        const processedUser = response.data;
+        setUser(processedUser);
+
+    }
+
+    const findEstimateById = async(obj) => {
+        console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
+        const response = await axios.get(`http://localhost:3001/estimates/${obj.estimateID}`);
+        console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
+
+
+    }
     // context functions
     const createEstimate = async (obj) => {
 
@@ -362,7 +383,7 @@ function Provider( {children} ) {
         const response = await axios.post('http://localhost:3001/estimates', {
             servicedetails
         });
-        console.log('Provider] createEstimate response.data ', response.data);
+        console.log('[Provider] createEstimate response.data ', response.data);
         const processedEstimate = response.data;
         setEstimate(processedEstimate);
     }
@@ -375,7 +396,7 @@ function Provider( {children} ) {
         const response = await axios.put(`http://localhost:3001/estimates/${id}`, {
             servicedetails
         });
-        console.log('[EstimateContext] EditEstimateById Axios Put response.data: ', response.data);
+        console.log('[Provider] EditEstimateById Axios Put response.data: ', response.data);
         const updatedEstimate = response.data;
         setEstimate(updatedEstimate)
     }
@@ -386,8 +407,12 @@ function Provider( {children} ) {
     const providerValues = {
         estimate,
         editEstimateById,
+        findEstimateById,
         createEstimate,
-        setEstimate
+        setEstimate,
+        createUser,
+        setUser,
+        user,
     }
 
 
