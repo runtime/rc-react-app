@@ -57,7 +57,8 @@ const Appointments = () => {
         // SHOW USER DETAIL
         // TODO get the views right when you have a user we should see this screen
     } else if ((estimate.hasOwnProperty("servicedetails") && (user.hasOwnProperty("userdetails")))) {
-       content =  <UserDetail />
+       content =
+           <UserDetail />
     } else {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =

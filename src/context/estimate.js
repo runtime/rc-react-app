@@ -9,8 +9,9 @@ import React from "react";
 const EstimateContext = createContext();
 
 function Provider( {children} ) {
-    const [estimate, setEstimate] = useState({ });
-    const [user, setUser ] = useState ({ })
+    const [estimate, setEstimate] = useState({});
+    const [user, setUser ] = useState ({})
+    const [location, setLocation ] = useState({})
 
     const getEstimatesFromAPI =  () => {
         //Fetch Data
@@ -408,6 +409,16 @@ function Provider( {children} ) {
         console.log('[Provider] editUserById Axios Put response.data: ', response.data);
         const updatedUser = response.data;
         setUser(updatedUser)
+    }
+
+    const createLocation = async (obj) => {
+        console.log('[Provider] createLocation: ', obj);
+        const response = await axios.post('http://localhost:3001/locations/', {
+            obj
+        });
+        console.log('[Provider] createLocation response.data ', response.data);
+        const processedLocation = response.data;
+        setLocation(processedLocation);
     }
 
 

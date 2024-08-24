@@ -13,6 +13,7 @@ import {
     Checkbox,FormControlLabel, FormGroup,
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
+import LocationCreate from './LocationCreate';
 
 const UserDetail = () => {
     const { user } = useContext(EstimateContext);
@@ -55,6 +56,7 @@ const UserDetail = () => {
     if (user.hasOwnProperty("userdetails")) {
         content = <div>
             hi {user.userdetails.firstname}, can you please provide the address for the estimate
+            <LocationCreate />
             </div>
 
 
