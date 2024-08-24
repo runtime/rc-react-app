@@ -55,9 +55,10 @@ const Appointments = () => {
         </>
         // IF wehave an estimate with the correct data structure AND we have the user data
         // SHOW USER DETAIL
-        // TODO get the views right when you have a user we should see this screen
+        // TODO get the views right when you have a user we should see the userdetail screen welcoming them and asking for their address
     } else if ((estimate.hasOwnProperty("servicedetails") && (user.hasOwnProperty("userdetails")))) {
-       content =  <UserDetail />
+       content =
+           <UserDetail />
     } else {
         //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
         content =
