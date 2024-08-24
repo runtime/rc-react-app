@@ -1833,6 +1833,18 @@
         "zip": "07041"
       },
       "id": 1
+    },
+    {
+      "locationdetails": {
+        "userId": "B_xa9hx",
+        "estimateId": "h_Wxiyl",
+        "streetaddress": "187 Millburn Avenue",
+        "floor": "1",
+        "city": "Millburn",
+        "state": "NJ",
+        "zip": "07041"
+      },
+      "id": 2
     }
   ]
 }

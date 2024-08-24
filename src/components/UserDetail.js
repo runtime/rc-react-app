@@ -14,9 +14,12 @@ import {
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import LocationCreate from './LocationCreate';
+import EstimateEdit from "./EstimateEdit";
 
 const UserDetail = () => {
+    const { estimate } = useContext(EstimateContext);
     const { user } = useContext(EstimateContext);
+    const { location } = useContext(EstimateContext);
     //const [showEdit, setShowEdit] = useState(false);
 
     const navigate = useNavigate();
@@ -52,16 +55,30 @@ const UserDetail = () => {
 
     // content is the markup that is displayed in the browser depending on the state of the estimate
     //todo follow the same paradigmn as the EstimateDetail component
+    // if there is nothing
     let content = <h3>loading</h3>
-    if (user.hasOwnProperty("userdetails")) {
+    // if there are userdetails but no location lets ask for the location
+    if (user.hasOwnProperty("userdetails") && (!location.hasOwnProperty("locationdetails"))) {
         content = <div>
             hi {user.userdetails.firstname}, can you please provide the address for the estimate
             <LocationCreate />
             </div>
 
+    //
+    } else if (user.hasOwnProperty("userdetails") && (location.hasOwnProperty("locationdetails"))) {
+        // content = <div>sorry i didn't seem to see you in our system</div>
+        //todo turn the below into a calendar view
+        // we have everything we need to show you the calendar
+        content = <>
+            {/*<JobCreate />*/}
+            <Typography variant="h4" marginTop='20px' marginBottom='20px'>Please Choose A date for service of your  {estimate.servicedetails.typeofservice} of
+            your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
+            </Typography>
+            {/*<EstimateEdit estimate={estimate} onSubmit={handleSubmit} onEditCloseClick={handleOnEditCloseClick}/>*/}
+            {/*<Button onClick={handleOnEditCloseClick}>Cancel</Button>*/}
 
-    } else {
-        content = <div>sorry i didn't seem to see you in our system</div>
+
+            </>
     }
 
     // IF we have an estimate with the right data structure but the user as asked to edit it

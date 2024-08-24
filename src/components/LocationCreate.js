@@ -19,15 +19,15 @@ const LocationCreate = () => {
     console.log('[LocationCreate] estimate id: ' + estimate.id);
     console.log('[LocationCreate] user id: ' + user.id);
 
+    //password validation
+    const lowercaseRegEx = /(?=.*[a-z])/
+    const uppercaseRegEx = /(?=.*[A-Z])/
+    const numericRegEx = /(?=.*[0-9])/
+    const lengthRegEx = /(?=.{6,})/
+
 
     const initialValues = {
 
-        // LocationID: estimate.servicedetails.LocationID ? estimate.servicedetails.LocationID : '',
-        // firstname: "",
-        // lastname: "",
-        // phone: "",
-        // email: "",
-        // estimates: [estimate.id ? estimate.id : ''],
         userId: user.id ? user.id : '',
         estimateId: estimate.id ? estimate.id : '',
         streetaddress: "",
@@ -43,14 +43,15 @@ const LocationCreate = () => {
         streetaddress: Yup.string()
             .min(4, 'Your Street Address is Too Short!')
             .max(50, 'Your Street Address is Too Long!')
-            .required("Required"),
-        floor: Yup.string()
-            .required("Required"),
+            .required("Your Street Address is Required"),
+        floor: Yup.string().notRequired(),
         city: Yup.string()
             .required("Required"),
         state: Yup.string()
             .required("Required"),
-        zip: Yup.string()
+        zip: Yup.string(numericRegEx)
+            .min(5, 'Your Zip Code is Too Short!')
+            .max(10, 'Your Zip Code is Too Long!')
             .required("Required"),
     });
 
@@ -118,20 +119,17 @@ const LocationCreate = () => {
                                     {errors.state && touched.state ? <div><p>{errors.state}</p></div> : null}
                                 </FormControl>
                             </Grid>
-
-
-                            {/*<Field name="email" type="email"/>*/}
-                            {/*{errors.email && touched.email ? <div>{errors.email}</div> : null}*/}
-                            {/*<Field name='streetaddress' />*/}
-                            {/*{errors.streetaddress && touched.streetaddress ? <div>{errors.streetaddress}</div> : null}*/}
-                            {/*<Field name='floor' />*/}
-                            {/*{errors.floor && touched.floor ? <div>{errors.floor}</div> : null}*/}
-                            {/*<Field name='city' />*/}
-                            {/*{errors.city && touched.city ? <div>{errors.city}</div> : null}*/}
-                            {/*<Field name='state' />*/}
-                            {/*{errors.state && touched.state ? <div>{errors.state}</div> : null}*/}
-                            <Field name='zip' />
-                            {errors.zip && touched.zip ? <div>{errors.zip}</div> : null}
+                            <Grid item xs={12} sm={6} md={4}>
+                                <FormControl fullWidth variant="outlined">
+                                    <Field
+                                        as={TextField}
+                                        name="zip"
+                                        variant="outlined"
+                                        label="Zip Code"
+                                    />
+                                    {errors.zip && touched.zip ? <div><p>{errors.zip}</p></div> : null}
+                                </FormControl>
+                            </Grid>
 
 
 
