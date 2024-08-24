@@ -30,7 +30,8 @@ const Appointments = () => {
 
     let content = <h3>loading</h3>
 
-    // IF we have an estimate with the right data structure but the user as asked to edit it
+    // IF we have an estimate with the right data structure but not one from the user
+    // SHOW USER CREATE
     if ((estimate.hasOwnProperty("servicedetails") && (!user.hasOwnProperty("userdetails")))) {
         content = <>
             <Grid>
@@ -52,7 +53,8 @@ const Appointments = () => {
 
             <UserCreate />
         </>
-        // IF we dont have an estimate with the correct data structure we will ask the user to enter an estimateID
+        // IF wehave an estimate with the correct data structure AND we have the user data
+        // SHOW USER DETAIL
         // TODO get the views right when you have a user we should see this screen
     } else if ((estimate.hasOwnProperty("servicedetails") && (user.hasOwnProperty("userdetails")))) {
        content =  <UserDetail />

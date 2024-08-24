@@ -53,8 +53,10 @@ const UserDetail = () => {
     //todo follow the same paradigmn as the EstimateDetail component
     let content = <h3>loading</h3>
     if (user.hasOwnProperty("userdetails")) {
-        content = <div>hi {user.userdetails.firstname}, can you please provide the address for the estimate</div>
-        // <LocationCreate />
+        content = <div>
+            hi {user.userdetails.firstname}, can you please provide the address for the estimate
+            </div>
+
 
     } else {
         content = <div>sorry i didn't seem to see you in our system</div>
