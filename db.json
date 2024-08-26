@@ -1855,6 +1855,122 @@
         "petservices": []
       },
       "id": "wmd2nNB"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_757",
+        "typeofservice": "Standard Cleaning",
+        "construct": "House",
+        "sqft": 1750,
+        "numpeople": 4,
+        "numrooms": 4,
+        "numbaths": 4,
+        "numpets": 2,
+        "cleanfactor": 10,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 435,
+          "cleaning": 435,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 7,
+          "totaltimebaths": 5,
+          "totalhours": 12
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "E44eynf"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "greengiraffe_68",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 950,
+        "numpeople": 2,
+        "numrooms": 2,
+        "numbaths": 2,
+        "numpets": 1,
+        "cleanfactor": 10,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 208,
+          "cleaning": 208,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 3,
+          "totaltimebaths": 2,
+          "totalhours": 5
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "RsyU9Jj"
     }
   ],
   "users": [
@@ -2090,6 +2206,32 @@
         ]
       },
       "id": "KSydB8-"
+    },
+    {
+      "userdetails": {
+        "userID": "purplebutterfly_757",
+        "firstname": "erik",
+        "lastname": "test",
+        "phone": "12123334567",
+        "email": "erik.kroha@gmail.com",
+        "estimates": [
+          "E44eynf"
+        ]
+      },
+      "id": "jnD4i_9"
+    },
+    {
+      "userdetails": {
+        "userID": "greengiraffe_68",
+        "firstname": "john",
+        "lastname": "doe",
+        "phone": "2125551212",
+        "email": "erik.kroha@gmail.com",
+        "estimates": [
+          "RsyU9Jj"
+        ]
+      },
+      "id": "M2wEkqN"
     }
   ],
   "locations": [
@@ -2152,6 +2294,30 @@
         "zip": "07201"
       },
       "id": 5
+    },
+    {
+      "locationdetails": {
+        "userId": "jnD4i_9",
+        "estimateId": "E44eynf",
+        "streetaddress": "1024 Flora Street",
+        "floor": "2F",
+        "city": "Elizabeth",
+        "state": "NJ",
+        "zip": "07201"
+      },
+      "id": 6
+    },
+    {
+      "locationdetails": {
+        "userId": "M2wEkqN",
+        "estimateId": "RsyU9Jj",
+        "streetaddress": "1025 Flora Street",
+        "floor": "2F",
+        "city": "Elizabeth",
+        "state": "NJ",
+        "zip": "07201"
+      },
+      "id": 7
     }
   ]
 }
