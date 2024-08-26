@@ -367,8 +367,6 @@ function Provider( {children} ) {
         console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
         const response = await axios.get(`http://localhost:3001/estimates/${obj.estimateID}`);
         console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
-
-
     }
     // context functions
     const createEstimate = async (obj) => {
