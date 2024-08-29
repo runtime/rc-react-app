@@ -20,6 +20,7 @@ const UserDetail = () => {
     const { estimate } = useContext(EstimateContext);
     const { user } = useContext(EstimateContext);
     const { location } = useContext(EstimateContext);
+    const { findLocationByUserId } = useContext(EstimateContext);
     //const [showEdit, setShowEdit] = useState(false);
 
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ const UserDetail = () => {
     console.log('[UserDetail] user: ',  user);
     console.log('[UserDetail] ', JSON.stringify(user));
     console.log('[UserDetail] ', JSON.stringify(user, null, 2));
-    console.dir(user)
+    //console.dir('[UserDetail] user: ',  user);
     //console.log('[UserDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
 
     // create a string in US Currency for Chip
@@ -59,6 +60,15 @@ const UserDetail = () => {
     let content = <h3>loading</h3>
     // if there are userdetails but no location lets ask for the location
     if (user.hasOwnProperty("userdetails") && (!location.hasOwnProperty("locationdetails"))) {
+        // TODO Check to see if we have a location by using a fetch
+        const foundLocation = findLocationByUserId(user.id)
+        console.log('[UserDetail] user.userdetails.id: ' + user.id);
+        console.log('[UserDetail] foundLocation: ', foundLocation);
+        if (foundLocation) {
+            console.log('[UserDetail] foundLocation: ', foundLocation);
+        } else {
+            console.log('[UserDetail] did not find foundLocation: ', foundLocation);
+        }
         content = <div>
             hi {user.userdetails.firstname}, can you please provide the address for the estimate
             <LocationCreate />
@@ -67,17 +77,15 @@ const UserDetail = () => {
     //
     } else if (user.hasOwnProperty("userdetails") && (location.hasOwnProperty("locationdetails"))) {
         // content = <div>sorry i didn't seem to see you in our system</div>
-        //todo turn the below into a calendar view
-        // we have everything we need to show you the calendar
+
         content = <>
-            <Calendar />
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>Please Choose A date for service of your  {estimate.servicedetails.typeofservice} of
-            your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
+                your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>
+            <Calendar />
+            { /*todo get the calendar web hook response and show thank you* / }
             {/*<EstimateEdit estimate={estimate} onSubmit={handleSubmit} onEditCloseClick={handleOnEditCloseClick}/>*/}
             {/*<Button onClick={handleOnEditCloseClick}>Cancel</Button>*/}
-
-
             </>
     }
 

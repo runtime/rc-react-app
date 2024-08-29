@@ -20,26 +20,37 @@ import Calendar from '../components/Calendar';
 const Appointments = () => {
     const { estimate } = useContext(EstimateContext);
     const { user } = useContext(EstimateContext);
+    const { location } = useContext(EstimateContext);
+    const { findUserByUserId } = useContext(EstimateContext)
+    const { findLocationByUserId } = useContext(EstimateContext)
+
     console.log('[Appointments] estimate: ' + estimate);
     console.log('[Appointments] user: ' + user);
+    console.log('[Appointments] location: ' + location);
 
     const navigate = useNavigate();
 
     const handleEstimateClick = () => navigate('/estimates');
 
-    console.log(user.hasOwnProperty("userdetails"));
+    console.log('[Provider] user.hasOwnProperty("userdetails") : ' , user.hasOwnProperty("userdetails"));
 
     let content = <h3>loading</h3>
 
-    // TODO Temporary Cal implmeentation below
-    // stub data
-
-
-    //const cal = <Calendar />
 
     // IF we have an estimate with the right data structure but not one from the user
     // SHOW USER CREATE
     if ((estimate.hasOwnProperty("servicedetails") && (!user.hasOwnProperty("userdetails")))) {
+        // todo search by userID before we ask for their information
+        // But IF you are coming from Appointments and you wish to enter in a previous appointment
+        // we will do a quick check of the database to see if the user exists
+        const estimatetosearch = estimate.servicedetails.userID;
+        console.log('[Appointments] estimatetosearch: ' + estimatetosearch);
+        const foundExistingUser = findUserByUserId(estimatetosearch);
+        if (foundExistingUser) {
+            // and if the user exists lets check to see if the Location Exists
+            console.log('[Appointments] foundExistingUser: ' + foundExistingUser);
+            console.log('[Appointments] USER DETAIL will check for Location and decide what to show')
+        }
         content = <>
             <Grid>
                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Enter </Typography>
@@ -95,8 +106,6 @@ const Appointments = () => {
                 <Grid marginTop = '40px'>
                     <RepeatService />
                 </Grid>
-
-
             </>
 
     }
