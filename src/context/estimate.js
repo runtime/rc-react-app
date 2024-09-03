@@ -9,8 +9,9 @@ import React from "react";
 const EstimateContext = createContext();
 
 function Provider( {children} ) {
-    const [estimate, setEstimate] = useState({ });
-    const [user, setUser ] = useState ({ })
+    const [estimate, setEstimate] = useState({});
+    const [user, setUser ] = useState ({})
+    const [location, setLocation ] = useState({})
 
     const getEstimatesFromAPI =  () => {
         //Fetch Data
@@ -410,6 +411,28 @@ function Provider( {children} ) {
         setUser(updatedUser)
     }
 
+    const createLocation = async (obj) => {
+        console.log('[Provider] createLocation: ', obj);
+        const locationdetails = obj
+        const response = await axios.post('http://localhost:3001/locations', {
+            locationdetails
+        });
+        console.log('[Provider] createLocation response.data ', response.data);
+        const processedLocation = response.data;
+        setLocation(processedLocation);
+    }
+
+    const editLocationById = async (id, editReqObj) => {
+        console.log('[Provider] editLocationById: ', id, ' editReqObj: ', editReqObj,);
+        const locationdetails = editReqObj;
+        const response = await axios.put(`http://localhost:3001/users/${id}`, {
+            locationdetails
+        });
+        console.log('[Provider] editUserById Axios Put response.data: ', response.data);
+        const updatedLocation = response.data;
+        setLocation(updatedLocation)
+    }
+
 
     // set new value to send back to context subscribers
 
@@ -423,6 +446,10 @@ function Provider( {children} ) {
         editUserById,
         setUser,
         user,
+        createLocation,
+        editLocationById,
+        setLocation,
+        location,
     }
 
 
