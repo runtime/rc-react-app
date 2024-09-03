@@ -20,6 +20,9 @@ import UserCreate from "./UserCreate";
 const RepeatService = () => {
     console.log('[RepeatService] ');
     const { findEstimateById } = useContext(EstimateContext);
+    const { repeatService } = useContext(EstimateContext);
+
+    const navigate = useNavigate();
 
 
     const initialValues = {
@@ -32,9 +35,10 @@ const RepeatService = () => {
     });
 
     const handleFindByEstimateIdSubmit = (values) => {
-        console.log('[RepeatService] handleFormSubmit: ', values)
-        //TODO create context that gets the estimate by this id
+        console.log('[RepeatService] handleFindByEstimateIdSubmit: ', values)
         findEstimateById(values);
+        //repeatService(findEstimateById);
+        //navigate(`/estimate/${values}`);
     }
 
 
