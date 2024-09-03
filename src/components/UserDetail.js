@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import LocationCreate from './LocationCreate';
-import EstimateEdit from "./EstimateEdit";
+import Calendar from "./Calendar";
 
 const UserDetail = () => {
     const { estimate } = useContext(EstimateContext);
@@ -70,7 +70,7 @@ const UserDetail = () => {
         //todo turn the below into a calendar view
         // we have everything we need to show you the calendar
         content = <>
-            {/*<JobCreate />*/}
+            <Calendar />
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>Please Choose A date for service of your  {estimate.servicedetails.typeofservice} of
             your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
             </Typography>

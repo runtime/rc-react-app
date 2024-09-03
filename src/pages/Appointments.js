@@ -14,6 +14,7 @@ import UserCreate from '../components/UserCreate';
 import UserEdit from '../components/UserEdit';
 import UserDetail from '../components/UserDetail';
 import RepeatService from '../components/RepeatService';
+import Calendar from '../components/Calendar';
 
 
 const Appointments = () => {
@@ -29,6 +30,12 @@ const Appointments = () => {
     console.log(user.hasOwnProperty("userdetails"));
 
     let content = <h3>loading</h3>
+
+    // TODO Temporary Cal implmeentation below
+    // stub data
+
+
+    //const cal = <Calendar />
 
     // IF we have an estimate with the right data structure but not one from the user
     // SHOW USER CREATE
@@ -103,6 +110,7 @@ const Appointments = () => {
                             <Box sx={{ minWidth: 120 }}>
                                 <Typography color="black" display="inline">
                                     {content}
+                                    {/*{cal}*/}
                                 </Typography>
                             </Box>
                         </CardContent>
