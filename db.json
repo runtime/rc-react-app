@@ -57,6 +57,64 @@
         "petservices": []
       },
       "id": "iiBCg1F"
+    },
+    {
+      "servicedetails": {
+        "serviceID": "",
+        "userID": "purplebutterfly_420",
+        "typeofservice": "Standard Cleaning",
+        "construct": "Apartment",
+        "sqft": 250,
+        "numpeople": 1,
+        "numrooms": 1,
+        "numbaths": 1,
+        "numpets": 0,
+        "cleanfactor": 0,
+        "laundrywashandfold": "",
+        "dishwashing": "",
+        "mealprep": "",
+        "ovencleaning": false,
+        "fridgecleaning": false,
+        "deepcleaning": false,
+        "professionalcouchcleaning": false,
+        "professionalrugshampoo": false,
+        "professionalfloorwaxing": false,
+        "dogwalking": false,
+        "petsitting": false,
+        "dispensingmedication": false,
+        "waste": false,
+        "rate": 30,
+        "minimum": 60,
+        "cost": {
+          "total": 105,
+          "cleaning": 105,
+          "extra": 0,
+          "pro": 0,
+          "pet": 0
+        },
+        "data": {
+          "totaltimerooms": 1,
+          "totaltimebaths": 1,
+          "totalhours": 2
+        },
+        "extraservices": [
+          {
+            "label": "Laundry",
+            "cost": 0
+          },
+          {
+            "label": "Dishes",
+            "cost": 0
+          },
+          {
+            "label": "Meals",
+            "cost": 0
+          }
+        ],
+        "proservices": [],
+        "petservices": []
+      },
+      "id": "1c34x8L"
     }
   ],
   "locations": [
@@ -71,8 +129,19 @@
         "zip": "07201"
       },
       "id": 5
+    },
+    {
+      "locationdetails": {
+        "userId": "WF920Jv",
+        "estimateId": "1c34x8L",
+        "streetaddress": "11 Locust Ave",
+        "floor": "",
+        "city": "Millburn",
+        "state": "NJ",
+        "zip": "07041-1821"
+      },
+      "id": 6
     }
-
   ],
   "users": [
     {
@@ -87,7 +156,19 @@
         ]
       },
       "id": "KSydB8-"
+    },
+    {
+      "userdetails": {
+        "userID": "purplebutterfly_420",
+        "firstname": "testing",
+        "lastname": "estimateid",
+        "phone": "2125551212",
+        "email": "erik.kroha@gmail.com",
+        "estimates": [
+          "1c34x8L"
+        ]
+      },
+      "id": "WF920Jv"
     }
-
   ]
 }
