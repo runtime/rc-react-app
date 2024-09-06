@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useContext, useEffect} from 'react';
 import '../styles/Estimates.css';
 import { Grid, ThemeProvider, CssBaseline,} from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
@@ -12,16 +12,19 @@ import EstimateItem from '../components/EstimateItem';
 
 
 const Estimates = () => {
-    const { estimates } = useContext(EstimateContext);
-    const { getAllEstimates } = useContext(EstimateContext);
+    //const { estimates } = useContext(EstimateContext);
+    const { estimates, getAllEstimates } = useContext(EstimateContext);
 
-    const fetchedEstimates = getAllEstimates();
-    console.log('[Estimates] fetchedEstimates: ' + fetchedEstimates);
-    //console.log('[Estimates] estimates: ' + estimates);
+    useEffect(() => {
+        getAllEstimates();
+    }, [getAllEstimates]);
+
+
+    console.log('[Estimates] estimates: ' + estimates);
     let content = <> loading </>
     if (estimates.length > 0) {
         console.log('[Estimates] estimates: ' + estimates);
-        content = <EstimateList />;
+        content = <EstimateList estimates={estimates}/>;
     } else  {
         content = <> <div><p>no estimates to show</p></div></>;
     }

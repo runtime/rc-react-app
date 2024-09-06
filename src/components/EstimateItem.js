@@ -32,8 +32,8 @@ const EstimateItem = (estimate) => {
     if (estimate.hasOwnProperty("servicedetails")){
         content = <>
             {/*<EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>*/}
-            <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
-                your {estimate.servicedetails.numrooms} BR, {estimate.servicedetails.numbaths} BA {estimate.servicedetails.construct}
+            <Typography variant="body1" marginTop='20px' marginBottom='20px'>{estimate.id}, | {estimate.servicedetails.typeofservice} |
+                 {estimate.servicedetails.numrooms} BR | {estimate.servicedetails.numbaths} BA | {estimate.servicedetails.construct}
             </Typography>
         </>
         // IF we dont have an estimate with the correct data structure we act as if we have nothing at all
