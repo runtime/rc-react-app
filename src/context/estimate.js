@@ -431,15 +431,31 @@ function Provider( {children} ) {
         setEstimate(processedEstimate);
     }
 
+    // const getAllEstimates = async () => {
+    //     console.log('[Provider] getAllEstimates');
+    //     // send the estimate object to the estimate service to be calculated
+    //     const response = await axios.get('https://r4dxgdw57j.execute-api.us-east-1.amazonaws.com/prod/estimates');
+    //     console.log('[Provider] getAllEstimates response.data ', response.data);
+    //     const allEstimates = response.data;
+    //     console.log('[Provider] getAllEstimates allEstimates ', allEstimates);
+    //    //return allEstimates;
+    //     setEstimates(allEstimates);
+    // }
+
     const getAllEstimates = async () => {
-        console.log('[Provider] getAllEstimates');
-        // send the estimate object to the estimate service to be calculated
-        const response = await axios.get('https://r4dxgdw57j.execute-api.us-east-1.amazonaws.com/prod/estimates');
-        console.log('[Provider] getAllEstimates response.data ', response.data);
-        const allEstimates = response.data;
-        //return allEstimates;
-        setEstimates(allEstimates);
-    }
+        try {
+            const response = await axios.get('https://r4dxgdw57j.execute-api.us-east-1.amazonaws.com/prod/estimates');
+            const estimatesData = response.data.estimates || [];
+
+            // Use flat() to remove any nested arrays (e.g., [[estimate1], [estimate2]] => [estimate1, estimate2])
+            const flattenedEstimates = estimatesData.flat();
+            console.log('Flattened estimates:', flattenedEstimates);
+
+            setEstimates(flattenedEstimates);
+        } catch (error) {
+            console.error('Error fetching estimates:', error);
+        }
+    };
 
     const editEstimateById = async (id, editReqObj) => {
         console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
