@@ -10,6 +10,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({});
+    const [estimates, setEstimates] = useState([]);
     const [user, setUser ] = useState ({})
     const [location, setLocation ] = useState({})
 
@@ -399,7 +400,7 @@ function Provider( {children} ) {
 
     const findEstimateById = async(obj) => {
         console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
-        const response = await axios.get(`http://localhost:3001/estimates/${obj.estimateID}`);
+        const response = await axios.get(`https://r4dxgdw57j.execute-api.us-east-1.amazonaws.com/prod/estimates/${obj.estimateID}`);
         console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
         // for now we are going to find the user by the Estimate ID
         const foundEstimate = response.data;
@@ -419,7 +420,10 @@ function Provider( {children} ) {
         const servicedetails = calculateEstimate(obj);
         console.log('[Provider] servicedetails', servicedetails);
         // store the updated estimate in the database
-        const response = await axios.post('http://localhost:3001/estimates', {
+        // const response = await axios.post('http://localhost:3001/estimates', {
+        //     servicedetails
+        // });
+        const response = await axios.post('https://r4dxgdw57j.execute-api.us-east-1.amazonaws.com/prod/estimates', {
             servicedetails
         });
         console.log('[Provider] createEstimate response.data ', response.data);
@@ -427,12 +431,22 @@ function Provider( {children} ) {
         setEstimate(processedEstimate);
     }
 
+    const getAllEstimates = async () => {
+        console.log('[Provider] getAllEstimates');
+        // send the estimate object to the estimate service to be calculated
+        const response = await axios.get('https://r4dxgdw57j.execute-api.us-east-1.amazonaws.com/prod/estimates');
+        console.log('[Provider] getAllEstimates response.data ', response.data);
+        const allEstimates = response.data;
+        //return allEstimates;
+        setEstimates(allEstimates);
+    }
+
     const editEstimateById = async (id, editReqObj) => {
         console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
         // Todo call estimate service with new information
         const servicedetails = calculateEstimate(editReqObj);
         // store the updated response
-        const response = await axios.put(`http://localhost:3001/estimates/${id}`, {
+        const response = await axios.put(`https://r4dxgdw57j.execute-api.us-east-1.amazonaws.com/prod/estimates/${id}`, {
             servicedetails
         });
         console.log('[Provider] EditEstimateById Axios Put response.data: ', response.data);
@@ -516,34 +530,17 @@ function Provider( {children} ) {
         //return response;
     }
 
-    const repeatService = async (obj) => {
-        console.log('[Provider] repeatService');
-
-        const loadedEstimate = obj;
-        console.log('[Provider] repeatService loadedEstimate: ', loadedEstimate);
-
-
-        //const loadedUser = await findUserById(loadedEstimate);
-        //setUser(loadedUser);
-        //const loadedLocation = findLocationByEstimateId(loadedEstimate.userdetails.locationID);
-        //console.log('[Provider] loadedLocation: ', loadedLocation);
-
-        // confirm user by id
-        // set estimate, user and location
-        // show calendar
-
-        //setEstimate(loadedEstimate);
-        //setUser(response.data);
-    }
 
 
     // set new value to send back to context subscribers
 
     const providerValues = {
         estimate,
+        estimates,
         editEstimateById,
         findEstimateById,
         createEstimate,
+        getAllEstimates,
         setEstimate,
         createUser,
         findUserById,
@@ -556,7 +553,6 @@ function Provider( {children} ) {
         findLocationByUserId,
         setLocation,
         location,
-        repeatService,
     }
 
 
