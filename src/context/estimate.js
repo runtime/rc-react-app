@@ -363,10 +363,52 @@ function Provider( {children} ) {
 
     }
 
+    const findUserById = async(id) => {
+        console.log('[Provider] findUserById, obj.userID: ', id);
+        const response = await axios.get(`http://localhost:3001/users/${id}`);
+        console.log('[Provider] findUserById Axios Get response.data: ', response.data);
+        //return response;
+        const foundUser = response.data;
+        setUser(foundUser);
+    }
+
+    const findUserByUserId = async(id) => {
+        console.log('[Provider] findUserByUserId, obj.userID: ', id);
+        const response = await axios.get(`http://localhost:3001/users` , {
+            params: {
+                userID: id
+            }
+        }) .then(response => {
+            console.log('[Provider] findUserByUserId Axios Get response.data: ', response.data);
+            const users = response.data;
+            // loop through users and find one that matches the id
+            for (let i = 0; i < users.length; i++) {
+                console.log('[Provider] findUserByUserId looping through users[i]: ', users[i]);
+                if (users[i].userdetails.userID === id) {
+                    console.log('[Provider] findUserByUserId foundUser: ', users[i]);
+                    const founduser = users[i];
+                    setUser(founduser);
+                }
+            }
+        })
+            .catch(error => {
+                console.error('Error fetching user:', error);
+            });
+        //return response;
+    }
+
     const findEstimateById = async(obj) => {
         console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
         const response = await axios.get(`http://localhost:3001/estimates/${obj.estimateID}`);
         console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
+        // for now we are going to find the user by the Estimate ID
+        const foundEstimate = response.data;
+        console.log('[Provider] findEstimateById foundEstimate: ', foundEstimate.userID);
+        setEstimate(foundEstimate);
+        //const userResponse = await axios.get(`http://localhost:3001/users/${foundEstimate.userID}`);
+        //return response;
+        //setEstimate(response.data);
+
     }
     // context functions
     const createEstimate = async (obj) => {
@@ -431,6 +473,69 @@ function Provider( {children} ) {
         setLocation(updatedLocation)
     }
 
+    const findLocationById = async (obj) => {
+        console.log('[Provider] findLocationById, obj.locationID: ', obj.locationID);
+        const response = await axios.get(`http://localhost:3001/location/${obj.locationID}`);
+        console.log('[Provider] findLocationById Axios Get response.data: ', response.data);
+        return response;
+        //setLocation(response.data);
+    }
+
+    const findLocationByEstimateId = async (id) => {
+        console.log('[Provider] findLocationByEstimateId, obj.locationID: ', id);
+        const response = await axios.get(`http://localhost:3001/estimates/${id}`);
+        console.log('[Provider] findLocationByEstimateId Axios Get response.data: ', response.data);
+        return response;
+        //setLocation(response.data);
+    }
+
+    const findLocationByUserId = async(id) => {
+        //const user
+        console.log('[Provider] findLocationsByUserId, id: ', id);
+        const response = await axios.get(`http://localhost:3001/locations` , {
+            params: {
+                userId: id
+            }
+        }).then(response => {
+            console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
+            const locations = response.data;
+            // loop through users and find one that matches the id
+            for (let i = 0; i < locations.length; i++) {
+                console.log('[Provider] findLocations looping through locations[i]: ', id + ' ' + locations[i]);
+                console.log('[Provider] findLocations looping through locations[i].locationdetails.userId: ', locations[i].locationdetails.userId);
+                if ( locations[i].locationdetails.userId === id ) {
+                    console.log('[Provider] findLocationByUserId foundUser: ', locations[i]);
+                    const foundlocation = locations[i];
+                    setLocation(foundlocation);
+                }
+            }
+        })
+            .catch(error => {
+                console.error('Error fetching Location:', error);
+            });
+        //return response;
+    }
+
+    const repeatService = async (obj) => {
+        console.log('[Provider] repeatService');
+
+        const loadedEstimate = obj;
+        console.log('[Provider] repeatService loadedEstimate: ', loadedEstimate);
+
+
+        //const loadedUser = await findUserById(loadedEstimate);
+        //setUser(loadedUser);
+        //const loadedLocation = findLocationByEstimateId(loadedEstimate.userdetails.locationID);
+        //console.log('[Provider] loadedLocation: ', loadedLocation);
+
+        // confirm user by id
+        // set estimate, user and location
+        // show calendar
+
+        //setEstimate(loadedEstimate);
+        //setUser(response.data);
+    }
+
 
     // set new value to send back to context subscribers
 
@@ -441,13 +546,17 @@ function Provider( {children} ) {
         createEstimate,
         setEstimate,
         createUser,
+        findUserById,
+        findUserByUserId,
         editUserById,
         setUser,
         user,
         createLocation,
         editLocationById,
+        findLocationByUserId,
         setLocation,
         location,
+        repeatService,
     }
 
 

@@ -18,7 +18,6 @@ const Estimates = () => {
         content = <EstimateCreate />;
     }
 
-
     return (
         <ThemeProvider theme={RapidCleanTheme}>
             <CssBaseline />
