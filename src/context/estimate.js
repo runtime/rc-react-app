@@ -10,6 +10,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({});
+    const [estimates, setEstimates] = useState([]);
     const [user, setUser ] = useState ({})
     const [location, setLocation ] = useState({})
 
@@ -39,8 +40,18 @@ function Provider( {children} ) {
         console.log('[Provider] return extras: ', extras);
         return extras;
     }
+
+    function generateRandomEstimateId(length = 10) {
+        const characters = 'ABCDEFGHIJKL' +
+            'MNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let estimateId = '';
+        for (let i = 0; i < length; i++) {
+            estimateId += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return estimateId;
+    }
     //todo move helper functions to api estimate algo
-    const calculateEstimate = (obj) => {
+    const calculateEstimate = async (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
         console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
@@ -52,9 +63,9 @@ function Provider( {children} ) {
         let  totalhours = 0;
         // for temp user names
         const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog", "bluefish"];
+        const randomID = Math.round(Math.random(9))
 
         let serviceObj = {
-            serviceID: obj.serviceID,
             userID: prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
@@ -399,7 +410,7 @@ function Provider( {children} ) {
 
     const findEstimateById = async(obj) => {
         console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
-        const response = await axios.get(`http://localhost:3001/estimates/${obj.estimateID}`);
+        const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${obj.estimateID}`);
         console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
         // for now we are going to find the user by the Estimate ID
         const foundEstimate = response.data;
@@ -411,28 +422,95 @@ function Provider( {children} ) {
 
     }
     // context functions
-    const createEstimate = async (obj) => {
+    // const createEstimate = async (obj) => {
+    //
+    //     console.log('[Provider] createEstimate: ', obj );
+    //     // send the estimate object to the estimate service to be calculated
+    //     //todo call estimateService and have algo give back the estimate - for now we will use helper functions
+    //     const servicedetails = await calculateEstimate(obj);
+    //     console.log('[Provider] servicedetails', servicedetails);
+    //     // store the updated estimate in the database
+    //     // const response = await axios.post('http://localhost:3001/estimates', {
+    //     //     servicedetails
+    //     // });
+    //     const response = await axios.post('https://15jfs5kpsb.execute-api.us-east-1.amazonaws.com/prod/estimates',
+    //         servicedetails,
+    //         {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         }
+    //     );
+    //     console.log('[Provider] createEstimate response.data ', response.data);
+    //     const processedEstimate = response.data;
+    //     setEstimate(processedEstimate);
+    // }
 
-        console.log('[Provider] createEstimate: ', obj );
-        // send the estimate object to the estimate service to be calculated
-        //todo call estimateService and have algo give back the estimate - for now we will use helper functions
-        const servicedetails = calculateEstimate(obj);
-        console.log('[Provider] servicedetails', servicedetails);
-        // store the updated estimate in the database
-        const response = await axios.post('http://localhost:3001/estimates', {
-            servicedetails
-        });
-        console.log('[Provider] createEstimate response.data ', response.data);
-        const processedEstimate = response.data;
-        setEstimate(processedEstimate);
-    }
+    const createEstimate = async (obj) => {
+        try {
+            console.log('[Provider] createEstimate obj:', obj);
+
+            const servicedetails =  await calculateEstimate(obj);  // Ensure this function is returning the expected structure
+            const estimateId = generateRandomEstimateId(8);
+            console.log('[Provider] servicedetails:', servicedetails);
+
+            const response = await axios.post(
+                'https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates',
+                {
+                    estimateId:  estimateId, // Ensure you are passing estimateId
+                    servicedetails,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            console.log('[Provider] createEstimate response.data.item:', response.data.item);
+            const {message, item} =  response.data;
+            console.log('[Provider] createEstimate message:', message);
+            console.log('[Provider] createEstimate item:', item);
+            const processedEstimate = item;
+            setEstimate(processedEstimate);
+        } catch (error) {
+            console.error('[Provider] Error creating estimate:', error.response || error.message);
+        }
+    };
+
+
+    // const getAllEstimates = async () => {
+    //     console.log('[Provider] getAllEstimates');
+    //     // send the estimate object to the estimate service to be calculated
+    //     const response = await axios.get('https://lqjt6rmim8.execute-api.us-east-1.amazonaws.com/prod/estimates');
+    //     console.log('[Provider] getAllEstimates response.data ', response.data);
+    //     const allEstimates = response.data;
+    //     console.log('[Provider] getAllEstimates allEstimates ', allEstimates);
+    //    //return allEstimates;
+    //     setEstimates(allEstimates);
+    // }
+
+    const getAllEstimates = async () => {
+        try {
+            const response = await axios.get('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates');
+            const estimatesData = response.data.estimates || [];
+
+            // Use flat() to remove any nested arrays (e.g., [[estimate1], [estimate2]] => [estimate1, estimate2])
+            const flattenedEstimates = estimatesData.flat();
+            console.log('Flattened estimates:', flattenedEstimates);
+
+            setEstimates(flattenedEstimates);
+        } catch (error) {
+            console.error('Error fetching estimates:', error);
+        }
+    };
 
     const editEstimateById = async (id, editReqObj) => {
         console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
         // Todo call estimate service with new information
         const servicedetails = calculateEstimate(editReqObj);
         // store the updated response
-        const response = await axios.put(`http://localhost:3001/estimates/${id}`, {
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${id}`, {
             servicedetails
         });
         console.log('[Provider] EditEstimateById Axios Put response.data: ', response.data);
@@ -516,34 +594,17 @@ function Provider( {children} ) {
         //return response;
     }
 
-    const repeatService = async (obj) => {
-        console.log('[Provider] repeatService');
-
-        const loadedEstimate = obj;
-        console.log('[Provider] repeatService loadedEstimate: ', loadedEstimate);
-
-
-        //const loadedUser = await findUserById(loadedEstimate);
-        //setUser(loadedUser);
-        //const loadedLocation = findLocationByEstimateId(loadedEstimate.userdetails.locationID);
-        //console.log('[Provider] loadedLocation: ', loadedLocation);
-
-        // confirm user by id
-        // set estimate, user and location
-        // show calendar
-
-        //setEstimate(loadedEstimate);
-        //setUser(response.data);
-    }
 
 
     // set new value to send back to context subscribers
 
     const providerValues = {
         estimate,
+        estimates,
         editEstimateById,
         findEstimateById,
         createEstimate,
+        getAllEstimates,
         setEstimate,
         createUser,
         findUserById,
@@ -556,7 +617,6 @@ function Provider( {children} ) {
         findLocationByUserId,
         setLocation,
         location,
-        repeatService,
     }
 
 
