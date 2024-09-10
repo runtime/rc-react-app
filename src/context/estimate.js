@@ -42,7 +42,8 @@ function Provider( {children} ) {
     }
 
     function generateRandomEstimateId(length = 10) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const characters = 'ABCDEFGHIJKL' +
+            'MNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let estimateId = '';
         for (let i = 0; i < length; i++) {
             estimateId += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -409,7 +410,7 @@ function Provider( {children} ) {
 
     const findEstimateById = async(obj) => {
         console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
-        const response = await axios.get(`https://15jfs5kpsb.execute-api.us-east-1.amazonaws.com/prod/estimates/${obj.estimateID}`);
+        const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${obj.estimateID}`);
         console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
         // for now we are going to find the user by the Estimate ID
         const foundEstimate = response.data;
@@ -450,12 +451,13 @@ function Provider( {children} ) {
             console.log('[Provider] createEstimate obj:', obj);
 
             const servicedetails =  await calculateEstimate(obj);  // Ensure this function is returning the expected structure
+            const estimateId = generateRandomEstimateId(8);
             console.log('[Provider] servicedetails:', servicedetails);
 
             const response = await axios.post(
-                'https://15jfs5kpsb.execute-api.us-east-1.amazonaws.com/prod/estimates',
+                'https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates',
                 {
-                    estimateId:  generateRandomEstimateId(8), // Ensure you are passing estimateId
+                    estimateId:  estimateId, // Ensure you are passing estimateId
                     servicedetails,
                 },
                 {
@@ -465,8 +467,11 @@ function Provider( {children} ) {
                 }
             );
 
-            console.log('[Provider] createEstimate response.data:', response.data);
-            const processedEstimate = response.data;
+            console.log('[Provider] createEstimate response.data.item:', response.data.item);
+            const {message, item} =  response.data;
+            console.log('[Provider] createEstimate message:', message);
+            console.log('[Provider] createEstimate item:', item);
+            const processedEstimate = item;
             setEstimate(processedEstimate);
         } catch (error) {
             console.error('[Provider] Error creating estimate:', error.response || error.message);
@@ -487,7 +492,7 @@ function Provider( {children} ) {
 
     const getAllEstimates = async () => {
         try {
-            const response = await axios.get('https://15jfs5kpsb.execute-api.us-east-1.amazonaws.com/prod/estimates');
+            const response = await axios.get('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates');
             const estimatesData = response.data.estimates || [];
 
             // Use flat() to remove any nested arrays (e.g., [[estimate1], [estimate2]] => [estimate1, estimate2])
@@ -505,7 +510,7 @@ function Provider( {children} ) {
         // Todo call estimate service with new information
         const servicedetails = calculateEstimate(editReqObj);
         // store the updated response
-        const response = await axios.put(`https://15jfs5kpsb.execute-api.us-east-1.amazonaws.com/prod/estimates/${id}`, {
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${id}`, {
             servicedetails
         });
         console.log('[Provider] EditEstimateById Axios Put response.data: ', response.data);

@@ -41,8 +41,13 @@ import EstimateDetail from '../components/EstimateDetail';
 const Estimates = () => {
     const { estimate } = useContext(EstimateContext);
     let content = <> loading </>
-    if ((estimate.hasOwnProperty("servicedetails"))) {
-        console.log('[Estimates] estimate.servicedetails: ' + estimate.servicedetails);
+
+    const hasServiceDetails = estimate?.servicedetails;
+
+    console.log('[Estimates] estimate: ', estimate);
+    console.log('[Estimates] estimate.hasOwnProperty(servicedetails): ', hasServiceDetails);
+    if (hasServiceDetails) {
+        console.log('[Estimates] estimate.item.servicedetails: ' + estimate.servicedetails);
         content = <EstimateDetail />;
     } else  {
         content = <EstimateCreate />;
