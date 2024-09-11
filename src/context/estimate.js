@@ -66,7 +66,7 @@ function Provider( {children} ) {
         const randomID = Math.round(Math.random(9))
 
         let serviceObj = {
-            userID: prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
+            userID: obj.userID? obj.userID : prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -421,30 +421,6 @@ function Provider( {children} ) {
         //setEstimate(response.data);
 
     }
-    // context functions
-    // const createEstimate = async (obj) => {
-    //
-    //     console.log('[Provider] createEstimate: ', obj );
-    //     // send the estimate object to the estimate service to be calculated
-    //     //todo call estimateService and have algo give back the estimate - for now we will use helper functions
-    //     const servicedetails = await calculateEstimate(obj);
-    //     console.log('[Provider] servicedetails', servicedetails);
-    //     // store the updated estimate in the database
-    //     // const response = await axios.post('http://localhost:3001/estimates', {
-    //     //     servicedetails
-    //     // });
-    //     const response = await axios.post('https://15jfs5kpsb.execute-api.us-east-1.amazonaws.com/prod/estimates',
-    //         servicedetails,
-    //         {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //         }
-    //     );
-    //     console.log('[Provider] createEstimate response.data ', response.data);
-    //     const processedEstimate = response.data;
-    //     setEstimate(processedEstimate);
-    // }
 
     const createEstimate = async (obj) => {
         try {
@@ -505,18 +481,46 @@ function Provider( {children} ) {
         }
     };
 
-    const editEstimateById = async (id, editReqObj) => {
-        console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
+    const editEstimateById = async (estimateId, editReqObj) => {
+        console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj,);
         // Todo call estimate service with new information
-        const servicedetails = calculateEstimate(editReqObj);
+        const servicedetails = await calculateEstimate(editReqObj);
         // store the updated response
-        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${id}`, {
-            servicedetails
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${estimateId}`,
+            {
+                estimateId, // Ensure you are passing estimateId
+                servicedetails,
+            },
+            {
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
-        console.log('[Provider] EditEstimateById Axios Put response.data: ', response.data);
-        const updatedEstimate = response.data;
+
+        //console.log('[Provider] editEstimateById response.data:', response.data);
+        const { message, item } =  response.data;
+        const updatedEstimate = item;
+        const messageResponse = message;
+        console.log('[Provider] editEstimateById Axios Put response.data: ', messageResponse, updatedEstimate);
         setEstimate(updatedEstimate)
     }
+
+    // const editEstimateById = async (estimateId, editReqObj) => {
+    //     console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj);
+    //     const servicedetails = await calculateEstimate(editReqObj);
+    //
+    //     const response = await axios.put(
+    //         `https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${estimateId}`,
+    //         { estimateId, servicedetails },
+    //         { headers: { 'Content-Type': 'application/json' } }
+    //     );
+    //
+    //     const { message, item } = response.data;
+    //     console.log('[Provider] editEstimateById Axios Put response.data: ', message, item);
+    //
+    //     setEstimate(item);  // This should now contain estimateId and servicedetails
+    // };
+
 
     const editUserById = async (id, editReqObj) => {
         console.log('[Provider] editUserById: ', id, ' editReqObj: ', editReqObj,);

@@ -22,7 +22,11 @@ const EstimateDetail = () => {
    const navigate = useNavigate();
 
    console.log('[EstimateDetail] estimate: ' + estimate);
-   console.log('[EstimateDetail] estimate.hasOwnProperty servicedetails: ' + estimate.hasOwnProperty("servicedetails"));
+    const hasServiceDetails = estimate?.servicedetails;
+    const estimateId = estimate.es;
+
+   console.log('[EstimateDetail] estimate?.hasServiceDetails: ' + hasServiceDetails);
+   console.log('[EstimateDetail] estimate.estimateId: ' + estimateId);
 
     // create a string in US Currency for Chip
     const convertEstimateForDisplay = (total) => {
@@ -50,15 +54,11 @@ const EstimateDetail = () => {
        console.log('[EstimateDetail] handleSubmit');
        setShowEdit(false);
    }
-
-
-
-
     // content is the markup that is displayed in the browser depending on the state of the estimate
     let content = <h3>loading</h3>
 
     // IF we have an estimate with the right data structure but the user as asked to edit it
-    if ((estimate.hasOwnProperty("servicedetails")) && (showEdit)){
+    if ((hasServiceDetails) && (showEdit)){
         content = <>
             {/*<EstimateChip total={convertEstimateForDisplay(estimate.servicedetails.cost.total)}/>*/}
             <Typography variant="h4" marginTop='20px' marginBottom='20px'>For a {estimate.servicedetails.typeofservice} of
@@ -68,7 +68,7 @@ const EstimateDetail = () => {
             <Button onClick={handleOnEditCloseClick}>Cancel</Button>
         </>
         // IF we dont have an estimate with the correct data structure we act as if we have nothing at all
-    } else if (!estimate.hasOwnProperty("servicedetails")) {
+    } else if (!hasServiceDetails) {
             //console.log('[EstimateDetail] (else if) estimate.servicedetails', estimate.servicedetails);
             content =
                 <>
@@ -149,7 +149,7 @@ const EstimateDetail = () => {
                 Your Temporary user ID: <b>{estimate.servicedetails.userID}</b>
             </Typography>
             <Typography variant="body2" marginBottom='20px'>
-                Your Personalized Estimate ID: <b>{estimate.id} </b>
+                Your Personalized Estimate ID: <b>{estimate.estimateId} </b>
             </Typography>
             <Typography variant="body1" marginBottom='20px' marginTop='20px'>
                 This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to Book a
