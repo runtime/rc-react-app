@@ -24,7 +24,7 @@ const EditEstimate =({estimate, onSubmit}) => {
 
     // removing the servicedetails wrapper (to use calculateEstimate) but storing the id which sits outside of it
     const   initialValues   = estimate.servicedetails;
-    const id = estimate.id;
+    const estimateId = estimate.estimateId;
 
     console.log('[EditEstimate] initialValues: ' , initialValues)
 
@@ -60,7 +60,7 @@ const EditEstimate =({estimate, onSubmit}) => {
         console.log('[EditEstimate] handleSubmit:', values);
         onSubmit()
         //setNewEstimate(values)
-        editEstimateById(id, values);
+        editEstimateById(estimateId, values);
     }
 
     return (

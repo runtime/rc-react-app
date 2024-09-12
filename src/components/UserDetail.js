@@ -59,10 +59,10 @@ const UserDetail = () => {
     // if there is nothing
     let content = <h3>loading</h3>
     // if there are userdetails but no location lets ask for the location
-    if (user.hasOwnProperty("userdetails") && (!location.hasOwnProperty("locationdetails"))) {
+    if (user.hasOwnProperty("userDetails") && (!location.hasOwnProperty("locationDetails"))) {
         // TODO Check to see if we have a location by using a fetch
-        const foundLocation = findLocationByUserId(user.id)
-        console.log('[UserDetail] user.userdetails.id: ' + user.id);
+        const foundLocation = findLocationByUserId(user.userId)
+        console.log('[UserDetail] user.userId: ' + user.userId);
         console.log('[UserDetail] foundLocation: ', foundLocation);
         if (foundLocation) {
             console.log('[UserDetail] foundLocation: ', foundLocation);
@@ -70,12 +70,12 @@ const UserDetail = () => {
             console.log('[UserDetail] did not find foundLocation: ', foundLocation);
         }
         content = <div>
-            hi {user.userdetails.firstname}, can you please provide the address for the estimate
+            hi {user.userDetails.firstname}, can you please provide the address for the estimate
             <LocationCreate />
             </div>
 
     //
-    } else if (user.hasOwnProperty("userdetails") && (location.hasOwnProperty("locationdetails"))) {
+    } else if (user.hasOwnProperty("userDetails") && (location.hasOwnProperty("locationDetails"))) {
         // content = <div>sorry i didn't seem to see you in our system</div>
 
         content = <>

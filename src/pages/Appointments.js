@@ -32,18 +32,18 @@ const Appointments = () => {
 
     const handleEstimateClick = () => navigate('/estimates');
 
-    console.log('[Provider] user.hasOwnProperty("userdetails") : ' , user.hasOwnProperty("userdetails"));
+    console.log('[Provider] user.hasOwnProperty("userDetails") : ' , user.hasOwnProperty("userDetails"));
 
     let content = <h3>loading</h3>
 
 
     // IF we have an estimate with the right data structure but not one from the user
     // SHOW USER CREATE
-    if ((estimate.hasOwnProperty("servicedetails") && (!user.hasOwnProperty("userdetails")))) {
+    if ((estimate.hasOwnProperty("servicedetails") && (!user.hasOwnProperty("userDetails")))) {
         // search by userID before we ask for their information
         //  IF you are coming from Appointments and you wish to enter in a previous appointment
         // we will do a quick check of the database to see if the user exists
-        const estimatetosearch = estimate.servicedetails.userID;
+        const estimatetosearch = estimate.estimateId;
         console.log('[Appointments] estimatetosearch: ' + estimatetosearch);
         // this sends a function to the provider to find the user and setUser which will change the conditions to show the address field locate4d in the UserDetail
         // todo refactor to use a custom useEffect hook with memo and fetch the data
@@ -76,7 +76,7 @@ const Appointments = () => {
         // IF wehave an estimate with the correct data structure AND we have the user data
         // SHOW USER DETAIL
         // TODO get the views right when you have a user we should see the userdetail screen welcoming them and asking for their address
-    } else if ((estimate.hasOwnProperty("servicedetails") && (user.hasOwnProperty("userdetails")))) {
+    } else if ((estimate.hasOwnProperty("servicedetails") && (user.hasOwnProperty("userDetails")))) {
        content =
            <UserDetail />
     } else {
