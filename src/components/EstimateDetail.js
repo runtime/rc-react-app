@@ -23,7 +23,7 @@ const EstimateDetail = () => {
 
    console.log('[EstimateDetail] estimate: ' + estimate);
     const hasServiceDetails = estimate?.servicedetails;
-    const estimateId = estimate.es;
+    const estimateId = estimate.estimateId;
 
    console.log('[EstimateDetail] estimate?.hasServiceDetails: ' + hasServiceDetails);
    console.log('[EstimateDetail] estimate.estimateId: ' + estimateId);

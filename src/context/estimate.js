@@ -41,7 +41,7 @@ function Provider( {children} ) {
         return extras;
     }
 
-    function generateRandomEstimateId(length = 10) {
+    function generateRandomId(length = 10) {
         const characters = 'ABCDEFGHIJKL' +
             'MNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let estimateId = '';
@@ -363,50 +363,64 @@ function Provider( {children} ) {
     }
 
     const createUser = async (obj) => {
-        console.log('[Provider] createUser ', obj)
-        const userdetails = obj;
-        const response = await axios.post('http://localhost:3001/users', {
-            userdetails
-        });
-        console.log('Provider] createUser response.data ', response.data);
-        const processedUser = response.data;
-        setUser(processedUser);
+        try {
+            console.log('[Provider] createUser ', obj);
 
-    }
+            const userdetails = obj;
+            const userId = userdetails.userID;
 
-    const findUserById = async(id) => {
-        console.log('[Provider] findUserById, obj.userID: ', id);
-        const response = await axios.get(`http://localhost:3001/users/${id}`);
+            // Correct URL without the trailing slash
+            const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users', {
+                userId,
+                userDetails: userdetails  // Ensure the key matches what the Lambda expects
+            });
+
+            console.log('[Provider] createUser response.data ', response.data);
+            const {message, item} = response.data;
+            const processedMessage = message;
+            const processedUser = item;  // Assuming the response contains user details
+            console.log('[Provider] processedUser ', processedUser);
+            setUser(processedUser);
+
+        } catch (error) {
+            console.error('Error creating user:', error.response ? error.response.data : error.message);
+        }
+    };
+
+
+    const findUserById = async(userId) => {
+        console.log('[Provider] findUserById, userID: ', userId);
+        const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${userId}`);
         console.log('[Provider] findUserById Axios Get response.data: ', response.data);
         //return response;
         const foundUser = response.data;
         setUser(foundUser);
     }
 
-    const findUserByUserId = async(id) => {
-        console.log('[Provider] findUserByUserId, obj.userID: ', id);
-        const response = await axios.get(`http://localhost:3001/users` , {
-            params: {
-                userID: id
-            }
-        }) .then(response => {
+    const findUserByUserId = async (userId) => {
+        try {
+            console.log('[Provider] findUserByUserId, userId: ', userId);
+
+            // Make the GET request to fetch the user by userId
+            const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${userId}`);
+
+            // Log the response
             console.log('[Provider] findUserByUserId Axios Get response.data: ', response.data);
-            const users = response.data;
-            // loop through users and find one that matches the id
-            for (let i = 0; i < users.length; i++) {
-                console.log('[Provider] findUserByUserId looping through users[i]: ', users[i]);
-                if (users[i].userdetails.userID === id) {
-                    console.log('[Provider] findUserByUserId foundUser: ', users[i]);
-                    const founduser = users[i];
-                    setUser(founduser);
-                }
-            }
-        })
-            .catch(error => {
-                console.error('Error fetching user:', error);
-            });
-        //return response;
-    }
+
+            // Extract the user from the response
+            const user = response.data.user;
+
+            // Set the user state
+            setUser(user);
+            console.log('[Provider] User set: ', user);
+
+            // Return the user in case you need it for further use
+            return user;
+        } catch (error) {
+            console.error('Error fetching user:', error);
+        }
+    };
+
 
     const findEstimateById = async(obj) => {
         console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
@@ -427,7 +441,7 @@ function Provider( {children} ) {
             console.log('[Provider] createEstimate obj:', obj);
 
             const servicedetails =  await calculateEstimate(obj);  // Ensure this function is returning the expected structure
-            const estimateId = generateRandomEstimateId(8);
+            const estimateId = generateRandomId(8);
             console.log('[Provider] servicedetails:', servicedetails);
 
             const response = await axios.post(
@@ -522,10 +536,10 @@ function Provider( {children} ) {
     // };
 
 
-    const editUserById = async (id, editReqObj) => {
-        console.log('[Provider] editUserById: ', id, ' editReqObj: ', editReqObj,);
+    const editUserById = async (userId, editReqObj) => {
+        console.log('[Provider] editUserById: ', userId, ' editReqObj: ', editReqObj,);
         const userdetails = editReqObj;
-        const response = await axios.put(`http://localhost:3001/users/${id}`, {
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${userId}`, {
             userdetails
         });
         console.log('[Provider] editUserById Axios Put response.data: ', response.data);
@@ -533,21 +547,42 @@ function Provider( {children} ) {
         setUser(updatedUser)
     }
 
+    // const createLocation = async (obj) => {
+    //     console.log('[Provider] createLocation: ', obj);
+    //     const locationdetails = obj
+    //     const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
+    //         locationdetails
+    //     });
+    //     console.log('[Provider] createLocation response.data ', response.data);
+    //     const processedLocation = response.data;
+    //     setLocation(processedLocation);
+    // }
+
     const createLocation = async (obj) => {
-        console.log('[Provider] createLocation: ', obj);
-        const locationdetails = obj
-        const response = await axios.post('http://localhost:3001/locations', {
-            locationdetails
-        });
-        console.log('[Provider] createLocation response.data ', response.data);
-        const processedLocation = response.data;
-        setLocation(processedLocation);
-    }
+        try {
+            console.log('[Provider] createLocation: ', obj);
+            const locationdetails = obj;
+            const locationId = generateRandomId(8); // lets rename this later
+            const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
+                locationId: locationId,
+                locationdetails
+            });
+            console.log('[Provider] createLocation response.data ', response.data);
+            const { message, item } =  response.data;
+            const processedLocation = item;
+            const messageResponse = message;
+            console.log('[Provider] editEstimateById Axios Put response.data: ', messageResponse, processedLocation);
+            setLocation(processedLocation);
+        } catch (error) {
+            console.error('Error creating location:', error.response ? error.response.data : error.message);
+        }
+    };
+
 
     const editLocationById = async (id, editReqObj) => {
         console.log('[Provider] editLocationById: ', id, ' editReqObj: ', editReqObj,);
         const locationdetails = editReqObj;
-        const response = await axios.put(`http://localhost:3001/users/${id}`, {
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${id}`, {
             locationdetails
         });
         console.log('[Provider] editUserById Axios Put response.data: ', response.data);
@@ -557,46 +592,71 @@ function Provider( {children} ) {
 
     const findLocationById = async (obj) => {
         console.log('[Provider] findLocationById, obj.locationID: ', obj.locationID);
-        const response = await axios.get(`http://localhost:3001/location/${obj.locationID}`);
+        const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/location/${obj.locationID}`);
         console.log('[Provider] findLocationById Axios Get response.data: ', response.data);
         return response;
         //setLocation(response.data);
     }
 
-    const findLocationByEstimateId = async (id) => {
-        console.log('[Provider] findLocationByEstimateId, obj.locationID: ', id);
-        const response = await axios.get(`http://localhost:3001/estimates/${id}`);
-        console.log('[Provider] findLocationByEstimateId Axios Get response.data: ', response.data);
-        return response;
-        //setLocation(response.data);
-    }
+    // const findLocationByEstimateId = async (id) => {
+    //     console.log('[Provider] findLocationByEstimateId, obj.locationID: ', id);
+    //     const response = await axios.get(`http://localhost:3001/estimates/${id}`);
+    //     console.log('[Provider] findLocationByEstimateId Axios Get response.data: ', response.data);
+    //     return response;
+    //     //setLocation(response.data);
+    // }
 
-    const findLocationByUserId = async(id) => {
-        //const user
-        console.log('[Provider] findLocationsByUserId, id: ', id);
-        const response = await axios.get(`http://localhost:3001/locations` , {
-            params: {
-                userId: id
-            }
-        }).then(response => {
-            console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
-            const locations = response.data;
-            // loop through users and find one that matches the id
-            for (let i = 0; i < locations.length; i++) {
-                console.log('[Provider] findLocations looping through locations[i]: ', id + ' ' + locations[i]);
-                console.log('[Provider] findLocations looping through locations[i].locationdetails.userId: ', locations[i].locationdetails.userId);
-                if ( locations[i].locationdetails.userId === id ) {
-                    console.log('[Provider] findLocationByUserId foundUser: ', locations[i]);
-                    const foundlocation = locations[i];
-                    setLocation(foundlocation);
-                }
-            }
-        })
-            .catch(error => {
-                console.error('Error fetching Location:', error);
+    const findLocationByUserId = async (userId) => {
+        try {
+            console.log('[Provider] findLocationsByUserId, userId: ', userId);
+            const response = await axios.get('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
+                params: { userId }
             });
-        //return response;
-    }
+
+            console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
+
+            const locations = response.data.locations;
+            const foundLocation = locations.find(location => location.locationdetails.userId === userId);
+
+            if (foundLocation) {
+                console.log('[Provider] findLocationByUserId foundLocation: ', foundLocation);
+                setLocation(foundLocation);
+            } else {
+                console.warn('No matching location found for userId:', userId);
+            }
+
+        } catch (error) {
+            console.error('Error fetching location:', error.response ? error.response.data : error.message);
+        }
+    };
+
+
+    // const findLocationByUserId = async(userId) => {
+    //     //const user
+    //     console.log('[Provider] findLocationsByUserId, userId: ', userId);
+    //     const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations` , {
+    //         params: {
+    //             userId: userId
+    //         }
+    //     }).then(response => {
+    //         console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
+    //         const locations = response.data;
+    //         // loop through users and find one that matches the id
+    //         for (let i = 0; i < locations.length; i++) {
+    //             console.log('[Provider] findLocations looping through locations[i]: ', userId + ' ' + locations[i]);
+    //             console.log('[Provider] findLocations looping through locations[i].locationdetails.userId: ', locations[i].locationdetails.userId);
+    //             if ( locations[i].locationdetails.userId === userId ) {
+    //                 console.log('[Provider] findLocationByUserId foundUser: ', locations[i]);
+    //                 const foundlocation = locations[i];
+    //                 setLocation(foundlocation);
+    //             }
+    //         }
+    //     })
+    //         .catch(error => {
+    //             console.error('Error fetching Location:', error);
+    //         });
+    //     //return response;
+    // }
 
 
 
