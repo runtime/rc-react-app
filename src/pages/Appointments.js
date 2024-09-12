@@ -32,7 +32,8 @@ const Appointments = () => {
 
     const handleEstimateClick = () => navigate('/estimates');
 
-    console.log('[Provider] user.hasOwnProperty("userDetails") : ' , user.hasOwnProperty("userDetails"));
+    console.log('[Appointments] user.hasOwnProperty("userDetails") : ' , user.hasOwnProperty("userDetails"));
+    console.log('[Appointments] location.hasOwnProperty("locationdetails") : ' , location.hasOwnProperty("locationdetails"));
 
     let content = <h3>loading</h3>
 
