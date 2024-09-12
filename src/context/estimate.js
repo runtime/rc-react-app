@@ -564,14 +564,14 @@ function Provider( {children} ) {
             const locationdetails = obj;
             const locationId = generateRandomId(8); // lets rename this later
             const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
-                locationId: locationId,
+                locationId,
                 locationdetails
             });
             console.log('[Provider] createLocation response.data ', response.data);
             const { message, item } =  response.data;
             const processedLocation = item;
             const messageResponse = message;
-            console.log('[Provider] editEstimateById Axios Put response.data: ', messageResponse, processedLocation);
+            console.log('[Provider] createLocation Axios Put response.data: ', messageResponse, processedLocation);
             setLocation(processedLocation);
         } catch (error) {
             console.error('Error creating location:', error.response ? error.response.data : error.message);
@@ -598,21 +598,11 @@ function Provider( {children} ) {
         //setLocation(response.data);
     }
 
-    // const findLocationByEstimateId = async (id) => {
-    //     console.log('[Provider] findLocationByEstimateId, obj.locationID: ', id);
-    //     const response = await axios.get(`http://localhost:3001/estimates/${id}`);
-    //     console.log('[Provider] findLocationByEstimateId Axios Get response.data: ', response.data);
-    //     return response;
-    //     //setLocation(response.data);
-    // }
 
     const findLocationByUserId = async (userId) => {
         try {
-            console.log('[Provider] findLocationsByUserId, userId: ', userId);
-            const response = await axios.get('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
-                params: { userId }
-            });
-
+            console.log('[Provider] findLocationByUserId, userId: ', userId);
+            const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations/user/${userId}`);
             console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
 
             const locations = response.data.locations;
@@ -623,12 +613,14 @@ function Provider( {children} ) {
                 setLocation(foundLocation);
             } else {
                 console.warn('No matching location found for userId:', userId);
+                setLocation(null);  // Clear location state if not found
             }
-
         } catch (error) {
             console.error('Error fetching location:', error.response ? error.response.data : error.message);
         }
     };
+
+
 
 
     // const findLocationByUserId = async(userId) => {

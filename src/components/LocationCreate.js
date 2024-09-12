@@ -16,8 +16,8 @@ const LocationCreate = () => {
     const { location } = useContext(EstimateContext);
     const { createLocation } = useContext(EstimateContext);
 
-    console.log('[LocationCreate] estimate id: ' + estimate.id);
-    console.log('[LocationCreate] user id: ' + user.id);
+    console.log('[LocationCreate] estimate id: ' + estimate.estimateId);
+    console.log('[LocationCreate] user id: ' + user.userId);
 
     //password validation
     const lowercaseRegEx = /(?=.*[a-z])/
@@ -28,8 +28,8 @@ const LocationCreate = () => {
 
     const initialValues = {
 
-        userId: user.id ? user.id : '',
-        estimateId: estimate.id ? estimate.id : '',
+        userId: user.userId ? user.userId : '',
+        estimateId: estimate.estimateId ? estimate.estimateId : '',
         streetaddress: "",
         floor: "",
         city: "",
