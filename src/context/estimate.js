@@ -519,6 +519,41 @@ function Provider( {children} ) {
         setEstimate(updatedEstimate)
     }
 
+    // to handle calls from cal.com but that doesn't come from react, it comes from cal.com
+    // const editEstimateById = async (estimateId, editReqObj) => {
+    //     console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj);
+    //
+    //     // If coming from calcom-webhook, `editReqObj` might contain bookingId
+    //     const servicedetails = editReqObj.servicedetails
+    //         ? editReqObj.servicedetails
+    //         : await calculateEstimate(editReqObj); // Use `calculateEstimate` if not coming from webhook
+    //
+    //     // Make the API call to update the estimate
+    //     try {
+    //         const response = await axios.put(
+    //             `https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${estimateId}`,
+    //             {
+    //                 estimateId, // Ensure you are passing the estimateId
+    //                 servicedetails, // Update with new service details or bookingId
+    //             },
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                 },
+    //             }
+    //         );
+    //
+    //         const { message, item } = response.data;
+    //         console.log('[Provider] editEstimateById Axios Put response.data:', message, item);
+    //
+    //         // Update the state with the modified estimate
+    //         setEstimate(item);
+    //     } catch (error) {
+    //         console.error('[Provider] editEstimateById error:', error);
+    //     }
+    // };
+
+
     // const editEstimateById = async (estimateId, editReqObj) => {
     //     console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj);
     //     const servicedetails = await calculateEstimate(editReqObj);

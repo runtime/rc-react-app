@@ -20,7 +20,7 @@ const EstimateCreate = () => {
 
     // Form's initial values are blank
     let initialValues = {
-        "serviceID": "",
+        "bookingId": "",
         "userID": "",
         "typeofservice": "",
         "construct": "",
