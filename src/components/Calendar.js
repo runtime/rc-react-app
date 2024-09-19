@@ -104,55 +104,6 @@
 //     );
 // }
 
-// changed callink
-// added const bookingId
-// added context method to send estimate and booking id
-// export default function Calendar() {
-//     const { estimate } = useContext(EstimateContext);
-//     const { user } = useContext(EstimateContext);
-//     const { location } = useContext(EstimateContext);
-//     const { createBooking } = useContext(EstimateContext);
-//     console.log('[Calendar] estimate: ', estimate);
-//     console.log('[Calendar] user: ', user);
-//     console.log('[Calendar] location: ', location);
-//     const estimateId = estimate.estimateId;
-//
-//     useEffect(() => {
-//         (async function () {
-//             const cal = await getCalApi({
-//                 namespace: "first-one",
-//             });
-//             cal("on", {
-//                 action: "bookingSuccessfulV2",
-//                 callback: (e) => {
-//                     console.log(e.detail.data);
-//                     const bookingId = e.detail.data.uid;
-//                     console.log('[Calendar] bookingId: ', bookingId);
-//                     createBooking(estimateId, bookingId);
-//                     alert("Booking Successful V2 event");
-//
-//                 },
-//             });
-//             cal("ui", {
-//                 theme: "dark",
-//                 styles: { branding: { brandColor: "#18f31e" } },
-//                 hideEventTypeDetails: true,
-//                 layout: "month_view",
-//             });
-//         })();
-//     }, []);
-//     return (
-//         <Cal
-//             namespace="first-one"
-//             calLink="rapidclean/2-hrs"
-//             style={{ width: "100%", height: "100%", overflow: "scroll" }}
-//             config={{ layout: "month_view", theme: "dark" }}
-//             calOrigin="https://app.cal.com"
-//             embedJsUrl="https://app.cal.com/embed/embed.js"
-//         />
-//     );
-// }
-
 
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect, useContext } from "react";
@@ -194,7 +145,7 @@ export default function Calendar() {
             });
             cal("ui", {
                 theme: "light",
-                styles: { branding: { brandColor: "#86b95a" } },
+                styles: { branding: { brandColor: "#3366cc"} , height: "100vh"},
                 hideEventTypeDetails: true,
                 layout: "month_view",
             });
@@ -204,7 +155,6 @@ export default function Calendar() {
         <Cal
             namespace="first-one"
             calLink={callink}
-            style={{ width: "100%", height: "100%", overflow: "scroll" }}
             config={{
                 layout: "month_view",
                 theme: "light",
