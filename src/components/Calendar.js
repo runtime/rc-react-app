@@ -165,10 +165,16 @@ export default function Calendar() {
     const { createBooking } = useContext(EstimateContext);
     const estimateId = estimate.estimateId;
 
-    //console.log('[Calendar] estimate: ', estimate);
-    //console.log('[Calendar] user: ', user);
-    //console.log('[Calendar] location: ', location);
+    //Dynamically generate the calLink based on totalHours
+    const totalHours = estimate?.servicedetails?.data?.totalhours;
+    const callink = totalHours ? `rapidclean/${totalHours}-hrs` : `rapidclean/4-hrs`;
+
+
+    console.log('[Calendar] estimate: ', estimate);
+    console.log('[Calendar] user: ', user);
+    console.log('[Calendar] location: ', location);
     console.log('[Calendar] estimateId: ', estimateId);
+    console.log('[Calendar] callink ', callink);
 
     useEffect(() => {
         (async function () {
@@ -187,8 +193,8 @@ export default function Calendar() {
                 },
             });
             cal("ui", {
-                theme: "dark",
-                styles: { branding: { brandColor: "#18f31e" } },
+                theme: "light",
+                styles: { branding: { brandColor: "#86b95a" } },
                 hideEventTypeDetails: true,
                 layout: "month_view",
             });
@@ -197,21 +203,21 @@ export default function Calendar() {
     return (
         <Cal
             namespace="first-one"
-            calLink="rapidclean/2-hrs"
+            calLink={callink}
             style={{ width: "100%", height: "100%", overflow: "scroll" }}
             config={{
                 layout: "month_view",
-                theme: "dark",
+                theme: "light",
                 name: `${user.userDetails.firstname} ${user.userDetails.lastname}`,
                 email: user.userDetails.email,
                 phone: user.userDetails.phone,
                 location: `${location.locationdetails.streetaddress}, ${location.locationdetails.city}, ${location.locationdetails.state} ${location.locationdetails.zip}`,
-                notes: `Hey Jane, Congratulations on booking a ${estimate.servicedetails.typeofservice} with RapidClean.
+                notes: `Hey ${user.userDetails.firstname}, Congratulations on booking a ${estimate.servicedetails.typeofservice} with RapidClean.
                         We value your privacy, so we have created an anonymous account and booking for you.
-                        Your anonymous user name is ${user.userDetails.userId}.
+                        Your anonymous user name is ${estimate.servicedetails.userID}.
                         For your convenience and ours please use this Estimate ID: ${estimate.estimateId} for future appointments.
                         
-                        Please have ${estimate.servicedetails.cost.total} in cash ready on arrival and be prepared to hand it to one of our cleaning agents before they depart.
+                        Please have $ ${estimate.servicedetails.cost.total} cash ready on arrival.
                         
                         Thank you for choosing RapidClean, we look forward to working with you. :)
                         `,
