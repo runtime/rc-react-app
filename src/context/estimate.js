@@ -62,11 +62,11 @@ function Provider( {children} ) {
         const moveoutfee = 25.00;
         let  totalhours = 0;
         // for temp user names
-        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog", "bluefish"];
+        const prenoms = ["green-giraffe", "purple-butterfly", "yellow-frog", "blue-fish", "red-rhino", "orange-cow", "pink-boar"];
         const randomID = Math.round(Math.random(9))
 
         let serviceObj = {
-            userID: obj.userID? obj.userID : prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
+            userID: obj.userID? obj.userID : prenoms[Math.round(Math.random(6))] + "-" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -519,40 +519,21 @@ function Provider( {children} ) {
         setEstimate(updatedEstimate)
     }
 
-    // to handle calls from cal.com but that doesn't come from react, it comes from cal.com
-    // const editEstimateById = async (estimateId, editReqObj) => {
-    //     console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj);
-    //
-    //     // If coming from calcom-webhook, `editReqObj` might contain bookingId
-    //     const servicedetails = editReqObj.servicedetails
-    //         ? editReqObj.servicedetails
-    //         : await calculateEstimate(editReqObj); // Use `calculateEstimate` if not coming from webhook
-    //
-    //     // Make the API call to update the estimate
+    // when we originally received the booking from cal.com webhook. we are no longer doing this.
+    // const updateBookingWithEstimateId = async (bookingId, estimateId) => {
+    //     console.log('[Provider] updateBookingWithEstimateId: ', bookingId, ' estimateId: ', estimateId);
     //     try {
-    //         const response = await axios.put(
-    //             `https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${estimateId}`,
-    //             {
-    //                 estimateId, // Ensure you are passing the estimateId
-    //                 servicedetails, // Update with new service details or bookingId
-    //             },
-    //             {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                 },
-    //             }
-    //         );
+    //         const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/bookings/update-estimate', {
+    //             bookingId,
+    //             estimateId
+    //         });
     //
-    //         const { message, item } = response.data;
-    //         console.log('[Provider] editEstimateById Axios Put response.data:', message, item);
-    //
-    //         // Update the state with the modified estimate
-    //         setEstimate(item);
+    //         console.log('[Provider] Booking updated with estimateId:', response.data);
+    //         return response.data;
     //     } catch (error) {
-    //         console.error('[Provider] editEstimateById error:', error);
+    //         console.error('Error updating booking with estimateId:', error);
     //     }
     // };
-
 
     // const editEstimateById = async (estimateId, editReqObj) => {
     //     console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj);
@@ -685,8 +666,15 @@ function Provider( {children} ) {
     //     //return response;
     // }
 
-
-
+    const createBooking = async (obj) => {
+        console.log('[Provider] createBooking: ', obj);
+        // const response = await axios.post('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', {
+        //     obj
+        // });
+        //console.log('[Provider] createBooking response.data ', response.data);
+        //return response.data;
+        return "createBooking received!"
+    }
     // set new value to send back to context subscribers
 
     const providerValues = {
@@ -708,6 +696,7 @@ function Provider( {children} ) {
         findLocationByUserId,
         setLocation,
         location,
+        createBooking,
     }
 
 

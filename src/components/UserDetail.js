@@ -192,11 +192,131 @@
 //
 // export default UserDetail;
 
+// import React, { useContext, useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import '../styles/Estimates.css';
+// import EstimateContext from '../context/estimate';
+// import UserEdit from './UserEdit';
+// import LocationCreate from './LocationCreate';
+// import Calendar from "./Calendar";
+// import {
+//     Typography, Card, CardContent, ThemeProvider, CssBaseline, Button
+// } from '@mui/material';
+// import { RapidCleanTheme } from "../themes/Theme.js";
+//
+// const UserDetail = () => {
+//     const { estimate, user, location, findLocationByUserId } = useContext(EstimateContext);
+//     const [bookingConfirmed, setBookingConfirmed] = useState(false); // Track if booking is confirmed
+//     const navigate = useNavigate();
+//
+//     const checkLocation = async () => {
+//         if (user.hasOwnProperty("userDetails")) {
+//             try {
+//                 const foundLocation = await findLocationByUserId(user.userId);
+//                 console.log('[UserDetail] foundLocation: ', foundLocation);
+//                 if (!foundLocation) {
+//                     console.log('[UserDetail] did not find location.');
+//                 }
+//             } catch (error) {
+//                 console.error('Error checking location:', error);
+//             }
+//         }
+//     };
+//
+//     // Call checkLocation whenever user state changes
+//     useEffect(() => {
+//         if (user && user.hasOwnProperty('userDetails')) {
+//             checkLocation();
+//         }
+//     }, [user]);
+//
+//     // Example function to handle booking confirmation (you'll replace this with actual logic)
+//     useEffect(() => {
+//         // Mock of checking backend for booking status via API or webhook
+//         const checkBookingStatus = async () => {
+//             const response = await fetch('/api/booking-status'); // Replace with your real API call
+//             const data = await response.json();
+//             if (data.bookingConfirmed) {
+//                 setBookingConfirmed(true);
+//             }
+//         };
+//
+//         checkBookingStatus();
+//     }, []);
+//
+//     const handleGoHome = () => {
+//         navigate('/'); // Navigate back to home page
+//     };
+//
+//     let content = <h3>Loading...</h3>;
+//
+//     // If user exists but no location, prompt for location
+//     if (user.hasOwnProperty("userDetails") && !location.hasOwnProperty("locationdetails")) {
+//         content = (
+//             <div>
+//                 Hi {user.userDetails.firstname}, can you please provide the address for the estimate:
+//                 <LocationCreate />
+//             </div>
+//         );
+//     }
+//     // If user and location exist, allow them to choose a date or show confirmation message
+//     else if (user.hasOwnProperty("userDetails") && location.hasOwnProperty("locationdetails")) {
+//         content = (
+//             <>
+//                 <Typography variant="h3" marginTop="20px" marginBottom="0">
+//                     {bookingConfirmed
+//                         ? `Congratulations, ${user.userDetails.firstname}!`
+//                         : `Thank you ${user.userDetails.firstname}!`}
+//                 </Typography>
+//
+//                 <Typography variant="body1" marginTop="20px" marginBottom="0px">
+//                     {bookingConfirmed
+//                         ? 'Your booking has been confirmed! Feel free to adjust the appointment as needed.'
+//                         : `Please choose a date for service of your ${estimate.servicedetails.typeofservice} of your ${estimate.servicedetails.numrooms} BR, ${estimate.servicedetails.numbaths} BA ${estimate.servicedetails.construct}.`}
+//                 </Typography>
+//
+//                 <Calendar />
+//
+//                 <Typography variant="body1" marginTop="20px" marginBottom="20px">
+//                     {bookingConfirmed
+//                         ? `Thank you for booking! Your estimate ID (${estimate.estimateId}) has been saved for future use.`
+//                         : `We have anonymously registered you. Don't worry, your data is safe with us.`}
+//                 </Typography>
+//
+//                 {bookingConfirmed && (
+//                     <Button variant="contained" color="primary" onClick={handleGoHome} style={{ marginTop: '20px' }}>
+//                         Return to Home
+//                     </Button>
+//                 )}
+//             </>
+//         );
+//     }
+//
+//     return (
+//         <ThemeProvider theme={RapidCleanTheme}>
+//             <CssBaseline />
+//             <Card elevation={0} sx={{ marginTop: 0, marginBottom: 1, minWidth: 275, borderRadius: '8px' }}>
+//                 <CardContent>
+//                     <Typography color="secondary" marginRight="10" variant="cardTitle" component="h1" display="inline">
+//                         Your
+//                     </Typography>
+//                     <Typography marginBottom="20px" color="primary" variant="cardTitle" component="h1" display="inline">
+//                         Details
+//                     </Typography>
+//                     {content}
+//                 </CardContent>
+//             </Card>
+//         </ThemeProvider>
+//     );
+// };
+//
+// export default UserDetail;
+
+// latest - has cal.com webhook,  userdetail changes and estimate updateBookingWithEstimateId
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Estimates.css';
 import EstimateContext from '../context/estimate';
-import UserEdit from './UserEdit';
 import LocationCreate from './LocationCreate';
 import Calendar from "./Calendar";
 import {
@@ -205,8 +325,9 @@ import {
 import { RapidCleanTheme } from "../themes/Theme.js";
 
 const UserDetail = () => {
-    const { estimate, user, location, findLocationByUserId } = useContext(EstimateContext);
+    const { estimate, user, location, findLocationByUserId, updateBookingWithEstimateId } = useContext(EstimateContext);
     const [bookingConfirmed, setBookingConfirmed] = useState(false); // Track if booking is confirmed
+    const [bookingId, setBookingId] = useState(null); // Track the booking ID
     const navigate = useNavigate();
 
     const checkLocation = async () => {
@@ -230,19 +351,25 @@ const UserDetail = () => {
         }
     }, [user]);
 
-    // Example function to handle booking confirmation (you'll replace this with actual logic)
+    // If booking is confirmed, update booking with estimateId
     useEffect(() => {
-        // Mock of checking backend for booking status via API or webhook
-        const checkBookingStatus = async () => {
-            const response = await fetch('/api/booking-status'); // Replace with your real API call
-            const data = await response.json();
-            if (data.bookingConfirmed) {
-                setBookingConfirmed(true);
-            }
-        };
+        if (bookingConfirmed && estimate && estimate.estimateId && bookingId) {
+            // Call the function to update the booking with the estimateId
+            updateBookingWithEstimateId(bookingId, estimate.estimateId)
+                .then(() => {
+                    console.log(`[UserDetail] Booking ${bookingId} updated with Estimate ID: ${estimate.estimateId}`);
+                })
+                .catch(error => {
+                    console.error('Error updating booking with estimateId:', error);
+                });
+        }
+    }, [bookingConfirmed, estimate, bookingId]);
 
-        checkBookingStatus();
-    }, []);
+    // Function to handle booking completion from Calendar component
+    const handleBookingComplete = (bookingId) => {
+        setBookingId(bookingId);
+        setBookingConfirmed(true);
+    };
 
     const handleGoHome = () => {
         navigate('/'); // Navigate back to home page
@@ -275,7 +402,7 @@ const UserDetail = () => {
                         : `Please choose a date for service of your ${estimate.servicedetails.typeofservice} of your ${estimate.servicedetails.numrooms} BR, ${estimate.servicedetails.numbaths} BA ${estimate.servicedetails.construct}.`}
                 </Typography>
 
-                <Calendar />
+                <Calendar onBookingComplete={handleBookingComplete} />
 
                 <Typography variant="body1" marginTop="20px" marginBottom="20px">
                     {bookingConfirmed
