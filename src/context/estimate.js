@@ -10,6 +10,7 @@ const EstimateContext = createContext();
 
 function Provider( {children} ) {
     const [estimate, setEstimate] = useState({});
+    const [estimates, setEstimates] = useState([]);
     const [user, setUser ] = useState ({})
     const [location, setLocation ] = useState({})
 
@@ -39,8 +40,18 @@ function Provider( {children} ) {
         console.log('[Provider] return extras: ', extras);
         return extras;
     }
+
+    function generateRandomId(length = 10) {
+        const characters = 'ABCDEFGHIJKL' +
+            'MNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let estimateId = '';
+        for (let i = 0; i < length; i++) {
+            estimateId += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return estimateId;
+    }
     //todo move helper functions to api estimate algo
-    const calculateEstimate = (obj) => {
+    const calculateEstimate = async (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
         console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
@@ -52,10 +63,10 @@ function Provider( {children} ) {
         let  totalhours = 0;
         // for temp user names
         const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog", "bluefish"];
+        const randomID = Math.round(Math.random(9))
 
         let serviceObj = {
-            serviceID: obj.serviceID,
-            userID: prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
+            userID: obj.userID? obj.userID : prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -352,56 +363,183 @@ function Provider( {children} ) {
     }
 
     const createUser = async (obj) => {
-        console.log('[Provider] createUser ', obj)
-        const userdetails = obj;
-        const response = await axios.post('http://localhost:3001/users', {
-            userdetails
-        });
-        console.log('Provider] createUser response.data ', response.data);
-        const processedUser = response.data;
-        setUser(processedUser);
+        try {
+            console.log('[Provider] createUser ', obj);
 
+            const userdetails = obj;
+            const userId = userdetails.userID;
+
+            // Correct URL without the trailing slash
+            const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users', {
+                userId,
+                userDetails: userdetails  // Ensure the key matches what the Lambda expects
+            });
+
+            console.log('[Provider] createUser response.data ', response.data);
+            const {message, item} = response.data;
+            const processedMessage = message;
+            const processedUser = item;  // Assuming the response contains user details
+            console.log('[Provider] processedUser ', processedUser);
+            setUser(processedUser);
+
+        } catch (error) {
+            console.error('Error creating user:', error.response ? error.response.data : error.message);
+        }
+    };
+
+
+    const findUserById = async(userId) => {
+        console.log('[Provider] findUserById, userID: ', userId);
+        const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${userId}`);
+        console.log('[Provider] findUserById Axios Get response.data: ', response.data);
+        //return response;
+        const foundUser = response.data;
+        setUser(foundUser);
     }
+
+    const findUserByUserId = async (userId) => {
+        try {
+            console.log('[Provider] findUserByUserId, userId: ', userId);
+
+            // Make the GET request to fetch the user by userId
+            const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${userId}`);
+
+            // Log the response
+            console.log('[Provider] findUserByUserId Axios Get response.data: ', response.data);
+
+            // Extract the user from the response
+            const user = response.data.user;
+
+            // Set the user state
+            setUser(user);
+            console.log('[Provider] User set: ', user);
+
+            // Return the user in case you need it for further use
+            return user;
+        } catch (error) {
+            console.error('Error fetching user:', error);
+        }
+    };
+
 
     const findEstimateById = async(obj) => {
         console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
-        const response = await axios.get(`http://localhost:3001/estimates/${obj.estimateID}`);
+        const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${obj.estimateID}`);
         console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
+        // for now we are going to find the user by the Estimate ID
+        const foundEstimate = response.data;
+        console.log('[Provider] findEstimateById foundEstimate: ', foundEstimate.userID);
+        setEstimate(foundEstimate);
+        //const userResponse = await axios.get(`http://localhost:3001/users/${foundEstimate.userID}`);
+        //return response;
+        //setEstimate(response.data);
+
     }
-    // context functions
+
     const createEstimate = async (obj) => {
+        try {
+            console.log('[Provider] createEstimate obj:', obj);
 
-        console.log('[Provider] createEstimate: ', obj );
-        // send the estimate object to the estimate service to be calculated
-        //todo call estimateService and have algo give back the estimate - for now we will use helper functions
-        const servicedetails = calculateEstimate(obj);
-        console.log('[Provider] servicedetails', servicedetails);
-        // store the updated estimate in the database
-        const response = await axios.post('http://localhost:3001/estimates', {
-            servicedetails
-        });
-        console.log('[Provider] createEstimate response.data ', response.data);
-        const processedEstimate = response.data;
-        setEstimate(processedEstimate);
-    }
+            const servicedetails =  await calculateEstimate(obj);  // Ensure this function is returning the expected structure
+            const estimateId = generateRandomId(8);
+            console.log('[Provider] servicedetails:', servicedetails);
 
-    const editEstimateById = async (id, editReqObj) => {
-        console.log('[Provider] editEstimateById: ', id, ' editReqObj: ', editReqObj,);
+            const response = await axios.post(
+                'https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates',
+                {
+                    estimateId:  estimateId, // Ensure you are passing estimateId
+                    servicedetails,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            console.log('[Provider] createEstimate response.data.item:', response.data.item);
+            const {message, item} =  response.data;
+            console.log('[Provider] createEstimate message:', message);
+            console.log('[Provider] createEstimate item:', item);
+            const processedEstimate = item;
+            setEstimate(processedEstimate);
+        } catch (error) {
+            console.error('[Provider] Error creating estimate:', error.response || error.message);
+        }
+    };
+
+
+    // const getAllEstimates = async () => {
+    //     console.log('[Provider] getAllEstimates');
+    //     // send the estimate object to the estimate service to be calculated
+    //     const response = await axios.get('https://lqjt6rmim8.execute-api.us-east-1.amazonaws.com/prod/estimates');
+    //     console.log('[Provider] getAllEstimates response.data ', response.data);
+    //     const allEstimates = response.data;
+    //     console.log('[Provider] getAllEstimates allEstimates ', allEstimates);
+    //    //return allEstimates;
+    //     setEstimates(allEstimates);
+    // }
+
+    const getAllEstimates = async () => {
+        try {
+            const response = await axios.get('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates');
+            const estimatesData = response.data.estimates || [];
+
+            // Use flat() to remove any nested arrays (e.g., [[estimate1], [estimate2]] => [estimate1, estimate2])
+            const flattenedEstimates = estimatesData.flat();
+            console.log('Flattened estimates:', flattenedEstimates);
+
+            setEstimates(flattenedEstimates);
+        } catch (error) {
+            console.error('Error fetching estimates:', error);
+        }
+    };
+
+    const editEstimateById = async (estimateId, editReqObj) => {
+        console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj,);
         // Todo call estimate service with new information
-        const servicedetails = calculateEstimate(editReqObj);
+        const servicedetails = await calculateEstimate(editReqObj);
         // store the updated response
-        const response = await axios.put(`http://localhost:3001/estimates/${id}`, {
-            servicedetails
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${estimateId}`,
+            {
+                estimateId, // Ensure you are passing estimateId
+                servicedetails,
+            },
+            {
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
-        console.log('[Provider] EditEstimateById Axios Put response.data: ', response.data);
-        const updatedEstimate = response.data;
+
+        //console.log('[Provider] editEstimateById response.data:', response.data);
+        const { message, item } =  response.data;
+        const updatedEstimate = item;
+        const messageResponse = message;
+        console.log('[Provider] editEstimateById Axios Put response.data: ', messageResponse, updatedEstimate);
         setEstimate(updatedEstimate)
     }
 
-    const editUserById = async (id, editReqObj) => {
-        console.log('[Provider] editUserById: ', id, ' editReqObj: ', editReqObj,);
+    // const editEstimateById = async (estimateId, editReqObj) => {
+    //     console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj);
+    //     const servicedetails = await calculateEstimate(editReqObj);
+    //
+    //     const response = await axios.put(
+    //         `https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/estimates/${estimateId}`,
+    //         { estimateId, servicedetails },
+    //         { headers: { 'Content-Type': 'application/json' } }
+    //     );
+    //
+    //     const { message, item } = response.data;
+    //     console.log('[Provider] editEstimateById Axios Put response.data: ', message, item);
+    //
+    //     setEstimate(item);  // This should now contain estimateId and servicedetails
+    // };
+
+
+    const editUserById = async (userId, editReqObj) => {
+        console.log('[Provider] editUserById: ', userId, ' editReqObj: ', editReqObj,);
         const userdetails = editReqObj;
-        const response = await axios.put(`http://localhost:3001/users/${id}`, {
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${userId}`, {
             userdetails
         });
         console.log('[Provider] editUserById Axios Put response.data: ', response.data);
@@ -409,21 +547,42 @@ function Provider( {children} ) {
         setUser(updatedUser)
     }
 
+    // const createLocation = async (obj) => {
+    //     console.log('[Provider] createLocation: ', obj);
+    //     const locationdetails = obj
+    //     const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
+    //         locationdetails
+    //     });
+    //     console.log('[Provider] createLocation response.data ', response.data);
+    //     const processedLocation = response.data;
+    //     setLocation(processedLocation);
+    // }
+
     const createLocation = async (obj) => {
-        console.log('[Provider] createLocation: ', obj);
-        const locationdetails = obj
-        const response = await axios.post('http://localhost:3001/locations', {
-            locationdetails
-        });
-        console.log('[Provider] createLocation response.data ', response.data);
-        const processedLocation = response.data;
-        setLocation(processedLocation);
-    }
+        try {
+            console.log('[Provider] createLocation: ', obj);
+            const locationdetails = obj;
+            const locationId = generateRandomId(8); // lets rename this later
+            const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
+                locationId: locationId,
+                locationdetails
+            });
+            console.log('[Provider] createLocation response.data ', response.data);
+            const { message, item } =  response.data;
+            const processedLocation = item;
+            const messageResponse = message;
+            console.log('[Provider] editEstimateById Axios Put response.data: ', messageResponse, processedLocation);
+            setLocation(processedLocation);
+        } catch (error) {
+            console.error('Error creating location:', error.response ? error.response.data : error.message);
+        }
+    };
+
 
     const editLocationById = async (id, editReqObj) => {
         console.log('[Provider] editLocationById: ', id, ' editReqObj: ', editReqObj,);
         const locationdetails = editReqObj;
-        const response = await axios.put(`http://localhost:3001/users/${id}`, {
+        const response = await axios.put(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/users/${id}`, {
             locationdetails
         });
         console.log('[Provider] editUserById Axios Put response.data: ', response.data);
@@ -431,21 +590,95 @@ function Provider( {children} ) {
         setLocation(updatedLocation)
     }
 
+    const findLocationById = async (obj) => {
+        console.log('[Provider] findLocationById, obj.locationID: ', obj.locationID);
+        const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/location/${obj.locationID}`);
+        console.log('[Provider] findLocationById Axios Get response.data: ', response.data);
+        return response;
+        //setLocation(response.data);
+    }
+
+    // const findLocationByEstimateId = async (id) => {
+    //     console.log('[Provider] findLocationByEstimateId, obj.locationID: ', id);
+    //     const response = await axios.get(`http://localhost:3001/estimates/${id}`);
+    //     console.log('[Provider] findLocationByEstimateId Axios Get response.data: ', response.data);
+    //     return response;
+    //     //setLocation(response.data);
+    // }
+
+    const findLocationByUserId = async (userId) => {
+        try {
+            console.log('[Provider] findLocationsByUserId, userId: ', userId);
+            const response = await axios.get('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations', {
+                params: { userId }
+            });
+
+            console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
+
+            const locations = response.data.locations;
+            const foundLocation = locations.find(location => location.locationdetails.userId === userId);
+
+            if (foundLocation) {
+                console.log('[Provider] findLocationByUserId foundLocation: ', foundLocation);
+                setLocation(foundLocation);
+            } else {
+                console.warn('No matching location found for userId:', userId);
+            }
+
+        } catch (error) {
+            console.error('Error fetching location:', error.response ? error.response.data : error.message);
+        }
+    };
+
+
+    // const findLocationByUserId = async(userId) => {
+    //     //const user
+    //     console.log('[Provider] findLocationsByUserId, userId: ', userId);
+    //     const response = await axios.get(`https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/locations` , {
+    //         params: {
+    //             userId: userId
+    //         }
+    //     }).then(response => {
+    //         console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
+    //         const locations = response.data;
+    //         // loop through users and find one that matches the id
+    //         for (let i = 0; i < locations.length; i++) {
+    //             console.log('[Provider] findLocations looping through locations[i]: ', userId + ' ' + locations[i]);
+    //             console.log('[Provider] findLocations looping through locations[i].locationdetails.userId: ', locations[i].locationdetails.userId);
+    //             if ( locations[i].locationdetails.userId === userId ) {
+    //                 console.log('[Provider] findLocationByUserId foundUser: ', locations[i]);
+    //                 const foundlocation = locations[i];
+    //                 setLocation(foundlocation);
+    //             }
+    //         }
+    //     })
+    //         .catch(error => {
+    //             console.error('Error fetching Location:', error);
+    //         });
+    //     //return response;
+    // }
+
+
 
     // set new value to send back to context subscribers
 
     const providerValues = {
         estimate,
+        estimates,
         editEstimateById,
         findEstimateById,
         createEstimate,
+        getAllEstimates,
         setEstimate,
         createUser,
+        findUserById,
+        findUserByUserId,
         editUserById,
         setUser,
         user,
         createLocation,
         editLocationById,
+        findLocationByUserId,
         setLocation,
         location,
     }

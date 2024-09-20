@@ -14,7 +14,7 @@ const UserCreate = () => {
     const { estimate } = useContext(EstimateContext);
     const { createUser } = useContext(EstimateContext);
 
-    console.log('[UserCreate] estimate id: ' + estimate.id);
+    console.log('[UserCreate] estimate.estimateId: ' + estimate.estimateId);
 
 
     const initialValues = {
@@ -23,7 +23,7 @@ const UserCreate = () => {
         lastname: "",
         phone: "",
         email: "",
-        estimates: [estimate.id ? estimate.id : ''],
+        estimates: [estimate.estimateId ? estimate.estimateId : ''],
 
         // streetAddress: "",
         // floor: "",
