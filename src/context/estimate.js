@@ -667,14 +667,30 @@ function Provider( {children} ) {
     // }
 
     const createBooking = async (obj) => {
-        console.log('[Provider] createBooking: ', obj);
-        // const response = await axios.post('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', {
-        //     obj
-        // });
-        //console.log('[Provider] createBooking response.data ', response.data);
-        //return response.data;
-        return "createBooking received!"
-    }
+        try {
+            console.log('[Provider] createBooking: ', obj);
+
+            const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/bookings', obj, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('[Provider] createBooking response: ', response.data);
+            const { message, item } = response.data;
+            const newBooking = item;  // Assuming the response contains the created booking
+            console.log('[Provider] New booking created: ', newBooking);
+
+            return newBooking;  // Return the created booking in case it's needed elsewhere
+        } catch (error) {
+            console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
+        }
+    };
+
+
+
+
+
     // set new value to send back to context subscribers
 
     const providerValues = {

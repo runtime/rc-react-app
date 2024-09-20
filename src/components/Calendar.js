@@ -110,10 +110,8 @@ import { useEffect, useContext } from "react";
 import EstimateContext from '../context/estimate';
 
 export default function Calendar() {
-    const { estimate } = useContext(EstimateContext);
-    const { user } = useContext(EstimateContext);
-    const { location } = useContext(EstimateContext);
-    const { createBooking } = useContext(EstimateContext);
+    const { estimate, user, location, createBooking} = useContext(EstimateContext);
+
     const estimateId = estimate.estimateId;
 
     //Dynamically generate the calLink based on totalHours
@@ -135,10 +133,25 @@ export default function Calendar() {
             cal("on", {
                 action: "bookingSuccessfulV2",
                 callback: (e) => {
-                    console.log(e.detail.data);
+
                     const bookingId = e.detail.data.uid;
+                    const bookingData = e.detail.data;
+                    const booking = {
+                        bookingId: bookingId,
+                        bookingDetails: {
+                            estimateId: estimateId,
+                            name: user.userDetails.firstname + " " + user.userDetails.lastname,
+                            email: user.userDetails.email,
+                            phone: user.userDetails.phone,
+                            location: `${location.locationdetails.streetaddress}, ${location.locationdetails.city}, ${location.locationdetails.state} ${location.locationdetails.zip}`,
+                            start: bookingData.startTime,
+                            end: bookingData.endTime,
+                            duration:  estimate.servicedetails.data.totalhours,
+                    }}
+                    console.log('[Calendar] bookingData: ', bookingData);
                     console.log('[Calendar] bookingId: ', bookingId);
-                    createBooking(estimateId, bookingId);
+                    console.log('[Calendar] booking: ', booking);
+                    createBooking(booking);
                     alert("Booking Successful V2 event");
 
                 },
