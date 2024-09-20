@@ -351,20 +351,6 @@ const UserDetail = () => {
         }
     }, [user]);
 
-    // If booking is confirmed, update booking with estimateId
-    useEffect(() => {
-        if (bookingConfirmed && estimate && estimate.estimateId && bookingId) {
-            // Call the function to update the booking with the estimateId
-            updateBookingWithEstimateId(bookingId, estimate.estimateId)
-                .then(() => {
-                    console.log(`[UserDetail] Booking ${bookingId} updated with Estimate ID: ${estimate.estimateId}`);
-                })
-                .catch(error => {
-                    console.error('Error updating booking with estimateId:', error);
-                });
-        }
-    }, [bookingConfirmed, estimate, bookingId]);
-
     // Function to handle booking completion from Calendar component
     const handleBookingComplete = (bookingId) => {
         setBookingId(bookingId);
@@ -373,6 +359,7 @@ const UserDetail = () => {
 
     const handleGoHome = () => {
         navigate('/'); // Navigate back to home page
+        // reset brownser with window
     };
 
     let content = <h3>Loading...</h3>;
@@ -398,7 +385,7 @@ const UserDetail = () => {
 
                 <Typography variant="body1" marginTop="20px" marginBottom="0px">
                     {bookingConfirmed
-                        ? 'Your booking has been confirmed! Feel free to adjust the appointment as needed.'
+                        ? 'Your booking has been confirmed! Please check your email. Important to note that Gmail may block requests from our calendar unless you approve us a known contact.'
                         : `Please choose a date for service of your ${estimate.servicedetails.typeofservice} of your ${estimate.servicedetails.numrooms} BR, ${estimate.servicedetails.numbaths} BA ${estimate.servicedetails.construct}.`}
                 </Typography>
 
@@ -412,7 +399,7 @@ const UserDetail = () => {
 
                 {bookingConfirmed && (
                     <Button variant="contained" color="primary" onClick={handleGoHome} style={{ marginTop: '20px' }}>
-                        Return to Home
+                        EXIT
                     </Button>
                 )}
             </>

@@ -109,7 +109,7 @@ import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect, useContext } from "react";
 import EstimateContext from '../context/estimate';
 
-export default function Calendar() {
+export default function Calendar({onBookingComplete}) {
     const { estimate, user, location, createBooking} = useContext(EstimateContext);
 
     const estimateId = estimate.estimateId;
@@ -140,6 +140,8 @@ export default function Calendar() {
                         bookingId: bookingId,
                         bookingDetails: {
                             estimateId: estimateId,
+                            userId: user.userId,
+                            locationId: location.locationId,
                             name: user.userDetails.firstname + " " + user.userDetails.lastname,
                             email: user.userDetails.email,
                             phone: user.userDetails.phone,
@@ -147,11 +149,14 @@ export default function Calendar() {
                             start: bookingData.startTime,
                             end: bookingData.endTime,
                             duration:  estimate.servicedetails.data.totalhours,
+                            status: bookingData.status,
+                            eventTitle: bookingData.eventTitle,
                     }}
                     console.log('[Calendar] bookingData: ', bookingData);
                     console.log('[Calendar] bookingId: ', bookingId);
                     console.log('[Calendar] booking: ', booking);
                     createBooking(booking);
+                    onBookingComplete(bookingId);
                     alert("Booking Successful V2 event");
 
                 },
