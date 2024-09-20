@@ -84,23 +84,19 @@ export const sqftoptions = [{
 
 export const cleanfactoroptions = [
     {
-        label: "Im Monica F****g Gellar!",
+        label: "I am a neat freak, I have zero clutter on my floors and surfaces, 100% ready to clean",
         value: 0,
     },
     {
-        label: "I have zero clutter, 90% ready to clean",
+        label: "I am pretty neat but sometimes have a tiny bit of clutter, 90% ready to clean",
         value: 5,
     },
     {
-        label: "There is some laundry on the floor and some stuff on most of the surfaces",
+        label: "There is some stuff on the floor and some stuff on most of the surfaces, 70% ready to clean",
         value: 10,
     },
     {
-        label: "There is unopened mail, loose coins and other things, laundry and random items on the floor and surfaces",
-        value: 15,
-    },
-    {
-        label: "ngl, its a disaster rn :/",
+        label: "There is significant amount of stuff on the floor, beds and other surfaces. 50% ready to clean",
         value: 20,
     },
 ]
