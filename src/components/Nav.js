@@ -11,11 +11,41 @@ import React from "react";
 
 const Nav = () => {
 
+    const [servicesActive, setServicesActive] = React.useState(true);
+    const [estimatesActive, setEstimatesActive] = React.useState(false);
+    const [appointmentsActive, setAppointmentsActive] = React.useState(false);
+    const [chatActive, setChatActive] = React.useState(false);
+
     const navigate = useNavigate();
-    const handleOnServicesClick = () => navigate('/');
-    const handleOnEstimateClick = () => navigate('/estimates');
-    const handleOnAppointmentsClick = () => navigate('/appointments');
-    const handleOnChatClick = () => navigate('/contact');
+    const handleOnServicesClick = () => {
+        console.log('handleOnServicesClick ', servicesActive);
+        setServicesActive(!servicesActive);
+        setEstimatesActive(false);
+        setAppointmentsActive(false);
+        setChatActive(false);
+        navigate('/');
+    }
+    const handleOnEstimateClick = () => {
+        setEstimatesActive(!estimatesActive);
+        setServicesActive(false);
+        setAppointmentsActive(false);
+        setChatActive(false);
+        navigate('/estimates');
+    }
+    const handleOnAppointmentsClick = () => {
+        setAppointmentsActive(!appointmentsActive);
+        setServicesActive(false);
+        setEstimatesActive(false);
+        setChatActive(false);
+        navigate('/appointments');
+    }
+    const handleOnChatClick = () => {
+        setChatActive(!chatActive);
+        setServicesActive(false);
+        setEstimatesActive(false);
+        setAppointmentsActive(false);
+        navigate('/contact');
+    }
     return (
         <div className='Nav'>
             <ThemeProvider theme={RapidCleanTheme}>
@@ -28,11 +58,12 @@ const Nav = () => {
                     <div style={{marginTop: '20px'}}>
                         <nav>
                             <Chip
+                                active={servicesActive}
                                 size='large'
                                 position='relative'
                                 label='Our Services'
                                 variant="filled"
-                                color='secondary'
+                                color= {servicesActive? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnServicesClick}
                                 sx={{
@@ -41,21 +72,23 @@ const Nav = () => {
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
                                     fontWeight: '800',
                                     fontSize: '1.15em',
+                                    minWidth: '200px',
                                     marginTop: '3px',
                                     marginRight: '24px',
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
                             <Chip
+                                active={estimatesActive}
                                 size='large'
                                 position='relative'
                                 label='Get Estimate'
                                 variant="filled"
-                                color='secondary'
+                                color= {estimatesActive? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnEstimateClick}
                                 sx={{
@@ -64,21 +97,23 @@ const Nav = () => {
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
                                     fontWeight: '800',
                                     fontSize: '1.15em',
+                                    minWidth: '200px',
                                     marginTop: '3px',
                                     marginRight: '24px',
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
                             <Chip
+                                active={appointmentsActive}
                                 size='large'
                                 position='relative'
                                 label='Book Us'
                                 variant="filled"
-                                color='secondary'
+                                color= {appointmentsActive? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnAppointmentsClick}
                                 sx={{
@@ -87,21 +122,24 @@ const Nav = () => {
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
                                     fontWeight: '800',
                                     fontSize: '1.15em',
+                                    minWidth: '200px',
                                     marginTop: '3px',
                                     marginRight: '24px',
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
                             <Chip
+                                active={chatActive}
                                 size='large'
                                 position='relative'
                                 label='Contact Us'
                                 variant="filled"
-                                color='secondary'
+                                color= {chatActive? 'primary': 'secondary'}
+
                                 pointerEvents='none'
                                 onClick={handleOnChatClick}
                                 sx={{
@@ -110,11 +148,12 @@ const Nav = () => {
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
                                     fontWeight: '800',
                                     fontSize: '1.15em',
+                                    minWidth: '200px',
                                     marginTop: '3px',
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 

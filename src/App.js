@@ -8,7 +8,7 @@ import { RapidCleanTheme } from "./themes/Theme.js";
 // import '@fontsource/roboto/500.css';
 // import '@fontsource/roboto/700.css';
 
-//import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from './components/Nav';
 import Header from './components/Header';
@@ -22,6 +22,7 @@ import EstimateContext from "./context/estimate";
 
 
 function App() {
+
 
 // fetch if there is data to load into the components below we would do this now
 // const { fetchSomeData } = useContext(EstimateContext);
