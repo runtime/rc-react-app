@@ -30,7 +30,7 @@ const Nav = () => {
                             <Chip
                                 size='large'
                                 position='relative'
-                                label='About Us'
+                                label='Sparkle Services™'
                                 variant="filled"
                                 color='secondary'
                                 pointerEvents='none'

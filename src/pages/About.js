@@ -1,4 +1,5 @@
 import '../styles/About.css'
+import React from "react";
 import {
     Card,
     Grid,
@@ -10,42 +11,47 @@ import {
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import RCCard from '../components/RCCard';
-import React from "react";
+
 
 const About = () => {
+
+
         return (
             <div className='About'>
                 <Box>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                             <RCCard
                                 title='Same Day Service'
                                 span_left='Same Day'
                                 span_right='Service'
                                 desc='We Offer Same Day Services to most locations in Northern NJ. We can give you an estimate and be there within the hour.'
-                                buttonText='Book Now'/>
+                                buttonText='Book Now'
+                                link = '/'/>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                             <RCCard
                                 title='Customized Estimates'
                                 span_left='Customized'
                                 span_right='Estimates'
                                 desc='Customized estimates to fit your budget! Get an instant estimate without any personal information or sales call backs'
-                                buttonText='Get Estimate'/>
+                                buttonText='Get Estimate'
+                                link = '/estimates'/>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                             <RCCard
                                 title='Chat With Us'
                                 span_left='Chat with'
                                 span_right='Us'
                                 desc='Chat with us and get an immediate custom estimate or ask us about our environmentally friendly cleaning products.'
-                                buttonText='Say Hello'/>
+                                buttonText='Chat With Us'
+                                link = '/contact'/>
                         </Grid>
                     </Grid>
                 </Box>
                 <Box>
                     {/*Big Card*/}
-                    <Card  sx={{ padding: 2,  marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '16px' }}>
+                    <Card elevation={0} sx={{ marginTop: 2, paddingLeft: 2, paddingRight: 2, minWidth: 275, borderRadius: '16px' }}>
 
 
                     <Grid container spacing={2}
