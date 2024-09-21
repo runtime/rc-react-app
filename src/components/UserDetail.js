@@ -358,8 +358,9 @@ const UserDetail = () => {
     };
 
     const handleGoHome = () => {
-        navigate('/'); // Navigate back to home page
+        //navigate('/'); // Navigate back to home page
         // reset brownser with window
+        window.location.href = '/'; // This will navigate to the home page and refresh the browser
     };
 
     let content = <h3>Loading...</h3>;
@@ -411,7 +412,7 @@ const UserDetail = () => {
             <CssBaseline />
             <Card elevation={0} sx={{ marginTop: 0, marginBottom: 1, minWidth: 275, borderRadius: '8px' }}>
                 <CardContent>
-                    <Typography color="secondary" marginRight="10" variant="cardTitle" component="h1" display="inline">
+                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">
                         Your
                     </Typography>
                     <Typography marginBottom="20px" color="primary" variant="cardTitle" component="h1" display="inline">

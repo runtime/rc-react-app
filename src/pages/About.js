@@ -1,5 +1,6 @@
 import '../styles/About.css'
 import {
+    Card,
     Grid,
     Box,
     List,
@@ -43,6 +44,10 @@ const About = () => {
                     </Grid>
                 </Box>
                 <Box>
+                    {/*Big Card*/}
+                    <Card  sx={{ padding: 2,  marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '16px' }}>
+
+
                     <Grid container spacing={2}
                           sx={{ marginTop: 1, marginBottom: 1 }}>
 
@@ -239,7 +244,7 @@ const About = () => {
                                         <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Wipe down window sills</ListItem>
                                         <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Disinfect light switches & Doors</ListItem>
                                         <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Windows inside</ListItem>
-                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Bathroom Tile & Grout Whitenting</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Bathroom Tile & Grout Whitening</ListItem>
 
                                     </List>
                                 </List>
@@ -306,6 +311,7 @@ const About = () => {
 
 
                     </Grid>
+                    </Card>
                 </Box>
             </div>
     )
