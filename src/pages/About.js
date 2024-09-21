@@ -25,17 +25,17 @@ const About = () => {
                                 title='Same Day Service'
                                 span_left='Same Day'
                                 span_right='Service'
-                                desc='We Offer Same Day Services to most locations in Northern NJ. We can give you an estimate and be there within the hour.'
-                                buttonText='Book Now'
-                                link = '/'/>
+                                desc='We Offer Same Day Services to most locations in Essex NJ. Get an instant estimate and we can be there in an hour. Or book us for next week before your next event.'
+                                buttonText='Book Us Now'
+                                link = '/appointments'/>
                         </Grid>
                         <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                             <RCCard
-                                title='Customized Estimates'
-                                span_left='Customized'
+                                title='Instant Estimates'
+                                span_left='Instant'
                                 span_right='Estimates'
-                                desc='Customized estimates to fit your budget! Get an instant estimate without any personal information or sales call backs'
-                                buttonText='Get Estimate'
+                                desc='Customized estimates to fit your budget! We use a custom algorithm to give you the best prices. Get an instant estimate without any personal information or sales call backs. '
+                                buttonText='Instant Estimate'
                                 link = '/estimates'/>
                         </Grid>
                         <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
@@ -43,7 +43,7 @@ const About = () => {
                                 title='Chat With Us'
                                 span_left='Chat with'
                                 span_right='Us'
-                                desc='Chat with us and get an immediate custom estimate or ask us about our environmentally friendly cleaning products.'
+                                desc='Chat with us and get an immediate estimate tailored just for your lifestyle and living space.  Ask us about our environmentally friendly cleaning products, our extra services or our Same Day Service.'
                                 buttonText='Chat With Us'
                                 link = '/contact'/>
                         </Grid>
