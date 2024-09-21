@@ -62,11 +62,11 @@ function Provider( {children} ) {
         const moveoutfee = 25.00;
         let  totalhours = 0;
         // for temp user names
-        const prenoms = ["greengiraffe", "purplebutterfly", "yellowfrog", "bluefish"];
+        const prenoms = ["green-giraffe", "purple-butterfly", "yellow-frog", "blue-fish", "red-rhino", "orange-cow", "pink-boar"];
         const randomID = Math.round(Math.random(9))
 
         let serviceObj = {
-            userID: obj.userID? obj.userID : prenoms[Math.round(Math.random(3))] + "_" + Math.floor(Math.random() * 1000),
+            userID: obj.userID? obj.userID : prenoms[Math.round(Math.random(6))] + "-" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
@@ -519,6 +519,22 @@ function Provider( {children} ) {
         setEstimate(updatedEstimate)
     }
 
+    // when we originally received the booking from cal.com webhook. we are no longer doing this.
+    // const updateBookingWithEstimateId = async (bookingId, estimateId) => {
+    //     console.log('[Provider] updateBookingWithEstimateId: ', bookingId, ' estimateId: ', estimateId);
+    //     try {
+    //         const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/bookings/update-estimate', {
+    //             bookingId,
+    //             estimateId
+    //         });
+    //
+    //         console.log('[Provider] Booking updated with estimateId:', response.data);
+    //         return response.data;
+    //     } catch (error) {
+    //         console.error('Error updating booking with estimateId:', error);
+    //     }
+    // };
+
     // const editEstimateById = async (estimateId, editReqObj) => {
     //     console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj);
     //     const servicedetails = await calculateEstimate(editReqObj);
@@ -650,6 +666,29 @@ function Provider( {children} ) {
     //     //return response;
     // }
 
+    const createBooking = async (obj) => {
+        try {
+            console.log('[Provider] createBooking: ', obj);
+
+            const response = await axios.post('https://vker0whp0e.execute-api.us-east-1.amazonaws.com/prod/bookings', obj, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('[Provider] createBooking response: ', response.data);
+            const { message, item } = response.data;
+            const newBooking = item;  // Assuming the response contains the created booking
+            console.log('[Provider] New booking created: ', newBooking);
+
+            return newBooking;  // Return the created booking in case it's needed elsewhere
+        } catch (error) {
+            console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
+        }
+    };
+
+
+
 
 
     // set new value to send back to context subscribers
@@ -673,6 +712,7 @@ function Provider( {children} ) {
         findLocationByUserId,
         setLocation,
         location,
+        createBooking,
     }
 
 
