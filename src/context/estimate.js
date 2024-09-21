@@ -19,7 +19,7 @@ function Provider( {children} ) {
     }
     // HELPER FUNCTIONS
     const determineIfDropDownExtraShouldBeDisplayed = (value) => {
-        if ((value !== 0) || (value !== '')) {
+        if ((value > 0) && (value !== "")) {
             return true
         } else {
             return false
@@ -66,7 +66,7 @@ function Provider( {children} ) {
         const randomID = Math.round(Math.random(9))
 
         let serviceObj = {
-            userID: obj.userID? obj.userID : prenoms[Math.round(Math.random(6))] + "-" + Math.floor(Math.random() * 1000),
+            userID: obj.userID? obj.userID : prenoms[Math.floor(Math.random() * 6)] + "-" + Math.floor(Math.random() * 1000),
             typeofservice: obj.typeofservice,
             construct: obj.construct,
             sqft: obj.sqft,
