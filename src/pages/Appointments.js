@@ -18,11 +18,8 @@ import Calendar from '../components/Calendar';
 
 
 const Appointments = () => {
-    const { estimate } = useContext(EstimateContext);
-    const { user } = useContext(EstimateContext);
-    const { location } = useContext(EstimateContext);
-    const { findUserByUserId } = useContext(EstimateContext)
-    const { findLocationByUserId } = useContext(EstimateContext)
+    const { estimate, user, location, findUserByUserId, setCurrentNavigation } = useContext(EstimateContext);
+
 
     console.log('[Appointments] estimate: ' + estimate);
     console.log('[Appointments] user: ' + user);
@@ -30,7 +27,10 @@ const Appointments = () => {
 
     const navigate = useNavigate();
 
-    const handleEstimateClick = () => navigate('/estimates');
+    const handleEstimateClick = () => {
+        setCurrentNavigation(1);
+        navigate('/estimates');
+    }
 
     console.log('[Appointments] user.hasOwnProperty("userDetails") : ' , user.hasOwnProperty("userDetails"));
     console.log('[Appointments] location.hasOwnProperty("locationdetails") : ' , location.hasOwnProperty("locationdetails"));
