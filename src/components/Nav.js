@@ -8,42 +8,38 @@ import {
 import { RapidCleanTheme } from "../themes/Theme.js";
 import {Outlet, useNavigate, Link} from "react-router-dom";
 import React from "react";
+import { useState, useEffect } from 'react';
+import EstimateContext from '../context/estimate';
 
 const Nav = () => {
 
-    const [servicesActive, setServicesActive] = React.useState(true);
-    const [estimatesActive, setEstimatesActive] = React.useState(false);
-    const [appointmentsActive, setAppointmentsActive] = React.useState(false);
-    const [chatActive, setChatActive] = React.useState(false);
+    // const [servicesActive, setServicesActive] = React.useState(true);
+    // const [estimatesActive, setEstimatesActive] = React.useState(false);
+    // const [appointmentsActive, setAppointmentsActive] = React.useState(false);
+    // const [chatActive, setChatActive] = React.useState(false);
+
 
     const navigate = useNavigate();
+    const {nav , setCurrentNavigation} = React.useContext(EstimateContext);
+
+    // if (nav) {
+    //     console.log('nav ', nav);
+    // }
     const handleOnServicesClick = () => {
-        console.log('handleOnServicesClick ', servicesActive);
-        setServicesActive(!servicesActive);
-        setEstimatesActive(false);
-        setAppointmentsActive(false);
-        setChatActive(false);
+        console.log('handleOnServicesClick ', 0);
+        setCurrentNavigation(0)
         navigate('/');
     }
     const handleOnEstimateClick = () => {
-        setEstimatesActive(!estimatesActive);
-        setServicesActive(false);
-        setAppointmentsActive(false);
-        setChatActive(false);
+        setCurrentNavigation(1)
         navigate('/estimates');
     }
     const handleOnAppointmentsClick = () => {
-        setAppointmentsActive(!appointmentsActive);
-        setServicesActive(false);
-        setEstimatesActive(false);
-        setChatActive(false);
+        setCurrentNavigation(2)
         navigate('/appointments');
     }
     const handleOnChatClick = () => {
-        setChatActive(!chatActive);
-        setServicesActive(false);
-        setEstimatesActive(false);
-        setAppointmentsActive(false);
+        setCurrentNavigation(3)
         navigate('/contact');
     }
     return (
@@ -58,12 +54,11 @@ const Nav = () => {
                     <div style={{marginTop: '20px'}}>
                         <nav>
                             <Chip
-                                active={servicesActive}
                                 size='large'
                                 position='relative'
                                 label='Our Services'
                                 variant="filled"
-                                color= {servicesActive? 'primary': 'secondary'}
+                                color= {nav === 0? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnServicesClick}
                                 sx={{
@@ -83,12 +78,11 @@ const Nav = () => {
                             />
 
                             <Chip
-                                active={estimatesActive}
                                 size='large'
                                 position='relative'
                                 label='Get Estimate'
                                 variant="filled"
-                                color= {estimatesActive? 'primary': 'secondary'}
+                                color= {nav === 1? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnEstimateClick}
                                 sx={{
@@ -108,12 +102,11 @@ const Nav = () => {
                             />
 
                             <Chip
-                                active={appointmentsActive}
                                 size='large'
                                 position='relative'
                                 label='Book Us'
                                 variant="filled"
-                                color= {appointmentsActive? 'primary': 'secondary'}
+                                color= { nav===2? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnAppointmentsClick}
                                 sx={{
@@ -133,12 +126,12 @@ const Nav = () => {
                             />
 
                             <Chip
-                                active={chatActive}
+
                                 size='large'
                                 position='relative'
                                 label='Contact Us'
                                 variant="filled"
-                                color= {chatActive? 'primary': 'secondary'}
+                                color= {nav===3? 'primary': 'secondary'}
 
                                 pointerEvents='none'
                                 onClick={handleOnChatClick}
