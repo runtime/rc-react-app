@@ -9,8 +9,8 @@ const Header = () => {
     return (
         <div>
             <Box sx={{
-                backgroundColor: '#D6D7D8',
-                height: '256px',
+                backgroundColor: '#b5da91',
+                height: {xs: 72, sm: 120, md:140, lg:220},
                 width: '100%',
                 display: 'flex',
                 flexDirection: 'row',
@@ -31,10 +31,19 @@ const Header = () => {
 
             </Box>
 
-            <Box  sx={{zIndex: 1, margin: 'auto', textAlign: 'center', position: 'absolute', left: {xs: 24, sm: 50, md: 90, lg: 250}, top:30}}>
+            <Box sx={{
+                zIndex: 1,
+                margin: 'auto',
+                height: {xs: 60, sm: 96, md: 90, lg: 120},
+                textAlign: 'center',
+                position: 'absolute',
+                left: {xs: 24, sm: 50, md: 90, lg: 154},
+                top: {xs: 10, sm: 20, md: 30, lg: 20}
+            }}>
+
                 <Image src={Logo}
                        width='100%'
-                       height={70}
+                       height='100%'
                        fit='cover'
                        className='app-logo'
                        display='flex'
