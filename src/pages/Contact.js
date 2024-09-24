@@ -27,7 +27,7 @@ const Contact = () => {
         content = <div className="chat">
             <iframe
                 allow="microphone;"
-                width="100%"
+                // width="100%"
                 height="100%"
                 src="https://console.dialogflow.com/api-client/demo/embedded/e9bd9e6a-7fdf-46bf-9d45-30c9af1b2523">
              </iframe>
@@ -43,7 +43,7 @@ const Contact = () => {
                         <Card elevation={12} sx={{marginTop: 2.5, marginBottom: 1, minWidth: 375, borderRadius: '8px'}}>
                             <CardContent>
                                 <Box >
-                                    <Grid container spacing={12}>
+                                    <Grid container spacing={3}>
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
                                             {/*<Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat </Typography>*/}
                                             {/*<Typography sx={{marginBottom: 2}} color="primary" variant="cardTitle"  component='h1' display="inline">With Us</Typography>*/}

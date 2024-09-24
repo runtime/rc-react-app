@@ -19,15 +19,15 @@ const Header = () => {
                 // backgroundSize: 'cover',
                 // backgroundPosition: 'center',
             }}>
-                <Image src={HeaderImage}
-                    // top={0}
-                    // left={0}
-                       display='flex'
-                       fit='cover'
-                       width='100%'
-                       alt="rapidclean image"
-                    // sx={{ maxHeight: { xs: '25%', sm: '25%', lg: '100%'}, marginTop: { xs: '0px', sm: '0px', md: '0px', lg: '0px'}}}
-                />
+                {/*<Image src={HeaderImage}*/}
+                {/*    // top={0}*/}
+                {/*    // left={0}*/}
+                {/*       display='flex'*/}
+                {/*       fit='cover'*/}
+                {/*       width='100%'*/}
+                {/*       alt="rapidclean image"*/}
+                {/*    // sx={{ maxHeight: { xs: '25%', sm: '25%', lg: '100%'}, marginTop: { xs: '0px', sm: '0px', md: '0px', lg: '0px'}}}*/}
+                {/*/>*/}
 
             </Box>
 

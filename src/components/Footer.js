@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <Box sx={{ width: '100%'}}>
             <BottomNavigation sx={{ backgroundColor: RapidCleanTheme.palette.primary.main }} showLabels value={0}>
-                <Grid container alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
+                <Grid container alignItems="center" justifyContent="space-between" sx={{}}>
                     {/* Instagram Icon on the left */}
                     <Grid item
                           sx={{

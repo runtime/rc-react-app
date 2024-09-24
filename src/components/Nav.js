@@ -46,33 +46,37 @@ const Nav = () => {
         <div className='Nav'>
             <ThemeProvider theme={RapidCleanTheme}>
                 <CssBaseline enableColorScheme />
+                {/*THIS BOX IS THE OUTTER MOST CONTAINER AND SETS THE MARGIN FOR THE CONTENT PAGES*/}
                 <Box
                     sx={{
-                        paddingLeft: { xs: 3, sm: 6, md: 12, lg: 20 },
-                        paddingRight: { xs: 3, sm: 6, md: 12, lg: 20 }
-                    }}>
-                    <div style={{marginTop: '20px'}}>
+                        paddingLeft: { xs: 2, sm: 2, md: 6, lg: 20 },
+                        paddingRight: { xs: 2, sm: 2, md: 6, lg: 20 }
+                    }}
+                >
+                    {/*<div style={{marginTop: '20px'}}>*/}
                         <nav>
                             <Chip
                                 size='large'
-                                position='relative'
+                                position='inline'
                                 label='Our Services'
                                 variant="filled"
                                 color= {nav === 0? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnServicesClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.3em',
+                                    paddingLeft: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    paddingRight: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    minWidth: '200px',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
+                                    fontWeight: {xs: '400', lg: '800'},
+                                    fontSize: {xs: '.5em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
+                                    marginLeft: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
                                     transitionTimingFunction: 'linear',
+                                    display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
@@ -86,17 +90,19 @@ const Nav = () => {
                                 pointerEvents='none'
                                 onClick={handleOnEstimateClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.3em',
+                                    paddingLeft: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    paddingRight: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    minWidth: '200px',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
+                                    fontWeight: {xs: '400', lg: '800'},
+                                    fontSize: {xs: '.5em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
+                                    marginLeft: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
                                     transitionTimingFunction: 'linear',
+                                    display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
@@ -110,17 +116,19 @@ const Nav = () => {
                                 pointerEvents='none'
                                 onClick={handleOnAppointmentsClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.3em',
+                                    paddingLeft: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    paddingRight: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    minWidth: '200px',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
+                                    fontWeight: {xs: '400', lg: '800'},
+                                    fontSize: {xs: '.5em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
+                                    marginLeft: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
                                     transitionTimingFunction: 'linear',
+                                    display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
@@ -132,27 +140,29 @@ const Nav = () => {
                                 label='Contact Us'
                                 variant="filled"
                                 color= {nav===3? 'primary': 'secondary'}
-
                                 pointerEvents='none'
                                 onClick={handleOnChatClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.3em',
+                                    paddingLeft: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    paddingRight: {xs: '.5em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    minWidth: '200px',
-                                    marginTop: '3px',
+                                    fontWeight: {xs: '400', lg: '800'},
+                                    fontSize: {xs: '.5em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
+                                    marginLeft: {xs:'.3em', sm: '.4em', md: '1em', lg: '.5em'},
                                     transitionTimingFunction: 'linear',
+                                    display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
                         </nav>
                         <Outlet/>
-                    </div>
+                    {/*</div>*/}
 
                 </Box>
 
