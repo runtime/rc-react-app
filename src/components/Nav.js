@@ -30,7 +30,7 @@ const Nav = () => {
                             <Chip
                                 size='large'
                                 position='relative'
-                                label='About Us'
+                                label='Our Services'
                                 variant="filled"
                                 color='secondary'
                                 pointerEvents='none'
@@ -76,7 +76,7 @@ const Nav = () => {
                             <Chip
                                 size='large'
                                 position='relative'
-                                label='Appointments'
+                                label='Book Us'
                                 variant="filled"
                                 color='secondary'
                                 pointerEvents='none'
