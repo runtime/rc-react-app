@@ -4,7 +4,7 @@ import {
     Card,
     Grid,
     Box,
-    Typography, ThemeProvider, CssBaseline, Button, CardContent
+    Typography, ThemeProvider, CssBaseline, Button, CardContent, Link
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import {useContext} from "react";
@@ -55,22 +55,25 @@ const Contact = () => {
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Text </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body'>If there is something that our customer service agents can't help you with, feel free to send us a text. We try to reply to texts as soon as possible. </Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body'>text: 212-555-1212.</Typography>
+                                            <Typography sx={{marginBottom: 1}} component='body'>If there is something that our customer service agents can't help you with, feel free to send us a text. We try to reply to texts as soon as possible. </Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body' variant="h4"  color='primary'>212-555-1212.</Typography>
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Call </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body'>We try to answer all calls, but in case we can't please leave us a detailed message, with your name and contact phone number. If you have an estimate Id or a User Id please provide it.  </Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body'>call: 212-555-1212.</Typography>
+                                            <Typography sx={{marginBottom: 1}} component='body'>Call us between 9-5 M-F. If we can't answer your call, please leave us a detailed message. If you have an estimate Id or a User Id please provide it.  </Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body' variant="h4"  color='primary'>212-555-1212</Typography>
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Email </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body'>If there is something that our customer service agents can't help you with, feel free to send us an email. We try to reply to emails on the same business day. </Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body'>email: rapidcleanering@gmail.com.</Typography>
+                                            <Typography sx={{marginBottom: 1}} component='body'>Feel free to send us an email. We reply to emails within the hour. </Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body' variant="h4" color='primary'>rapidcleanering@gmail.com.</Typography>
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Follow </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body'>Follow us on Instagram to stay up to date with our latest services and offers! </Typography>
+                                            <Typography sx={{marginBottom: 1}} component='body' >Stay up to date with our social to latest services and offers! </Typography>
 
                                             {/*<Typography color="primary" component='body'>Instagram:</Typography>*/}
-                                            <Typography sx={{marginBottom: 3}} component='body'>Instagram: @rapidclean_</Typography>
+                                           <Link href="https://www.instagram.com/rapidclean_" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center', color: 'primary' }}>
+                                                {/*<InstagramIcon />*/}
+                                                Follow Us on Instagram!
+                                            </Link>
 
                                         </Grid>
 

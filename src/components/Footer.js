@@ -17,16 +17,18 @@ const Footer = () => {
                     {/* Instagram Icon on the left */}
                     <Grid item
                           sx={{
+                              alignItems: 'left',
                               color: 'white',
-                              fontFamily: 'Helvetica Bold" "Arial Bold',
-                              fontWeight: '800',
-                              fontSize: '1.15em',
-                              minWidth: '200px',
-                              paddingLeft: {xs:2.5, sm:6, md: 12, lg:6, xl:20},
+                              fontFamily: 'Helvetica " "Arial ',
+                              fontWeight: '600',
+                              fontSize: '.9em',
+                              paddingLeft: {xs: 3, sm: 3, md: 12, lg: 20},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
-                              opacity: {xs: 1, sm: 1, lg: 1}
+                              opacity: {xs: 1, sm: 1, lg: 1},
+
+
                           }}>
 
                         <Link href="https://www.instagram.com/rapidclean_" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center', color: 'white' }}>
@@ -43,7 +45,7 @@ const Footer = () => {
                               fontWeight: '800',
                               fontSize: '1.15em',
                               minWidth: '200px',
-                              paddingRight: {xs:2.5, sm:6, md: 12, lg:6, xl:20},
+                              paddingRight: {xs: 3, sm: 3, md: 12, lg: 20},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
