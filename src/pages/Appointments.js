@@ -88,25 +88,36 @@ const Appointments = () => {
                     <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
                     <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
                     <Typography variant="body1" marginBottom='20px'>
-                        Get a Free Estimate before Booking. No personal information needed. No harassing phone calls or emails.  Book anytime.
+                        First time using our Sparkling Services™? Click NEW BOOKING to get an estimate in real time. Customize your estimate to your liking, select from our standard, extra or pet service(s) and choose a date. We take care of the rest.
+                        {/*<ol>*/}
+                        {/*    <li>Choose NEW BOOKING</li>*/}
+                        {/*    <li>Get an Estimate</li>*/}
+                        {/*    <li>Fill out your Info</li>*/}
+                        {/*    <li>Choose a Date</li>*/}
+                        {/*</ol>*/}
+
                     </Typography>
-                    {/*<Button onClick={handleEstimateClick}>*/}
-                    {/*    Get Instant Free Estimate*/}
-                    {/*</Button>*/}
+                    {/*<Typography variant="body1" marginBottom='20px'>*/}
+                    {/*We look forward to seeing you soon!*/}
+                    {/*</Typography>*/}
+
                     <CardActions>
                         <Button
-
                             variant="contained"
                             color="primary"
                             type="Submit"
                             onClick = {handleEstimateClick}
                             className='classes button'>
-                            New Estimate
+                            New Booking
                         </Button>
                     </CardActions>
                 </Grid>
+                <Grid>
+                    <Typography variant="h4" marginTop='40px' marginBottom='40px'>-OR-</Typography>
 
-                <Grid marginTop = '40px'>
+                </Grid>
+
+                <Grid marginTop = '0px'>
                     <RepeatService />
                 </Grid>
             </>
