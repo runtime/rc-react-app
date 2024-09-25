@@ -65,17 +65,17 @@ const Nav = () => {
                                 pointerEvents='none'
                                 onClick={handleOnServicesClick}
                                 sx={{
-                                    padding: '.3em',
-                                    paddingLeft: {xs: '.125em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
-                                    paddingRight: {xs: '.125em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    padding: '.2em',
+                                    // paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    // paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: {xs: '600', lg: '800'},
-                                    fontSize: {xs: '.75em', sm:'.85em', md: '1em', lg: '1.25em'},
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
-                                    marginRight: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
-                                    marginLeft: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
+                                    marginRight: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.4em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
                                     display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
@@ -91,17 +91,17 @@ const Nav = () => {
                                 pointerEvents='none'
                                 onClick={handleOnEstimateClick}
                                 sx={{
-                                    padding: '.3em',
-                                    paddingLeft: {xs: '.25em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
-                                    paddingRight: {xs: '.25em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    padding: '.2em',
+                                    // paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    // paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: {xs: '600', lg: '800'},
-                                    fontSize: {xs: '.75em', sm:'.85em', md: '1em', lg: '1.25em'},
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
-                                    marginRight: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
-                                    marginLeft: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
+                                    marginRight: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
                                     display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
@@ -111,23 +111,23 @@ const Nav = () => {
                             <Chip
                                 size='large'
                                 position='relative'
-                                label='Book Us'
+                                label='Book Now'
                                 variant="filled"
                                 color= { nav===2? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnAppointmentsClick}
                                 sx={{
-                                    padding: '.3em',
-                                    paddingLeft: {xs: '.75em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
-                                    paddingRight: {xs: '.75em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    padding: '.2em',
+                                    paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: {xs: '600', lg: '800'},
-                                    fontSize: {xs: '.75em', sm:'.85em', md: '1em', lg: '1.25em'},
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
-                                    marginRight: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
-                                    marginLeft: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
+                                    marginRight: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
                                     display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
@@ -144,17 +144,17 @@ const Nav = () => {
                                 pointerEvents='none'
                                 onClick={handleOnChatClick}
                                 sx={{
-                                    padding: '.3em',
-                                    paddingLeft: {xs: '.25em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
-                                    paddingRight: {xs: '.25em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    padding: '.2em',
+                                    // paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    // paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: {xs: '600', lg: '800'},
-                                    fontSize: {xs: '.75em', sm:'.85em', md: '1em', lg: '1.25em'},
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
-                                    marginRight: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
-                                    marginLeft: {xs:'.2em', sm: '.4em', md: '1em', lg: '2em'},
+                                    marginRight: {xs:'.4em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
                                     display: {xs: 'inline'},
                                     opacity: {xs: 1, sm: 1, lg: 1}
