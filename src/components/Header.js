@@ -35,10 +35,10 @@ const Header = () => {
                 zIndex: 1,
                 margin: 'auto',
                 // height: {xs: 42, sm: 48, md: 72, lg: 72},
-                width: {xs: 120, sm: 200, md: 250, lg: 300},
+                width: {xs: 120, sm: 140, md: 160, lg: 160},
                 textAlign: 'center',
                 position: 'absolute',
-                left: {xs: 20, sm: 50, md: 90, lg: 154},
+                left: {xs: 20, sm: 20, md: 90, lg: 250},
                 top: {xs: 10, sm: 8, md: 8, lg: 8}
             }}>
 

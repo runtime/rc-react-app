@@ -50,8 +50,11 @@ const Nav = () => {
                 <Box
                     sx={{
                         margin: 'auto',
-                        paddingLeft: { xs: 2, sm: 2, md: 10, lg: 20},
-                        paddingRight: { xs: 2, sm: 2, md: 10, lg: 20}
+                        width: '100%',
+                        maxWidth: '1024px',
+                        minWidth: '320px',
+                        paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0},
+                        paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
                     }}
                 >
                     {/*<div style={{marginTop: '20px'}}>*/}
