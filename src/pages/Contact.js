@@ -40,30 +40,25 @@ const Contact = () => {
                 <Box>
                     <ThemeProvider theme={RapidCleanTheme}>
                         <CssBaseline enableColorScheme/>
-                        <Card elevation={12} sx={{marginTop: 2.5, marginBottom: 1, minWidth: 375, borderRadius: '8px'}}>
+                        <Card elevation={0} sx={{marginTop: 2.5, marginBottom: 1, minWidth: 375, borderRadius: '8px'}}>
                             <CardContent>
                                 <Box >
                                     <Grid container spacing={3}>
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
                                             {/*<Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat </Typography>*/}
                                             {/*<Typography sx={{marginBottom: 2}} color="primary" variant="cardTitle"  component='h1' display="inline">With Us</Typography>*/}
+                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat With </Typography>
+                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body'>Chat with a Customer Service Assistant. We can help you with your booking or answer any of your questions.</Typography>
                                             <Box> {content} </Box>
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <Card elevation={6} sx={{marginTop: 2, marginBottom: 1, minWidth: 100, borderRadius: '4px'}}>
-                                                <CardContent>
-                                                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat With </Typography>
-                                                    <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                                    <Typography sx={{marginBottom: 2}} component='body'>Chat with our Customer Service Assistant. She can help you with your booking or answer any of your questions.</Typography>
-                                                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Text </Typography>
-                                                    <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                                    <Typography sx={{marginBottom: 2}} component='body'>Contact Phone: 212-555-1212.</Typography>
-                                                    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Email </Typography>
-                                                    <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                                    <Typography sx={{marginBottom: 2}} component='body'>Email: rapidcleanering@gmail.com.</Typography>
-                                                </CardContent>
-                                            </Card>
-
+                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Text </Typography>
+                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body'>Contact Phone: 212-555-1212.</Typography>
+                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Email </Typography>
+                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body'>Email: rapidcleanering@gmail.com.</Typography>
                                         </Grid>
 
 
