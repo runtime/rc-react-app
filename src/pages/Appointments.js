@@ -18,11 +18,8 @@ import Calendar from '../components/Calendar';
 
 
 const Appointments = () => {
-    const { estimate } = useContext(EstimateContext);
-    const { user } = useContext(EstimateContext);
-    const { location } = useContext(EstimateContext);
-    const { findUserByUserId } = useContext(EstimateContext)
-    const { findLocationByUserId } = useContext(EstimateContext)
+    const { estimate, user, location, findUserByUserId, setCurrentNavigation } = useContext(EstimateContext);
+
 
     console.log('[Appointments] estimate: ' + estimate);
     console.log('[Appointments] user: ' + user);
@@ -30,7 +27,10 @@ const Appointments = () => {
 
     const navigate = useNavigate();
 
-    const handleEstimateClick = () => navigate('/estimates');
+    const handleEstimateClick = () => {
+        setCurrentNavigation(1);
+        navigate('/estimates');
+    }
 
     console.log('[Appointments] user.hasOwnProperty("userDetails") : ' , user.hasOwnProperty("userDetails"));
     console.log('[Appointments] location.hasOwnProperty("locationdetails") : ' , location.hasOwnProperty("locationdetails"));
@@ -88,25 +88,36 @@ const Appointments = () => {
                     <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
                     <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
                     <Typography variant="body1" marginBottom='20px'>
-                        Get a Free Estimate before Booking. No personal information needed. No harassing phone calls or emails.  Book anytime.
+                        First time using our Sparkling Services™? Click NEW BOOKING to get an estimate in real time. Customize your estimate to your liking, select from our standard, extra or pet service(s) and choose a date. We take care of the rest.
+                        {/*<ol>*/}
+                        {/*    <li>Choose NEW BOOKING</li>*/}
+                        {/*    <li>Get an Estimate</li>*/}
+                        {/*    <li>Fill out your Info</li>*/}
+                        {/*    <li>Choose a Date</li>*/}
+                        {/*</ol>*/}
+
                     </Typography>
-                    {/*<Button onClick={handleEstimateClick}>*/}
-                    {/*    Get Instant Free Estimate*/}
-                    {/*</Button>*/}
+                    {/*<Typography variant="body1" marginBottom='20px'>*/}
+                    {/*We look forward to seeing you soon!*/}
+                    {/*</Typography>*/}
+
                     <CardActions>
                         <Button
-
                             variant="contained"
                             color="primary"
                             type="Submit"
                             onClick = {handleEstimateClick}
                             className='classes button'>
-                            New Estimate
+                            New Booking
                         </Button>
                     </CardActions>
                 </Grid>
+                <Grid>
+                    <Typography variant="h4" marginTop='40px' marginBottom='40px'>-OR-</Typography>
 
-                <Grid marginTop = '40px'>
+                </Grid>
+
+                <Grid marginTop = '0px'>
                     <RepeatService />
                 </Grid>
             </>
@@ -117,7 +128,7 @@ const Appointments = () => {
             <Box>
                 <ThemeProvider theme={RapidCleanTheme}>
                     <CssBaseline enableColorScheme/>
-                    <Card elevation={0} sx={{marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}}>
+                    <Card elevation={0} sx={{marginTop: 2.5, marginBottom: 1, minWidth: 275, borderRadius: '8px'}}>
                         <CardContent>
                             <Box sx={{ minWidth: 120 }}>
                                 <Typography color="black" display="inline">

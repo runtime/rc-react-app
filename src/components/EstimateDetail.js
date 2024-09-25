@@ -16,7 +16,7 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EstimateDetail = () => {
 
-   const { estimate } = useContext(EstimateContext);
+   const { estimate, setCurrentNavigation } = useContext(EstimateContext);
    const [showEdit, setShowEdit] = useState(false);
 
    const navigate = useNavigate();
@@ -38,6 +38,8 @@ const EstimateDetail = () => {
 
     const handleNextClick = () => {
         console.log('[EstimateDetail] handleNextClick ---> Appointments');
+        // Todo set the nav state
+        setCurrentNavigation(2)
         navigate('/appointments');
     }
 

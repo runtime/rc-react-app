@@ -113,7 +113,7 @@ const EstimateCreate = () => {
             <Box>
                 <ThemeProvider theme={RapidCleanTheme}>
                     <CssBaseline enableColorScheme />
-                    <Card elevation={0} sx={{ marginTop: 1, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
+                    <Card elevation={0} sx={{ marginTop: 0, marginBottom: 1, minWidth: 275, borderRadius: '8px'}} >
                         <CardContent>
                             <Typography color="secondary" variant="cardTitle" component="h1"
                                         display="inline">Instant </Typography>

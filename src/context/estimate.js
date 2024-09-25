@@ -14,6 +14,9 @@ function Provider( {children} ) {
     const [user, setUser ] = useState ({})
     const [location, setLocation ] = useState({})
 
+    const [nav, setNav] = useState(0);
+
+
     const getEstimatesFromAPI =  () => {
         //Fetch Data
     }
@@ -50,6 +53,15 @@ function Provider( {children} ) {
         }
         return estimateId;
     }
+
+    // todo navigation state
+
+    const setCurrentNavigation = (id) => {
+        console.log('[Provider] setNav id: ', id)
+        console.log('[Provider] setNav nav ', nav)
+        setNav(id);
+    }
+
     //todo move helper functions to api estimate algo
     const calculateEstimate = async (obj) => {
         console.log('[Provider] calculateEstimate obj: ', obj)
@@ -694,6 +706,8 @@ function Provider( {children} ) {
     // set new value to send back to context subscribers
 
     const providerValues = {
+        setCurrentNavigation,
+        nav,
         estimate,
         estimates,
         editEstimateById,

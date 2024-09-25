@@ -8,8 +8,8 @@ In the project directory, you can must run both the server and client. The serve
 
 ### `npm run server`
 
-Run in separate terminal from the react app.
-Runs the json server for local db for use in development mode.
+To run this application locally, you would need an API. You could use Json server to run in separate terminal from the react app.
+npm run server runs the json server for local db for use in development mode. Change the context/estimate.js to post to localhost:3001
 GET or POST [http://localhost:3001/Estimates](http://localhost:3000) to test the API
 
 >local db for testing is named db.json
