@@ -37,7 +37,7 @@ function App() {
             <Header />
         </Box>
 
-        <Box>
+        <Box sx={{marginTop: 1}}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Nav />}>
