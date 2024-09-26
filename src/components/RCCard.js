@@ -2,11 +2,18 @@ import {
     Typography, Box, Button, ThemeProvider, CssBaseline, Card, CardHeader, CardContent, CardActions
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
+import { useNavigate } from 'react-router-dom';
 import React from "react";
 
 
 
 const RCCard = (props) => {
+    const navigate = useNavigate();
+    const handleButtonClick = (e) => {
+        e.preventDefault();
+        //console.log("[RCCard] Handle Button Clicked!, link: ", props.link);
+        navigate(props.link);
+    }
     return (
         <ThemeProvider theme={RapidCleanTheme}>
             <CssBaseline enableColorScheme />
@@ -19,7 +26,7 @@ const RCCard = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button variant='contained' text='white' color='secondary' disableElevation
+                    <Button variant='contained' text='white' color='secondary' disableElevation onClick={handleButtonClick}
                         sx={{textTransform: 'Capitalize',
                             color:"white",
                             padding: '10px',
@@ -28,7 +35,9 @@ const RCCard = (props) => {
                             margin: 'auto',
                             borderRadius: '8px',
                             marginBottom: '10px',
-                            fontWeight: 'bold'
+                            fontWeight: 'bold',
+                            minHeight: '40px',
+                            maxHeight: '50px',
                         }}
                     >
                         {props.buttonText}

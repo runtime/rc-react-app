@@ -1,5 +1,7 @@
 import '../styles/About.css'
+import React from "react";
 import {
+    Card,
     Grid,
     Box,
     List,
@@ -9,40 +11,49 @@ import {
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import RCCard from '../components/RCCard';
-import React from "react";
+
 
 const About = () => {
+
+
         return (
             <div className='About'>
                 <Box>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                             <RCCard
                                 title='Same Day Service'
                                 span_left='Same Day'
                                 span_right='Service'
-                                desc='We Offer Same Day Services to most locations in Northern NJ. We can give you an estimate and be there within the hour.'
-                                buttonText='Book Now'/>
+                                desc='We Offer Same Day Services to most locations in Essex NJ. Get an instant estimate and we can be there in an hour. Or book us for next week before your next event.'
+                                buttonText='Book Us Now'
+                                link = '/appointments'/>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                             <RCCard
-                                title='Customized Estimates'
-                                span_left='Customized'
+                                title='Instant Estimates'
+                                span_left='Instant'
                                 span_right='Estimates'
-                                desc='Customized estimates to fit your budget! Get an instant estimate without any personal information or sales call backs'
-                                buttonText='Get Estimate'/>
+                                desc='Customized estimates to fit your budget! We use a custom algorithm to give you the best prices. Get an instant estimate without any personal information or sales call backs. '
+                                buttonText='Instant Estimate'
+                                link = '/estimates'/>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                             <RCCard
                                 title='Chat With Us'
                                 span_left='Chat with'
                                 span_right='Us'
-                                desc='Chat with us and get an immediate custom estimate or ask us about our environmentally friendly cleaning products.'
-                                buttonText='Say Hello'/>
+                                desc='Chat with us and get an immediate estimate tailored just for your lifestyle and living space.  Ask us about our environmentally friendly cleaning products, our extra services or our Same Day Service.'
+                                buttonText='Chat With Us'
+                                link = '/contact'/>
                         </Grid>
                     </Grid>
                 </Box>
                 <Box>
+                    {/*Big Card*/}
+                    <Card elevation={0} sx={{ marginTop: 2, paddingLeft: 2, paddingRight: 2, minWidth: 275, borderRadius: '16px' }}>
+
+
                     <Grid container spacing={2}
                           sx={{ marginTop: 1, marginBottom: 1 }}>
 
@@ -239,7 +250,7 @@ const About = () => {
                                         <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Wipe down window sills</ListItem>
                                         <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Disinfect light switches & Doors</ListItem>
                                         <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Windows inside</ListItem>
-                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Bathroom Tile & Grout Whitenting</ListItem>
+                                        <ListItem sx={{ lineHeight: 0.75, display: 'list-item' }}>Bathroom Tile & Grout Whitening</ListItem>
 
                                     </List>
                                 </List>
@@ -306,6 +317,7 @@ const About = () => {
 
 
                     </Grid>
+                    </Card>
                 </Box>
             </div>
     )
