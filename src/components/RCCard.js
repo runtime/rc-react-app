@@ -3,15 +3,20 @@ import {
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import { useNavigate } from 'react-router-dom';
-import React from "react";
+import React, {useContext} from "react";
+import EstimateContext from  '../context/estimate';
 
 
 
 const RCCard = (props) => {
     const navigate = useNavigate();
-    const handleButtonClick = (e) => {
-        e.preventDefault();
-        //console.log("[RCCard] Handle Button Clicked!, link: ", props.link);
+    const { setCurrentNavigation } = useContext(EstimateContext)
+    const handleButtonClick = () => {
+        //e.preventDefault();
+        console.log("[RCCard] Handle Button Clicked!, props.navid: ", props.navid);
+        //todo set Navigation State in context
+        setCurrentNavigation(props.navid)
+        // todo navigate to the link
         navigate(props.link);
     }
     return (

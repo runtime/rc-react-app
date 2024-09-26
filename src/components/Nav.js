@@ -8,45 +8,80 @@ import {
 import { RapidCleanTheme } from "../themes/Theme.js";
 import {Outlet, useNavigate, Link} from "react-router-dom";
 import React from "react";
+import { useState, useEffect } from 'react';
+import EstimateContext from '../context/estimate';
 
 const Nav = () => {
 
+    // const [servicesActive, setServicesActive] = React.useState(true);
+    // const [estimatesActive, setEstimatesActive] = React.useState(false);
+    // const [appointmentsActive, setAppointmentsActive] = React.useState(false);
+    // const [chatActive, setChatActive] = React.useState(false);
+
+
     const navigate = useNavigate();
-    const handleOnServicesClick = () => navigate('/');
-    const handleOnEstimateClick = () => navigate('/estimates');
-    const handleOnAppointmentsClick = () => navigate('/appointments');
-    const handleOnChatClick = () => navigate('/contact');
+    const {nav , setCurrentNavigation} = React.useContext(EstimateContext);
+
+    // if (nav) {
+    //     console.log('nav ', nav);
+    // }
+    const handleOnServicesClick = () => {
+        console.log('handleOnServicesClick ', 0);
+        setCurrentNavigation(0)
+        navigate('/');
+    }
+    const handleOnEstimateClick = () => {
+        setCurrentNavigation(1)
+        navigate('/estimates');
+    }
+    const handleOnAppointmentsClick = () => {
+        setCurrentNavigation(2)
+        navigate('/appointments');
+    }
+    const handleOnChatClick = () => {
+        setCurrentNavigation(3)
+        navigate('/contact');
+    }
     return (
         <div className='Nav'>
             <ThemeProvider theme={RapidCleanTheme}>
                 <CssBaseline enableColorScheme />
+                {/*THIS BOX IS THE OUTTER MOST CONTAINER AND SETS THE MARGIN FOR THE CONTENT PAGES*/}
                 <Box
                     sx={{
-                        paddingLeft: { xs: 3, sm: 6, md: 12, lg: 20 },
-                        paddingRight: { xs: 3, sm: 6, md: 12, lg: 20 }
-                    }}>
-                    <div style={{marginTop: '20px'}}>
+                        margin: 'auto',
+                        width: '100%',
+                        maxWidth: '1024px',
+                        minWidth: '320px',
+                        paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0},
+                        paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
+                    }}
+                >
+                    {/*<div style={{marginTop: '20px'}}>*/}
                         <nav>
                             <Chip
                                 size='large'
-                                position='relative'
+                                position='inline'
                                 label='Our Services'
                                 variant="filled"
-                                color='secondary'
+                                color= {nav === 0? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnServicesClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.2em',
+                                    // paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    // paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.4em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    display: {xs: 'inline'},
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
@@ -55,72 +90,83 @@ const Nav = () => {
                                 position='relative'
                                 label='Get Estimate'
                                 variant="filled"
-                                color='secondary'
+                                color= {nav === 1? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnEstimateClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.2em',
+                                    // paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    // paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    display: {xs: 'inline'},
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
                             <Chip
                                 size='large'
                                 position='relative'
-                                label='Book Us'
+                                label='Book Now'
                                 variant="filled"
-                                color='secondary'
+                                color= { nav===2? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnAppointmentsClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.2em',
+                                    paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    marginTop: '3px',
-                                    marginRight: '24px',
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    display: {xs: 'inline'},
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
                             <Chip
+
                                 size='large'
                                 position='relative'
                                 label='Contact Us'
                                 variant="filled"
-                                color='secondary'
+                                color= {nav===3? 'primary': 'secondary'}
                                 pointerEvents='none'
                                 onClick={handleOnChatClick}
                                 sx={{
-                                    padding: '16px',
+                                    padding: '.2em',
+                                    // paddingLeft: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
+                                    // paddingRight: {xs: '.05em', sm:'.65em', md: '.75em', lg:'1em', xlg:'3em'},
                                     color: 'white',
                                     fontFamily: 'Helvetica Bold" "Arial Bold',
-                                    fontWeight: '800',
-                                    fontSize: '1.15em',
-                                    marginTop: '3px',
+                                    fontWeight: {xs: '500', lg: '800'},
+                                    fontSize: {xs: '.65em', sm:'.85em', md: '1em', lg: '1.25em'},
                                     transitionDuration: '0.3s',
                                     transitionProperty: 'all',
+                                    marginRight: {xs:'.4em', sm: '.4em', md: '1em', lg: '1em'},
+                                    marginLeft: {xs:'.02em', sm: '.4em', md: '1em', lg: '1em'},
                                     transitionTimingFunction: 'linear',
-                                    opacity: {xs: 0, sm: 0.8, lg: 0.8}
+                                    display: {xs: 'inline'},
+                                    opacity: {xs: 1, sm: 1, lg: 1}
                                 }}
                             />
 
                         </nav>
                         <Outlet/>
-                    </div>
+                    {/*</div>*/}
 
                 </Box>
 
