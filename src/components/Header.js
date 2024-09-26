@@ -4,17 +4,19 @@ import Logo from '../logo.svg';
 import {Box, Button, Grid, Link, Typography} from '@mui/material';
 import HeaderImage from '../media/header-image.jpg';
 import React, {useContext} from "react";
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import BottomNavigation from "@mui/material/BottomNavigation";
 import {RapidCleanTheme} from "../themes/Theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EstimateContext from "../context/estimate";
 
+import Nav from "./Nav";
+
 
 
 const Header = () => {
     //const navigate = useNavigate();
-    const { setCurrentNavigation } = useContext(EstimateContext)
+    //const { setCurrentNavigation } = useContext(EstimateContext)
 
     //const navigate = useNavigate();
     const handleButtonClick = () => {
@@ -25,11 +27,14 @@ const Header = () => {
     }
 
     return (
-        <Box sx={{ width: '100%'}}>
+        //todo to sticky menu zIndex: 1, position: 'fixed'
+        <Box sx={{width: '100%'}}>
             <BottomNavigation sx={{ backgroundColor: RapidCleanTheme.palette.secondary.main }} showLabels value={0}>
                 <Grid container alignItems="center" justifyContent="space-between" sx={{maxWidth: '1024px'}}>
                     <Grid item
                           sx={{
+
+
                               alignItems: 'left',
                               color: 'white',
                               fontFamily: 'Helvetica " "Arial ',
@@ -60,6 +65,7 @@ const Header = () => {
                     </Grid>
 
                     {/* Copyright text on the right */}
+
                     <Grid item
                           sx={{
                               color: 'white',
