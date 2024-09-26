@@ -33,8 +33,9 @@ function App() {
   return (
 
     <Container className='App' disableGutters maxWidth="xlg">
-        <Box>
-            <Header />
+
+        <Box sx={{marginTop: 0}}>
+           <Header />
         </Box>
 
         <Box sx={{marginTop: 2}}>
