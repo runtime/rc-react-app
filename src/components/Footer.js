@@ -2,8 +2,8 @@ import React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
-import { Box, Typography, Grid, Link, IconButton } from '@mui/material';
-// import InstagramIcon from '@mui/icons-material/Instagram';
+import { Box, Typography, Grid, Link, IconButton, Icon } from '@mui/material';
+import InstagramIcon from '@mui/icons-material/Instagram';
 // import FacebookIcon from '@mui/icons-material/Facebook';
 // import TwitterIcon from '@mui/icons-material/Twitter';
 // import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <Box sx={{ width: '100%'}}>
             <BottomNavigation sx={{ backgroundColor: RapidCleanTheme.palette.secondary.main }} showLabels value={0}>
-                <Grid container alignItems="center" justifyContent="space-between" sx={{}}>
+                <Grid container alignItems="center" justifyContent="space-between" sx={{maxWidth: '1024px'}}>
                     {/* Instagram Icon on the left */}
                     <Grid item
                           sx={{
@@ -22,7 +22,7 @@ const Footer = () => {
                               fontFamily: 'Helvetica " "Arial ',
                               fontWeight: '600',
                               fontSize: '.9em',
-                              paddingLeft: {xs: 3, sm: 3, md: 12, lg: 20},
+                              paddingLeft: {xs: 3, sm: 3, md: 0, lg: 0},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
@@ -32,8 +32,11 @@ const Footer = () => {
                           }}>
 
                         <Link href="https://www.instagram.com/rapidclean_" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center', color: 'white' }}>
-                            {/*<InstagramIcon />*/}
-                            Follow Us on Instagram!
+                            <InstagramIcon />
+                            <Typography sx={{marginLeft: '6px'}}  variant="body2" color="white">
+                                Follow Us on Instagram!
+                            </Typography>
+
                         </Link>
                     </Grid>
 
@@ -44,8 +47,8 @@ const Footer = () => {
                               fontFamily: 'Helvetica Bold" "Arial Bold',
                               fontWeight: '800',
                               fontSize: '1.15em',
-                              minWidth: '200px',
-                              paddingRight: {xs: 3, sm: 3, md: 12, lg: 20},
+                              alignItems: 'right',
+                              paddingRight: {xs: 3, sm: 3, md: 3, lg: 0},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
