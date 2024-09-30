@@ -53,7 +53,7 @@ const Header = () => {
 
                             <Image src={Logo}
                                    width='100%'
-                                   height={44}
+                                   height={30}
                                    fit='cover'
                                    className='app-logo'
                                    display='flex'

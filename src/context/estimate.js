@@ -592,8 +592,35 @@ function Provider( {children} ) {
     };
 
 
+    // const createBooking = async (obj) => {
+    //     try {
+    //         console.log('[Provider] createBooking: ', obj);
+    //
+    //         const response = await axios.post(`${RC_API_URL}/bookings`, obj, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         });
+    //
+    //         console.log('[Provider] createBooking response: ', response.data);
+    //         const { message, item } = response.data;
+    //         const newBooking = item;  // Assuming the response contains the created booking
+    //         console.log('[Provider] New booking created: ', newBooking);
+    //
+    //         return newBooking;  // Return the created booking in case it's needed elsewhere
+    //     } catch (error) {
+    //         console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
+    //     }
+    // };
+
     const createBooking = async (obj) => {
         try {
+            // Ensure estimateId is present
+            if (!obj.estimateId || typeof obj.estimateId !== 'string') {
+                console.error('Error: estimateId is required and must be a string.');
+                return;
+            }
+
             console.log('[Provider] createBooking: ', obj);
 
             const response = await axios.post(`${RC_API_URL}/bookings`, obj, {
@@ -612,6 +639,7 @@ function Provider( {children} ) {
             console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
         }
     };
+
 
 
 
