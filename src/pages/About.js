@@ -11,6 +11,9 @@ import {
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import RCCard from '../components/RCCard';
+import {useContext} from "react";
+
+
 
 
 const About = () => {
@@ -20,8 +23,9 @@ const About = () => {
             <div className='About'>
                 <Box>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
                             <RCCard
+                                navid={2}
                                 title='Same Day Service'
                                 span_left='Same Day'
                                 span_right='Service'
@@ -29,8 +33,9 @@ const About = () => {
                                 buttonText='Book Us Now'
                                 link = '/appointments'/>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
                             <RCCard
+                                navid={1}
                                 title='Instant Estimates'
                                 span_left='Instant'
                                 span_right='Estimates'
@@ -38,8 +43,9 @@ const About = () => {
                                 buttonText='Instant Estimate'
                                 link = '/estimates'/>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                        <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
                             <RCCard
+                                navid={3}
                                 title='Chat With Us'
                                 span_left='Chat with'
                                 span_right='Us'

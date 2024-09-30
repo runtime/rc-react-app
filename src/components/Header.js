@@ -9,8 +9,8 @@ const Header = () => {
     return (
         <div>
             <Box sx={{
-                backgroundColor: '#D6D7D8',
-                height: '256px',
+                backgroundColor: '#cae5b0',
+                height: {xs: 60, sm: 72, lg:84},
                 width: '100%',
                 display: 'flex',
                 flexDirection: 'row',
@@ -19,22 +19,32 @@ const Header = () => {
                 // backgroundSize: 'cover',
                 // backgroundPosition: 'center',
             }}>
-                <Image src={HeaderImage}
-                    // top={0}
-                    // left={0}
-                       display='flex'
-                       fit='cover'
-                       width='100%'
-                       alt="rapidclean image"
-                    // sx={{ maxHeight: { xs: '25%', sm: '25%', lg: '100%'}, marginTop: { xs: '0px', sm: '0px', md: '0px', lg: '0px'}}}
-                />
+                {/*<Image src={HeaderImage}*/}
+                {/*    // top={0}*/}
+                {/*    // left={0}*/}
+                {/*       display='flex'*/}
+                {/*       fit='cover'*/}
+                {/*       width='100%'*/}
+                {/*       alt="rapidclean image"*/}
+                {/*    // sx={{ maxHeight: { xs: '25%', sm: '25%', lg: '100%'}, marginTop: { xs: '0px', sm: '0px', md: '0px', lg: '0px'}}}*/}
+                {/*/>*/}
 
             </Box>
 
-            <Box  sx={{zIndex: 1, margin: 'auto', textAlign: 'center', position: 'absolute', left: {xs: 24, sm: 50, md: 90, lg: 250}, top:30}}>
+            <Box sx={{
+                zIndex: 1,
+                margin: 'auto',
+                // height: {xs: 42, sm: 48, md: 72, lg: 72},
+                width: {xs: 120, sm: 140, md: 160, lg: 160},
+                textAlign: 'center',
+                position: 'absolute',
+                left: {xs: 20, sm: 20, md: 90, lg: 250},
+                top: {xs: 10, sm: 8, md: 8, lg: 8}
+            }}>
+
                 <Image src={Logo}
-                       width='100%'
-                       height={70}
+                       //width='30%'
+                       // height={10}
                        fit='cover'
                        className='app-logo'
                        display='flex'
