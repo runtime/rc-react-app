@@ -614,6 +614,7 @@ function Provider( {children} ) {
     // };
 
     const createBooking = async (obj) => {
+        console.log('[Provider] createBooking obj: ', obj);
         try {
             // Ensure estimateId is present
             if (!obj.estimateId || typeof obj.estimateId !== 'string') {
