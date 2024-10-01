@@ -30,7 +30,7 @@ const Header = () => {
         //todo to sticky menu zIndex: 1, position: 'fixed'
         <Box sx={{width: '100%'}}>
             <BottomNavigation sx={{ backgroundColor: RapidCleanTheme.palette.secondary.main }} showLabels value={0}>
-                <Grid container alignItems="center" justifyContent="space-between" sx={{maxWidth: '1024px'}}>
+                <Grid container alignItems="center" justifyContent="space-between" sx={{maxWidth: '960px'}}>
                     <Grid item
                           sx={{
 
@@ -40,8 +40,8 @@ const Header = () => {
                               fontFamily: 'Helvetica " "Arial ',
                               fontWeight: '600',
                               fontSize: '.9em',
-                              paddingLeft: {xs: 3, sm: 3, md: 0, lg: 0},
-                              transitionDuration: '0.3s',
+                              paddingLeft: {xs: 3, sm: 3, md: 3, lg: 0},
+                              transitionDuration: '0.2s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
                               opacity: {xs: 1, sm: 1, lg: 1},
@@ -52,8 +52,8 @@ const Header = () => {
                         <Link href="/" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center', color: 'white', paddingTop: '9px'}}>
 
                             <Image src={Logo}
-                                   width='100%'
-                                   height={30}
+                                   width='35%'
+                                   // height={30}
                                    fit='cover'
                                    className='app-logo'
                                    display='flex'
@@ -74,7 +74,7 @@ const Header = () => {
                               fontSize: '1.15em',
                               alignItems: 'right',
                               paddingRight: {xs: 3, sm: 3, md: 3, lg: 0},
-                              transitionDuration: '0.3s',
+                              transitionDuration: '0.2s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
                               opacity: {xs: 1, sm: 1, lg: 1}
@@ -86,22 +86,22 @@ const Header = () => {
                         {/*<Typography sx={{fontSize: {xs:'.4em', sm:'.5em', md:'.75em'}}} align='center' component="p" variant="body1" color="white">*/}
                         {/*    reduces anxiety AND HAS A POSITIVE IMPACT ON our mental health*/}
                         {/*</Typography>*/}
-                        <Button variant='contained' text='white' color='primary' disableElevation onClick={handleButtonClick}
-                                sx={{textTransform: 'Capitalize',
-                                    size: "small",
-                                    color:"primary",
-                                    padding: '3px',
-                                    paddingLeft: '9px',
-                                    paddingRight: '9px',
-                                    margin: 'auto',
-                                    borderRadius: '6px',
-                                    fontWeight: 'bold',
-                                    minHeight: '20px',
-                                    maxHeight: '30px',
-                                }}
-                        >
-                            Free Estimate
-                        </Button>
+                        {/*<Button variant='contained' text='white' color='primary' disableElevation onClick={handleButtonClick}*/}
+                        {/*        sx={{textTransform: 'Capitalize',*/}
+                        {/*            size: "small",*/}
+                        {/*            color:"primary",*/}
+                        {/*            padding: '3px',*/}
+                        {/*            paddingLeft: '9px',*/}
+                        {/*            paddingRight: '9px',*/}
+                        {/*            margin: 'auto',*/}
+                        {/*            borderRadius: '6px',*/}
+                        {/*            fontWeight: 'bold',*/}
+                        {/*            minHeight: '20px',*/}
+                        {/*            maxHeight: '30px',*/}
+                        {/*        }}*/}
+                        {/*>*/}
+                        {/*    Free Estimate*/}
+                        {/*</Button>*/}
                     </Grid>
                 </Grid>
             </BottomNavigation>
