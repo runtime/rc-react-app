@@ -49,7 +49,7 @@ const About = () => {
                                 title='Chat With Us'
                                 span_left='Chat with'
                                 span_right='Us'
-                                desc='Chat with us and get an immediate estimate tailored just for your lifestyle and living space.  Ask us about our environmentally friendly cleaning products, our extra services or our Same Day Service.'
+                                desc='Chat with our best in class customer service agents.  Ask us about our environmentally friendly cleaning products, our extra services or our Same Day Service.'
                                 buttonText='Chat With Us'
                                 link = '/contact'/>
                         </Grid>
