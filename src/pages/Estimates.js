@@ -60,7 +60,6 @@ const Estimates = () => {
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={12} md={12}>
                         {content}
-                        ESTIMATE PAGE
                     </Grid>
                 </Grid>
             </div>

@@ -88,7 +88,7 @@ const Appointments = () => {
                     <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
                     <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
                     <Typography variant="body1" marginBottom='20px'>
-                        First time using our Sparkling Services™? Click NEW BOOKING to get an estimate in real time. Customize your estimate to your liking, select from our standard, extra or pet service(s) and choose a date. We take care of the rest.
+                        First we give you an INSTANT hassle-free estimate, then you choose a date and time.
                         {/*<ol>*/}
                         {/*    <li>Choose NEW BOOKING</li>*/}
                         {/*    <li>Get an Estimate</li>*/}
@@ -108,7 +108,7 @@ const Appointments = () => {
                             type="Submit"
                             onClick = {handleEstimateClick}
                             className='classes button'>
-                            New Booking
+                            BOOK NOW
                         </Button>
                     </CardActions>
                 </Grid>

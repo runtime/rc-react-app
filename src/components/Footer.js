@@ -21,8 +21,7 @@ const Footer = () => {
                               color: 'white',
                               fontFamily: 'Helvetica " "Arial ',
                               fontWeight: '600',
-                              fontSize: '.9em',
-                              paddingLeft: {xs: 3, sm: 3, md: 0, lg: 0},
+                              paddingLeft: {xs: 2, sm: 3, md: 6, lg: 6},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
@@ -33,7 +32,7 @@ const Footer = () => {
 
                         <Link href="https://www.instagram.com/rapidclean_" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center', color: 'white' }}>
                             <InstagramIcon />
-                            <Typography sx={{marginLeft: '6px'}}  variant="body2" color="white">
+                            <Typography sx={{ fontSize: {xs: '.65em', sm: '.7em', md: '.8em', lg: '1em'}, marginLeft: '6px'}}  variant="body2" color="white">
                                 Follow Us on Instagram!
                             </Typography>
 
@@ -45,16 +44,15 @@ const Footer = () => {
                           sx={{
                               color: 'white',
                               fontFamily: 'Helvetica Bold" "Arial Bold',
-                              fontWeight: '800',
-                              fontSize: '1.15em',
+                              fontWeight: '600',
                               alignItems: 'right',
-                              paddingRight: {xs: 3, sm: 3, md: 3, lg: 0},
+                              paddingRight: {xs: 2, sm: 3, md: 6, lg: 6},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
                               opacity: {xs: 1, sm: 1, lg: 1}
                           }}>
-                        <Typography variant="body2" color="white">
+                        <Typography sx={{ fontSize: {xs: '.65em', sm: '.7em', md: '.8em', lg: '1em'}}} variant="body2" color="white">
                             © 2024 RapidClean. All rights reserved.
                         </Typography>
                     </Grid>
