@@ -117,9 +117,9 @@ export default function Calendar({onBookingComplete}) {
     //Dynamically generate the calLink based on totalHours
     const totalHours = estimate?.servicedetails?.data?.totalhours;
     // UNCOMMENT for PROD
-    //const callink = totalHours ? `rapidclean/${totalHours}-hrs` : `rapidclean/4-hrs`;
+    const callink = totalHours ? `rapidclean/${totalHours}-hrs` : `rapidclean/4-hrs`;
     // comment for LOCAL DEV
-    const callink = `rapidclean/2-hrs-test`;
+   // const callink = `rapidclean/2-hrs-test`;
 
 
     console.log('[Calendar] estimate: ', estimate);
