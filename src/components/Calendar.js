@@ -116,7 +116,10 @@ export default function Calendar({onBookingComplete}) {
 
     //Dynamically generate the calLink based on totalHours
     const totalHours = estimate?.servicedetails?.data?.totalhours;
-    const callink = totalHours ? `rapidclean/${totalHours}-hrs` : `rapidclean/4-hrs`;
+    // UNCOMMENT for PROD
+    //const callink = totalHours ? `rapidclean/${totalHours}-hrs` : `rapidclean/4-hrs`;
+    // comment for LOCAL DEV
+    const callink = `rapidclean/2-hrs-test`;
 
 
     console.log('[Calendar] estimate: ', estimate);
@@ -157,7 +160,7 @@ export default function Calendar({onBookingComplete}) {
                     console.log('[Calendar] booking: ', booking);
                     createBooking(booking);
                     onBookingComplete(bookingId);
-                    alert("Booking Successful V2 event");
+                    //alert("Booking Successful V2 event");
 
                 },
             });
@@ -179,7 +182,11 @@ export default function Calendar({onBookingComplete}) {
                 name: `${user.userDetails.firstname} ${user.userDetails.lastname}`,
                 email: user.userDetails.email,
                 phone: user.userDetails.phone,
-                location: `${location.locationdetails.streetaddress}, ${location.locationdetails.city}, ${location.locationdetails.state} ${location.locationdetails.zip}`,
+                location: JSON.stringify({
+                    value: "attendeeInPerson",
+                    // It can be any string that defines an address where the meeting would occur
+                    optionValue: location.locationdetails.streetaddress + " " + location.locationdetails.city + " " + location.locationdetails.state + " " + location.locationdetails.zip,
+                }),
                 notes: `Hey ${user.userDetails.firstname}, Congratulations on booking a ${estimate.servicedetails.typeofservice} with RapidClean.
                         We value your privacy, so we have created an anonymous account and booking for you.
                         Your anonymous user name is ${estimate.servicedetails.userID}.
