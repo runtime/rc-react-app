@@ -15,7 +15,6 @@ import { RapidCleanTheme } from "../themes/Theme.js";
 
 const EstimateItem = (estimate) => {
 
-
     // create a string in US Currency for Chip
     const convertEstimateForDisplay = (total) => {
         return total.toLocaleString('en-US', {

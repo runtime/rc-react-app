@@ -107,7 +107,6 @@ const EstimateCreate = () => {
         //todo clear form
     }
 
-
     return (
         <div className='Estimates'>
             <Box>
@@ -127,13 +126,9 @@ const EstimateCreate = () => {
                                         display="inline">Standard </Typography>
                             <Typography color="primary" variant="cardTitle" component='h1'
                                         display="inline">Cleaning</Typography>
-
-
                             <Typography variant="body1" marginBottom='20px'>
                                 Experience a pristine space with our standard cleaning service, featuring expert vacuuming of carpets and floors, precise dusting of every corner, and efficient mopping for a flawless finish.
-
                             </Typography>
-
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
