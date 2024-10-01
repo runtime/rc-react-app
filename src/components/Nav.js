@@ -53,6 +53,7 @@ const Nav = () => {
                         width: '100%',
                         maxWidth: '960px',
                         minWidth: '320px',
+                        minHeight: '90vh',
                         paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0},
                         paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
                     }}
