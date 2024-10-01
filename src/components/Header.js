@@ -71,19 +71,20 @@ const Header = () => {
                               color: 'white',
                               fontFamily: 'Helvetica Bold" "Arial Bold',
                               fontWeight: '800',
-                              fontSize: '1.15em',
+                              // fontSize: '1.15em',
                               alignItems: 'right',
                               paddingRight: {xs: 3, sm: 3, md: 3, lg: 0},
                               transitionDuration: '0.2s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
+                              display: {xs: 'none', sm: 'inline'},
                               opacity: {xs: 1, sm: 1, lg: 1}
                           }}>
-                        {/*<Typography sx={{fontSize: {xs:'.4em', sm:'.5em', md:'.75em'}}}*/}
-                        {/*    align='center' component="p" variant="body1" color="white">*/}
-                        {/*            CLEANING, Decluttering, AND ORGANIZING THE*/}
-                        {/*    </Typography>*/}
-                        {/*<Typography sx={{fontSize: {xs:'.4em', sm:'.5em', md:'.75em'}}} align='center' component="p" variant="body1" color="white">*/}
+                        <Typography sx={{fontSize: {xs:'.5em', sm:'.5em', md:'.65em', lg: '.75em'}}}
+                            align='right'  color="white">
+                                    NJ's Best Cleaning Service is now Serving Short Hills, Millburn, South Orange, East Hanover & Livingston
+                            </Typography>
+                        {/*<Typography sx={{fontSize: {xs:'.4em', sm:'.5em', md:'.75em'}}} align='right' component="p" variant="body1" color="white">*/}
                         {/*    reduces anxiety AND HAS A POSITIVE IMPACT ON our mental health*/}
                         {/*</Typography>*/}
                         {/*<Button variant='contained' text='white' color='primary' disableElevation onClick={handleButtonClick}*/}
