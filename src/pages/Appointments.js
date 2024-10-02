@@ -44,7 +44,7 @@ const Appointments = () => {
         // search by userID before we ask for their information
         //  IF you are coming from Appointments and you wish to enter in a previous appointment
         // we will do a quick check of the database to see if the user exists
-        const estimatetosearch = estimate.estimateId;
+        const estimatetosearch = estimate.servicedetails.userID;
         console.log('[Appointments] estimatetosearch: ' + estimatetosearch);
         // this sends a function to the provider to find the user and setUser which will change the conditions to show the address field locate4d in the UserDetail
         // todo refactor to use a custom useEffect hook with memo and fetch the data
