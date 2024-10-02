@@ -417,7 +417,7 @@ function Provider( {children} ) {
         try {
             console.log('[Provider] findUserByUserId, userId: ', userId);
             // Make the GET request to fetch the user by userId
-            const response = await axios.get(`${RC_API_URL}/estimates/users/${userId}`);
+            const response = await axios.get(`${RC_API_URL}/users/${userId}`);
             // Log the response
             console.log('[Provider] findUserByUserId Axios Get response.data: ', response.data);
             // Extract the user from the response
@@ -573,7 +573,7 @@ function Provider( {children} ) {
     const findLocationByUserId = async (userId) => {
         try {
             console.log('[Provider] findLocationByUserId, userId: ', userId);
-            const response = await axios.get(`${RC_API_URL}/locations/${userId}`);
+            const response = await axios.get(`${RC_API_URL}/locations/user/${userId}`);
             console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
 
             const locations = response.data.locations;
