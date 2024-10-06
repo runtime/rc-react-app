@@ -52,7 +52,7 @@ const RepeatService = () => {
             <div className='Estimates'>
                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Repeat </Typography>
                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
-                <Typography variant="body1" marginBottom='20px'>Used us before? Welcome Back! Enter in your estimateID from a previous booking (we put it in your email confirmation) and book us again with one click. We lock in that same low price every time.</Typography>
+                <Typography variant="body1" marginBottom='20px'>Welcome Back! Enter in a previous estimateID (we put it in your email confirmation) and chose a date for us to come again..</Typography>
 
                 <Formik
                     initialValues={initialValues}

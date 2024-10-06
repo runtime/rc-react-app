@@ -44,7 +44,7 @@ const Appointments = () => {
         // search by userID before we ask for their information
         //  IF you are coming from Appointments and you wish to enter in a previous appointment
         // we will do a quick check of the database to see if the user exists
-        const estimatetosearch = estimate.estimateId;
+        const estimatetosearch = estimate.servicedetails.userID;
         console.log('[Appointments] estimatetosearch: ' + estimatetosearch);
         // this sends a function to the provider to find the user and setUser which will change the conditions to show the address field locate4d in the UserDetail
         // todo refactor to use a custom useEffect hook with memo and fetch the data
@@ -88,7 +88,7 @@ const Appointments = () => {
                     <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
                     <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
                     <Typography variant="body1" marginBottom='20px'>
-                        First time using our Sparkling Services™? Click NEW BOOKING to get an estimate in real time. Customize your estimate to your liking, select from our standard, extra or pet service(s) and choose a date. We take care of the rest.
+                        First we give you an INSTANT hassle-free estimate, then you choose a date and time.
                         {/*<ol>*/}
                         {/*    <li>Choose NEW BOOKING</li>*/}
                         {/*    <li>Get an Estimate</li>*/}
@@ -108,7 +108,7 @@ const Appointments = () => {
                             type="Submit"
                             onClick = {handleEstimateClick}
                             className='classes button'>
-                            New Booking
+                            BOOK NOW
                         </Button>
                     </CardActions>
                 </Grid>
