@@ -16,8 +16,8 @@ const LocationCreate = () => {
     const { location } = useContext(EstimateContext);
     const { createLocation } = useContext(EstimateContext);
 
-    console.log('[LocationCreate] estimate id: ' + estimate.estimateId);
-    console.log('[LocationCreate] user id: ' + user.userId);
+    //console.log('[LocationCreate] estimate id: ' + estimate.estimateId);
+    //console.log('[LocationCreate] user id: ' + user.userId);
 
     //password validation
     const lowercaseRegEx = /(?=.*[a-z])/
@@ -56,7 +56,7 @@ const LocationCreate = () => {
     });
 
     const handleAddressFormSubmit = (values) => {
-        console.log('[LocationCreate] onFormSubmit values:', values);
+        //console.log('[LocationCreate] onFormSubmit values:', values);
         // Add your form submission logic here
         createLocation(values)
     };

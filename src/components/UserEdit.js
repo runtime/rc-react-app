@@ -24,7 +24,7 @@ const EditUser =({user}) => {
     // get edit func from provider as well as onSubmit to pass event with data up
 
     //this is correct
-    console.log('[EditUser] user: , ', user)
+    //console.log('[EditUser] user: , ', user)
 
     // removing the servicedetails wrapper (to use calculateEstimate) but storing the id which sits outside of it
    // const   initialValues   = user.userdetails.id;
@@ -33,7 +33,7 @@ const EditUser =({user}) => {
     //console.log('[EditUser] initialValues: ' , initialValues)
 
     const handleSubmit = (values) => {
-        console.log('[editUser] handleSubmit:', values);
+        //console.log('[editUser] handleSubmit:', values);
         //onSubmit()
         //editUserById(id, values);
     }

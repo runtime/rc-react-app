@@ -2,7 +2,7 @@ import {Chip} from "@mui/material";
 import React from "react";
 
 const EstimateChip = ({total}) => {
-    console.log('[EstimateChip] num input: ', total)
+    //console.log('[EstimateChip] num input: ', total)
     return(
         <Chip
             size='small'

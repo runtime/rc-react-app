@@ -14,7 +14,7 @@ const UserCreate = () => {
     const { estimate } = useContext(EstimateContext);
     const { createUser } = useContext(EstimateContext);
 
-    console.log('[UserCreate] estimate.estimateId: ' + estimate.estimateId);
+    //console.log('[UserCreate] estimate.estimateId: ' + estimate.estimateId);
 
 
     const initialValues = {
@@ -73,7 +73,7 @@ const UserCreate = () => {
     });
 
     const handleFormSubmit = (values) => {
-        console.log('[UserCreate] onFormSubmit values:', values);
+        //console.log('[UserCreate] onFormSubmit values:', values);
         // Add your form submission logic here
         createUser(values)
     };

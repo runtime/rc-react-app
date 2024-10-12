@@ -117,16 +117,16 @@ export default function Calendar({onBookingComplete}) {
     //Dynamically generate the calLink based on totalHours
     const totalHours = estimate?.servicedetails?.data?.totalhours;
     // UNCOMMENT for PROD
-    //const callink = totalHours ? `rapidclean/${totalHours}-hrs` : `rapidclean/4-hrs`;
+    const callink = totalHours ? `rapidclean/${totalHours}-hrs` : `rapidclean/4-hrs`;
     // comment for LOCAL DEV
-    const callink = `rapidclean/2-hrs-test`;
+    //const callink = `rapidclean/2-hrs-test`;
 
 
-    console.log('[Calendar] estimate: ', estimate);
-    console.log('[Calendar] user: ', user);
-    console.log('[Calendar] location: ', location);
-    console.log('[Calendar] estimateId: ', estimateId);
-    console.log('[Calendar] callink ', callink);
+    // console.log('[Calendar] estimate: ', estimate);
+    // console.log('[Calendar] user: ', user);
+    // console.log('[Calendar] location: ', location);
+    // console.log('[Calendar] estimateId: ', estimateId);
+    // console.log('[Calendar] callink ', callink);
 
     useEffect(() => {
         (async function () {
@@ -155,9 +155,9 @@ export default function Calendar({onBookingComplete}) {
                             status: bookingData.status,
                             eventTitle: bookingData.eventTitle,
                     }}
-                    console.log('[Calendar] bookingData: ', bookingData);
-                    console.log('[Calendar] bookingId: ', bookingId);
-                    console.log('[Calendar] booking: ', booking);
+                    // console.log('[Calendar] bookingData: ', bookingData);
+                    // console.log('[Calendar] bookingId: ', bookingId);
+                    // console.log('[Calendar] booking: ', booking);
                     createBooking(booking);
                     onBookingComplete(bookingId);
                     //alert("Booking Successful V2 event");
