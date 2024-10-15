@@ -21,12 +21,12 @@ const EstimateDetail = () => {
 
    const navigate = useNavigate();
 
-   console.log('[EstimateDetail] estimate: ' + estimate);
+   //console.log('[EstimateDetail] estimate: ' + estimate);
     const hasServiceDetails = estimate?.servicedetails;
     const estimateId = estimate.estimateId;
 
-   console.log('[EstimateDetail] estimate?.hasServiceDetails: ' + hasServiceDetails);
-   console.log('[EstimateDetail] estimate.estimateId: ' + estimateId);
+   //console.log('[EstimateDetail] estimate?.hasServiceDetails: ' + hasServiceDetails);
+   //console.log('[EstimateDetail] estimate.estimateId: ' + estimateId);
 
     // create a string in US Currency for Chip
     const convertEstimateForDisplay = (total) => {
@@ -37,7 +37,7 @@ const EstimateDetail = () => {
     } /* $2,500.00 */
 
     const handleNextClick = () => {
-        console.log('[EstimateDetail] handleNextClick ---> Appointments');
+        //console.log('[EstimateDetail] handleNextClick ---> Appointments');
         // Todo set the nav state
         setCurrentNavigation(2)
         navigate('/appointments');
@@ -48,12 +48,12 @@ const EstimateDetail = () => {
    }
 
    const handleOnEditCloseClick = () => {
-        console.log('[EstimateDetail] handleOnEditCloseClick');
+        //console.log('[EstimateDetail] handleOnEditCloseClick');
         setShowEdit(!showEdit);
    }
 
    const handleSubmit = () => {
-       console.log('[EstimateDetail] handleSubmit');
+       //console.log('[EstimateDetail] handleSubmit');
        setShowEdit(false);
    }
     // content is the markup that is displayed in the browser depending on the state of the estimate

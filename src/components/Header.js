@@ -23,7 +23,7 @@ const Header = () => {
         // todo navigate to estimates
         //setCurrentNavigation(1);
         //navigate('/estimates');
-        console.log('Button clicked!');
+        //console.log('Button clicked!');
     }
 
     return (
