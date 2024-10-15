@@ -13,7 +13,7 @@ import EstimateContext from "../context/estimate";
 
 const Contact = () => {
     const {estimate} = useContext(EstimateContext);
-    console.log('[Contact] estimate ', estimate);
+    //console.log('[Contact] estimate ', estimate);
     let content;
     // if we have a booking
     // if we have an estimate, a user and a location but not a booking
@@ -44,15 +44,15 @@ const Contact = () => {
                             <CardContent>
                                 <Box >
                                     <Grid container spacing={6}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            {/*<Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat </Typography>*/}
-                                            {/*<Typography sx={{marginBottom: 2}} color="primary" variant="cardTitle"  component='h1' display="inline">With Us</Typography>*/}
-                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat With </Typography>
-                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 2}} component='body'>Chat with a Customer Service Assistant 24/7. This is the fastest way to contact us.</Typography>
-                                            <Box> {content} </Box>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        {/*<Grid item xs={12} sm={12} md={6} lg={6}>*/}
+                                        {/*    /!*<Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat </Typography>*!/*/}
+                                        {/*    /!*<Typography sx={{marginBottom: 2}} color="primary" variant="cardTitle"  component='h1' display="inline">With Us</Typography>*!/*/}
+                                        {/*    <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Chat With </Typography>*/}
+                                        {/*    <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>*/}
+                                        {/*    <Typography sx={{marginBottom: 2}} component='body'>Chat with a Customer Service Assistant 24/7. This is the fastest way to contact us.</Typography>*/}
+                                        {/*    <Box> {content} </Box>*/}
+                                        {/*</Grid>*/}
+                                        <Grid item xs={12} sm={12} md={12} lg={12}>
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Email </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
                                             <Typography sx={{marginBottom: 1}} component='body'>We'd love to hear from you, you can email us anytime.</Typography>

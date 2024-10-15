@@ -18,7 +18,7 @@ import * as Yup from "yup";
 import UserCreate from "./UserCreate";
 
 const RepeatService = () => {
-    console.log('[RepeatService] ');
+    //console.log('[RepeatService] ');
     const { findEstimateById } = useContext(EstimateContext);
     const { repeatService } = useContext(EstimateContext);
 
@@ -35,7 +35,7 @@ const RepeatService = () => {
     });
 
     const handleFindByEstimateIdSubmit = (values) => {
-        console.log('[RepeatService] handleFindByEstimateIdSubmit: ', values)
+        //console.log('[RepeatService] handleFindByEstimateIdSubmit: ', values)
         findEstimateById(values);
         //repeatService(findEstimateById);
         //navigate(`/estimate/${values}`);

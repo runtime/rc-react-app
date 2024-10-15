@@ -13,7 +13,7 @@ const RCCard = (props) => {
     const { setCurrentNavigation } = useContext(EstimateContext)
     const handleButtonClick = () => {
         //e.preventDefault();
-        console.log("[RCCard] Handle Button Clicked!, props.navid: ", props.navid);
+        //console.log("[RCCard] Handle Button Clicked!, props.navid: ", props.navid);
         //todo set Navigation State in context
         setCurrentNavigation(props.navid)
         // todo navigate to the link
