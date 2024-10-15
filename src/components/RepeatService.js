@@ -19,27 +19,30 @@ import UserCreate from "./UserCreate";
 
 const RepeatService = () => {
     //console.log('[RepeatService] ');
-    const { findEstimateById } = useContext(EstimateContext);
-    const { repeatService } = useContext(EstimateContext);
+    // const { findEstimateById } = useContext(EstimateContext);
+    const { validateUserByEstimateId } = useContext(EstimateContext);
 
     const navigate = useNavigate();
 
 
     const initialValues = {
-        estimateID: '',
+        estimateId: '',
+        userId: '',
     };
 
     const validationSchema = Yup.object().shape({
-        estimateID: Yup.string().required("Please enter a previous Estimate ID"),
+        estimateId: Yup.string().required("Please enter a previous Estimate ID"),
+        userId: Yup.string().required("Please enter a previous User ID"),
+
 
     });
 
     const handleFindByEstimateIdSubmit = (values) => {
-        //console.log('[RepeatService] handleFindByEstimateIdSubmit: ', values)
-        findEstimateById(values);
-        //repeatService(findEstimateById);
-        //navigate(`/estimate/${values}`);
-    }
+        console.log('[RepeatService] handleFindByEstimateIdSubmit: ', values);
+        const { estimateId, userId } = values;  // Destructure values object
+        validateUserByEstimateId(estimateId, userId);  // Pass both parameters separately
+    };
+
 
 
     const handleEdit = (id) => {
@@ -52,7 +55,11 @@ const RepeatService = () => {
             <div className='Estimates'>
                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Repeat </Typography>
                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
-                <Typography variant="body1" marginBottom='20px'>Welcome Back! Enter in a previous estimateID (we put it in your email confirmation) and chose a date for us to come again..</Typography>
+                <Typography variant="body1" marginBottom='20px'>Welcome Back! Enter in your UserID and any previous Estimate ID,
+                    and chose a date for us to come again.
+                    Your User ID and Estimate ID are in the email we sent you for your last visit.
+                </Typography>
+
 
                 <Formik
                     initialValues={initialValues}
@@ -62,16 +69,28 @@ const RepeatService = () => {
                     {({values, errors, touched, handleBlur, isValid, handleInputChange}) => (
                         <Form>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6} md={4} marginBottom={1} >
+                                <Grid item xs={12} sm={12} md={6} marginBottom={1} >
                                     <FormControl fullWidth variant="outlined">
                                         <Field
                                             as={TextField}
-                                            name="estimateID"
+                                            name="userId"
                                             variant="outlined"
-                                            label="Enter Estimate ID"
+                                            label="Enter User Id"
                                         />
-                                        {errors.estimateID && touched.estimateID ?
-                                            <div><Typography color='red'>{errors.estimateID}</Typography></div> : null}
+                                        {errors.userId && touched.UserId ?
+                                            <div><Typography color='red'>{errors.UserId}</Typography></div> : null}
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} marginBottom={1} >
+                                    <FormControl fullWidth variant="outlined">
+                                        <Field
+                                            as={TextField}
+                                            name="estimateId"
+                                            variant="outlined"
+                                            label="Enter Estimate Id"
+                                        />
+                                        {errors.estimateId && touched.estimateId ?
+                                            <div><Typography color='red'>{errors.estimateId}</Typography></div> : null}
                                     </FormControl>
                                 </Grid>
                             </Grid>
@@ -91,7 +110,7 @@ const RepeatService = () => {
                                     color="primary"
                                     type="Submit"
                                     className='classes button'>
-                                    Book Again
+                                    BOOK AGAIN
                                 </Button>
                             </CardActions>
                         </Form>

@@ -17,7 +17,7 @@ function Provider( {children} ) {
     const [nav, setNav] = useState(0);
 
     const RC_API_URL = process.env.REACT_APP_RC_API_URL;
-    //console.log("API URL:", RC_API_URL);
+    console.log("API URL:", RC_API_URL);
 
 
 
@@ -432,6 +432,25 @@ function Provider( {children} ) {
         }
     };
 
+    const validateUserByEstimateId = async (estimateId, userId) => {
+        console.log('[Provider] validateUserByEstimateId  userId, estimateId: ', estimateId, userId);
+
+        try {
+            // Send a POST request with the estimateId and userId in the body
+            const response = await axios.post(`${RC_API_URL}/validate`, {
+                estimateId: estimateId,
+                userId: userId
+            });
+
+            const foundEstimate = response.data.estimate;  // Assuming the response contains the estimate
+            setEstimate(foundEstimate);
+            console.log('[Provider] validateUserByEstimateId foundEstimate: ', foundEstimate);
+            // return true; // You can return true if needed
+        } catch (error) {
+            console.log('[Provider] Error in validateUserByEstimateId:', error.response ? error.response.data : error.message);
+            // return false; // You can return false if needed
+        }
+    };
 
     const findEstimateById = async(obj) => {
         //console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
@@ -672,6 +691,7 @@ function Provider( {children} ) {
         findUserById,
         findUserByUserId,
         editUserById,
+        validateUserByEstimateId,
         setUser,
         user,
         createLocation,
