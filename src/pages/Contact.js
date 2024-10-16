@@ -60,11 +60,11 @@ const Contact = () => {
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Text </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
                                             <Typography sx={{marginBottom: 1}} component='body'>Text us, if  you prefer.</Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4"  color='primary'>212-555-1212.</Typography>
+                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4"  color='primary'>(862) 786-8040</Typography>
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Call </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 1}} component='body'>Call us between 9-5 M-F. We will try to return your call as quickly as possible.  </Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4"  color='primary'>212-555-1212</Typography>
+                                            <Typography sx={{marginBottom: 1}} component='body'>Call us between 9-5 M-F.  </Typography>
+                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4"  color='primary'>(862) 786-8040</Typography>
                                             <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Follow </Typography>
                                             <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
                                             <Typography sx={{marginBottom: 1}} component='body' >Stay up to date with our social to latest services and offers! </Typography>
