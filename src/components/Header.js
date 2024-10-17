@@ -97,8 +97,8 @@ const Header = () => {
                           paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
                       }}>
                     <Image src={HeaderTown}
-                           width='40%'
-                           height='40%'
+                           width='60%'
+                           height='60%'
                            fit='cover'
                            className='app-logo'
                            alt="rapidclean town"
