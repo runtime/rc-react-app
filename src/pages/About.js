@@ -59,7 +59,7 @@ const About = () => {
                                 title='Contact Us'
                                 span_left='Contact'
                                 span_right='Us'
-                                desc='Contact us anytime. Ask us about our environmentally friendly cleaning products, our Sparkling Services, List Extra Services And Pet Services.'
+                                desc='Contact us anytime. Ask us about our environmentally friendly cleaning products, or details about our Extra Services and Pet Services.'
                                 buttonText='Contact Us'
                                 link = '/contact'/>
                         </Grid>

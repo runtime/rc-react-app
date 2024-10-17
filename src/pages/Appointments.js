@@ -91,7 +91,7 @@ const Appointments = () => {
                         First time using us? Get a Free Instant Estimate and Schedule an Appointment online.
                     </Typography>
                     <Typography variant="body1" marginBottom='10px' sx={{fontSize: '.8em', color: 'grey'}}>
-                        We do not take reservations or give estimates over the phone.
+                        Unfortunately we do not take reservations or give estimates over the phone at this time.
                     </Typography>
 
                     <CardActions>
@@ -113,6 +113,11 @@ const Appointments = () => {
                 <Grid marginTop = '0px'>
                     <RepeatService />
                 </Grid>
+
+                <Typography variant="body1" marginBottom='10px' sx={{fontSize: '.7em', color: 'grey'}}>
+                    PRIVACY:  We respect your privacy and will NEVER share your information with any third parties. We do NOT collect cookies, use tokens or use pixels to track you in ANY WAY. That doesn't mean your data isn't secure. We take your data very seriously. Your information is sent through SSL and is encrypted en-route. We use anonymous usernames and random estimate IDs for your protection. We don't sell your information or use it to solicit you. Unlike other cleaning services, we will never call you unless it is to return a call.
+                    We appreciate you and your business :)
+                </Typography>
             </>
 
     }

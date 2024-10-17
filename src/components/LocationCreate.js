@@ -64,9 +64,9 @@ const LocationCreate = () => {
     return (
         <div className='Estimates'>
 
-            <Typography color="black" variant="body1" component="h3" marginBottom="20px">
-                Please Enter The Location Information that is associated with this reservation.
-            </Typography>
+            {/*<Typography color="black" variant="body1" component="h3" marginBottom="20px">*/}
+            {/*    Please enter The Location Information that is associated with this reservation.*/}
+            {/*</Typography>*/}
             <Formik
                 initialValues={initialValues}
                 validationSchema={LocationSchema}

@@ -17,7 +17,7 @@ function Provider( {children} ) {
     const [nav, setNav] = useState(0);
 
     const RC_API_URL = process.env.REACT_APP_RC_API_URL;
-    console.log("API URL:", RC_API_URL);
+    //console.log("API URL:", RC_API_URL);
 
 
 
@@ -58,7 +58,7 @@ function Provider( {children} ) {
         return estimateId;
     }
 
-    // todo navigation state
+    //  navigation state
 
     const setCurrentNavigation = (id) => {
         //console.log('[Provider] setNav id: ', id)
@@ -433,7 +433,7 @@ function Provider( {children} ) {
     };
 
     const validateUserByEstimateId = async (estimateId, userId) => {
-        console.log('[Provider] validateUserByEstimateId  userId, estimateId: ', estimateId, userId);
+        //console.log('[Provider] validateUserByEstimateId  userId, estimateId: ', estimateId, userId);
 
         try {
             // Send a POST request with the estimateId and userId in the body
@@ -444,10 +444,10 @@ function Provider( {children} ) {
 
             const foundEstimate = response.data.estimate;  // Assuming the response contains the estimate
             setEstimate(foundEstimate);
-            console.log('[Provider] validateUserByEstimateId foundEstimate: ', foundEstimate);
+            //console.log('[Provider] validateUserByEstimateId foundEstimate: ', foundEstimate);
             // return true; // You can return true if needed
         } catch (error) {
-            console.log('[Provider] Error in validateUserByEstimateId:', error.response ? error.response.data : error.message);
+            //console.log('[Provider] Error in validateUserByEstimateId:', error.response ? error.response.data : error.message);
             // return false; // You can return false if needed
         }
     };

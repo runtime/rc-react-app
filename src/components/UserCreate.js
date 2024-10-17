@@ -82,7 +82,7 @@ const UserCreate = () => {
         <div className='Estimates'>
 
             <Typography color="black" variant="body1" component="h3" marginBottom="20px">
-                Please Enter Your Information to preserve this Estimate. You can book anytime after this step.
+                Please provide the following information to complete your estimate.
             </Typography>
             <Formik
                 initialValues={initialValues}
