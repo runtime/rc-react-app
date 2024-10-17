@@ -55,10 +55,13 @@ const RepeatService = () => {
             <div className='Estimates'>
                 <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Repeat </Typography>
                 <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
-                <Typography variant="body1" marginBottom='20px'>Welcome Back! Enter in your UserID and any previous Estimate ID,
+                <Typography variant="body1" marginBottom='5px'>Welcome Back! Enter in your UserID and any previous Estimate ID,
                     and chose a date for us to come again.
-                    Your User ID and Estimate ID are in the email we sent you for your last visit.
                 </Typography>
+                <Typography variant="body1" marginBottom='20px' sx={{fontSize: '.8em', color: 'grey'}}>
+                    (Your User ID and Estimate ID are in the email we sent you for your last visit.)
+                </Typography>
+
 
 
                 <Formik
