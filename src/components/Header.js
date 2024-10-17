@@ -3,6 +3,7 @@ import { Image } from 'mui-image';
 import Logo from '../logo.svg';
 import {Box, Button, Grid, Link, Typography} from '@mui/material';
 import HeaderImage from '../media/header-image.jpg';
+import HeaderTown from '../media/rc-town-header.png';
 import React, {useContext} from "react";
 //import { useNavigate } from 'react-router-dom';
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -28,148 +29,95 @@ const Header = () => {
 
     return (
         //todo to sticky menu zIndex: 1, position: 'fixed'
-        <Box sx={{width: '100%'}}>
-            <BottomNavigation sx={{ backgroundColor: RapidCleanTheme.palette.secondary.main }} showLabels value={0}>
-                <Grid container alignItems="center" justifyContent="space-between" sx={{maxWidth: '960px'}}>
-                    <Grid item
-                          sx={{
+        <Box sx={{
+            backgroundColor: '#bddaa6', //<-- light green from primary color
+            width: '100%',
+            //paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0}, //<--- these match the NAV padding which is the bounding box
+            //paddingRight: { xs: 2, sm: 2, md: 2, lg: 0} //<--- ^^
+            // these have been moved to the grid items that hold the logo (left) and image (right)
+        }}>
+            <Grid container alignItems="center" justifyContent="space-between" sx={{ maxWidth: '960px', margin: 'auto', padding: '6px' }}>
+                {/* Left Image - Logo */}
+                <Grid item xs={3} sm={3} lg={3}
+                      sx={{
+                          //backgroundColor: '#ff7700',
+                          // transitionDuration: '0.2s',
+                          // transitionProperty: 'all',
+                          // transitionTimingFunction: 'linear',
+                          // opacity: { xs: 1, sm: 1, lg: 1 },
+                          display: 'flex',
+                          alignItems: 'flex-start', // Push the logo to the top
+                          justifyContent: 'flex-start', // Align it towards the start (top-left)
+                          paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0},
+                      }}>
+                    <Link href="/" target="_blank" rel="noopener">
+                        <Image src={Logo}
+                               width='50%'
+                               height='50%'
+                               fit='cover'
+                               className='app-logo'
+                               alt="rapidclean logo"
+                        />
+                    </Link>
+                </Grid>
 
+                {/* Center Text */}
 
-                              alignItems: 'left',
-                              color: 'white',
-                              fontFamily: 'Helvetica " "Arial ',
-                              fontWeight: '600',
-                              fontSize: '.9em',
-                              paddingLeft: {xs: 3, sm: 3, md: 3, lg: 0},
-                              transitionDuration: '0.2s',
-                              transitionProperty: 'all',
-                              transitionTimingFunction: 'linear',
-                              opacity: {xs: 1, sm: 1, lg: 1},
+                <Grid item xs={6} sm={6} lg={6}
+                      sx={{
+                          //backgroundColor: '#cccccc',
+                          display: 'flex',
+                          alignItems: 'flex-middle',
+                          justifyContent: 'flex-middle',
 
+                      }}>
+                   <Typography sx={{
+                       fontSize: {xs: '.5em', sm:'.6em', md:'.8em', lg: '1em'},
+                       fontFamily: "Goblin One, serif",
+                       fontWeight: 400,
+                       fontStyle: 'normal',
+                       color: 'grey',
+                       display: {xs: 'block', sm: 'block', md: 'block', lg: 'block'}
+                   }}>
+                       "..For when the cobwebs are not part of the Halloween Decorations..."
+                   </Typography>
+                </Grid>
 
-                          }}>
-
-                        <Link href="/" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center', color: 'white', paddingTop: '9px'}}>
-
-                            <Image src={Logo}
-                                   width='35%'
-                                   // height={30}
-                                   fit='cover'
-                                   className='app-logo'
-                                   display='flex'
-                                   flexDirection='row'
-                                   alt="rapidclean logo"
-                            />
-
-                        </Link>
-                    </Grid>
-
-                    {/* Copyright text on the right */}
-
-                    <Grid item
-                          sx={{
-                              color: 'white',
-                              fontFamily: 'Helvetica Bold" "Arial Bold',
-                              fontWeight: '800',
-                              // fontSize: '1.15em',
-                              alignItems: 'right',
-                              paddingRight: {xs: 3, sm: 3, md: 3, lg: 0},
-                              transitionDuration: '0.2s',
-                              transitionProperty: 'all',
-                              transitionTimingFunction: 'linear',
-                              display: {xs: 'none', sm: 'inline'},
-                              opacity: {xs: 1, sm: 1, lg: 1}
-                          }}>
-                        <Typography sx={{fontSize: {xs:'.5em', sm:'.5em', md:'.65em', lg: '.75em'}}}
-                            align='right'  color="white">
-                                    NJ's Best Cleaning Service is now Serving Short Hills, Millburn, South Orange, East Hanover & Livingston
-                            </Typography>
-                        {/*<Typography sx={{fontSize: {xs:'.4em', sm:'.5em', md:'.75em'}}} align='right' component="p" variant="body1" color="white">*/}
-                        {/*    reduces anxiety AND HAS A POSITIVE IMPACT ON our mental health*/}
-                        {/*</Typography>*/}
-                        {/*<Button variant='contained' text='white' color='primary' disableElevation onClick={handleButtonClick}*/}
-                        {/*        sx={{textTransform: 'Capitalize',*/}
-                        {/*            size: "small",*/}
-                        {/*            color:"primary",*/}
-                        {/*            padding: '3px',*/}
-                        {/*            paddingLeft: '9px',*/}
-                        {/*            paddingRight: '9px',*/}
-                        {/*            margin: 'auto',*/}
-                        {/*            borderRadius: '6px',*/}
-                        {/*            fontWeight: 'bold',*/}
-                        {/*            minHeight: '20px',*/}
-                        {/*            maxHeight: '30px',*/}
-                        {/*        }}*/}
-                        {/*>*/}
-                        {/*    Free Estimate*/}
-                        {/*</Button>*/}
-                    </Grid>
+                {/* Right Image - HeaderTown */}
+                <Grid item xs={3} sm={3} lg={3}
+                      sx={{
+                          //backgroundColor: '#ffcc00',
+                          // transitionDuration: '0.1s',
+                          // transitionProperty: 'all',
+                          // transitionTimingFunction: 'linear',
+                          // opacity: { xs: 1, sm: 1, lg: 1 },
+                          display: 'flex',
+                          alignItems: 'flex-end', // Align the right image at the bottom
+                          justifyContent: 'flex-end', // Justify content to the end
+                          paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
+                      }}>
+                    <Image src={HeaderTown}
+                           width='40%'
+                           height='40%'
+                           fit='cover'
+                           className='app-logo'
+                           alt="rapidclean town"
+                    />
+                </Grid>
+            </Grid>
+            <BottomNavigation showLabels value={0} sx={{maxHeight: '30px', alignItems: 'center'}}>
+                <Grid item xs={12} sm={12}>
+                    <Typography sx={{fontSize: {xs:'.5em', sm:'.65em', md:'.75em', lg: '.85em'}}}
+                                color="primary">
+                        Exclusively Serving Chatham, Short Hills, Maplewood, Millburn, Livingston, West Orange and South Orange.
+                    </Typography>
                 </Grid>
             </BottomNavigation>
         </Box>
+
     );
 }
-        // <div>
-        //     <Box sx={{
-        //         backgroundColor: '#cae5b0',
-        //         height: {xs: 60, sm: 72, lg:84},
-        //         width: '100%',
-        //     }}>
-        //
-        //         <Grid container alignItems="center" justifyContent="space-between" sx={{width: '100%', maxWidth: '1024px', backgroundColor:'#ff660'}}>
-        //             <Grid item sx={{
-        //                 alignItems: 'left',
-        //                 color: 'white',
-        //                 // paddingLeft: {xs: 2, sm: 2, md: 0, lg: 0},
-        //                 transitionDuration: '0.3s',
-        //                 transitionProperty: 'all',
-        //                 transitionTimingFunction: 'linear',
-        //                 opacity: {xs: 1, sm: 1, lg: 1},
-        //             }}>
-        //                 <Image src={Logo}
-        //                        width='100%'
-        //                        height={50}
-        //                        fit='cover'
-        //                        className='app-logo'
-        //                        display='flex'
-        //                        flexDirection='row'
-        //                        alt="rapidclean logo"
-        //                 />
-        //             </Grid>
-        //         </Grid>
-        //
-        //
-        //
-        //
-        //     </Box>
-        //
-        //     {/*    <Box sx={{*/}
-        //     {/*        zIndex: 1,*/}
-        //     {/*        margin: 'auto',*/}
-        //     {/*        // height: {xs: 42, sm: 48, md: 72, lg: 72},*/}
-        //     {/*        // width: {xs: 120, sm: 140, md: 160, lg: 160},*/}
-        //     {/*        textAlign: 'left',*/}
-        //     {/*        position: 'inline',*/}
-        //     {/*        // left: {xs: 20, sm: 20, md: 90, lg: 250},*/}
-        //     {/*        // top: {xs: 10, sm: 8, md: 8, lg: 8}*/}
-        //     {/*    }}>*/}
-        //
-        //     {/*        <Image src={Logo}*/}
-        //     {/*               width='100%'*/}
-        //     {/*            // height={10}*/}
-        //     {/*               fit='cover'*/}
-        //     {/*               className='app-logo'*/}
-        //     {/*               display='flex'*/}
-        //     {/*               flexDirection='row'*/}
-        //     {/*               alt="rapidclean logo"*/}
-        //     {/*        />*/}
-        //     {/*</Box>*/}
-        //
-        //
-        //
-        // </div>
-   // );
-//}
+
 
 export default Header;
 
