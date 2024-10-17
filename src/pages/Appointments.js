@@ -87,19 +87,12 @@ const Appointments = () => {
                 <Grid>
                     <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
                     <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
-                    <Typography variant="body1" marginBottom='20px'>
-                        First we give you an INSTANT hassle-free estimate, then you choose a date and time.
-                        {/*<ol>*/}
-                        {/*    <li>Choose NEW BOOKING</li>*/}
-                        {/*    <li>Get an Estimate</li>*/}
-                        {/*    <li>Fill out your Info</li>*/}
-                        {/*    <li>Choose a Date</li>*/}
-                        {/*</ol>*/}
-
+                    <Typography variant="body1" marginBottom='5px'>
+                        First time using us? Get a Free Instant Estimate and Schedule an Appointment online.
                     </Typography>
-                    {/*<Typography variant="body1" marginBottom='20px'>*/}
-                    {/*We look forward to seeing you soon!*/}
-                    {/*</Typography>*/}
+                    <Typography variant="body1" marginBottom='10px' sx={{fontSize: '.8em', color: 'grey'}}>
+                        We do not take reservations or give estimates over the phone.
+                    </Typography>
 
                     <CardActions>
                         <Button

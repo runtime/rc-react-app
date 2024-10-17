@@ -47,7 +47,7 @@ const Nav = () => {
                         width: '100%',
                         maxWidth: '960px',
                         minWidth: '480px',
-                        minHeight: '90vh',
+                        minHeight: '100vh',
                         paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0},
                         paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
                     }}
