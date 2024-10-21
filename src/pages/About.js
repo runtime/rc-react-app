@@ -29,7 +29,7 @@ const About = () => {
                                 title='Same Day Service'
                                 span_left='Same Day'
                                 span_right='Service'
-                                desc='We Offer Same Day Services to most locations in Essex NJ. Get an instant estimate and we can be there in an hour. Or book us for next week before your next event.'
+                                desc='We Offer Same Day Services whenever possible. Get an instant estimate and we can be there in an hour. Or book us for next week before your next event.'
                                 buttonText='Book Us Now'
                                 link = '/appointments'/>
                         </Grid>
@@ -39,18 +39,28 @@ const About = () => {
                                 title='Instant Estimates'
                                 span_left='Instant'
                                 span_right='Estimates'
-                                desc='Customized estimates to fit your budget! We use a custom algorithm to give you the best prices. Get an instant estimate without any personal information or sales call backs. '
+                                desc='Customized estimates to fit your budget! We use a custom algorithm to give you the best prices. Get an instant estimate without any sales call backs. '
                                 buttonText='Instant Estimate'
                                 link = '/estimates'/>
                         </Grid>
+                        {/*<Grid item xs={12} sm={12} md={12} lg={4} xl={4}>*/}
+                        {/*    <RCCard*/}
+                        {/*        navid={3}*/}
+                        {/*        title='Chat With Us'*/}
+                        {/*        span_left='Chat with'*/}
+                        {/*        span_right='Us'*/}
+                        {/*        desc='Chat with our customer service agents anytime.  Ask us about our environmentally friendly cleaning products, our Sparkling Services, List Extra Services And Pet Services.'*/}
+                        {/*        buttonText='Chat With Us'*/}
+                        {/*        link = '/contact'/>*/}
+                        {/*</Grid>*/}
                         <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
                             <RCCard
                                 navid={3}
-                                title='Chat With Us'
-                                span_left='Chat with'
+                                title='Contact Us'
+                                span_left='Contact'
                                 span_right='Us'
-                                desc='Chat with our customer service agents anytime.  Ask us about our environmentally friendly cleaning products, our Sparkling Services, List Extra Services And Pet Services.'
-                                buttonText='Chat With Us'
+                                desc='Contact us anytime. Ask us about our environmentally friendly cleaning products, or details about our Extra Services and Pet Services.'
+                                buttonText='Contact Us'
                                 link = '/contact'/>
                         </Grid>
                     </Grid>
@@ -168,7 +178,7 @@ const About = () => {
                                 <List
                                     List sx={{ marginLeft: 3, listStyleType: 'disc' }}
                                 >
-                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>The sink and counter</ListItem>
+                                    <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>The sink and counter and floors</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>The Bathtub and Shower Stalls</ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>The Toilet </ListItem>
                                     <ListItem sx={{ lineHeight: 1.15, display: 'list-item' }}>The Mirror, and any Glass Surfaces</ListItem>

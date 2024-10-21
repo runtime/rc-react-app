@@ -87,19 +87,12 @@ const Appointments = () => {
                 <Grid>
                     <Typography color="secondary" variant="cardTitle" component="h1" display="inline">New </Typography>
                     <Typography color="primary" variant="cardTitle" component='h1' display="inline">Service</Typography>
-                    <Typography variant="body1" marginBottom='20px'>
-                        First we give you an INSTANT hassle-free estimate, then you choose a date and time.
-                        {/*<ol>*/}
-                        {/*    <li>Choose NEW BOOKING</li>*/}
-                        {/*    <li>Get an Estimate</li>*/}
-                        {/*    <li>Fill out your Info</li>*/}
-                        {/*    <li>Choose a Date</li>*/}
-                        {/*</ol>*/}
-
+                    <Typography variant="body1" marginBottom='5px'>
+                        First time using us? Get a Free Instant Estimate and Schedule an Appointment online.
                     </Typography>
-                    {/*<Typography variant="body1" marginBottom='20px'>*/}
-                    {/*We look forward to seeing you soon!*/}
-                    {/*</Typography>*/}
+                    <Typography variant="body1" marginBottom='10px' sx={{fontSize: '.8em', color: 'grey'}}>
+                        Unfortunately we do not take reservations or give estimates over the phone at this time.
+                    </Typography>
 
                     <CardActions>
                         <Button
@@ -120,6 +113,11 @@ const Appointments = () => {
                 <Grid marginTop = '0px'>
                     <RepeatService />
                 </Grid>
+
+                <Typography variant="body1" marginBottom='10px' sx={{fontSize: '.7em', color: 'grey'}}>
+                    PRIVACY:  We respect your privacy and will NEVER share your information with any third parties. We do NOT collect cookies, use tokens or use pixels to track you in ANY WAY. That doesn't mean your data isn't secure. We take your data very seriously. Your information is sent through SSL and is encrypted en-route. We use anonymous usernames and random estimate IDs for your protection. We don't sell your information or use it to solicit you. Unlike other cleaning services, we will never call you unless it is to return a call.
+                    We appreciate you and your business :)
+                </Typography>
             </>
 
     }

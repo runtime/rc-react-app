@@ -58,7 +58,7 @@ function Provider( {children} ) {
         return estimateId;
     }
 
-    // todo navigation state
+    //  navigation state
 
     const setCurrentNavigation = (id) => {
         //console.log('[Provider] setNav id: ', id)
@@ -432,6 +432,25 @@ function Provider( {children} ) {
         }
     };
 
+    const validateUserByEstimateId = async (estimateId, userId) => {
+        //console.log('[Provider] validateUserByEstimateId  userId, estimateId: ', estimateId, userId);
+
+        try {
+            // Send a POST request with the estimateId and userId in the body
+            const response = await axios.post(`${RC_API_URL}/validate`, {
+                estimateId: estimateId,
+                userId: userId
+            });
+
+            const foundEstimate = response.data.estimate;  // Assuming the response contains the estimate
+            setEstimate(foundEstimate);
+            //console.log('[Provider] validateUserByEstimateId foundEstimate: ', foundEstimate);
+            // return true; // You can return true if needed
+        } catch (error) {
+            //console.log('[Provider] Error in validateUserByEstimateId:', error.response ? error.response.data : error.message);
+            // return false; // You can return false if needed
+        }
+    };
 
     const findEstimateById = async(obj) => {
         //console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
@@ -672,6 +691,7 @@ function Provider( {children} ) {
         findUserById,
         findUserByUserId,
         editUserById,
+        validateUserByEstimateId,
         setUser,
         user,
         createLocation,

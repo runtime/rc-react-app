@@ -13,12 +13,6 @@ import EstimateContext from '../context/estimate';
 
 const Nav = () => {
 
-    // const [servicesActive, setServicesActive] = React.useState(true);
-    // const [estimatesActive, setEstimatesActive] = React.useState(false);
-    // const [appointmentsActive, setAppointmentsActive] = React.useState(false);
-    // const [chatActive, setChatActive] = React.useState(false);
-
-
     const navigate = useNavigate();
     const {nav , setCurrentNavigation} = React.useContext(EstimateContext);
 
@@ -52,8 +46,8 @@ const Nav = () => {
                         margin: 'auto',
                         width: '100%',
                         maxWidth: '960px',
-                        minWidth: '320px',
-                        minHeight: '90vh',
+                        minWidth: '480px',
+                        minHeight: '100vh',
                         paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0},
                         paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
                     }}

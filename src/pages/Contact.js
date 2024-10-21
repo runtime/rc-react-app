@@ -4,7 +4,7 @@ import {
     Card,
     Grid,
     Box,
-    Typography, ThemeProvider, CssBaseline, Button, CardContent, Link
+    Typography, ThemeProvider, CssBaseline, Divider, CardContent, Link
 } from '@mui/material';
 import { RapidCleanTheme } from "../themes/Theme.js";
 import {useContext} from "react";
@@ -53,24 +53,58 @@ const Contact = () => {
                                         {/*    <Box> {content} </Box>*/}
                                         {/*</Grid>*/}
                                         <Grid item xs={12} sm={12} md={12} lg={12}>
-                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Email </Typography>
-                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 1}} component='body'>We'd love to hear from you, you can email us anytime.</Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4" color='primary'>rapidcleanering@gmail.com.</Typography>
-                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Text </Typography>
-                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 1}} component='body'>Text us, if  you prefer.</Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4"  color='primary'>212-555-1212.</Typography>
-                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Call </Typography>
-                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 1}} component='body'>Call us between 9-5 M-F. We will try to return your call as quickly as possible.  </Typography>
-                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4"  color='primary'>212-555-1212</Typography>
-                                            <Typography color="secondary" variant="cardTitle" component="h1" display="inline">Follow </Typography>
-                                            <Typography color="primary" variant="cardTitle"  component='h1' display="inline">Us</Typography>
-                                            <Typography sx={{marginBottom: 1}} component='body' >Stay up to date with our social to latest services and offers! </Typography>
+                                            <Typography color="secondary" variant="cardTitle" component="h1"
+                                                        display="inline">Email </Typography>
+                                            <Typography color="primary" variant="cardTitle" component='h1'
+                                                        display="inline">Us</Typography>
+                                            <Typography sx={{marginBottom: 0}} component='body'>We'd love to hear from
+                                                you, you can email us anytime. </Typography>
+                                            <Typography sx={{marginBottom: 2, fontSize: '.7em', fontColor: 'grey'}}
+                                                        component='body'>This is our preferred method of communication
+                                                until our AI autonomously creates a customer support system... we're
+                                                still waiting....</Typography>
+                                            <Typography sx={{marginBottom: 3}} component='body' variant="h4"
+                                                        color='primary'>rapidcleanering@gmail.com.</Typography>
+                                            <Divider/>
+                                            <br/>
+                                            <Typography color="secondary" variant="cardTitle" component="h1"
+                                                        display="inline">Text </Typography>
+                                            <Typography color="primary" variant="cardTitle" component='h1'
+                                                        display="inline">Us</Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body'> If you have a same day
+                                                appointment and need to speak with us, you can text us and we will get
+                                                right back to you.</Typography>
+                                            <Typography sx={{marginBottom: 4}} component='body' variant="h4"
+                                                        color='primary'>(862) 786-8040</Typography>
+                                            <Divider/>
+                                            <br/>
+                                            <Typography color="secondary" variant="cardTitle" component="h1"
+                                                        display="inline">Call </Typography>
+                                            <Typography color="primary" variant="cardTitle" component='h1'
+                                                        display="inline">Us</Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body'>Call us between 9-5 M-F.
+                                                We are probably cleaning something but we will try to return your call
+                                                as quickly as possible. </Typography>
+                                            <Typography sx={{marginBottom: 4}} component='body' variant="h4"
+                                                        color='primary'>(862) 786-8040</Typography>
+                                            <Divider/>
+                                            <br/>
+                                            <Typography color="secondary" variant="cardTitle" component="h1"
+                                                        display="inline">Follow </Typography>
+                                            <Typography color="primary" variant="cardTitle" component='h1'
+                                                        display="inline">Us</Typography>
+                                            <Typography sx={{marginBottom: 2}} component='body'>Stay up to date with our
+                                                social to latest services and offers! </Typography>
 
                                             {/*<Typography color="primary" component='body'>Instagram:</Typography>*/}
-                                           <Link href="https://www.instagram.com/rapidclean_" target="_blank" rel="noopener" sx={{ fontSize: '1em', fontWeight: '600', display: 'flex', alignItems: 'center', color: 'primary' }}>
+                                            <Link href="https://www.instagram.com/rapidclean_" target="_blank"
+                                                  rel="noopener" sx={{
+                                                fontSize: '1em',
+                                                fontWeight: '600',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                color: 'primary'
+                                            }}>
                                                 {/*<InstagramIcon />*/}
                                                 Follow Us on Instagram!
                                             </Link>

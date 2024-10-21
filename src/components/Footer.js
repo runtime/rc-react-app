@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <Box sx={{ width: '100%'}}>
             <BottomNavigation sx={{ backgroundColor: RapidCleanTheme.palette.secondary.main }} showLabels value={0}>
-                <Grid container alignItems="center" justifyContent="space-between" sx={{maxWidth: '1024px'}}>
+                <Grid container alignItems="center" justifyContent="space-between" sx={{maxWidth: '960px'}}>
                     {/* Instagram Icon on the left */}
                     <Grid item
                           sx={{
@@ -21,7 +21,6 @@ const Footer = () => {
                               color: 'white',
                               fontFamily: 'Helvetica " "Arial ',
                               fontWeight: '600',
-                              paddingLeft: {xs: 2, sm: 3, md: 6, lg: 6},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
@@ -46,7 +45,6 @@ const Footer = () => {
                               fontFamily: 'Helvetica Bold" "Arial Bold',
                               fontWeight: '600',
                               alignItems: 'right',
-                              paddingRight: {xs: 2, sm: 3, md: 6, lg: 6},
                               transitionDuration: '0.3s',
                               transitionProperty: 'all',
                               transitionTimingFunction: 'linear',
