@@ -445,7 +445,7 @@ function Provider( {children} ) {
             const foundEstimate = response.data.estimate;  // Assuming the response contains the estimate
             setEstimate(foundEstimate);
             //console.log('[Provider] validateUserByEstimateId foundEstimate: ', foundEstimate);
-            // return true; // You can return true if needed
+            //return true; // You can return true if needed
         } catch (error) {
             //console.log('[Provider] Error in validateUserByEstimateId:', error.response ? error.response.data : error.message);
             // return false; // You can return false if needed
