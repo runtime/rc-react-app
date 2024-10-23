@@ -77,7 +77,7 @@ const Header = () => {
                        fontWeight: 400,
                        fontStyle: 'normal',
                        color: 'grey',
-                       display: {xs: 'block', sm: 'block', md: 'block', lg: 'block'}
+                       display: {xs: 'none', sm: 'block', md: 'block', lg: 'block'}
                    }}>
                        "..For when the cobwebs are not part of the Halloween Decorations..."
                    </Typography>
