@@ -11,7 +11,6 @@ export const constructoptions = [
     { label: "Apartment", value: "Apartment" },
     { label: "House", value: "House" },
     { label: "Room", value: "Room" },
-    { label: "Room", value: "Room" },
     { label: "Other", value: "Other" },
 ]
 
@@ -109,6 +108,7 @@ export const numpetsoptions = [
     { label: "5", value: 5 },
 ]
 export const numpeopleoptions = [
+    { label: "0 - Move Out Only", value: 0 },
     { label: "1", value: 1 },
     { label: "2", value: 2 },
     { label: "3", value: 3 },
