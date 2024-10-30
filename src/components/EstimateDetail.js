@@ -38,7 +38,7 @@ const EstimateDetail = () => {
 
     const handleNextClick = () => {
         //console.log('[EstimateDetail] handleNextClick ---> Appointments');
-        // Todo set the nav state
+        //  set the nav state
         setCurrentNavigation(2)
         navigate('/appointments');
     }
@@ -154,13 +154,13 @@ const EstimateDetail = () => {
             {/*    Your Personalized Estimate ID: <b>{estimate.estimateId} </b>*/}
             {/*</Typography>*/}
             <Typography variant="body1" marginBottom='20px' marginTop='20px'>
-                This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to choose a date for your {estimate.servicedetails.typeofservice}.
+                This highly tailored, hassle-free estimate is only one part of our stellar service. Click NEXT to book your {estimate.servicedetails.typeofservice}.
             </Typography>
             <Button sx={{marginRight: 1}} variant="contained" color="primary" onClick={handleNextClick}>NEXT</Button>
             <Button onClick={handleEditClick}>EDIT DETAILS</Button>
 
             <Typography variant="h5" marginTop='20px' marginBottom='5px'>
-                If you need to make any changes to your estimate, please use the edit details button. Do not hit the back arrow or refresh the browser or you will lose your custom estimate.
+                If you need to make any changes to your estimate, please use the edit details button. Do not hit the back arrow or refresh the browser or you will lose your current estimate.
             </Typography>
 
             {/* for the user in future cards */}

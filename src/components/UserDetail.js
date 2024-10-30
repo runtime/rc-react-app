@@ -55,7 +55,7 @@ const UserDetail = () => {
     if (user.hasOwnProperty("userDetails") && !location.hasOwnProperty("locationdetails")) {
         content = (
             <div>
-                Hi {user.userDetails.firstname}, can you please provide the address for the estimate:
+                Hi {user.userDetails.firstname}, can you please provide the address for this estimate so we know where to go clean 😊
                 <LocationCreate />
             </div>
         );
@@ -81,7 +81,7 @@ const UserDetail = () => {
                 <Typography variant="body1" marginTop="20px" marginBottom="20px">
                     {bookingConfirmed
                         ? `Thank you for booking! Your estimate ID (${estimate.estimateId}) has been saved for future use.`
-                        : `We have anonymously registered you. Don't worry, your data is safe with us.`}
+                        : `We have anonymously registered you. We will send your login credentials in a email with your booking confirmation.  We respect your privacy and do not give your data to third parties. We do not collect cookies, tokens or use pixels to track you.`}
                 </Typography>
 
                 {bookingConfirmed && (
@@ -101,8 +101,8 @@ const UserDetail = () => {
                     <Typography color="secondary" variant="cardTitle" component="h1" display="inline">
                         Your
                     </Typography>
-                    <Typography marginBottom="20px" color="primary" variant="cardTitle" component="h1" display="inline">
-                        Details
+                    <Typography marginLeft='6px' marginBottom="20px" color="primary" variant="cardTitle" component="h1" display="inline">
+                         Details
                     </Typography>
                     {content}
                 </CardContent>

@@ -1,8 +1,7 @@
 .contact {
     margin-top: 10px;
-    margin-bottom: 40px;
-    padding-bottom: 0;
-    text-align: left
+    text-align: left;
+    margin-bottom: 20px;
     /*NOTE MARGINS ARE handled.. 1. in app-container disableGutters. 2. set in nav.js Box sx = paddingleft: * ;*/
     /*padding-right: 40px;*/
 
