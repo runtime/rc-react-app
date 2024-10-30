@@ -39,7 +39,7 @@ export const numbathsoptions = [
     { label: "5", value: 5 },
     { label: "5.5", value: 5.5 },
     { label: "6", value: 6 },
-    { label: "6", value: 6.5 },
+    { label: "6.5", value: 6.5 },
     { label: "7", value: 7},
     { label: "7.5", value: 7.5 },
     { label: "8", value: 8 },
@@ -51,28 +51,28 @@ export const sqftoptions = [{
     value: 250
 },
     {
-        label: "Between 250-750",
+        label: "Between 251-750",
         value: 750
     },
     {
-        label: "Between 750-950",
+        label: "Between 751-950",
         value: 950
     },
     {
-        label: "Between 950-1250",
+        label: "Between 951-1250",
         value: 1250
     },
     {
-        label: "Between 1250-1750",
+        label: "Between 1251-1750",
         value: 1750
     },
     {
-        label: "Between 1750-2500",
+        label: "Between 1751-2500",
         value: 2500
     },
     {
-        label: "Between 2500-3500",
-        value: 3500
+        label: "Between 2501-3500",
+        value: 3000
     },
     {
         label: "above 3500",
@@ -83,8 +83,12 @@ export const sqftoptions = [{
 
 export const cleanfactoroptions = [
     {
-        label: "I am a neat freak, I have zero clutter on my floors and surfaces, 100% ready to clean",
+        label: "Move Out - There is no garbage, clutter or furniture - 100% ready to deep clean",
         value: 0,
+    },
+    {
+        label: "I am a neat freak, I have zero clutter on my floors and surfaces, 100% ready to clean",
+        value: 0.000125,
     },
     {
         label: "I am pretty neat but sometimes have a tiny bit of clutter, 90% ready to clean",
@@ -108,8 +112,7 @@ export const numpetsoptions = [
     { label: "5", value: 5 },
 ]
 export const numpeopleoptions = [
-    { label: "0 - Move Out Only", value: 0 },
-    { label: "1", value: 1 },
+    { label: "1 - Live Alone or Move Out Clean (include yourself)", value: 1 },
     { label: "2", value: 2 },
     { label: "3", value: 3 },
     { label: "4", value: 4 },
