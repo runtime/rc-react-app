@@ -72,10 +72,10 @@ function Provider( {children} ) {
         //console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
         // TODO Refactor the below algo into a Microservice
-        const rate = 30.00;
+        const rate = 25.00;
         const minimum = 60.00;
-        const cleaningfee = 35.00;
-        const moveoutfee = 25.00;
+        const cleaningfee = 25.00;
+        const moveoutfee = 125.00;
         let  totalhours = 0;
         // for temp user names
         const prenoms = ["green-giraffe", "purple-butterfly", "yellow-frog", "blue-fish", "red-rhino", "orange-cow", "pink-boar"];
@@ -142,20 +142,20 @@ function Provider( {children} ) {
         const sqftfactor = (serviceObj.sqft /100); // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
         const roomsfactor = serviceObj.numpeople /serviceObj.numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
         const bathsfactor = serviceObj.numpeople / serviceObj.numbaths; // 1/3 = .333 (1/3 of an hour or 20 mins)
-        const petsfactor = serviceObj.numpets * 5; // 5 minutes per pet
+        const petsfactor = serviceObj.numpets * 3; // 5 minutes per pet
 
 
         // time per room for each factor
         const base_tpr = roomsfactor * 60 //20 mins or a time in mins
         const base_tpb = bathsfactor * 60 // // time in mins
         const petstpr = petsfactor * 1.5
-        const sqfttpr = Math.round(sqftfactor* 1.25);
+        const sqfttpr = Math.round(sqftfactor* 1.045);
 
         // sub totals for total time per room
         let tpr = base_tpr + sqfttpr + petstpr + serviceObj.cleanfactor;
         // set a limit to 90 mins per room
-        if (tpr >= 120) {
-            tpr = 120
+        if (tpr >= 90) {
+            tpr = 90
         }
         let tpb = (base_tpb / 1.8) + sqfttpr + petstpr + serviceObj.cleanfactor;
 
