@@ -17,7 +17,7 @@ function Provider( {children} ) {
     const [nav, setNav] = useState(0);
 
     const RC_API_URL = process.env.REACT_APP_RC_API_URL;
-    console.log("API URL:", RC_API_URL);
+    //console.log("API URL:", RC_API_URL);
 
 
 
@@ -33,10 +33,10 @@ function Provider( {children} ) {
         }
     }
     const createExtraServicesList = (arr) => {
-        console.log('[Provider] createEstimateServicesList arr: ', arr);
+        //console.log('[Provider] createEstimateServicesList arr: ', arr);
         let extras = [];
         arr.forEach((item) => {
-            console.log(item)
+            //console.log(item)
             if (item.display === true) {
                 extras.push({
                     "label": item.label,
@@ -44,7 +44,7 @@ function Provider( {children} ) {
                 })
             }
         });
-        console.log('[Provider] return extras: ', extras);
+        //console.log('[Provider] return extras: ', extras);
         return extras;
     }
 
@@ -61,15 +61,15 @@ function Provider( {children} ) {
     // todo navigation state
 
     const setCurrentNavigation = (id) => {
-        console.log('[Provider] setNav id: ', id)
-        console.log('[Provider] setNav nav ', nav)
+        //console.log('[Provider] setNav id: ', id)
+        //console.log('[Provider] setNav nav ', nav)
         setNav(id);
     }
 
     //todo move helper functions to api estimate algo
     const calculateEstimate = async (obj) => {
-        console.log('[Provider] calculateEstimate obj: ', obj)
-        console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
+        //console.log('[Provider] calculateEstimate obj: ', obj)
+        //console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
         // TODO Refactor the below algo into a Microservice
         const rate = 30.00;
@@ -120,7 +120,7 @@ function Provider( {children} ) {
             }
         }
 
-        console.log('[Provider] calculateEstimate serviceObj: ', serviceObj)
+        //console.log('[Provider] calculateEstimate serviceObj: ', serviceObj)
 
 
         ///ESTIMATE SERVICE FORMULA (TO BE REFACTORED INTO AN API TBD)//////////////
@@ -136,8 +136,8 @@ function Provider( {children} ) {
         const constructrate = (serviceObj.construct === 'House')? 25 : 20;
 
 
-        console.log('servicerate: ', servicerate);
-        console.log('constructrate: ', constructrate);
+        //console.log('servicerate: ', servicerate);
+        //console.log('constructrate: ', constructrate);
 
         const sqftfactor = (serviceObj.sqft /100); // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
         const roomsfactor = serviceObj.numpeople /serviceObj.numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
@@ -279,9 +279,9 @@ function Provider( {children} ) {
             {label: 'Waste', display: serviceObj.waste, cost: wastecost},
         ];
 
-        console.log('[Provider] full extrasList: ', extrasList);
-        console.log('[Provider] full prolist: ', prolist);
-        console.log('[Provider] full petlist: ', petlist);
+        //console.log('[Provider] full extrasList: ', extrasList);
+        //console.log('[Provider] full prolist: ', prolist);
+        //console.log('[Provider] full petlist: ', petlist);
 
 
         const extraserviceslistfordisplay = createExtraServicesList(extrasList);
@@ -298,79 +298,79 @@ function Provider( {children} ) {
         //////////////////
 
         // Hydrated serviceObj as received
-        console.log('[Provider] serviceObj.rate: ', serviceObj.rate, ' typeofservice: ', serviceObj.typeofservice, ' construct: ', serviceObj.construct,
-            ' numpeople: ', serviceObj.numpeople, 'numrooms: ', serviceObj.numrooms, 'numbaths: ', serviceObj.numbaths, ' numpets: ', serviceObj.numpets, ' sqft: ', serviceObj.sqft, ' cleanfactor: ', serviceObj.cleanfactor,);
+        //console.log('[Provider] serviceObj.rate: ', serviceObj.rate, ' typeofservice: ', serviceObj.typeofservice, ' construct: ', serviceObj.construct,
+          //  ' numpeople: ', serviceObj.numpeople, 'numrooms: ', serviceObj.numrooms, 'numbaths: ', serviceObj.numbaths, ' numpets: ', serviceObj.numpets, ' sqft: ', serviceObj.sqft, ' cleanfactor: ', serviceObj.cleanfactor,);
 
         // Algo Factors for basic services
-        console.log('Factors:');
-        console.log('sqftfactor: 10% of square feet * 2', sqftfactor);
-        console.log('roomsfactor  (occupants / rooms) : ', roomsfactor);
-        console.log('bathsfactor: (occupants / baths)', bathsfactor);
-        console.log('petsfactor: (5 mins per pet) ', petsfactor);
-        console.log('cleanfactor: (already in mins) ', serviceObj.cleanfactor);
-
-        // estimated times for basic services from factors
-        console.log('base_tpr in minutes: ', base_tpr);
-        console.log('base_tpb in minutes: ', base_tpb);
-        console.log('sqfttpr in minutes:', sqfttpr);
-        console.log('petsfactor: in minutes ', petsfactor);
-        console.log('cleanfactor: in minutes ', serviceObj.cleanfactor);
-
-        console.log('tpr in mins: ', tpr);
-        console.log('tpb in mins: ', tpb);
-
-        console.log('totaltimerooms: ', totaltimerooms);
-        console.log('totaltimebaths: ', totaltimebaths);
-        console.log('totalhours: ', totalhours);
-        console.log('=====================');
+        // console.log('Factors:');
+        // console.log('sqftfactor: 10% of square feet * 2', sqftfactor);
+        // console.log('roomsfactor  (occupants / rooms) : ', roomsfactor);
+        // console.log('bathsfactor: (occupants / baths)', bathsfactor);
+        // console.log('petsfactor: (5 mins per pet) ', petsfactor);
+        // console.log('cleanfactor: (already in mins) ', serviceObj.cleanfactor);
+        //
+        // // estimated times for basic services from factors
+        // console.log('base_tpr in minutes: ', base_tpr);
+        // console.log('base_tpb in minutes: ', base_tpb);
+        // console.log('sqfttpr in minutes:', sqfttpr);
+        // console.log('petsfactor: in minutes ', petsfactor);
+        // console.log('cleanfactor: in minutes ', serviceObj.cleanfactor);
+        //
+        // console.log('tpr in mins: ', tpr);
+        // console.log('tpb in mins: ', tpb);
+        //
+        // console.log('totaltimerooms: ', totaltimerooms);
+        // console.log('totaltimebaths: ', totaltimebaths);
+        // console.log('totalhours: ', totalhours);
+        // console.log('=====================');
 
         ////// End Log Basic Services
 
         // Extra, Professional and Pet Services serviceObj
-        console.log('laundrywashandfold: ', serviceObj.laundrywashandfold);
-        console.log('dishwashing: ', serviceObj.dishwashing);
-        console.log('mealprep: ', serviceObj.mealprep);
-        console.log('ovencleaning: ', serviceObj.ovencleaning);
-        console.log('fridgecleaning: ', serviceObj.fridgecleaning);
-        console.log('deepcleaning: ', serviceObj.deepcleaning);
-        console.log('professionalcouchcleaning: ', serviceObj.professionalcouchcleaning);
-        console.log('professionalrugshampoo: ', serviceObj.professionalrugshampoo);
-        console.log('professionalfloorwaxing: ', serviceObj.professionalfloorwaxing);
-        console.log('dogwalking: ', serviceObj.dogwalking);
-        console.log('petsitting: ', serviceObj.petsitting);
-        console.log('dispensingmedication: ', serviceObj.dispensingmedication);
-        console.log('waste: ', serviceObj.waste);
-
-        console.log('Extra Costs: ');
-        console.log('dishwashingcost: ', dishwashingcost);
-        console.log('laundrycost: ', laundrycost);
-        console.log('mealprepcost: ', mealprepcost);
-        console.log('ovencleaningcost: ', ovencleaningcost);
-        console.log('fridgecleaningcost: ', fridgecleaningcost);
-        console.log('deepcleaningcost: ', deepcleaningcost);
-        console.log('professionalcouchcleaningcost: ', professionalcouchcleaningcost);
-        console.log('professionalrugshampoocost: ', professionalrugshampoocost);
-        console.log('professionalfloorwaxingcost: ', professionalfloorwaxingcost);
-        console.log('dogwalkingcost: ', dogwalkingcost);
-        console.log('petsittingcost: ', petsittingcost);
-        console.log('dispensingmedicationcost: ', dispensingmedicationcost);
-        console.log('wastecost: ', wastecost);
-        console.log('==============EXTRAS and PRO Objects=======');
-        console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
-        console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
-        console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
-        console.log('=============== estimate ==============');
-        console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
-        console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
-        console.log('serviceObj.cost.pro: ', serviceObj.cost.pro);
-        console.log('serviceObj.cost.pet: ', serviceObj.cost.pet);
-        console.log('=======================================');
-        console.log('serviceObj.cost.total: ', serviceObj.cost.total);
-        console.log('================= Data ===================');
-        console.log('serviceObj.data.totalhours: ', serviceObj.data.totalhours);
-        console.log('serviceObj.data.totaltimerooms: ', serviceObj.data.totaltimerooms);
-        console.log('serviceObj.data.totaltimebaths: ', serviceObj.data.totaltimebaths);
-        console.log('=======================================');
+        // console.log('laundrywashandfold: ', serviceObj.laundrywashandfold);
+        // console.log('dishwashing: ', serviceObj.dishwashing);
+        // console.log('mealprep: ', serviceObj.mealprep);
+        // console.log('ovencleaning: ', serviceObj.ovencleaning);
+        // console.log('fridgecleaning: ', serviceObj.fridgecleaning);
+        // console.log('deepcleaning: ', serviceObj.deepcleaning);
+        // console.log('professionalcouchcleaning: ', serviceObj.professionalcouchcleaning);
+        // console.log('professionalrugshampoo: ', serviceObj.professionalrugshampoo);
+        // console.log('professionalfloorwaxing: ', serviceObj.professionalfloorwaxing);
+        // console.log('dogwalking: ', serviceObj.dogwalking);
+        // console.log('petsitting: ', serviceObj.petsitting);
+        // console.log('dispensingmedication: ', serviceObj.dispensingmedication);
+        // console.log('waste: ', serviceObj.waste);
+        //
+        // console.log('Extra Costs: ');
+        // console.log('dishwashingcost: ', dishwashingcost);
+        // console.log('laundrycost: ', laundrycost);
+        // console.log('mealprepcost: ', mealprepcost);
+        // console.log('ovencleaningcost: ', ovencleaningcost);
+        // console.log('fridgecleaningcost: ', fridgecleaningcost);
+        // console.log('deepcleaningcost: ', deepcleaningcost);
+        // console.log('professionalcouchcleaningcost: ', professionalcouchcleaningcost);
+        // console.log('professionalrugshampoocost: ', professionalrugshampoocost);
+        // console.log('professionalfloorwaxingcost: ', professionalfloorwaxingcost);
+        // console.log('dogwalkingcost: ', dogwalkingcost);
+        // console.log('petsittingcost: ', petsittingcost);
+        // console.log('dispensingmedicationcost: ', dispensingmedicationcost);
+        // console.log('wastecost: ', wastecost);
+        // console.log('==============EXTRAS and PRO Objects=======');
+        // console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
+        // console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
+        // console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
+        // console.log('=============== estimate ==============');
+        // console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
+        // console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
+        // console.log('serviceObj.cost.pro: ', serviceObj.cost.pro);
+        // console.log('serviceObj.cost.pet: ', serviceObj.cost.pet);
+        // console.log('=======================================');
+        // console.log('serviceObj.cost.total: ', serviceObj.cost.total);
+        // console.log('================= Data ===================');
+        // console.log('serviceObj.data.totalhours: ', serviceObj.data.totalhours);
+        // console.log('serviceObj.data.totaltimerooms: ', serviceObj.data.totaltimerooms);
+        // console.log('serviceObj.data.totaltimebaths: ', serviceObj.data.totaltimebaths);
+        // console.log('=======================================');
 
 
         // Final Estimate to be returned
@@ -380,7 +380,7 @@ function Provider( {children} ) {
 
     const createUser = async (obj) => {
         try {
-            console.log('[Provider] createUser ', obj);
+            //console.log('[Provider] createUser ', obj);
 
             const userdetails = obj;
             const userId = userdetails.userID;
@@ -391,23 +391,23 @@ function Provider( {children} ) {
                 userDetails: userdetails  // Ensure the key matches what the Lambda expects
             });
 
-            console.log('[Provider] createUser response.data ', response.data);
+            //console.log('[Provider] createUser response.data ', response.data);
             const {message, item} = response.data;
             const processedMessage = message;
             const processedUser = item;  // Assuming the response contains user details
-            console.log('[Provider] processedUser ', processedUser);
+            //console.log('[Provider] processedUser ', processedUser);
             setUser(processedUser);
 
         } catch (error) {
-            console.error('Error creating user:', error.response ? error.response.data : error.message);
+            //console.error('Error creating user:', error.response ? error.response.data : error.message);
         }
     };
 
 
     const findUserById = async(userId) => {
-        console.log('[Provider] findUserById, userID: ', userId);
+        //console.log('[Provider] findUserById, userID: ', userId);
         const response = await axios.get(`${RC_API_URL}/users/${userId}`);
-        console.log('[Provider] findUserById Axios Get response.data: ', response.data);
+        //console.log('[Provider] findUserById Axios Get response.data: ', response.data);
         //return response;
         const foundUser = response.data;
         setUser(foundUser);
@@ -415,31 +415,31 @@ function Provider( {children} ) {
 
     const findUserByUserId = async (userId) => {
         try {
-            console.log('[Provider] findUserByUserId, userId: ', userId);
+            //console.log('[Provider] findUserByUserId, userId: ', userId);
             // Make the GET request to fetch the user by userId
             const response = await axios.get(`${RC_API_URL}/users/${userId}`);
             // Log the response
-            console.log('[Provider] findUserByUserId Axios Get response.data: ', response.data);
+            //console.log('[Provider] findUserByUserId Axios Get response.data: ', response.data);
             // Extract the user from the response
             const user = response.data.user;
             // Set the user state
             setUser(user);
-            console.log('[Provider] User set: ', user);
+            //console.log('[Provider] User set: ', user);
             // Return the user in case you need it for further use
             return user;
         } catch (error) {
-            console.error('Error fetching user:', error);
+            //console.error('Error fetching user:', error);
         }
     };
 
 
     const findEstimateById = async(obj) => {
-        console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
+        //console.log('[Provider] findEstimateById, obj.estimateID: ', obj.estimateID);
         const response = await axios.get(`${RC_API_URL}/estimates/${obj.estimateID}`);
-        console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
+        //console.log('[Provider] findEstimateById Axios Get response.data: ', response.data);
         // for now we are going to find the user by the Estimate ID
         const foundEstimate = response.data;
-        console.log('[Provider] findEstimateById foundEstimate: ', foundEstimate.userID);
+        //console.log('[Provider] findEstimateById foundEstimate: ', foundEstimate.userID);
         setEstimate(foundEstimate);
         //const userResponse = await axios.get(`http://localhost:3001/users/${foundEstimate.userID}`);
         //return response;
@@ -449,12 +449,12 @@ function Provider( {children} ) {
 
     const createEstimate = async (obj) => {
         try {
-            console.log('[Provider] createEstimate obj:', obj);
+            //console.log('[Provider] createEstimate obj:', obj);
 
             const servicedetails =  await calculateEstimate(obj);  // Ensure this function is returning the expected structure
             const estimateId = generateRandomId(8);
-            console.log('[Provider] servicedetails:', servicedetails);
-            console.log('[Provider] createEstimate RC_API_URL:', `${RC_API_URL}/estimates`);
+            //console.log('[Provider] servicedetails:', servicedetails);
+            //console.log('[Provider] createEstimate RC_API_URL:', `${RC_API_URL}/estimates`);
             const response = await axios.post(`${RC_API_URL}/estimates` ,
                 {
                     estimateId:  estimateId, // Ensure you are passing estimateId
@@ -467,14 +467,14 @@ function Provider( {children} ) {
                 }
             );
 
-            console.log('[Provider] createEstimate response.data.item:', response.data.item);
+            //console.log('[Provider] createEstimate response.data.item:', response.data.item);
             const {message, item} =  response.data;
-            console.log('[Provider] createEstimate message:', message);
-            console.log('[Provider] createEstimate item:', item);
+            //console.log('[Provider] createEstimate message:', message);
+            //console.log('[Provider] createEstimate item:', item);
             const processedEstimate = item;
             setEstimate(processedEstimate);
         } catch (error) {
-            console.error('[Provider] Error creating estimate:', error.response || error.message);
+            //console.error('[Provider] Error creating estimate:', error.response || error.message);
         }
     };
 
@@ -486,16 +486,16 @@ function Provider( {children} ) {
 
             // Use flat() to remove any nested arrays (e.g., [[estimate1], [estimate2]] => [estimate1, estimate2])
             const flattenedEstimates = estimatesData.flat();
-            console.log('Flattened estimates:', flattenedEstimates);
+            //console.log('Flattened estimates:', flattenedEstimates);
 
             setEstimates(flattenedEstimates);
         } catch (error) {
-            console.error('Error fetching estimates:', error);
+            //console.error('Error fetching estimates:', error);
         }
     };
 
     const editEstimateById = async (estimateId, editReqObj) => {
-        console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj,);
+        //console.log('[Provider] editEstimateById: ', estimateId, ' editReqObj: ', editReqObj,);
         // Todo call estimate service with new information
         const servicedetails = await calculateEstimate(editReqObj);
         // store the updated response
@@ -514,35 +514,35 @@ function Provider( {children} ) {
         const { message, item } =  response.data;
         const updatedEstimate = item;
         const messageResponse = message;
-        console.log('[Provider] editEstimateById Axios Put response.data: ', messageResponse, updatedEstimate);
+        //console.log('[Provider] editEstimateById Axios Put response.data: ', messageResponse, updatedEstimate);
         setEstimate(updatedEstimate)
     }
 
     const editUserById = async (userId, editReqObj) => {
-        console.log('[Provider] editUserById: ', userId, ' editReqObj: ', editReqObj,);
+        //console.log('[Provider] editUserById: ', userId, ' editReqObj: ', editReqObj,);
         const userdetails = editReqObj;
         const response = await axios.put(`${RC_API_URL}/users/${userId}`, {
             userdetails
         });
-        console.log('[Provider] editUserById Axios Put response.data: ', response.data);
+        //console.log('[Provider] editUserById Axios Put response.data: ', response.data);
         const updatedUser = response.data;
         setUser(updatedUser)
     }
 
     const createLocation = async (obj) => {
         try {
-            console.log('[Provider] createLocation: ', obj);
+            //console.log('[Provider] createLocation: ', obj);
             const locationdetails = obj;
             const locationId = generateRandomId(8); // lets rename this later
             const response = await axios.post(`${RC_API_URL}/locations`, {
                 locationId,
                 locationdetails
             });
-            console.log('[Provider] createLocation response.data ', response.data);
+            //console.log('[Provider] createLocation response.data ', response.data);
             const { message, item } =  response.data;
             const processedLocation = item;
             const messageResponse = message;
-            console.log('[Provider] createLocation Axios Put response.data: ', messageResponse, processedLocation);
+            //console.log('[Provider] createLocation Axios Put response.data: ', messageResponse, processedLocation);
             setLocation(processedLocation);
         } catch (error) {
             console.error('Error creating location:', error.response ? error.response.data : error.message);
@@ -551,20 +551,20 @@ function Provider( {children} ) {
 
 
     const editLocationById = async (id, editReqObj) => {
-        console.log('[Provider] editLocationById: ', id, ' editReqObj: ', editReqObj,);
+        //console.log('[Provider] editLocationById: ', id, ' editReqObj: ', editReqObj,);
         const locationdetails = editReqObj;
         const response = await axios.put(`${RC_API_URL}/locations/${id}`, {
             locationdetails
         });
-        console.log('[Provider] editUserById Axios Put response.data: ', response.data);
+        //console.log('[Provider] editUserById Axios Put response.data: ', response.data);
         const updatedLocation = response.data;
         setLocation(updatedLocation)
     }
 
     const findLocationById = async (obj) => {
-        console.log('[Provider] findLocationById, obj.locationID: ', obj.locationID);
+        //console.log('[Provider] findLocationById, obj.locationID: ', obj.locationID);
         const response = await axios.get(`${RC_API_URL}/location/${obj.locationID}`);
-        console.log('[Provider] findLocationById Axios Get response.data: ', response.data);
+        //console.log('[Provider] findLocationById Axios Get response.data: ', response.data);
         return response;
         //setLocation(response.data);
     }
@@ -572,15 +572,15 @@ function Provider( {children} ) {
 
     const findLocationByUserId = async (userId) => {
         try {
-            console.log('[Provider] findLocationByUserId, userId: ', userId);
+            //console.log('[Provider] findLocationByUserId, userId: ', userId);
             const response = await axios.get(`${RC_API_URL}/locations/user/${userId}`);
-            console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
+            //console.log('[Provider] findLocationByUserId Axios Get response.data: ', response.data);
 
             const locations = response.data.locations;
             const foundLocation = locations.find(location => location.locationdetails.userId === userId);
 
             if (foundLocation) {
-                console.log('[Provider] findLocationByUserId foundLocation: ', foundLocation);
+                //console.log('[Provider] findLocationByUserId foundLocation: ', foundLocation);
                 setLocation(foundLocation);
             } else {
                 console.warn('No matching location found for userId:', userId);
@@ -594,9 +594,9 @@ function Provider( {children} ) {
 
     const createBooking = async (obj) => {
         try {
-            console.log('[Provider] createBooking: ', obj);
-            console.log('[Provider] bookingId: ', obj.bookingId);
-            console.log('[Provider] bookingDetails: ', obj.bookingDetails);
+            //console.log('[Provider] createBooking: ', obj);
+            //console.log('[Provider] bookingId: ', obj.bookingId);
+           // console.log('[Provider] bookingDetails: ', obj.bookingDetails);
 
 
 
@@ -612,14 +612,14 @@ function Provider( {children} ) {
                 },
             });
 
-            console.log('[Provider] createBooking response: ', response.data);
+            //console.log('[Provider] createBooking response: ', response.data);
             const { message, item } = response.data;
             const newBooking = item;  // Assuming the response contains the created booking
-            console.log('[Provider] New booking created: ', newBooking);
+            //console.log('[Provider] New booking created: ', newBooking);
 
             return newBooking;  // Return the created booking in case it's needed elsewhere
         } catch (error) {
-            console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
+            //console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
         }
     };
 

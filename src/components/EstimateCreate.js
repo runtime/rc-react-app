@@ -101,7 +101,7 @@ const EstimateCreate = () => {
 
     const handleFormSubmit = (values) => {
         //e.preventDefault();
-        console.log('[EstimateCreate] onFormSubmit values:', values)
+        //console.log('[EstimateCreate] onFormSubmit values:', values)
         //use Context function to create the estimate with the initial value
         createEstimate(values);
         //todo clear form

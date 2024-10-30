@@ -20,12 +20,12 @@ const UserDetail = () => {
         if (user.hasOwnProperty("userDetails")) {
             try {
                 const foundLocation = await findLocationByUserId(user.userId);
-                console.log('[UserDetail] foundLocation: ', foundLocation);
+                //console.log('[UserDetail] foundLocation: ', foundLocation);
                 if (!foundLocation) {
                     console.log('[UserDetail] did not find location.');
                 }
             } catch (error) {
-                console.error('Error checking location:', error);
+                //console.error('Error checking location:', error);
             }
         }
     };

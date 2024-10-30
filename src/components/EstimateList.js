@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 
 const EstimateList = ({ estimates }) => {
-    console.log('[EstimateList] estimates : ', estimates);
+    //console.log('[EstimateList] estimates : ', estimates);
     const renderedList = estimates.map((estimate) => {
         return <EstimateItem key={estimate.id} estimate={estimate} />
     })

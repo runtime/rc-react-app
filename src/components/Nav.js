@@ -26,7 +26,7 @@ const Nav = () => {
     //     console.log('nav ', nav);
     // }
     const handleOnServicesClick = () => {
-        console.log('handleOnServicesClick ', 0);
+        //console.log('handleOnServicesClick ', 0);
         setCurrentNavigation(0)
         navigate('/');
     }

@@ -20,13 +20,13 @@ const EditEstimate =({estimate, onSubmit}) => {
     const { editEstimateById } = useContext(EstimateContext);
 
    //this is correct
-    console.log('[EditEstimate] estimate: , ', estimate)
+    //console.log('[EditEstimate] estimate: , ', estimate)
 
     // removing the servicedetails wrapper (to use calculateEstimate) but storing the id which sits outside of it
     const   initialValues   = estimate.servicedetails;
     const estimateId = estimate.estimateId;
 
-    console.log('[EditEstimate] initialValues: ' , initialValues)
+    //console.log('[EditEstimate] initialValues: ' , initialValues)
 
 
     let validationSchema = Yup.object().shape({
@@ -57,7 +57,7 @@ const EditEstimate =({estimate, onSubmit}) => {
     })
 
     const handleSubmit = (values) => {
-        console.log('[EditEstimate] handleSubmit:', values);
+        //console.log('[EditEstimate] handleSubmit:', values);
         onSubmit()
         //setNewEstimate(values)
         editEstimateById(estimateId, values);
