@@ -142,20 +142,20 @@ function Provider( {children} ) {
         const sqftfactor = (serviceObj.sqft /100); // 12.5 * 1.5 = 18.75 mins   25.0 * 2 = 50 mins
         const roomsfactor = serviceObj.numpeople /serviceObj.numrooms; // 1 / 3 = .333 (1/3 of an hour or 20 mins)
         const bathsfactor = serviceObj.numpeople / serviceObj.numbaths; // 1/3 = .333 (1/3 of an hour or 20 mins)
-        const petsfactor = serviceObj.numpets * 5; // 5 minutes per pet
+        const petsfactor = serviceObj.numpets * 3; // 5 minutes per pet
 
 
         // time per room for each factor
         const base_tpr = roomsfactor * 60 //20 mins or a time in mins
         const base_tpb = bathsfactor * 60 // // time in mins
         const petstpr = petsfactor * 1.5
-        const sqfttpr = Math.round(sqftfactor* 1.125);
+        const sqfttpr = Math.round(sqftfactor* 1.045);
 
         // sub totals for total time per room
         let tpr = base_tpr + sqfttpr + petstpr + serviceObj.cleanfactor;
         // set a limit to 90 mins per room
-        if (tpr >= 120) {
-            tpr = 120
+        if (tpr >= 90) {
+            tpr = 90
         }
         let tpb = (base_tpb / 1.8) + sqfttpr + petstpr + serviceObj.cleanfactor;
 
