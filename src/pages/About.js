@@ -245,7 +245,7 @@ const About = () => {
                                 Our Move-Out Cleaning Services
                             </Typography>
                             <Typography variant='body1'  sx={{ marginBottom: .75 }}>
-                                We care about your security deposit or next tenant, so we deep-clean all Move-outs. No need to select 'Deep Clean' as an option. We ask that you have all furniture, debris or clutter is removed prior to our arrival.
+                                We care about your security deposit or next tenant, so we deep-clean all Move-outs. No need to select 'Deep Clean' as an option. We ask that you have all furniture, debris or clutter removed prior to our arrival.
                             </Typography>
                             <Typography variant='body1'   sx={{ fontSize: '.85em', marginBottom: 2 }}>
                                 ** Oven Cleaning is not part of our Move-Out clean services, please select it in the Extra Services section if you need the oven cleaned.
