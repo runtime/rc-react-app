@@ -72,10 +72,10 @@ function Provider( {children} ) {
         //console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
         // TODO Refactor the below algo into a Microservice
-        const rate = 30.00;
+        const rate = 25.00;
         const minimum = 60.00;
-        const cleaningfee = 35.00;
-        const moveoutfee = 25.00;
+        const cleaningfee = 25.00;
+        const moveoutfee = 125.00;
         let  totalhours = 0;
         // for temp user names
         const prenoms = ["green-giraffe", "purple-butterfly", "yellow-frog", "blue-fish", "red-rhino", "orange-cow", "pink-boar"];
@@ -149,7 +149,7 @@ function Provider( {children} ) {
         const base_tpr = roomsfactor * 60 //20 mins or a time in mins
         const base_tpb = bathsfactor * 60 // // time in mins
         const petstpr = petsfactor * 1.5
-        const sqfttpr = Math.round(sqftfactor* 1.25);
+        const sqfttpr = Math.round(sqftfactor* 1.125);
 
         // sub totals for total time per room
         let tpr = base_tpr + sqfttpr + petstpr + serviceObj.cleanfactor;
