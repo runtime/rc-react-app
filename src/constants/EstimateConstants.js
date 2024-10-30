@@ -83,24 +83,24 @@ export const sqftoptions = [{
 
 export const cleanfactoroptions = [
     {
-        label: "Move Out - There is no garbage, clutter or furniture - 100% ready to deep clean",
+        label: "Move Out - There is no furniture, clutter or garbage - 100% ready to move out clean",
         value: 0,
     },
     {
-        label: "I am a neat freak, I have zero clutter on my floors and surfaces, 100% ready to clean",
-        value: 0.000125,
+        label: "There is zero clutter on my floors and surfaces, 100% ready to clean",
+        value: 1,
     },
     {
-        label: "I am pretty neat but sometimes have a tiny bit of clutter, 90% ready to clean",
+        label: "I have a tiny bit of clutter, 90% ready to clean",
         value: 5,
     },
     {
-        label: "There is some stuff on the floor and some stuff on most of the surfaces, 70% ready to clean",
+        label: "There are some things on the floor and stuff on most of the surfaces, 70% ready to clean",
         value: 10,
     },
     {
         label: "There is significant amount of stuff on the floor, beds and other surfaces. 50% ready to clean",
-        value: 20,
+        value: 15,
     },
 ]
 export const numpetsoptions = [

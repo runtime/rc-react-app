@@ -72,7 +72,7 @@ function Provider( {children} ) {
         //console.log('[Provider] calculateEstimate newObj.keys: ', Object.keys(obj));
 
         // TODO Refactor the below algo into a Microservice
-        const rate = 25.00;
+        const rate = 27.50;
         const minimum = 60.00;
         const cleaningfee = 25.00;
         const moveoutfee = 125.00;
