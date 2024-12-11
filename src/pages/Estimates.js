@@ -44,10 +44,10 @@ const Estimates = () => {
 
     const hasServiceDetails = estimate?.servicedetails;
 
-    console.log('[Estimates] estimate: ', estimate);
-    console.log('[Estimates] estimate.hasOwnProperty(servicedetails): ', hasServiceDetails);
+    //console.log('[Estimates] estimate: ', estimate);
+    //console.log('[Estimates] estimate.hasOwnProperty(servicedetails): ', hasServiceDetails);
     if (hasServiceDetails) {
-        console.log('[Estimates] estimate.item.servicedetails: ' + estimate.servicedetails);
+        //console.log('[Estimates] estimate.item.servicedetails: ' + estimate.servicedetails);
         content = <EstimateDetail />;
     } else  {
         content = <EstimateCreate />;
