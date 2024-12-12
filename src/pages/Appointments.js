@@ -21,9 +21,9 @@ const Appointments = () => {
     const { estimate, user, location, findUserByUserId, setCurrentNavigation } = useContext(EstimateContext);
 
 
-    console.log('[Appointments] estimate: ' + estimate);
-    console.log('[Appointments] user: ' + user);
-    console.log('[Appointments] location: ' + location);
+    // console.log('[Appointments] estimate: ' + estimate);
+    // console.log('[Appointments] user: ' + user);
+    // console.log('[Appointments] location: ' + location);
 
     const navigate = useNavigate();
 
@@ -32,8 +32,8 @@ const Appointments = () => {
         navigate('/estimates');
     }
 
-    console.log('[Appointments] user.hasOwnProperty("userDetails") : ' , user.hasOwnProperty("userDetails"));
-    console.log('[Appointments] location.hasOwnProperty("locationdetails") : ' , location.hasOwnProperty("locationdetails"));
+    // console.log('[Appointments] user.hasOwnProperty("userDetails") : ' , user.hasOwnProperty("userDetails"));
+    // console.log('[Appointments] location.hasOwnProperty("locationdetails") : ' , location.hasOwnProperty("locationdetails"));
 
     let content = <h3>loading</h3>
 
@@ -45,14 +45,14 @@ const Appointments = () => {
         //  IF you are coming from Appointments and you wish to enter in a previous appointment
         // we will do a quick check of the database to see if the user exists
         const estimatetosearch = estimate.servicedetails.userID;
-        console.log('[Appointments] estimatetosearch: ' + estimatetosearch);
+        //console.log('[Appointments] estimatetosearch: ' + estimatetosearch);
         // this sends a function to the provider to find the user and setUser which will change the conditions to show the address field locate4d in the UserDetail
         // todo refactor to use a custom useEffect hook with memo and fetch the data
         const foundExistingUser = findUserByUserId(estimatetosearch);
         if (foundExistingUser) {
             // and if the user exists lets check to see if the Location Exists
-            console.log('[Appointments] foundExistingUser: ' + foundExistingUser);
-            console.log('[Appointments] USER DETAIL will check for Location and decide what to show')
+            //console.log('[Appointments] foundExistingUser: ' + foundExistingUser);
+            //console.log('[Appointments] USER DETAIL will check for Location and decide what to show')
         }
         content = <>
             <Grid>
