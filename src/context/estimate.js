@@ -298,79 +298,79 @@ function Provider( {children} ) {
         //////////////////
 
         // Hydrated serviceObj as received
-        console.log('[Provider] serviceObj.rate: ', serviceObj.rate, ' typeofservice: ', serviceObj.typeofservice, ' construct: ', serviceObj.construct,
-            ' numpeople: ', serviceObj.numpeople, 'numrooms: ', serviceObj.numrooms, 'numbaths: ', serviceObj.numbaths, ' numpets: ', serviceObj.numpets, ' sqft: ', serviceObj.sqft, ' cleanfactor: ', serviceObj.cleanfactor,);
-
-        // Algo Factors for basic services
-        console.log('Factors:');
-        console.log('sqftfactor: 10% of square feet * 2', sqftfactor);
-        console.log('roomsfactor  (occupants / rooms) : ', roomsfactor);
-        console.log('bathsfactor: (occupants / baths)', bathsfactor);
-        console.log('petsfactor: (5 mins per pet) ', petsfactor);
-        console.log('cleanfactor: (already in mins) ', serviceObj.cleanfactor);
-
-        // estimated times for basic services from factors
-        console.log('base_tpr in minutes: ', base_tpr);
-        console.log('base_tpb in minutes: ', base_tpb);
-        console.log('sqfttpr in minutes:', sqfttpr);
-        console.log('petsfactor: in minutes ', petsfactor);
-        console.log('cleanfactor: in minutes ', serviceObj.cleanfactor);
-
-        console.log('tpr in mins: ', tpr);
-        console.log('tpb in mins: ', tpb);
-
-        console.log('totaltimerooms: ', totaltimerooms);
-        console.log('totaltimebaths: ', totaltimebaths);
-        console.log('totalhours: ', totalhours);
-        console.log('=====================');
-
-        ////// End Log Basic Services
-
-        // Extra, Professional and Pet Services serviceObj
-        console.log('laundrywashandfold: ', serviceObj.laundrywashandfold);
-        console.log('dishwashing: ', serviceObj.dishwashing);
-        console.log('mealprep: ', serviceObj.mealprep);
-        console.log('ovencleaning: ', serviceObj.ovencleaning);
-        console.log('fridgecleaning: ', serviceObj.fridgecleaning);
-        console.log('deepcleaning: ', serviceObj.deepcleaning);
-        console.log('professionalcouchcleaning: ', serviceObj.professionalcouchcleaning);
-        console.log('professionalrugshampoo: ', serviceObj.professionalrugshampoo);
-        console.log('professionalfloorwaxing: ', serviceObj.professionalfloorwaxing);
-        console.log('dogwalking: ', serviceObj.dogwalking);
-        console.log('petsitting: ', serviceObj.petsitting);
-        console.log('dispensingmedication: ', serviceObj.dispensingmedication);
-        console.log('waste: ', serviceObj.waste);
-
-        console.log('Extra Costs: ');
-        console.log('dishwashingcost: ', dishwashingcost);
-        console.log('laundrycost: ', laundrycost);
-        console.log('mealprepcost: ', mealprepcost);
-        console.log('ovencleaningcost: ', ovencleaningcost);
-        console.log('fridgecleaningcost: ', fridgecleaningcost);
-        console.log('deepcleaningcost: ', deepcleaningcost);
-        console.log('professionalcouchcleaningcost: ', professionalcouchcleaningcost);
-        console.log('professionalrugshampoocost: ', professionalrugshampoocost);
-        console.log('professionalfloorwaxingcost: ', professionalfloorwaxingcost);
-        console.log('dogwalkingcost: ', dogwalkingcost);
-        console.log('petsittingcost: ', petsittingcost);
-        console.log('dispensingmedicationcost: ', dispensingmedicationcost);
-        console.log('wastecost: ', wastecost);
-        console.log('==============EXTRAS and PRO Objects=======');
-        console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
-        console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
-        console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
-        console.log('=============== estimate ==============');
-        console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
-        console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
-        console.log('serviceObj.cost.pro: ', serviceObj.cost.pro);
-        console.log('serviceObj.cost.pet: ', serviceObj.cost.pet);
-        console.log('=======================================');
-        console.log('serviceObj.cost.total: ', serviceObj.cost.total);
-        console.log('================= Data ===================');
-        console.log('serviceObj.data.totalhours: ', serviceObj.data.totalhours);
-        console.log('serviceObj.data.totaltimerooms: ', serviceObj.data.totaltimerooms);
-        console.log('serviceObj.data.totaltimebaths: ', serviceObj.data.totaltimebaths);
-        console.log('=======================================');
+        // console.log('[Provider] serviceObj.rate: ', serviceObj.rate, ' typeofservice: ', serviceObj.typeofservice, ' construct: ', serviceObj.construct,
+        //     ' numpeople: ', serviceObj.numpeople, 'numrooms: ', serviceObj.numrooms, 'numbaths: ', serviceObj.numbaths, ' numpets: ', serviceObj.numpets, ' sqft: ', serviceObj.sqft, ' cleanfactor: ', serviceObj.cleanfactor,);
+        //
+        // // Algo Factors for basic services
+        // console.log('Factors:');
+        // console.log('sqftfactor: 10% of square feet * 2', sqftfactor);
+        // console.log('roomsfactor  (occupants / rooms) : ', roomsfactor);
+        // console.log('bathsfactor: (occupants / baths)', bathsfactor);
+        // console.log('petsfactor: (5 mins per pet) ', petsfactor);
+        // console.log('cleanfactor: (already in mins) ', serviceObj.cleanfactor);
+        //
+        // // estimated times for basic services from factors
+        // console.log('base_tpr in minutes: ', base_tpr);
+        // console.log('base_tpb in minutes: ', base_tpb);
+        // console.log('sqfttpr in minutes:', sqfttpr);
+        // console.log('petsfactor: in minutes ', petsfactor);
+        // console.log('cleanfactor: in minutes ', serviceObj.cleanfactor);
+        //
+        // console.log('tpr in mins: ', tpr);
+        // console.log('tpb in mins: ', tpb);
+        //
+        // console.log('totaltimerooms: ', totaltimerooms);
+        // console.log('totaltimebaths: ', totaltimebaths);
+        // console.log('totalhours: ', totalhours);
+        // console.log('=====================');
+        //
+        // ////// End Log Basic Services
+        //
+        // // Extra, Professional and Pet Services serviceObj
+        // console.log('laundrywashandfold: ', serviceObj.laundrywashandfold);
+        // console.log('dishwashing: ', serviceObj.dishwashing);
+        // console.log('mealprep: ', serviceObj.mealprep);
+        // console.log('ovencleaning: ', serviceObj.ovencleaning);
+        // console.log('fridgecleaning: ', serviceObj.fridgecleaning);
+        // console.log('deepcleaning: ', serviceObj.deepcleaning);
+        // console.log('professionalcouchcleaning: ', serviceObj.professionalcouchcleaning);
+        // console.log('professionalrugshampoo: ', serviceObj.professionalrugshampoo);
+        // console.log('professionalfloorwaxing: ', serviceObj.professionalfloorwaxing);
+        // console.log('dogwalking: ', serviceObj.dogwalking);
+        // console.log('petsitting: ', serviceObj.petsitting);
+        // console.log('dispensingmedication: ', serviceObj.dispensingmedication);
+        // console.log('waste: ', serviceObj.waste);
+        //
+        // console.log('Extra Costs: ');
+        // console.log('dishwashingcost: ', dishwashingcost);
+        // console.log('laundrycost: ', laundrycost);
+        // console.log('mealprepcost: ', mealprepcost);
+        // console.log('ovencleaningcost: ', ovencleaningcost);
+        // console.log('fridgecleaningcost: ', fridgecleaningcost);
+        // console.log('deepcleaningcost: ', deepcleaningcost);
+        // console.log('professionalcouchcleaningcost: ', professionalcouchcleaningcost);
+        // console.log('professionalrugshampoocost: ', professionalrugshampoocost);
+        // console.log('professionalfloorwaxingcost: ', professionalfloorwaxingcost);
+        // console.log('dogwalkingcost: ', dogwalkingcost);
+        // console.log('petsittingcost: ', petsittingcost);
+        // console.log('dispensingmedicationcost: ', dispensingmedicationcost);
+        // console.log('wastecost: ', wastecost);
+        // console.log('==============EXTRAS and PRO Objects=======');
+        // console.log('[Provider] serviceObj.extraservices: ', serviceObj.extraservices);
+        // console.log('[Provider] serviceObj.proservices: ', serviceObj.proservices);
+        // console.log('[Provider] serviceObj.petservices: ', serviceObj.petservices);
+        // console.log('=============== estimate ==============');
+        // console.log('serviceObj.cost.cleaning: ', serviceObj.cost.cleaning);
+        // console.log('serviceObj.cost.extra: ', serviceObj.cost.extra);
+        // console.log('serviceObj.cost.pro: ', serviceObj.cost.pro);
+        // console.log('serviceObj.cost.pet: ', serviceObj.cost.pet);
+        // console.log('=======================================');
+        // console.log('serviceObj.cost.total: ', serviceObj.cost.total);
+        // console.log('================= Data ===================');
+        // console.log('serviceObj.data.totalhours: ', serviceObj.data.totalhours);
+        // console.log('serviceObj.data.totaltimerooms: ', serviceObj.data.totaltimerooms);
+        // console.log('serviceObj.data.totaltimebaths: ', serviceObj.data.totaltimebaths);
+        // console.log('=======================================');
 
 
         // Final Estimate to be returned
@@ -641,38 +641,6 @@ function Provider( {children} ) {
             //console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
         }
     };
-
-    // const createBooking = async (obj) => {
-    //     console.log('[Provider] createBooking obj: ', obj);
-    //     try {
-    //         // Ensure estimateId is present
-    //         if (!obj.estimateId || typeof obj.estimateId !== 'string') {
-    //             console.error('Error: estimateId is required and must be a string.');
-    //             return;
-    //         }
-    //
-    //         console.log('[Provider] createBooking: ', obj);
-    //
-    //         const response = await axios.post(`${RC_API_URL}/bookings`, obj, {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //         });
-    //
-    //         console.log('[Provider] createBooking response: ', response.data);
-    //         const { message, item } = response.data;
-    //         const newBooking = item;  // Assuming the response contains the created booking
-    //         console.log('[Provider] New booking created: ', newBooking);
-    //
-    //         return newBooking;  // Return the created booking in case it's needed elsewhere
-    //     } catch (error) {
-    //         console.error('[Provider] Error creating booking: ', error.response ? error.response.data : error.message);
-    //     }
-    // };
-
-
-
-
 
 
     // set new value to send back to context subscribers

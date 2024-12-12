@@ -38,7 +38,7 @@ const RepeatService = () => {
     });
 
     const handleFindByEstimateIdSubmit = (values) => {
-        console.log('[RepeatService] handleFindByEstimateIdSubmit: ', values);
+        //console.log('[RepeatService] handleFindByEstimateIdSubmit: ', values);
         const { estimateId, userId } = values;  // Destructure values object
         validateUserByEstimateId(estimateId, userId);  // Pass both parameters separately
     };

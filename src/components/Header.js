@@ -3,7 +3,7 @@ import { Image } from 'mui-image';
 import Logo from '../logo.svg';
 import {Box, Button, Grid, Link, Typography} from '@mui/material';
 import HeaderImage from '../media/header-image.jpg';
-import HeaderTown from '../media/rc-town-header.png';
+import HeaderHolidayImageRight from '../media/rc-town-header.png';
 import React, {useContext} from "react";
 //import { useNavigate } from 'react-router-dom';
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -30,8 +30,12 @@ const Header = () => {
     return (
         //todo to sticky menu zIndex: 1, position: 'fixed'
         <Box sx={{
-            backgroundColor: '#bddaa6', //<-- light green from primary color
+            //backgroundColor: '#bddaa6', //<-- light green from primary color
             width: '100%',
+            backgroundImage: `url(${HeaderImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
             //paddingLeft: { xs: 2, sm: 2, md: 2, lg: 0}, //<--- these match the NAV padding which is the bounding box
             //paddingRight: { xs: 2, sm: 2, md: 2, lg: 0} //<--- ^^
             // these have been moved to the grid items that hold the logo (left) and image (right)
@@ -52,8 +56,8 @@ const Header = () => {
                       }}>
                     <Link href="/" target="_blank" rel="noopener">
                         <Image src={Logo}
-                               width='50%'
-                               height='50%'
+                               width='70%'
+                               height='70%'
                                fit='cover'
                                className='app-logo'
                                alt="rapidclean logo"
@@ -72,18 +76,18 @@ const Header = () => {
 
                       }}>
                    <Typography sx={{
-                       fontSize: {xs: '.5em', sm:'.6em', md:'.8em', lg: '1em'},
-                       fontFamily: "Goblin One, serif",
-                       fontWeight: 400,
+                       fontSize: {xs: '1em', sm:'1.25em', md:'2em', lg: '2.5em'},
+                       fontFamily: "Mountains of Christmas, Helvetica",
+                       fontWeight: 900,
                        fontStyle: 'normal',
-                       color: 'grey',
+                       color: '#d50c47',
                        display: {xs: 'none', sm: 'block', md: 'block', lg: 'block'}
                    }}>
-                       "..For when the cobwebs are not part of the Halloween Decorations..."
+                       "..for when your in-laws are staying until New Years..."
                    </Typography>
                 </Grid>
 
-                {/* Right Image - HeaderTown */}
+                {/* Right Image - HeaderHolidayImageRight */}
                 <Grid item xs={3} sm={3} lg={3}
                       sx={{
                           //backgroundColor: '#ffcc00',
@@ -96,7 +100,7 @@ const Header = () => {
                           justifyContent: 'flex-end', // Justify content to the end
                           paddingRight: { xs: 2, sm: 2, md: 2, lg: 0}
                       }}>
-                    <Image src={HeaderTown}
+                    <Image src={HeaderHolidayImageRight}
                            width='60%'
                            height='60%'
                            fit='cover'
