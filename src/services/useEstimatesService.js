@@ -6,8 +6,7 @@ import React, {useState, useEffect} from "react";
 const useEstimatesService = async (defaultEstimateRequest) => {
     // input a request
     // output an estimate
-   // const [est, setEst] = useState([]);
-    console.log('[useEstimatesService]', defaultEstimateRequest );
+    //console.log('[useEstimatesService]', defaultEstimateRequest );
 
 
     // useEffect(() => {
