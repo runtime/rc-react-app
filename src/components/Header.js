@@ -76,14 +76,14 @@ const Header = () => {
 
                       }}>
                    <Typography sx={{
-                       fontSize: {xs: '1em', sm:'1.25em', md:'2em', lg: '2.5em'},
-                       fontFamily: "Mountains of Christmas, Helvetica",
-                       fontWeight: 900,
+                       fontSize: {xs: '.5em', sm:'.6em', md:'.8em', lg: '1em'},
+                       fontFamily: "Goblin One, Serif",
+                       fontWeight: 400,
                        fontStyle: 'normal',
-                       color: '#d50c47',
+                       color: '#ccccc',
                        display: {xs: 'none', sm: 'block', md: 'block', lg: 'block'}
                    }}>
-                       "..for when your in-laws are staying until New Years..."
+                       "..For when the cobwebs are NOT part of your Halloween Decor..."
                    </Typography>
                 </Grid>
 
